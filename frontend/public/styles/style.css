@@ -1,0 +1,32 @@
+/* label,
+input[type="text"],
+input[type="submit"],
+textarea {
+  display: block;
+} * */
+body
+{
+    background-color: #4a4031;
+    background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+}
+
+
+.uploadform
+{
+  border-radius: 25px;
+   background-color: white;
+   padding: 20px;
+   color: orangered;
+}
+
+.uploadform *
+{
+  margin: 5px;
+}
+
+.uploadform input[type="file"]
+{
+   margin-top: 15px;
+   margin-bottom: 15px;
+   
+}
