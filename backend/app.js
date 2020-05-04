@@ -18,7 +18,12 @@ const Post = mongoose.Schema(
         subName  : String,
         subCode  : String,
         file     : String,
-        url      : String
+        url      : String,
+        date     : 
+        {
+            type : Date,
+            default : Date.now
+        }
     }
 )
 
@@ -56,8 +61,11 @@ app.post("/newpost",function(req,res)
     )
     p.save(function(err)
     {
-        if(!err)
+        if(err)
         {
+            console.log(err);
+        }
+        else{
             res.send("<div><h1>Uploaded Successfully</h1><p>contact admin to remove files</p> </div>");
         }
     })

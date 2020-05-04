@@ -18,6 +18,7 @@ function PostCard ()
 
     function handle()
     {
+        // fetch("/work").then(res => console.log(res.json()));
         axios.get("/posts")
         .then(function (response) {
             console.log(response.data);

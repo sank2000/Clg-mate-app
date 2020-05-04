@@ -3,49 +3,59 @@
   margin: 0;
   box-sizing: border-box;
 }
-body
-{
-    background-color: #4a4031;
-    background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+body {
+  background-color: white;
+  background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
 }
 header {
-  background-color: #f5ba13;
+  background-color: black;
   margin: auto -16px;
   padding: 16px 32px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
 
 header h1 {
+  display: inline-block;
   color: #fff;
   font-family: "McLaren", cursive;
   font-weight: 200;
 }
 
-.uploadform
-{
-   margin-top: 50px;
-   border-radius: 25px;
-   background-color: white;
-   padding: 20px;
-   color: orangered;
+.app {
+  display: inline;
 }
 
-.uploadform *
-{
-  margin: 5px;
+.newPost {
+  float: right;
 }
 
-.uploadform input[type="file"]
-{
-   margin-top: 15px;
-   margin-bottom: 15px;
-   
+.head {
+  text-align: right;
 }
-.submit
-{
+
+.close {
+  position: absolute;
+  right: 20px;
+}
+
+.uploadform {
+  border-radius: 25px;
+  background-color: white;
+  padding: 20px;
+  color: orangered;
+}
+
+.uploadform * {
+  margin: 3px;
+}
+
+.uploadform input[type="file"] {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.submit {
   width: 100%;
 }
-
 .post
 {
   display: inline-block;

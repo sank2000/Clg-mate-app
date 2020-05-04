@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import NavH from "./NavigationBar"
 import firebase from '../firebase';
+import Popup from "reactjs-popup";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
@@ -67,25 +68,43 @@ class NewPost extends Component {
 
   render() {
     return (
-      <div >
-        <NavH></NavH>
-        <Container maxWidth="sm" className="uploadform" >
-        <form action="/newpost" method="post">
-          <TextField variant="outlined" required type="text" name="title" id="outlined-basic" fullWidth label="Title" />
-          <TextField variant="outlined" required name="description" rows={4} id="filled-multiline-static" fullWidth multiline label="Description" />
-          <TextField variant="outlined" required type="text" name="subName" fullWidth label="Subject Name" />
-          <TextField variant="outlined" required type="text" name="subCode" fullWidth label="Subject Code"/>
-          <input type="file" name="file" onChange={this.handleChange} /><br></br>
-          <input type="hidden" name="url" value={this.state.url}  />
-          <Button onClick={this.handleUpload} size="small"  variant="contained" color="secondary"><CloudUploadIcon variant="outlined" />upload</Button>
-          <p>{this.state.progress}</p>
-          <Btn done={this.state.done}></Btn>
-        </form>
-      </Container>
+      <div className="app">
+        <Popup
+          contentStyle={{ borderRadius: "25px" }}
+          className="pop"
+          trigger={ <Button className="newPost" variant="outlined" color="primary">New Post </Button> }
+          modal
+          closeOffDocumentClick
+        >
+          {close => (
+            <div className="modal">
+              <div className="head">
+                <HighlightOffIcon className="close" onClick={close} color="secondary" />
+              </div>
+              <div className="uploadform">
+                <form action="/newpost" method="post">
+                  <TextField variant="outlined" required type="text" name="title" id="outlined-basic" fullWidth label="Title" />
+                  <TextField variant="outlined" required name="description" rows={4} id="filled-multiline-static" fullWidth multiline label="Description" />
+                  <TextField variant="outlined" required type="text" name="subName" fullWidth label="Subject Name" />
+                  <TextField variant="outlined" required type="text" name="subCode" fullWidth label="Subject Code" />
+                  <input type="file" name="file" onChange={this.handleChange} />
+                  <br />
+                  <input type="hidden" name="url" value={this.state.url} />
+                  <Button onClick={this.handleUpload} size="small" variant="contained" color="secondary">
+                  <CloudUploadIcon variant="outlined" />
+                    upload
+                  </Button>
+                  <p>{this.state.progress}</p>
+                  <Btn done={this.state.done}></Btn>
+                </form>
+              </div>
+            </div>
+          )}
+        </Popup>
       </div>
-      
-    );
+       );
   }
 }
-
 export default NewPost;
+
+
