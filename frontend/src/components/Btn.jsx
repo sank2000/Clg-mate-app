@@ -5,10 +5,10 @@ function button(props)
 {
     if(props.done)
     {
-        return <Button type="submit" size="small"  variant="contained" color="primary">Submit</Button>
+        return <Button className="submit" type="submit" size="small"  variant="contained" color="primary">Submit</Button>
     }
     else{
-       return <Button  disabled  type="submit" size="small"  variant="contained" color="primary">Submit</Button>
+       return <Button className="submit" disabled  type="submit" size="small"  variant="contained" color="primary">Submit</Button>
     }
 }
 

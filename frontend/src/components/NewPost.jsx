@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import NavH from "./NavigationBar"
 import firebase from '../firebase';
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
@@ -67,15 +68,16 @@ class NewPost extends Component {
   render() {
     return (
       <div >
+        <NavH></NavH>
         <Container maxWidth="sm" className="uploadform" >
         <form action="/newpost" method="post">
           <TextField variant="outlined" required type="text" name="title" id="outlined-basic" fullWidth label="Title" />
-          <TextField variant="outlined" required name=" Description" rows={4} id="filled-multiline-static" fullWidth multiline label="Description" />
+          <TextField variant="outlined" required name="description" rows={4} id="filled-multiline-static" fullWidth multiline label="Description" />
           <TextField variant="outlined" required type="text" name="subName" fullWidth label="Subject Name" />
           <TextField variant="outlined" required type="text" name="subCode" fullWidth label="Subject Code"/>
           <input type="file" name="file" onChange={this.handleChange} /><br></br>
           <input type="hidden" name="url" value={this.state.url}  />
-          <Button onClick={this.handleUpload} size="small"  variant="contained" color="default"><CloudUploadIcon variant="outlined" />upload</Button>
+          <Button onClick={this.handleUpload} size="small"  variant="contained" color="secondary"><CloudUploadIcon variant="outlined" />upload</Button>
           <p>{this.state.progress}</p>
           <Btn done={this.state.done}></Btn>
         </form>

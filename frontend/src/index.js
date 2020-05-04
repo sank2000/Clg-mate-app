@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import NewPost from './components/NewPost'
-import Test from "./components/Test";
+import Post from "./components/PostCard";
 
 ReactDOM.render(
-  <NewPost />,
+  <Post />,
   document.getElementById('root')
 );

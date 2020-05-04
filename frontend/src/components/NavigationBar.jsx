@@ -1,7 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class NavigationBar extends Component {
+function nav()
+{
+   return (
+       <header>
+           <h1>Clg Mate</h1>
+       </header>
 
+   )
 }
 
-export default NavigationBar;
+export default nav;
