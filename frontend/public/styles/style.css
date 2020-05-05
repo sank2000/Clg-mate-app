@@ -40,20 +40,18 @@ header h1 {
 
 .close {
   position: absolute;
-  right: 20px;
+  right: 10px;
   top: 10px;
 }
 
 .uploadform {
   border-radius: 15px;
   background-color: white;
-  color: orangered;
 }
 
 .uploadform {
   margin: 3px;
   padding-right: 15px;
-  /*temporary-fix*/
 }
 
 .halfWidth {
@@ -82,29 +80,5 @@ header h1 {
   padding: 20px;
   margin: 20px;
   border-radius: 5px;
-}
-
-.fileChooseBtn {
-  border: 2px solid #AAA;
-  border-radius: 4px;
-  padding: 2px 5px;
-  margin: 2px;
-  background: #DDD;
-  display: inline-block;
-}
-
-.fileChooseBtn:hover {
-  background: #CCC;
-}
-
-.fileChooseBtn:active {
-  background: #CCF;
-}
-
-.fileChooseBtn :invalid+span {
-  color: #A44;
-}
-
-.fileChooseBtn :valid+span {
-  color: #4A4;
+  border: #ccc solid 1px;
 }
