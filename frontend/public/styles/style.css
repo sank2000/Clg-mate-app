@@ -1,12 +1,11 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Muli:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600;1,700;1,900&display=swap');
+
 body {
   background-color: white;
   background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+  font-family: 'Muli';
 }
+
 header {
   background-color: black;
   margin: auto -16px;
@@ -17,7 +16,6 @@ header {
 header h1 {
   display: inline-block;
   color: #fff;
-  font-family: "McLaren", cursive;
   font-weight: 200;
 }
 
@@ -29,8 +27,7 @@ header h1 {
   float: right;
 }
 
-.head h1
-{
+.head h1 {
   display: block;
   text-align: center;
   color: black;
@@ -43,42 +40,31 @@ header h1 {
 }
 
 .uploadform {
-  border-radius: 25px;
+  border-radius: 15px;
   background-color: white;
-  padding: 20px;
   color: orangered;
-  padding: 10px;
 }
 
-.uploadform * {
-  margin: 6px;
+.uploadform {
+  margin: 3px;
 }
 
-.uploadform input[type="file"] {
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
-.halfWidth
-{
-  width: 50%;
+.halfWidth {
+  width: 45%;
 }
 
-.upload
-{
+.upload {
   float: right;
   margin-top: 5px;
 }
-.uploadIcon
-{
+
+.uploadIcon {
   margin: 0px;
   height: 25px;
   padding: 0px;
 }
-.submit {
-  width: 100%;
-}
-.post
-{
+
+.post {
   display: inline-block;
   background-color: #fff;
   min-width: 250px;
