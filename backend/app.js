@@ -14,9 +14,11 @@ mongoose.connect("mongodb+srv://admin-app:clgmateofficial@main-gv4yv.gcp.mongodb
 const Post = mongoose.Schema(
     {
         title : String ,
+        author : String,
         description : String,
         subName  : String,
         subCode  : String,
+        DueDate  : Date ,
         file     : String,
         url      : String,
         date     : 
@@ -52,9 +54,11 @@ app.post("/newpost",function(req,res)
     const p = new post(
         {
             title : req.body.title ,
+            author : req.body.author,
             description : req.body.description,
             subName  : req.body.subName,
             subCode  : req.body.subCode,
+            DueDate  : new Date(req.body.DueDate),
             file     : req.body.file,
             url      : req.body.url,
         }
@@ -66,7 +70,8 @@ app.post("/newpost",function(req,res)
             console.log(err);
         }
         else{
-            res.send("<div><h1>Uploaded Successfully</h1><p>contact admin to remove files</p> </div>");
+           // res.send("<div><h1>Uploaded Successfully</h1><p>contact admin to remove files</p> </div>");
+           res.redirect("/");
         }
     })
 })

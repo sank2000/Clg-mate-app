@@ -74,25 +74,27 @@ class NewPost extends Component {
           className="pop"
           trigger={ <Button className="newPost" variant="outlined" color="primary">New Post </Button> }
           modal
-          closeOffDocumentClick
         >
           {close => (
             <div className="modal">
               <div className="head">
+                <h1 className="title">New post</h1>
                 <HighlightOffIcon className="close" onClick={close} color="secondary" />
+                <hr></hr>
               </div>
               <div className="uploadform">
                 <form action="/newpost" method="post">
-                  <TextField variant="outlined" required type="text" name="title" id="outlined-basic" fullWidth label="Title" />
-                  <TextField variant="outlined" required name="description" rows={4} id="filled-multiline-static" fullWidth multiline label="Description" />
-                  <TextField variant="outlined" required type="text" name="subName" fullWidth label="Subject Name" />
-                  <TextField variant="outlined" required type="text" name="subCode" fullWidth label="Subject Code" />
+                  <TextField variant="outlined" required type="text" name="title" fullWidth label="Title" />
+                  <TextField variant="outlined" required type="text" name="author"   fullWidth label="Author" />
+                  <TextField variant="outlined" required name="description" rows={4} fullWidth multiline label="Description" />
+                  <TextField variant="outlined" required type="text" name="subName"  label="Subject Name" className ="halfWidth" />
+                  <TextField variant="outlined" required type="text" name="subCode"  label="Subject Code" className ="halfWidth" />
+                  <TextField variant="outlined" required type="date" name="DueDate" label="Due Date" id="datetime-local" fullWidth InputLabelProps={{ shrink: true, }} />
                   <input type="file" name="file" onChange={this.handleChange} />
-                  <br />
                   <input type="hidden" name="url" value={this.state.url} />
-                  <Button onClick={this.handleUpload} size="small" variant="contained" color="secondary">
-                  <CloudUploadIcon variant="outlined" />
-                    upload
+                  <Button onClick={this.handleUpload} size="small" variant="contained" color="secondary" className="upload">
+                  <CloudUploadIcon variant="outlined" fontSize="small" className ="uploadIcon" />
+                    &nbsp; upload
                   </Button>
                   <p>{this.state.progress}</p>
                   <Btn done={this.state.done}></Btn>

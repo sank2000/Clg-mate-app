@@ -29,13 +29,17 @@ header h1 {
   float: right;
 }
 
-.head {
-  text-align: right;
+.head h1
+{
+  display: block;
+  text-align: center;
+  color: black;
 }
 
 .close {
   position: absolute;
   right: 20px;
+  top: 10px;
 }
 
 .uploadform {
@@ -43,15 +47,32 @@ header h1 {
   background-color: white;
   padding: 20px;
   color: orangered;
+  padding: 10px;
 }
 
 .uploadform * {
-  margin: 3px;
+  margin: 6px;
 }
 
 .uploadform input[type="file"] {
   margin-top: 15px;
   margin-bottom: 15px;
+}
+.halfWidth
+{
+  width: 50%;
+}
+
+.upload
+{
+  float: right;
+  margin-top: 5px;
+}
+.uploadIcon
+{
+  margin: 0px;
+  height: 25px;
+  padding: 0px;
 }
 .submit {
   width: 100%;
