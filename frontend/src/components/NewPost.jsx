@@ -138,7 +138,8 @@ class NewPost extends Component {
                       className="uploadIcon" />
                     &nbsp; {this.state.progress}
                   </Button>
-                  <SubmitButton style={applyMargin} done={this.state.done} />
+                  {/* <SubmitButton style={applyMargin} done={this.state.done} /> */}
+                  <Button style={{ marginLeft: "7px", width: "100%", height: "3rem", fontSize: "1rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Button>
                 </form>
               </div>
             </div>

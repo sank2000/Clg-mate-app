@@ -11,7 +11,7 @@ function Card(props = {}) {
             <p>{props.description}</p>
             <h3>{props.subName}</h3>
             <h4>{props.file}</h4>
-            <a href={props.url}>Download</a>
+            {props.url !== "" && <a href={props.url}>Download</a> }
         </div>
 
     );

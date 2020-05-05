@@ -4,14 +4,7 @@ import Card from "./Card";
 import Head from "./NavigationBar";
 
 function App() {
-    const [post, setPost] = useState([{
-        title: "",
-        description: "",
-        subName: "",
-        subCode: "",
-        file: "",
-        url: ""
-    }]);
+    const [post, setPost] = useState([]);
 
 
     useEffect(() => {
