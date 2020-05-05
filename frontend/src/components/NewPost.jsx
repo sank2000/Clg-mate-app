@@ -116,6 +116,7 @@ class NewPost extends Component {
                     type="date"
                     name="DueDate"
                     label="Due Date"
+                    defaultValue={(new Date).toISOString().split('T')[0]}
                     id="datetime-local"
                     fullWidth
                     InputLabelProps={{ shrink: true, }} />
@@ -124,7 +125,7 @@ class NewPost extends Component {
                     name="file"
                     onChange={this.handleChange} />
                   <input type="hidden" name="url" value={this.state.url} />
-                  <Button style={applyMargin}
+                  <Button
                     onClick={this.handleUpload}
                     size="small"
                     variant="contained"

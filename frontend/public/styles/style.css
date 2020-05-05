@@ -74,3 +74,27 @@ header h1 {
   margin: 20px;
   border-radius: 25px;
 }
+
+.fileChooseBtn {
+  border: 2px solid #AAA;
+  border-radius: 4px;
+  padding: 2px 5px;
+  margin: 2px;
+  background: #DDD;
+  display: inline-block;
+}
+
+.fileChooseBtn:hover {
+  background: #CCC;
+}
+
+.fileChooseBtn:active {background: #CCF;
+}
+
+.fileChooseBtn :invalid+span {
+  color: #A44;
+}
+
+.fileChooseBtn :valid+span {
+  color: #4A4;
+}
