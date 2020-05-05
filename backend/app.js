@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose =  require("mongoose");
@@ -9,7 +11,7 @@ app.use(bodyParser.urlencoded({extended : true}));
 
 //mongoose.connect("mongodb://localhost:27017/Clg_mt",{ useNewUrlParser: true , useUnifiedTopology: true});
 
-mongoose.connect("mongodb+srv://admin-app:clgmateofficial@main-gv4yv.gcp.mongodb.net/FileDetails",{ useNewUrlParser: true , useUnifiedTopology: true});
+mongoose.connect(process.env.DB_URL,{ useNewUrlParser: true , useUnifiedTopology: true});
 
 const Post = mongoose.Schema(
     {
