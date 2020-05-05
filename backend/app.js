@@ -1,39 +1,20 @@
-require('dotenv').config();
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+require('dotenv').config();
+
+const post = require('./models/Post');
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 //mongoose.connect("mongodb://localhost:27017/Clg_mt",{ useNewUrlParser: true , useUnifiedTopology: true});
 
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
-const Post = mongoose.Schema({
-    title: String,
-    author: String,
-    description: String,
-    subName: String,
-    subCode: String,
-    DueDate: Date,
-    file: String,
-    url: String,
-    date: {
-        type: Date,
-        default: Date.now
-    }
-}
-)
-
-const post = mongoose.model("posts", Post);
-
-
 app.get("/posts", function (req, res) {
-    console.log("request");
+    console.log("Requesting...");
     post.find({}, function (err, result) {
         if (!err) {
             res.send(result);
@@ -69,5 +50,5 @@ app.post("/newpost", function (req, res) {
 })
 
 app.listen(5000, function (req, res) {
-    console.log("server started at port 5000");
+    console.log("Server started at port 5000");
 })
