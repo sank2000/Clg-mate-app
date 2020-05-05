@@ -1,12 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import firebase from '../firebase';
 import Popup from "reactjs-popup";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import TextField from '@material-ui/core/TextField';
-import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import CloudUploadOutlinedIcon from '@material-ui/icons/CloudUploadOutlined';
-import { makeStyles } from '@material-ui/core/styles';
 import SubmitButton from './SubmitButton';
 
 const applyMargin = {
@@ -59,7 +57,7 @@ class NewPost extends Component {
         .catch(e => {
           console.log('Error: ' + e);
         });
-    }
+    };
 
     uploadTask.on('state_changed', snapshot => uploadProgress(snapshot), (error) => { console.log(error); }, () => uploadComplete());
   }
@@ -111,13 +109,6 @@ class NewPost extends Component {
                     type="text"
                     name="subName"
                     label="Subject Name"
-                    className="halfWidth" />
-                  <TextField style={applyMargin}
-                    variant="outlined"
-                    required
-                    type="text"
-                    name="subCode"
-                    label="Subject Code"
                     className="halfWidth" />
                   <TextField style={applyMargin}
                     variant="outlined"

@@ -47,6 +47,8 @@ header h1 {
 
 .uploadform {
   margin: 3px;
+  padding-right: 15px;
+  /*temporary-fix*/
 }
 
 .halfWidth {
