@@ -7,7 +7,6 @@ const PostSchema = new Schema({
   author: String,
   description: String,
   subName: String,
-  subCode: String,
   DueDate: Date,
   file: String,
   url: String

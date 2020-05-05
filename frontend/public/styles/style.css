@@ -76,9 +76,30 @@ header h1 {
 .post {
   display: inline-block;
   background-color: #fff;
-  width: 25%;
+  width: 50%;
   padding: 20px;
   margin: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   border: #ccc solid 1px;
 }
+ .post * 
+ {
+   margin-bottom: 8px;
+ }
+.post a
+{
+  margin-right: 5px;
+}
+ .post p,h4{
+   color: gray;
+ }
+
+ .post h5{
+   margin-top : 3px;
+   display: inline-block;
+ }
+
+ .post .DowIco
+ {
+   margin : 0px;
+ }

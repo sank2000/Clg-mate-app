@@ -25,9 +25,10 @@ function App() {
         return (
             <Card
                 title={post.title}
+                author={post.author}
                 description={post.description}
                 subName={post.subName}
-                subCode={post.subCode}
+                DueDate={new Date(post.DueDate).toLocaleDateString()}
                 file={post.file}
                 url={post.url}
             />
