@@ -118,7 +118,7 @@ class NewPost extends Component {
                     type="date"
                     name="DueDate"
                     label="Due Date"
-                    defaultValue={(new Date).toISOString().split('T')[0]}
+                    defaultValue={(new Date()).toISOString().split('T')[0]}
                     id="datetime-local"
                     size="small"
                     InputLabelProps={{ shrink: true, }} />
