@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Post from "./components/PostCard";
+import App from "./components/App";
 
 ReactDOM.render(
-  <Post />,
+  <App />,
   document.getElementById('root')
 );

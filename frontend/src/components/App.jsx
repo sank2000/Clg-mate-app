@@ -3,7 +3,7 @@ import axios from "axios";
 import Card from "./Card";
 import Head from "./NavigationBar";
 
-function PostCard() {
+function App() {
     const [post, setPost] = useState([{
         title: "",
         description: "",
@@ -37,9 +37,9 @@ function PostCard() {
                 subCode={post.subCode}
                 file={post.file}
                 url={post.url}
-            ></Card>
-        )
-    }
+            />
+        );
+    };
 
     return (
         <div>
@@ -50,7 +50,7 @@ function PostCard() {
 
 }
 
-export default PostCard;
+export default App;
 
 
 /* <div>

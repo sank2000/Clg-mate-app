@@ -1,6 +1,9 @@
 import React from "react";
 
-function Card(props) {
+function Card(props = {}) {
+    if (props === {}) {
+        return null;
+    }
     return (
         <div className="post" >
             <h1>{props.subCode} </h1>
