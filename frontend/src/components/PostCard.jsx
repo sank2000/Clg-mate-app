@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import Card from "./Card";
 import Head from "./NavigationBar";
@@ -16,7 +16,8 @@ function PostCard ()
         url : ""
     }]);
 
-    function handle()
+    
+    useEffect(()=>
     {
         // fetch("/work").then(res => console.log(res.json()));
         axios.get("/posts")
@@ -28,10 +29,8 @@ function PostCard ()
         .catch(function (error) {
             // handle error
             console.log(error);
-        })  
-
-    }
-    
+        }) 
+    },[])
         
         function data(post)
         {
@@ -50,7 +49,6 @@ function PostCard ()
         return (
             <div>
                 <Head />
-                <button onClick={handle}>load data ....</button>
                 { post.map(data) }
             </div>
             )
