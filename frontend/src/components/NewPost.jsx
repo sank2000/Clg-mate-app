@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
 import Popup from "reactjs-popup";
-import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import CloudUploadOutlinedIcon from '@material-ui/icons/CloudUploadOutlined';
+import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
 import SubmitButton from './SubmitButton';
 
 const applyMargin = {
@@ -66,7 +66,7 @@ class NewPost extends Component {
     return (
       <div className="app">
         <Popup
-          contentStyle={{ borderRadius: "25px" }}
+          contentStyle={{ borderRadius: "15px" }}
           className="pop"
           trigger={<Button className="newPost" variant="outlined" color="primary">New Post </Button>}
           modal
@@ -75,7 +75,7 @@ class NewPost extends Component {
             <div className="modal">
               <div className="head">
                 <h1 className="title">New post</h1>
-                <HighlightOffIcon className="close" onClick={close} color="secondary" />
+                <CloseOutlinedIcon fontSize="large" className="close" onClick={close} color="secondary" />
                 <hr></hr>
               </div>
               <div className="uploadform">
@@ -109,7 +109,9 @@ class NewPost extends Component {
                     type="text"
                     name="subName"
                     label="Subject Name"
-                    className="halfWidth" />
+                    className="halfWidth"
+                    size="small"
+                  />
                   <TextField style={applyMargin}
                     variant="outlined"
                     required
@@ -118,7 +120,7 @@ class NewPost extends Component {
                     label="Due Date"
                     defaultValue={(new Date).toISOString().split('T')[0]}
                     id="datetime-local"
-                    fullWidth
+                    size="small"
                     InputLabelProps={{ shrink: true, }} />
                   <input style={applyMargin}
                     type="file"
