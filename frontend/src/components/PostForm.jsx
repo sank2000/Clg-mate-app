@@ -4,7 +4,6 @@ import { Button, Modal } from "react-bootstrap";
 import TextField from "@material-ui/core/TextField";
 import Btn from "@material-ui/core/Button";
 import CloudUploadOutlinedIcon from "@material-ui/icons/CloudUploadOutlined";
-import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
 
 function PostForm(props) {
   const [show, setShow] = useState(false);
