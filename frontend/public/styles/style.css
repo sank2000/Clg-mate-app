@@ -82,24 +82,55 @@ header h1 {
   border-radius: 10px;
   border: #ccc solid 1px;
 }
- .post * 
- {
-   margin-bottom: 8px;
- }
-.post a
-{
+
+.post * {
+  margin-bottom: 8px;
+}
+
+.post a {
   margin-right: 5px;
 }
- .post p,h4{
-   color: gray;
- }
 
- .post h5{
-   margin-top : 3px;
-   display: inline-block;
- }
+.post p,
+h4 {
+  color: gray;
+}
 
- .post .DowIco
- {
-   margin : 0px;
- }
+.post h5 {
+  margin-top: 3px;
+  display: inline-block;
+}
+
+.post .DowIco {
+  margin: 0px;
+}
+
+
+/* for new card  */
+
+.top {
+  font-size: medium;
+  color: #555;
+}
+
+.post-type {
+  float: right;
+}
+
+.due-icon {
+  vertical-align: text-bottom;
+}
+
+.post-title {
+  margin: .7rem 0px;
+  color: #000;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.subject {
+  font-size: 1rem;
+  color: #555;
+  font-weight: 700;
+  margin: .3rem 0px;
+}
