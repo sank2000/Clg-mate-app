@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Muli:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600;1,700;1,900&display=swap');
 
-body {
-  background-color: white;
-  background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
-  font-family: 'Muli';
-}
 
 * {
   margin: 0px;
   padding: 0px;
+}
+
+body {
+  background-color: white;
+  background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+  font-family: 'Muli';
 }
 
 header {
@@ -47,9 +48,6 @@ header h1 {
 .uploadform {
   border-radius: 15px;
   background-color: white;
-}
-
-.uploadform {
   margin: 3px;
   padding-right: 15px;
 }
@@ -58,48 +56,35 @@ header h1 {
   width: 45%;
 }
 
-.upload {
-  float: right;
-  margin-top: 5px;
-}
-
-.uploadIcon {
-  margin: 0px;
-  height: 25px;
-  padding: 0px;
-}
-
 .title {
   margin: 5px
 }
 
-.post {
-  display: inline-block;
-  background-color: #fff;
-  width: 50%;
-  padding: 20px;
-  margin: 20px;
-  border-radius: 10px;
-  border: #ccc solid 1px;
-}
- .post * 
- {
-   margin-bottom: 8px;
- }
-.post a
-{
-  margin-right: 5px;
-}
- .post p,h4{
-   color: gray;
- }
+/* for new card  */
 
- .post h5{
-   margin-top : 3px;
-   display: inline-block;
- }
+.top {
+  font-size: medium;
+  color: #555;
+}
 
- .post .DowIco
- {
-   margin : 0px;
- }
+.post-type {
+  float: right;
+}
+
+.due-icon {
+  vertical-align: text-bottom;
+}
+
+.post-title {
+  margin: .7rem 0px;
+  color: #000;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.subject {
+  font-size: 1rem;
+  color: #555;
+  font-weight: 700;
+  margin: .3rem 0px;
+}

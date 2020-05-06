@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
-import Card from "./Card";
 import Head from "./NavigationBar";
+import NewCard from "./NewCard";
 
 function App() {
     const [post, setPost] = useState([]);
@@ -23,24 +23,23 @@ function App() {
 
     function data(post) {
         return (
-            <Card
+            <NewCard
+                key={post._id}
                 title={post.title}
-                type={post.postType}
-                author={post.author}
+                postType={post.postType}
                 description={post.description}
-                subName={post.subName}
+                subject={post.subName}
                 dueDate={new Date(post.dueDate).toLocaleDateString()}
-                file={post.file}
-                url={post.url}
             />
         );
     };
 
     return (
-        <div>
+        <Fragment>
             <Head />
             {post.map(data)}
-        </div>
+            {/* <NewCard /> */}
+        </Fragment>
     )
 
 }
