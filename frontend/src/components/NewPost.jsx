@@ -94,7 +94,6 @@ class NewPost extends Component {
                     margin="dense"
                     label="Author (To be removed after setting Login options)"
                     size="small" />
-
                   <TextField style={applyMargin}
                     variant="outlined"
                     required
@@ -104,12 +103,11 @@ class NewPost extends Component {
                     className="halfWidth"
                     size="small"
                   />
-
                   <TextField style={applyMargin}
                     variant="outlined"
                     required
                     type="text"
-                    name="subName"
+                    name="postType"
                     label="Post Type"
                     className="halfWidth"
                     size="small"
