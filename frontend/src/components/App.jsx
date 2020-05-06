@@ -38,25 +38,9 @@ function App() {
         <Fragment>
             <Head />
             {post.map(data)}
-            {/* <NewCard /> */}
         </Fragment>
     )
 
 }
 
 export default App;
-
-
-/* <div>
-{ response.data.map((post) =>
-  {
-      <Card
-      title = {post.title}
-      description ={post.description}
-      subName = {post.subName}
-      subCode = {post.subCode}
-      file = {post.file}
-      url = {post.url}
-      ></Card>
-  })  }
-</div> */
