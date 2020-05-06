@@ -92,8 +92,28 @@ class NewPost extends Component {
                     name="author"
                     fullWidth
                     margin="dense"
-                    label="Author"
+                    label="Author (To be removed after setting Login options)"
                     size="small" />
+
+                  <TextField style={applyMargin}
+                    variant="outlined"
+                    required
+                    type="text"
+                    name="subName"
+                    label="Subject"
+                    className="halfWidth"
+                    size="small"
+                  />
+
+                  <TextField style={applyMargin}
+                    variant="outlined"
+                    required
+                    type="text"
+                    name="subName"
+                    label="Post Type"
+                    className="halfWidth"
+                    size="small"
+                  />
                   <TextField style={applyMargin}
                     variant="outlined"
                     required
@@ -102,15 +122,6 @@ class NewPost extends Component {
                     fullWidth
                     multiline
                     label="Description" />
-                  <TextField style={applyMargin}
-                    variant="outlined"
-                    required
-                    type="text"
-                    name="subName"
-                    label="Subject Name"
-                    className="halfWidth"
-                    size="small"
-                  />
                   <TextField style={applyMargin}
                     variant="outlined"
                     required
@@ -139,7 +150,7 @@ class NewPost extends Component {
                       size="medium"
                       variant="contained"
                       color="secondary"
-                      className="upload">
+                      style={{ float: "right" }}>
                       <CloudUploadOutlinedIcon
                         fontSize="small"
                         className="uploadIcon" />
