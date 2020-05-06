@@ -43,7 +43,6 @@ function PostForm(props) {
                 margin="dense"
                 label="Author (To be removed after setting Login options)"
                 size="small" />
-
               <TextField style={applyMargin}
                 variant="outlined"
                 required
@@ -53,7 +52,6 @@ function PostForm(props) {
                 className="halfWidth"
                 size="small"
               />
-
               <TextField style={applyMargin}
                 variant="outlined"
                 required
