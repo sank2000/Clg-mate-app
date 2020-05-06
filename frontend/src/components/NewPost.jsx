@@ -64,6 +64,7 @@ class NewPost extends Component {
             handleChange={this.handleChange}
             handleUpload={this.handleUpload}
             progress = {this.state.progress}
+            fileChooseState = {this.state.fileChooseState}
           ></PostForm>
         </div>       
     );

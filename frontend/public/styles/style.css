@@ -88,3 +88,8 @@ header h1 {
   font-weight: 700;
   margin: .3rem 0px;
 }
+
+.formHead h1
+{
+  text-align: center;
+}

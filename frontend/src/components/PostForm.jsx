@@ -21,9 +21,9 @@ function PostForm(props) {
         New Post
       </Button>
 
-      <Modal show={show} onHide={handleClose} centered size="lg">
+      <Modal show={show} onHide={handleClose} centered size="lg" >
         <Modal.Header closeButton>
-          <Modal.Title>New Post</Modal.Title>
+          <h1 style={{ marginLeft : "5px" }}>New Post</h1>
         </Modal.Header>
         <Modal.Body>
           <div className="uploadform">
@@ -92,7 +92,7 @@ function PostForm(props) {
                 />
                 <label htmlFor="contained-button-file">
                   <Btn variant="contained" component="span" disableElevation>
-                    Choose File
+                  {props.fileChooseState}
                 </Btn>
                 </label>
                 <Btn

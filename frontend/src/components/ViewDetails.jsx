@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal } from "react-bootstrap";
 import GetAppIcon from '@material-ui/icons/GetApp';
-import Btn from "@material-ui/core/Button";
 
 function ViewDetails(props) {
   const [smShow, setSmShow] = useState(false);
 
   return (
     <>
-      <Button size="medium" color="primary" onClick={() => setSmShow(true)}>SHOW DETAILS</Button>
+      <Button size="medium" variant="outline-info" onClick={() => setSmShow(true)}>SHOW DETAILS</Button>
       <Modal
         dialogClassName="modal-100w"
         show={smShow}
