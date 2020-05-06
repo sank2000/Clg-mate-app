@@ -24,18 +24,17 @@ function App() {
 
     function data(post) {
         return (
-        <Col xs={12} sm={6} md={4}>
-            <NewCard
-                key={post._id}
-                title={post.title}
-                postType={post.postType}
-                description={post.description}
-                subject={post.subName}
-                dueDate={new Date(post.dueDate).toLocaleDateString()}
-                url = {post.url}
-                file = {post.file}
-            />
-          </Col>
+            <Col xs={12} sm={6} md={4} key={post._id}>
+                <NewCard
+                    title={post.title}
+                    postType={post.postType}
+                    description={post.description}
+                    subject={post.subName}
+                    dueDate={new Date(post.dueDate).toLocaleDateString()}
+                    url={post.url}
+                    file={post.file}
+                />
+            </Col>
         );
     };
 
@@ -44,7 +43,7 @@ function App() {
             <Head />
             <Container fluid>
                 <Row>
-                 {post.map(data)}
+                    {post.map(data)}
                 </Row>
             </Container>
         </Fragment>
