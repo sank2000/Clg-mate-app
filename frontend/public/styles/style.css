@@ -104,3 +104,8 @@ header h1 {
 .model-body {
   border-bottom: 1rem;
 }
+
+
+.border-radius-1 div {
+  border-radius: 1rem !important;
+}

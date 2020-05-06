@@ -21,9 +21,9 @@ function PostForm(props) {
         New Post
       </Button>
 
-      <Modal show={show} onHide={handleClose} centered size="lg" >
+      <Modal show={show} onHide={handleClose} centered size="lg" dialogClassName="border-radius-1" >
         <Modal.Header closeButton> {/* Remove this default close button and add custom one */}
-          <h1 style={{ marginLeft: "5px" }}>New Post</h1>
+          <h1 className="modal-title w-100 text-center">New Post</h1>
         </Modal.Header>
         <Modal.Body>
           <div className="uploadform">
