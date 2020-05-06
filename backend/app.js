@@ -32,7 +32,6 @@ app.post("/newpost", function (req, res) {
         author: req.body.author,
         description: req.body.description,
         subName: req.body.subName,
-        postType: req.body.postType,
         dueDate: new Date(req.body.dueDate),
         file: req.body.file,
         url: req.body.url,
