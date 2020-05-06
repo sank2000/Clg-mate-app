@@ -5,7 +5,6 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import CloudUploadOutlinedIcon from '@material-ui/icons/CloudUploadOutlined';
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
-import SubmitButton from './SubmitButton';
 
 const applyMargin = {
   margin: "7px"
@@ -116,7 +115,7 @@ class NewPost extends Component {
                     variant="outlined"
                     required
                     type="date"
-                    name="DueDate"
+                    name="dueDate"
                     label="Due Date"
                     defaultValue={(new Date()).toISOString().split('T')[0]}
                     id="datetime-local"

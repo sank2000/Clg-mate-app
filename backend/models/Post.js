@@ -3,13 +3,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
-  title: String,
-  author: String,
-  description: String,
+  title: { type: String, required: true, trim: true },
+  author: { type: String, required: true },
+  description: { type: String, trim: true },
   subName: String,
-  DueDate: Date,
+  dueDate: Date,
   file: String,
-  url: String
+  url: String,
+  postType: { type: String, required: true, default: "Other" },
 }, {
   timestamps: true
 });
