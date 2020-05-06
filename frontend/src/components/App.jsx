@@ -27,7 +27,7 @@ function App() {
             <NewCard
                 key={post._id}
                 title={post.title}
-                type={post.postType}
+                postType={post.postType}
                 description={post.description}
                 subject={post.subName}
                 dueDate={new Date(post.dueDate).toLocaleDateString()}
