@@ -8,24 +8,25 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 function Card(props) {
     return (
         <div className="post" >
-            <p>{props.DueDate}</p>
+            <p>{props.dueDate}</p>
             <h2>{props.title}</h2>
             <h3>{props.subName}</h3>
             <h4>{props.author}</h4>
             <ExpansionPanel>
                 <ExpansionPanelSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
                 >
-               Description
+                    Description
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
-                    <p>{props.description}</p>  
+                    <p>{props.description}</p>
                 </ExpansionPanelDetails>
             </ExpansionPanel>
             <h5>{props.file}</h5>
-            {props.url !== "" && <a href={props.url}><GetAppIcon className="DowIco" /></a> }
+            {props.url !== "" && <a href={props.url}><GetAppIcon className="DowIco" /></a>}
+            <p>{props.type}</p>
         </div>
 
     );
