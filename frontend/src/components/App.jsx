@@ -30,6 +30,8 @@ function App() {
                 description={post.description}
                 subject={post.subName}
                 dueDate={new Date(post.dueDate).toLocaleDateString()}
+                url = {post.url}
+                file = {post.file}
             />
         );
     };
