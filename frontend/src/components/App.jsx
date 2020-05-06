@@ -1,6 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
-import Card from "./Card";
 import Head from "./NavigationBar";
 import NewCard from "./NewCard";
 

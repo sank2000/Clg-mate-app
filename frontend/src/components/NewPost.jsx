@@ -121,24 +121,32 @@ class NewPost extends Component {
                     id="datetime-local"
                     size="small"
                     InputLabelProps={{ shrink: true, }} />
-                  <input style={applyMargin}
-                    type="file"
-                    name="file"
-                    onChange={this.handleChange} />
-                  <input type="hidden" name="url" value={this.state.url} />
-                  <Button
-                    onClick={this.handleUpload}
-                    size="small"
-                    variant="contained"
-                    color="secondary"
-                    className="upload">
-                    <CloudUploadOutlinedIcon
-                      fontSize="small"
-                      className="uploadIcon" />
+                  <div className="file-section" style={applyMargin}>
+                    <input type="hidden" name="url" value={this.state.url} />
+                    <input
+                      style={{ display: "none" }}
+                      type="file"
+                      id="contained-button-file"
+                      onChange={this.handleChange}
+                    />
+                    <label htmlFor="contained-button-file">
+                      <Button variant="contained" component="span" disableElevation>
+                        Choose File
+                    </Button>
+                    </label>
+                    <Button
+                      onClick={this.handleUpload}
+                      size="medium"
+                      variant="contained"
+                      color="secondary"
+                      className="upload">
+                      <CloudUploadOutlinedIcon
+                        fontSize="small"
+                        className="uploadIcon" />
                     &nbsp; {this.state.progress}
-                  </Button>
-                  {/* <SubmitButton style={applyMargin} done={this.state.done} /> */}
-                  <Button style={{ marginLeft: "7px", width: "100%", height: "3rem", fontSize: "1rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Button>
+                    </Button>
+                  </div>
+                  <Button style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Button>
                 </form>
               </div>
             </div>
