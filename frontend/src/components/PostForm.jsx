@@ -22,8 +22,8 @@ function PostForm(props) {
       </Button>
 
       <Modal show={show} onHide={handleClose} centered size="lg" >
-        <Modal.Header closeButton>
-          <h1 style={{ marginLeft : "5px" }}>New Post</h1>
+        <Modal.Header closeButton> {/* Remove this default close button and add custom one */}
+          <h1 style={{ marginLeft: "5px" }}>New Post</h1>
         </Modal.Header>
         <Modal.Body>
           <div className="uploadform">
@@ -58,7 +58,7 @@ function PostForm(props) {
                 variant="outlined"
                 required
                 type="text"
-                name= "postType"
+                name="postType"
                 label="Post Type"
                 className="halfWidth"
                 size="small"
@@ -92,8 +92,8 @@ function PostForm(props) {
                 />
                 <label htmlFor="contained-button-file">
                   <Btn variant="contained" component="span" disableElevation>
-                  {props.fileChooseState}
-                </Btn>
+                    {props.fileChooseState}
+                  </Btn>
                 </label>
                 <Btn
                   onClick={props.handleUpload}
@@ -109,7 +109,7 @@ function PostForm(props) {
               </div>
               <Btn style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Btn>
             </form>
-            </div>
+          </div>
         </Modal.Body>
       </Modal>
     </>

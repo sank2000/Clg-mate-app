@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import firebase from '../firebase';
 import PostForm from "./PostForm"
 
-const applyMargin = {
-  margin: "7px"
-}
-
 class NewPost extends Component {
   constructor(props) {
     super(props);
@@ -58,15 +54,15 @@ class NewPost extends Component {
 
   render() {
     return (
-        <div className="app">
-          <PostForm
-            url={this.state.url}  
-            handleChange={this.handleChange}
-            handleUpload={this.handleUpload}
-            progress = {this.state.progress}
-            fileChooseState = {this.state.fileChooseState}
-          ></PostForm>
-        </div>       
+      <div className="app">
+        <PostForm
+          url={this.state.url}
+          handleChange={this.handleChange}
+          handleUpload={this.handleUpload}
+          progress={this.state.progress}
+          fileChooseState={this.state.fileChooseState}
+        />
+      </div>
     );
   }
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import Button from "@material-ui/core/Button";
 import GetAppIcon from '@material-ui/icons/GetApp';
 
 function ViewDetails(props) {
@@ -8,7 +9,7 @@ function ViewDetails(props) {
 
   return (
     <>
-      <Button size="medium" variant="outline-info" onClick={() => setSmShow(true)}>SHOW DETAILS</Button>
+      <Button size="medium" color="primary" onClick={() => setSmShow(true)}>SHOW DETAILS</Button>
       <Modal
         dialogClassName="modal-100w"
         show={smShow}

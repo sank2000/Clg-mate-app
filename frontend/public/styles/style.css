@@ -9,7 +9,7 @@
 body {
   background-color: white;
   background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
-  font-family: 'Muli';
+  font-family: 'Muli' !important;
 }
 
 header {
@@ -89,7 +89,18 @@ header h1 {
   margin: .3rem 0px;
 }
 
-.formHead h1
-{
+.formHead h1 {
   text-align: center;
+}
+
+.modal-content {
+  border-radius: 1rem;
+}
+
+.model-header {
+  border-top: 1rem;
+}
+
+.model-body {
+  border-bottom: 1rem;
 }
