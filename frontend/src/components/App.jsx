@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
 import Head from "./NavigationBar";
 import NewCard from "./NewCard";
+import { Container, Row, Col } from "react-bootstrap";
 
 function App() {
     const [post, setPost] = useState([]);
@@ -23,6 +24,7 @@ function App() {
 
     function data(post) {
         return (
+        <Col xs={12} sm={6} md={4}>
             <NewCard
                 key={post._id}
                 title={post.title}
@@ -33,13 +35,18 @@ function App() {
                 url = {post.url}
                 file = {post.file}
             />
+          </Col>
         );
     };
 
     return (
         <Fragment>
             <Head />
-            {post.map(data)}
+            <Container fluid>
+                <Row>
+                 {post.map(data)}
+                </Row>
+            </Container>
         </Fragment>
     )
 

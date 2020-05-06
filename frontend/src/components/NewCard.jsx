@@ -7,7 +7,7 @@ import ViewMore from "./ViewDetails";
 
 function NewCard(props) {
   return (
-    <Card elevation={3} style={{ width: "50%", minWidth: "40%", margin: "15px", borderRadius: "10px", padding: "7px" }}>
+    <Card elevation={3} style={{ margin: "15px", borderRadius: "10px", padding: "7px" }}>
       <CardContent>
         <div className="top">
           <span className="due-date">
@@ -23,9 +23,9 @@ function NewCard(props) {
         <div className="subject">
           {props.subject}
         </div>
-        <div className="description">
+        {/* <div className="description">
           {props.description}
-        </div>
+        </div> */}
       </CardContent>
       <CardActions>
         <ViewMore data={props} />
