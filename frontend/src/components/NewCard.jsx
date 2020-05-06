@@ -7,7 +7,7 @@ import ViewMore from "./ViewDetails";
 
 function NewCard(props) {
   return (
-    <Card elevation={3} style={{ maxWidth: "50%", minWidth: "40%", margin: "15px", borderRadius: "10px", padding: "7px" }}>
+    <Card elevation={3} style={{ width: "50%", minWidth: "40%", margin: "15px", borderRadius: "10px", padding: "7px" }}>
       <CardContent>
         <div className="top">
           <span className="due-date">

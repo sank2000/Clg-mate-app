@@ -12,20 +12,21 @@ class NewPost extends Component {
     this.state = {
       files: null,
       url: '',
-      done: false,
-      progress: 'Upload'
+      progress: 'Upload',
+      fileChooseState: 'Choose File'
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
   }
 
   handleChange = e => {
-    if (e.target.files[0]) {
-      const files = e.target.files[0];
-      this.setState(() => ({ files }));
-      var progress = 'Upload';
-      this.setState(() => ({ progress }));
-    }
+    if (e.target.files.length === 0) return;
+    const files = e.target.files[0];
+    this.setState(() => ({ files }));
+    let progress = 'Upload';
+    let fileChooseState = 'File Choosen';
+    this.setState(() => ({ progress }));
+    this.setState(() => ({ fileChooseState }));
   }
 
   handleUpload = () => {
@@ -36,7 +37,7 @@ class NewPost extends Component {
 
     const uploadProgress = (snapshot) => {
       let percentComplete = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      var progress = `Uploading (${percentComplete}%)`;
+      let progress = `Uploading (${Math.round(percentComplete)}%)`;
       this.setState(() => ({ progress }));
     }
 
@@ -44,10 +45,8 @@ class NewPost extends Component {
       firebase.storage().ref('files').child(files.name).getDownloadURL()
         .then(url => {
           this.setState(() => ({ url }));
-          var progress = 'Uploaded'
+          let progress = 'Uploaded'
           this.setState(() => ({ progress }));
-          var done = true;
-          this.setState(() => ({ done }));
         })
         .catch(e => {
           console.log('Error: ' + e);
