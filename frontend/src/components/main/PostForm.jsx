@@ -38,7 +38,7 @@ function PostForm(props) {
           <IconButton variant="outlined" onClick={handleC}><CloseOutlinedIcon style={{ color: "#e53935" }} /></IconButton>
         </Modal.Header>
         <Modal.Body>
-          <div className="uploadform">
+          <div className="uploadForm">
             <form action="/newpost" method="post">
               <TextField style={applyMargin}
                 variant="outlined"

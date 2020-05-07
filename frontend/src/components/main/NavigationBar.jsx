@@ -11,8 +11,8 @@ function nav() {
             <Link to="/newpost">
                 <Button className="newPost" variant="outline-info">
                     New Post
-                </Button> 
-             </Link>
+                </Button>
+            </Link>
         </header>
 
     )

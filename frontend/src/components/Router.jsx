@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
-import Upload from "./NewPost";
-import App from "./App";
+import Upload from "./main/NewPost";
+import App from "./main/App";
 import SuccessMessage from "./messages/SuccessMessage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import PageNotFound from "./errors/404";
+import PageNotFound from "./messages/errors/404";
 
 function MainApp() {
     return (
