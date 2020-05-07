@@ -5,12 +5,10 @@ import IconButton from '@material-ui/core/IconButton';
 import TextField from "@material-ui/core/TextField";
 import Btn from "@material-ui/core/Button";
 import CloudUploadOutlinedIcon from "@material-ui/icons/CloudUploadOutlined";
-import { useHistory } from 'react-router';
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
 
 
 function PostForm(props) {
-  const history = useHistory();
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -19,23 +17,17 @@ function PostForm(props) {
     margin: "7px"
   };
 
-  useEffect(handleShow);
-
-  function handleC() {
-    handleClose();
-    history.push("/");
-  }
 
   return (
     <>
-      {/* <Button className="newPost" variant="outline-info" onClick={handleShow}>
+      <Button className="newPost" variant="outline-info" onClick={handleShow}>
         New Post
-      </Button> */}
+      </Button>
 
-      <Modal show={show} onHide={handleC} centered size="lg" dialogClassName="border-radius-1" >
+      <Modal show={show} onHide={handleClose} centered size="lg" dialogClassName="border-radius-1" >
         <Modal.Header> {/* Remove this default close button and add custom one */}
           <h1 className="modal-title w-100 text-center">New Post</h1>
-          <IconButton variant="outlined" onClick={handleC}><CloseOutlinedIcon style={{ color: "#e53935" }} /></IconButton>
+          <IconButton variant="outlined" onClick={handleClose}><CloseOutlinedIcon style={{ color: "#e53935" }} /></IconButton>
         </Modal.Header>
         <Modal.Body>
           <div className="uploadForm">

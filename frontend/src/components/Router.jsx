@@ -11,7 +11,6 @@ function MainApp() {
             <Router>
                 <Switch>
                     <Route path="/" exact component={App}></Route>
-                    <Route path="/newpost" exact component={Upload}></Route>
                     <Route path="/newpost/success" exact component={SuccessMessage} ></Route>
                     <Route component={PageNotFound} />
                 </Switch>
