@@ -15,6 +15,7 @@ function ViewDetails(props) {
       <Modal
         dialogClassName="modal-100w"
         show={smShow}
+        centered
         onHide={() => setSmShow(false)}
         aria-labelledby="example-modal-sizes-title-sm"
       >

@@ -5,7 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import ViewMore from "./ViewDetails";
 
-function NewCard(props) {
+function PostCard(props) {
   return (
     <Card elevation={3} style={{ margin: "15px", borderRadius: "10px", padding: "7px" }}>
       <CardContent>
@@ -34,4 +34,4 @@ function NewCard(props) {
   );
 }
 
-export default NewCard;
+export default PostCard;
