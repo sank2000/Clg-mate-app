@@ -4,6 +4,6 @@ import App from "./components/Router";
 import SignIn from "./components/auth/SignIn";
 
 ReactDOM.render(
-  <SignIn />,
+  <App />,
   document.getElementById('root')
 );
