@@ -4,14 +4,16 @@ import App from "./main/App";
 import SuccessMessage from "./messages/SuccessMessage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PageNotFound from "./messages/errors/404";
-
+import SignUp from "./auth/SignUp";
+import SignIn from "./auth/SignIn";
 function MainApp() {
     return (
         <Fragment >
             <Router>
                 <Switch>
-                    <Route path="/" exact component={App}></Route>
-                    <Route path="/newpost/success" exact component={SuccessMessage} ></Route>
+                    <Route path="/post" exact component={App}></Route>
+                    <Route path="/SignUp" exact component={SignUp} ></Route>
+                    <Route path="/SignIn" exact component={SignIn} ></Route>
                     <Route component={PageNotFound} />
                 </Switch>
             </Router>
