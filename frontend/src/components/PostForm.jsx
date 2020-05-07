@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal } from "react-bootstrap";
 import TextField from "@material-ui/core/TextField";
 import Btn from "@material-ui/core/Button";
 import CloudUploadOutlinedIcon from "@material-ui/icons/CloudUploadOutlined";
+import { useHistory } from 'react-router';
+
 
 function PostForm(props) {
+  const history = useHistory();
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -13,17 +16,26 @@ function PostForm(props) {
   const applyMargin = {
     margin: "7px"
   };
-
+  
+  useEffect(handleShow);
+ 
+    
+  function handleC()
+  {
+    handleClose();
+    history.push("/");
+  }
 
   return (
     <>
-      <Button className="newPost" variant="outline-info" onClick={handleShow}>
+      {/* <Button className="newPost" variant="outline-info" onClick={handleShow}>
         New Post
-      </Button>
+      </Button> */}
 
-      <Modal show={show} onHide={handleClose} centered size="lg" dialogClassName="border-radius-1" >
-        <Modal.Header closeButton> {/* Remove this default close button and add custom one */}
+      <Modal show={show} onHide={handleC} centered size="lg" dialogClassName="border-radius-1" >
+        <Modal.Header> {/* Remove this default close button and add custom one */}
           <h1 className="modal-title w-100 text-center">New Post</h1>
+          <button onClick={handleC}>close</button>
         </Modal.Header>
         <Modal.Body>
           <div className="uploadform">

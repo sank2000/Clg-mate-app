@@ -44,7 +44,7 @@ app.post("/newpost", function (req, res) {
         }
         else {
             // res.send("<div><h1>Uploaded Successfully</h1><p>contact admin to remove files</p> </div>");
-            res.redirect("/");
+            res.redirect("/newpost/success");
         }
     })
 })
