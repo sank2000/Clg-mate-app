@@ -66,7 +66,7 @@ function CustomizedDialogs(props) {
       <Button color="primary" onClick={handleClickOpen}>
         View Details
       </Button>
-      <Dialog style={{ minWidth: "50%" }} onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+      <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
           {props.data.title}
           <div className="subject">{props.data.subject}</div>
@@ -75,11 +75,11 @@ function CustomizedDialogs(props) {
           <div className="main-details">
             <span className="type">{props.data.postType}</span>
             <span className="type" style={{ float: "right" }}>
-              <ScheduleIcon fontSize="small" className="due-icon" />Due on: {props.data.dueDate}
+              <ScheduleIcon fontSize="small" className="due-icon" /> Due on: {props.data.dueDate}
             </span>
           </div>
           <hr />
-          <div style={{ margin: "5px 0px" }} className="description">
+          <div style={{ minWidth: "50vw", margin: "5px 0px" }} className="description">
             <h5>Description:</h5>
             <span>{props.data.description}</span>
           </div>

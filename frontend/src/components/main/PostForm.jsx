@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal } from "react-bootstrap";
 import IconButton from '@material-ui/core/IconButton';
@@ -27,7 +27,7 @@ function PostForm(props) {
       <Modal show={show} onHide={handleClose} centered size="lg" dialogClassName="border-radius-1" >
         <Modal.Header> {/* Remove this default close button and add custom one */}
           <h1 className="modal-title w-100 text-center">New Post</h1>
-          <IconButton variant="outlined" onClick={handleClose} style={{outline : "none"}}><CloseOutlinedIcon style={{ color: "#e53935" }} /></IconButton>
+          <IconButton variant="outlined" onClick={handleClose} style={{ outline: "none" }}><CloseOutlinedIcon style={{ color: "#e53935" }} /></IconButton>
         </Modal.Header>
         <Modal.Body>
           <div className="uploadForm">

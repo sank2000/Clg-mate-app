@@ -3,25 +3,15 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { createMuiTheme } from '@material-ui/core/styles';
-import {signin} from "./RouteAccess"
+import { signin } from "./RouteAccess"
 import AuthApi from "./AuthApi";
-
-const theme = createMuiTheme({
-  palette: {
-    primary: { main: "#2196f3" },
-    secondary: {
-      main: '#f44336',
-    },
-  },
-});
 
 function Copyright() {
   return (
@@ -56,47 +46,43 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-  const ContainerStyle = 
-  {
-    backgroundColor : "white",
-    borderRadius : "1rem"
-  }
+const ContainerStyle =
+{
+  backgroundColor: "white",
+  borderRadius: "1rem"
+}
 
 function SignIn() {
   const authApi = React.useContext(AuthApi);
   const classes = useStyles();
-  const [user,setUser] = useState(
+  const [user, setUser] = useState(
     {
-      username : "",
-      password : "",
+      username: "",
+      password: "",
     }
   )
 
-  function handleChange(event)
-  {
-    const {value ,name} = event.target;
-    setUser((old) =>
-    {
+  function handleChange(event) {
+    const { value, name } = event.target;
+    setUser((old) => {
       return {
         ...old,
-        [name] : value
+        [name]: value
       }
     });
   }
-  
-  const submit = async(e)  =>
-  {
-      
-     e.preventDefault();
-     const res = await signin(user);
-     if(res.data.auth)
-     {
-        authApi.setAuth(true);
-     }
+
+  const submit = async (e) => {
+
+    e.preventDefault();
+    const res = await signin(user);
+    if (res.data.auth) {
+      authApi.setAuth(true);
+    }
   };
 
   return (
-    <Container component="main" maxWidth="xs" style={ContainerStyle}> 
+    <Container component="main" maxWidth="xs" style={ContainerStyle}>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
