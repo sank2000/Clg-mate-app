@@ -4,12 +4,12 @@
 * {
   margin: 0px;
   padding: 0px;
+  font-family: 'Muli' !important;
 }
 
 body {
   background-color: white;
   background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
-  font-family: 'Muli' !important;
 }
 
 header {

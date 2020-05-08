@@ -62,8 +62,8 @@ function CustomizedDialogs(props) {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open dialog
+      <Button color="primary" onClick={handleClickOpen}>
+        View Details
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>

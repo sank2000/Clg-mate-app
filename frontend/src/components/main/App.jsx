@@ -7,7 +7,6 @@ import { Container, Row, Col } from "react-bootstrap";
 function App() {
     const [post, setPost] = useState([]);
 
-
     useEffect(() => {
         // fetch("/work").then(res => console.log(res.json()));
         axios.get("/posts")
@@ -24,7 +23,7 @@ function App() {
 
     function data(post) {
         return (
-            <Col xs={12} sm={6} md={4} key={post._id}>
+            <Col sm={12} md={6} lg={4} key={post._id}>
                 <PostCard
                     title={post.title}
                     postType={post.postType}
