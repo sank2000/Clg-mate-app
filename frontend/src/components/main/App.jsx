@@ -3,6 +3,9 @@ import axios from "axios";
 import Head from "./NavigationBar";
 import PostCard from "./PostCard";
 import { Container, Row, Col } from "react-bootstrap";
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import DateFormat from 'dateformat';
 
 function App() {
     const [post, setPost] = useState([]);
@@ -29,9 +32,11 @@ function App() {
                     postType={post.postType}
                     description={post.description}
                     subject={post.subName}
-                    dueDate={new Date(post.dueDate).toLocaleDateString()}
+                    dueDate={DateFormat((new Date(post.dueDate)), "d-mmm-yyyy")}
+                    postedBy={post.author}
                     url={post.url}
                     file={post.file}
+                    postedOn={DateFormat((new Date(post.updatedAt)), "d-mmm-yy, h:mm TT")}
                 />
             </Col>
         );
@@ -44,6 +49,9 @@ function App() {
                 <Row>
                     {post.map(data)}
                 </Row>
+                <Fab color="primary" aria-label="add">
+                    <AddIcon />
+                </Fab>
             </Container>
         </Fragment>
     )

@@ -8,6 +8,7 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
+import ScheduleIcon from '@material-ui/icons/Schedule';
 
 const styles = (theme) => ({
   root: {
@@ -65,24 +66,39 @@ function CustomizedDialogs(props) {
       <Button color="primary" onClick={handleClickOpen}>
         View Details
       </Button>
-      <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+      <Dialog style={{ minWidth: "50%" }} onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          <h1>{props.data.title}</h1>
+          {props.data.title}
+          <div className="subject">{props.data.subject}</div>
         </DialogTitle>
         <DialogContent dividers>
-          <h2>{props.data.subject}</h2>
-          <p>{props.data.description}</p>
+          <div className="main-details">
+            <span className="type">{props.data.postType}</span>
+            <span className="type" style={{ float: "right" }}>
+              <ScheduleIcon fontSize="small" className="due-icon" />Due on: {props.data.dueDate}
+            </span>
+          </div>
+          <hr />
+          <div style={{ margin: "5px 0px" }} className="description">
+            <h5>Description:</h5>
+            <span>{props.data.description}</span>
+          </div>
+          <hr />
+          <div className="post-details">
+            <span className="posted-on">Posted on: {props.data.postedOn}</span>
+            <span className="posted-by" style={{ float: "right" }}>Posted by: {props.data.postedBy}</span>
+          </div>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
+          <Button onClick={handleClose} color="primary">
             OK
           </Button>
-          <Button autoFocus color="primary">
+          <Button color="primary" href={props.data.url}>
             Download Attachment
           </Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </div >
   );
 }
 

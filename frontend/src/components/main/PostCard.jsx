@@ -3,7 +3,6 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import ScheduleIcon from '@material-ui/icons/Schedule';
-// import ViewMore from "./ViewDetails";
 import ViewMore from "./../dialogs/SampleDialog";
 
 function PostCard(props) {
