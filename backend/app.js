@@ -1,13 +1,20 @@
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-require('dotenv').config();
+const session = require("express-session")
 
 const post = require('./models/Post');
+const User = require('./models/Sign');
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({
+    secret: 'San and krish',
+    resave: false,
+    saveUninitialized: true,
+  }))
 
 //mongoose.connect("mongodb://localhost:27017/Clg_mt",{ useNewUrlParser: true , useUnifiedTopology: true});
 
@@ -48,6 +55,74 @@ app.post("/newpost", function (req, res) {
         }
     })
 })
+
+
+app.post("/auth/signup",function(req,res)
+{
+     const userData = new User(req.body)
+     req.session.user = userData._id;
+     userData.save()
+     .then((result) => {
+        res.json({
+          message: 'successfully created',
+          auth: true,
+        });
+      })
+      .catch((err) => {
+        res.json({
+          message: 'unable to create account',
+          auth: false,
+        });
+      });
+})
+
+app.post("/auth/signin", async (req, res) => {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username, password });
+    if (user) {
+      req.session.user = user._id;
+      res.json({
+        message: 'You are successfully login',
+        auth: true,
+      });
+    } else {
+      res.json({
+        message: 'Unable to login',
+        auth: false,
+      });
+    }
+  })
+
+
+  app.get("/auth",function(req,res)
+  {
+      if(req.session.user)
+      {
+            res.json({
+                message: 'You are signed',
+                auth: true,
+            });
+      }
+      else{
+        res.json({
+            message: 'you are not login',
+            auth: false,
+          });
+      }
+  })
+
+
+app.get("/auth/signout",(req,res) =>
+{
+  req.session.destroy(function(err) {
+    res.json(
+      {
+        auth : false,
+      }
+    )
+   })
+})
+
 
 app.listen(5000, function (req, res) {
     console.log("Server started at port 5000");

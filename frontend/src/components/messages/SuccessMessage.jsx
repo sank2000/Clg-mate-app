@@ -10,7 +10,7 @@ function SuccessMessage() {
             <p>You cannot edit/ remove your post as of now. But this feature will be available soon.</p>
             <p>
                 <Button onClick={() => {
-                    history.push("/");
+                    history.push("/post");
                 }} variant="primary">Go To Home</Button>
             </p>
         </Jumbotron>

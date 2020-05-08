@@ -1,26 +1,72 @@
-import React, { Fragment } from 'react';
-import Upload from "./main/NewPost";
+import React, { Fragment, useState, useEffect } from 'react';
 import App from "./main/App";
-import SuccessMessage from "./messages/SuccessMessage";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route ,Redirect } from "react-router-dom";
 import PageNotFound from "./messages/errors/404";
 import SignUp from "./auth/SignUp";
 import SignIn from "./auth/SignIn";
+import  {hasSigned} from "./auth/RouteAccess"
+import SuccessMessage from "./messages/SuccessMessage";
+
+import AuthApi from "./auth/AuthApi";
+
 function MainApp() {
+    const  [auth,setAuth] = useState(false);
+    
+    const readSession = async () =>
+    {
+       const res = await hasSigned();
+       if(res.data.auth)
+     {
+        setAuth(true);
+     }
+    }
+
+    useEffect(() =>
+    {
+      readSession();
+    },[])
+
     return (
         <Fragment >
-            <Router>
+         <AuthApi.Provider value={{auth,setAuth}}>
+         <Router>
                 <Switch>
-                    <Route path="/post" exact component={App}></Route>
-                    <Route path="/SignUp" exact component={SignUp} ></Route>
-                    <Route path="/SignIn" exact component={SignIn} ></Route>
+                    <RouteProtected path="/post" exact component={App} />
+                    <Route path="/newpost/success" exact component={SuccessMessage} />
+                    <RouteRegisteration path="/signup" exact component={SignUp}  />
+                    <RouteRegisteration path="/signin" exact component={SignIn}  />
                     <Route component={PageNotFound} />
                 </Switch>
-            </Router>
+            </Router> 
+         </AuthApi.Provider>
         </Fragment>
 
     )
 }
 
+
+const RouteRegisteration = ({component: Component, ...rest }) => {
+    const AthApi = React.useContext(AuthApi);
+    return (
+        <Route
+        {...rest}
+        render={(props) =>
+          !AthApi.auth ? <Component {...props} /> : <Redirect to="/post" />
+        }
+      />
+    );
+  };
+  
+  const RouteProtected = ({ component: Component, ...rest }) => {
+    const AthApi = React.useContext(AuthApi);
+    return (
+    <Route
+        {...rest}
+        render={(props) =>
+            AthApi.auth ? <Component {...props} /> : <Redirect to="/signin" />
+        }
+      />
+    );
+  };
 
 export default MainApp;

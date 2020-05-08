@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
+import {Link} from "react-router-dom";
+import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { createMuiTheme } from '@material-ui/core/styles';
+import {signup} from "./RouteAccess";
+import AuthApi from "./AuthApi";
 
 const theme = createMuiTheme({
   palette: {
@@ -60,8 +63,36 @@ const useStyles = makeStyles((theme) => ({
   }
 
 function SignIn() {
+  const authApi = React.useContext(AuthApi);
   const classes = useStyles();
+  const [user,setUser] = useState(
+    {
+      username : "",
+      password : "",
+    }
+  )
 
+  function handleChange(event)
+  {
+    const {value ,name} = event.target;
+    setUser((old) =>
+    {
+      return {
+        ...old,
+        [name] : value
+      }
+    });
+  }
+  
+  const submit = async(e)  =>
+  {
+     e.preventDefault();
+     const res = await signup(user);
+     if(res.data.auth)
+     {
+        authApi.setAuth(true);
+     }
+  };
   return (
     <Container component="main" maxWidth="xs" style={ContainerStyle}> 
       <CssBaseline />
@@ -79,10 +110,11 @@ function SignIn() {
             required
             fullWidth
             id="email"
-            label="User ID"
-            name="userId"
+            label="User Name"
+            name="username"
             primary
             autoFocus
+            onChange={handleChange}
           />
           <TextField
             variant="outlined"
@@ -93,6 +125,7 @@ function SignIn() {
             label="Password"
             type="password"
             id="password"
+            onChange={handleChange}
           />
           <Button
             type="submit"
@@ -100,9 +133,17 @@ function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={submit}
           >
             Sign UP
           </Button>
+          <Grid container justify="flex-end">
+            <Grid item>
+              <Link to="/signin" variant="body2">
+                Already have an account? Sign in
+              </Link>
+            </Grid>
+          </Grid>
         </form>
       </div>
       <Box mt={8}>
