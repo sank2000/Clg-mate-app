@@ -10,11 +10,13 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
+import { KeyboardDatePicker } from "@material-ui/pickers";
 
 function PostForm(props) {
   const [type, setType] = useState("Other");
-
+  const [selectedDate, handleDateChange] = useState(new Date());
   const handleChange = event => {
     setType(event.target.value);
   };
@@ -79,16 +81,19 @@ function PostForm(props) {
                 className="halfWidth"
                 size="small"
               />
-              <TextField style={applyMargin}
-                variant="outlined"
-                required
-                type="date"
-                name="dueDate"
-                label="Due Date"
-                defaultValue={(new Date()).toISOString().split('T')[0]}
-                id="datetime-local"
-                size="small"
-                InputLabelProps={{ shrink: true, }} />
+              <MuiPickersUtilsProvider utils={DateFnsUtils} >
+                <KeyboardDatePicker
+                 size="small"
+                  variant="inline"
+                  inputVariant="outlined"
+                  name="dueDate"
+                  label="Due Date"
+                  format="yyyy/MM/dd"
+                  value={selectedDate}
+                  onChange={date => handleDateChange(date)}
+                  style={{...applyMargin,outline : "none"}}
+                />
+              </MuiPickersUtilsProvider>
               <div className="file-section" style={applyMargin}>
                 <input type="hidden" name="url" value={props.url} />
                 <input
