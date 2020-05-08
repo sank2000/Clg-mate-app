@@ -5,10 +5,19 @@ import IconButton from '@material-ui/core/IconButton';
 import TextField from "@material-ui/core/TextField";
 import Btn from "@material-ui/core/Button";
 import CloudUploadOutlinedIcon from "@material-ui/icons/CloudUploadOutlined";
-import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
+import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
 
 
 function PostForm(props) {
+  const [type, setType] = useState("Other");
+
+  const handleChange = event => {
+    setType(event.target.value);
+  };
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -38,24 +47,21 @@ function PostForm(props) {
                 name="title"
                 fullWidth
                 label="Title" />
-              <TextField style={applyMargin}
-                variant="outlined"
-                required
-                type="text"
-                name="subName"
-                label="Subject"
-                className="halfWidth"
-                size="small"
-              />
-              <TextField style={applyMargin}
-                variant="outlined"
-                required
-                type="text"
-                name="postType"
-                label="Post Type"
-                className="halfWidth"
-                size="small"
-              />
+              <FormControl variant="outlined" style={applyMargin} fullWidth>
+                  <InputLabel>
+                    Post Type
+                  </InputLabel>
+                  <Select
+                    name="postType"
+                    value={type}
+                    onChange={handleChange}
+                    label="Post Type"
+                  >
+                    <MenuItem value={"Other"}>Other</MenuItem>
+                    <MenuItem value={"Notes"}>Notes</MenuItem>
+                    <MenuItem value={"Assignment"}>Assignment</MenuItem>
+                  </Select>
+              </FormControl>
               <TextField style={applyMargin}
                 variant="outlined"
                 required
@@ -64,6 +70,15 @@ function PostForm(props) {
                 fullWidth
                 multiline
                 label="Description" />
+                <TextField style={applyMargin}
+                variant="outlined"
+                required
+                type="text"
+                name="subName"
+                label="Subject"
+                className="halfWidth"
+                size="small"
+              />
               <TextField style={applyMargin}
                 variant="outlined"
                 required
