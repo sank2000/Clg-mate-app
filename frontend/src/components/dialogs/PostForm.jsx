@@ -42,15 +42,6 @@ function PostForm(props) {
                 variant="outlined"
                 required
                 type="text"
-                name="author"
-                fullWidth
-                margin="dense"
-                label="Author (To be removed after setting Login options)"
-                size="small" />
-              <TextField style={applyMargin}
-                variant="outlined"
-                required
-                type="text"
                 name="subName"
                 label="Subject"
                 className="halfWidth"

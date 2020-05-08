@@ -33,27 +33,39 @@ app.get("/posts", function (req, res) {
 })
 
 app.post("/newpost", function (req, res) {
-  console.log(req.body);
-  const p = new post({
-    title: req.body.title,
-    author: req.body.author,
-    description: req.body.description,
-    subName: req.body.subName,
-    postType: req.body.postType,
-    dueDate: new Date(req.body.dueDate),
-    file: req.body.file,
-    url: req.body.url,
-  }
-  )
-  p.save(function (err) {
-    if (err) {
+
+  User.findById(req.session.user,"username",function(err,result)
+  {
+    if(err)
+    {
       console.log(err);
     }
-    else {
-      // res.send("<div><h1>Uploaded Successfully</h1><p>contact admin to remove files</p> </div>");
-      res.redirect("/newpost/success");
+    else
+    {
+        const p = new post({
+        title: req.body.title,
+        author: result.username,
+        description: req.body.description,
+        subName: req.body.subName,
+        postType: req.body.postType,
+        dueDate: new Date(req.body.dueDate),
+        file: req.body.file,
+        url: req.body.url,
+      }
+      )
+      p.save(function (err) {
+        if (err) {
+          console.log(err);
+        }
+        else {
+          // res.send("<div><h1>Uploaded Successfully</h1><p>contact admin to remove files</p> </div>");
+          res.redirect("/newpost/success");
+        }
+       })
+
     }
-  })
+  });
+  
 })
 
 
