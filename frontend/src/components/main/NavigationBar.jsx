@@ -1,13 +1,12 @@
 import React from 'react';
-import Upload from "./NewPost";
-import {signout} from "../auth/RouteAccess";
+import Upload from "./../dialogs/NewPost";
+import { signout } from "../auth/RouteAccess";
 import { Button } from "react-bootstrap";
 import AuthApi from "../auth/AuthApi";
 
 function Nav() {
     const authApi = React.useContext(AuthApi);
-    const handle = async () =>
-    {
+    const handle = async () => {
         await signout();
         authApi.setAuth(false);
     }

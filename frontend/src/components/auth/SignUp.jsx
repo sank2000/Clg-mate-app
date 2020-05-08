@@ -121,7 +121,7 @@ function SignIn() {
             className={classes.submit}
             onClick={submit}
           >
-            Sign UP
+            Sign Up
           </Button>
           <Grid container justify="flex-end">
             <Grid item>

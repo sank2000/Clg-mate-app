@@ -46,8 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ContainerStyle =
-{
+const ContainerStyle = {
   backgroundColor: "white",
   borderRadius: "1rem"
 }
@@ -55,12 +54,10 @@ const ContainerStyle =
 function SignIn() {
   const authApi = React.useContext(AuthApi);
   const classes = useStyles();
-  const [user, setUser] = useState(
-    {
-      username: "",
-      password: "",
-    }
-  )
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
+  });
 
   function handleChange(event) {
     const { value, name } = event.target;
@@ -73,7 +70,6 @@ function SignIn() {
   }
 
   const submit = async (e) => {
-
     e.preventDefault();
     const res = await signin(user);
     if (res.data.auth) {
