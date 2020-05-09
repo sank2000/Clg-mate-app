@@ -6,15 +6,20 @@ import SignUp from "./auth/SignUp";
 import SignIn from "./auth/SignIn";
 import { hasSigned } from "./auth/RouteAccess"
 import SuccessMessage from "./messages/SuccessMessage";
-import { Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 import AuthApi from "./auth/AuthApi";
+import Typography from '@material-ui/core/Typography';
 
 function Loading() {
-  return  (<div style={{ textAlign: "center" }}>
-               <Spinner animation="border" />
-           </div>
+  return (<div style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh"
+  }}>
+    <CircularProgress style={{ color: "dodgerblue" }} size={46} />
+  </div >
   );
 }
 
@@ -37,19 +42,18 @@ function MainApp() {
   function Main() {
     return (
       <Fragment >
-      <AuthApi.Provider value={{ auth, setAuth }}>
-        <Router>
-          <Switch>
-            <RouteProtected path="/post" exact component={App} />
-            <RouteProtected path="/" exact component={App} /> {/* It threw 404 on '/' */}
-            <Route path="/newpost/success" exact component={SuccessMessage} />
-            <RouteRegistration path="/signup" exact component={SignUp} />
-            <RouteRegistration path="/signin" exact component={SignIn} />
-            <Route component={PageNotFound} />
-          </Switch>
-        </Router>
-      </AuthApi.Provider>
-    </Fragment>
+        <AuthApi.Provider value={{ auth, setAuth }}>
+          <Router>
+            <Switch>
+              <RouteProtected path="/" exact component={App} />
+              <Route path="/newpost/success" exact component={SuccessMessage} />
+              <RouteRegistration path="/signup" exact component={SignUp} />
+              <RouteRegistration path="/signin" exact component={SignIn} />
+              <Route component={PageNotFound} />
+            </Switch>
+          </Router>
+        </AuthApi.Provider>
+      </Fragment>
     );
   }
 
@@ -57,8 +61,8 @@ function MainApp() {
 
   return (
     <Fragment>
-        {load ? <Loading /> : <Main />}
-    </Fragment> 
+      {load ? <Loading /> : <Main />}
+    </Fragment>
   );
 }
 
@@ -69,7 +73,7 @@ const RouteRegistration = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        !AthApi.auth ? <Component {...props} /> : <Redirect to="/post" />
+        !AthApi.auth ? <Component {...props} /> : <Redirect to="/" />
       }
     />
   );
