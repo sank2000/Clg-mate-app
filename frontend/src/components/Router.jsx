@@ -6,25 +6,37 @@ import SignUp from "./auth/SignUp";
 import SignIn from "./auth/SignIn";
 import { hasSigned } from "./auth/RouteAccess"
 import SuccessMessage from "./messages/SuccessMessage";
+import { Spinner } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import AuthApi from "./auth/AuthApi";
 
+function Loading() {
+  return  (<div style={{ textAlign: "center" }}>
+               <Spinner animation="border" />
+           </div>
+  );
+}
+
 function MainApp() {
   const [auth, setAuth] = useState(false);
+  const [load, setLoad] = useState(true);
 
   const readSession = async () => {
     const res = await hasSigned();
     if (res.data.auth) {
       setAuth(true);
     }
+    setLoad(false);
   }
 
   useEffect(() => {
     readSession();
-  }, [])
+  }, []);
 
-  return (
-    <Fragment >
+  function Main() {
+    return (
+      <Fragment >
       <AuthApi.Provider value={{ auth, setAuth }}>
         <Router>
           <Switch>
@@ -38,6 +50,15 @@ function MainApp() {
         </Router>
       </AuthApi.Provider>
     </Fragment>
+    );
+  }
+
+
+
+  return (
+    <Fragment>
+        {load ? <Loading /> : <Main />}
+    </Fragment> 
   );
 }
 
