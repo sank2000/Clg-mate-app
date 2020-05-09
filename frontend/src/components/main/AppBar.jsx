@@ -4,14 +4,14 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-// import InputBase from '@material-ui/core/InputBase';  for search
+// import InputBase from '@material-ui/core/InputBase';  //for search
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-// import SearchIcon from '@material-ui/icons/Search';  for search
-import AccountCircle from '@material-ui/icons/AccountCircle';
+// import SearchIcon from '@material-ui/icons/Search';  //for search
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { signout } from "../auth/RouteAccess";
 import AuthApi from "../auth/AuthApi";
@@ -163,7 +163,7 @@ export default function PrimarySearchAppBar() {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          <AccountCircleOutlinedIcon />
         </IconButton>
         <p>Profile</p>
       </MenuItem>
@@ -172,10 +172,10 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar style={{ background: "dodgerblue", zIndex: "1000" }} position="fixed">
+      <AppBar style={{ zIndex: "1000" }} position="fixed">
         <Toolbar>
           <HamburgerMenu />
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Typography variant="h6" noWrap>
             Collegemate
           </Typography>
           {/* <div className={classes.search}>
@@ -211,10 +211,20 @@ export default function PrimarySearchAppBar() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              <AccountCircleOutlinedIcon />
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
+            <IconButton
+              edge="end"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen}
+              color="inherit"
+            >
+              <AccountCircleOutlinedIcon />
+            </IconButton>
             <IconButton
               aria-label="show more"
               aria-controls={mobileMenuId}
