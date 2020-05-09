@@ -1,4 +1,5 @@
 import firebase from 'firebase/app'
+import 'firebase/storage'
 const firebaseConfig = {
   apiKey: "AIzaSyA7pRaNRzmIPhkQkuMWkPvyA6gugjh3Z34",
   authDomain: "collegemate-web-app.firebaseapp.com",
