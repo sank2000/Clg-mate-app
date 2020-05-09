@@ -13,8 +13,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import { KeyboardDatePicker } from "@material-ui/pickers";
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
+
 
 function PostForm(props) {
   const [type, setType] = useState("Other");
@@ -24,18 +23,23 @@ function PostForm(props) {
   };
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => 
+  { 
+     setShow(false);
+     window.open("/", "_top");
+  };
   const handleShow = () => setShow(true);
   const applyMargin = {
     margin: "7px"
   };
-
+  
+  useState(() => 
+  {
+      handleShow();
+  },[])
 
   return (
     <>
-      <Fab color="primary" style={{ position: "fixed", bottom: "3vh", right: "3vw" }} onClick={handleShow} aria-label="add">
-        <AddIcon />
-      </Fab>
       <Modal show={show} onHide={handleClose} centered size="lg" dialogClassName="border-radius-1" >
         <Modal.Header> {/* Remove this default close button and add custom one */}
           <h1 className="modal-title w-100 text-center">New Post</h1>

@@ -9,6 +9,7 @@ import SuccessMessage from "./messages/SuccessMessage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import AuthApi from "./auth/AuthApi";
+import NewPost from "./dialogs/NewPost";
 
 function Loading() {
   return (<div style={{
@@ -45,6 +46,7 @@ function MainApp() {
           <Router>
             <Switch>
               <RouteProtected path="/" exact component={App} />
+              <RouteProtected path="/newpost" exact component={NewPost} />
               <Route path="/newpost/success" exact component={SuccessMessage} />
               <RouteRegistration path="/signup" exact component={SignUp} />
               <RouteRegistration path="/signin" exact component={SignIn} />

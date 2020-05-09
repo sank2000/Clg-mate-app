@@ -6,6 +6,9 @@ import PostCard from "./PostCard";
 import { Container, Row, Col } from "react-bootstrap";
 import DateFormat from 'dateformat';
 import NewPost from "./../dialogs/NewPost";
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import {Link} from "react-router-dom";
 
 function App() {
     const [post, setPost] = useState([]);
@@ -51,7 +54,11 @@ function App() {
                 <Row>
                     {post.map(data)}
                 </Row>
-                <NewPost />
+                <Link to="/newpost">
+                    <Fab color="primary" style={{ position: "fixed", bottom: "3vh", right: "3vw" }} aria-label="add">
+                            <AddIcon />
+                    </Fab>
+                 </Link>
             </Container>
         </Fragment >
     )
