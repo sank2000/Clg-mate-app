@@ -23,9 +23,6 @@ function PostCard(props) {
         <div className="subject">
           {props.subject}
         </div>
-        {/* <div className="description">
-          {props.description}
-        </div> */}
       </CardContent>
       <CardActions>
         <ViewMore data={props} />
