@@ -12,6 +12,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { signin } from "./RouteAccess"
 import AuthApi from "./AuthApi";
+import { Spinner } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Copyright() {
   return (
@@ -58,6 +60,7 @@ function SignIn() {
     username: "",
     password: "",
   });
+  const [load, setLoad] = useState(false);
 
   function handleChange(event) {
     const { value, name } = event.target;
@@ -70,6 +73,7 @@ function SignIn() {
   }
 
   const submit = async (e) => {
+    setLoad(true);
     e.preventDefault();
     const res = await signin(user);
     if (res.data.auth) {
@@ -119,7 +123,7 @@ function SignIn() {
             className={classes.submit}
             onClick={submit}
           >
-            Sign In
+            Sign In &nbsp;{load && <Spinner animation="border" size="sm" />}
           </Button>
           <Grid container>
             <Grid item>
