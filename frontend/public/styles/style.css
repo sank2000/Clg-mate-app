@@ -12,6 +12,11 @@ body {
   background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
 }
 
+button:focus {
+  outline: none !important;
+  box-shadow: none;
+}
+
 header {
   padding: .1em;
 }
