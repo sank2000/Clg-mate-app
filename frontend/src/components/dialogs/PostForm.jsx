@@ -33,9 +33,6 @@ function PostForm(props) {
 
   return (
     <>
-      {/* <Button className="newPost" variant="outline-info" onClick={handleShow}>
-        New Post
-      </Button> */}
       <Fab color="primary" style={{ position: "fixed", bottom: "3vh", right: "3vw" }} onClick={handleShow} aria-label="add">
         <AddIcon />
       </Fab>
