@@ -19,7 +19,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="*">
+      <Link to="/" color="inherit" href="*">
         Collegemate
       </Link>{' '}
       {new Date().getFullYear()}
@@ -100,7 +100,6 @@ function SignIn() {
             id="email"
             label="User Name"
             name="username"
-            primary
             autoFocus
             onChange={handleChange}
           />

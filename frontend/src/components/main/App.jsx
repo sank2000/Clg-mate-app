@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
+import NavigationBar from "./AppBar2";
 import Head from "./NavigationBar";
 import PostCard from "./PostCard";
 import { Container, Row, Col } from "react-bootstrap";
@@ -44,6 +45,7 @@ function App() {
 
     return (
         <Fragment>
+            <NavigationBar />
             <Head />
             <Container fluid>
                 <Row>

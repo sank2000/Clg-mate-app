@@ -13,16 +13,7 @@ body {
 }
 
 header {
-  background-color: black;
-  margin: 0px;
-  padding: 16px 32px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-}
-
-header h1 {
-  display: inline-block;
-  color: #fff;
-  font-weight: 200;
+  padding: .1em;
 }
 
 .app {

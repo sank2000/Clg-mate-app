@@ -1,4 +1,4 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 const firebaseConfig = {
   apiKey: "AIzaSyA7pRaNRzmIPhkQkuMWkPvyA6gugjh3Z34",
   authDomain: "collegemate-web-app.firebaseapp.com",

@@ -80,7 +80,7 @@ function CustomizedDialogs(props) {
             </span>
           </div>
           <hr />
-          <div style={{ minWidth: "50vw", margin: "5px 0px" }} className="description">
+          <div style={{ margin: "5px 0px" }} className="description">
             <h5>Description:</h5>
             <span>{props.data.description}</span>
           </div>
