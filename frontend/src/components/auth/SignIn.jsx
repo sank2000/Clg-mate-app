@@ -14,6 +14,12 @@ import { signin } from "./RouteAccess"
 import AuthApi from "./AuthApi";
 import { Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 function Copyright() {
   return (
@@ -61,6 +67,18 @@ function SignIn() {
     password: "",
   });
   const [load, setLoad] = useState(false);
+  const [Aopen, setAOpen] = useState(false);
+
+  const AhandleClick = () => {
+    setAOpen(true);
+  };
+
+  const AhandleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setAOpen(false);
+  };
 
   function handleChange(event) {
     const { value, name } = event.target;
@@ -78,6 +96,11 @@ function SignIn() {
     const res = await signin(user);
     if (res.data.auth) {
       authApi.setAuth(true);
+    }
+    else
+    {
+      setLoad(false);
+      AhandleClick();
     }
   };
 
@@ -136,6 +159,11 @@ function SignIn() {
       <Box mt={8}>
         <Copyright />
       </Box>
+      <Snackbar open={Aopen} autoHideDuration={6000} onClose={AhandleClose}>
+        <Alert onClose={AhandleClose} severity="error">
+          User Name or Password is Invalid!
+        </Alert>
+      </Snackbar>
     </Container>
   );
 }
