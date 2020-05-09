@@ -101,3 +101,8 @@ header {
 .MuiPaper-rounded {
   border-radius: .7rem !important;
 }
+
+.posted-on
+{
+  margin-right: 35px;
+}
