@@ -1,12 +1,11 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
 import NavigationBar from "./AppBar2";
-import Head from "./NavigationBar";
+// import Head from "./NavigationBar";
 import PostCard from "./PostCard";
 import { Container, Row, Col } from "react-bootstrap";
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 import DateFormat from 'dateformat';
+import NewPost from "./../dialogs/NewPost";
 
 function App() {
     const [post, setPost] = useState([]);
@@ -46,16 +45,15 @@ function App() {
     return (
         <Fragment>
             <NavigationBar />
-            <Head />
+            {/* <Head /> */}
             <Container fluid>
+                <h1>Posts</h1>
                 <Row>
                     {post.map(data)}
                 </Row>
-                <Fab color="primary" aria-label="add">
-                    <AddIcon />
-                </Fab>
+                <NewPost />
             </Container>
-        </Fragment>
+        </Fragment >
     )
 
 }

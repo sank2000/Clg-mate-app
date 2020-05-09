@@ -9,7 +9,6 @@ import SuccessMessage from "./messages/SuccessMessage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import AuthApi from "./auth/AuthApi";
-import Typography from '@material-ui/core/Typography';
 
 function Loading() {
   return (<div style={{

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import IconButton from '@material-ui/core/IconButton';
 import TextField from "@material-ui/core/TextField";
 import Btn from "@material-ui/core/Button";
@@ -13,6 +13,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import { KeyboardDatePicker } from "@material-ui/pickers";
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 function PostForm(props) {
   const [type, setType] = useState("Other");
@@ -31,10 +33,12 @@ function PostForm(props) {
 
   return (
     <>
-      <Button className="newPost" variant="outline-info" onClick={handleShow}>
+      {/* <Button className="newPost" variant="outline-info" onClick={handleShow}>
         New Post
-      </Button>
-
+      </Button> */}
+      <Fab color="primary" style={{ position: "fixed", bottom: "3vh", right: "3vw" }} onClick={handleShow} aria-label="add">
+        <AddIcon />
+      </Fab>
       <Modal show={show} onHide={handleClose} centered size="lg" dialogClassName="border-radius-1" >
         <Modal.Header> {/* Remove this default close button and add custom one */}
           <h1 className="modal-title w-100 text-center">New Post</h1>
@@ -50,19 +54,19 @@ function PostForm(props) {
                 fullWidth
                 label="Title" />
               <FormControl variant="outlined" style={applyMargin} fullWidth>
-                  <InputLabel>
-                    Post Type
+                <InputLabel>
+                  Post Type
                   </InputLabel>
-                  <Select
-                    name="postType"
-                    value={type}
-                    onChange={handleChange}
-                    label="Post Type"
-                  >
-                    <MenuItem value={"Other"}>Other</MenuItem>
-                    <MenuItem value={"Notes"}>Notes</MenuItem>
-                    <MenuItem value={"Assignment"}>Assignment</MenuItem>
-                  </Select>
+                <Select
+                  name="postType"
+                  value={type}
+                  onChange={handleChange}
+                  label="Post Type"
+                >
+                  <MenuItem value={"Other"}>Other</MenuItem>
+                  <MenuItem value={"Notes"}>Notes</MenuItem>
+                  <MenuItem value={"Assignment"}>Assignment</MenuItem>
+                </Select>
               </FormControl>
               <TextField style={applyMargin}
                 variant="outlined"
@@ -72,7 +76,7 @@ function PostForm(props) {
                 fullWidth
                 multiline
                 label="Description" />
-                <TextField style={applyMargin}
+              <TextField style={applyMargin}
                 variant="outlined"
                 required
                 type="text"
@@ -83,7 +87,7 @@ function PostForm(props) {
               />
               <MuiPickersUtilsProvider utils={DateFnsUtils} >
                 <KeyboardDatePicker
-                 size="small"
+                  size="small"
                   variant="inline"
                   inputVariant="outlined"
                   name="dueDate"
@@ -91,7 +95,7 @@ function PostForm(props) {
                   format="yyyy/MM/dd"
                   value={selectedDate}
                   onChange={date => handleDateChange(date)}
-                  style={{...applyMargin,outline : "none"}}
+                  style={{ ...applyMargin, outline: "none" }}
                 />
               </MuiPickersUtilsProvider>
               <div className="file-section" style={applyMargin}>
