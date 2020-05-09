@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
-import NavigationBar from "./AppBar2";
-// import Head from "./NavigationBar";
+import NavigationBar from "./AppBar";
+import TT from "./Temp";
 import PostCard from "./PostCard";
 import { Container, Row, Col } from "react-bootstrap";
 import DateFormat from 'dateformat';
@@ -45,7 +45,7 @@ function App() {
     return (
         <Fragment>
             <NavigationBar />
-            {/* <Head /> */}
+            <TT />
             <Container fluid>
                 <h1>Posts</h1>
                 <Row>
