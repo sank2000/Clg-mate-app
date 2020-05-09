@@ -16,6 +16,13 @@ import { Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
+import IconButton from "@material-ui/core/IconButton";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+import InputLabel from "@material-ui/core/InputLabel";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import FormControl from "@material-ui/core/FormControl";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -68,6 +75,23 @@ function SignIn() {
   });
   const [load, setLoad] = useState(false);
   const [Aopen, setAOpen] = useState(false);
+  const [PassValues, setPassValues] = useState({
+    password: "",
+    showPassword: false
+  });
+
+  const PassHandleChange = prop => event => {
+    setPassValues({ ...PassValues, [prop]: event.target.value });
+    handleChange(event);
+  };
+
+  const handleClickShowPassword = () => {
+    setPassValues({ ...PassValues, showPassword: !PassValues.showPassword });
+  };
+
+  const handleMouseDownPassword = event => {
+    event.preventDefault();
+  };
 
   const AhandleClick = () => {
     setAOpen(true);
@@ -114,11 +138,11 @@ function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} >
           <TextField
             variant="outlined"
             margin="normal"
-            required
+            required={true}
             fullWidth
             id="email"
             label="User Name"
@@ -126,7 +150,33 @@ function SignIn() {
             autoFocus
             onChange={handleChange}
           />
-          <TextField
+          <FormControl variant="outlined" fullWidth required={true} >
+          <InputLabel htmlFor="outlined-adornment-password">
+            Password
+          </InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type={PassValues.showPassword ? "text" : "password"}
+            value={PassValues.password}
+            fullWidth
+            name="password"
+            onChange={PassHandleChange("password")}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {PassValues.showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
+            labelWidth={70}
+          />
+        </FormControl>
+          {/* <TextField
             variant="outlined"
             margin="normal"
             required
@@ -136,7 +186,7 @@ function SignIn() {
             type="password"
             id="password"
             onChange={handleChange}
-          />
+          /> */}
           <Button
             type="submit"
             fullWidth
