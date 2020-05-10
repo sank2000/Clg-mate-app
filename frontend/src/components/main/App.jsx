@@ -15,9 +15,11 @@ import Tooltip from '@material-ui/core/Tooltip';
 import {Link} from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import MaterialCard from "./MaterialCard";
 
 function App() {
     const [post, setPost] = useState([]);
+    const [material,setMaterial]  = useState([]);
     const [click,setClick] = useState(false);
     const [loading,SetLoading] = useState(true);
 
@@ -25,9 +27,16 @@ function App() {
         // fetch("/work").then(res => console.log(res.json()));
         axios.get("/posts")
             .then(function (response) {
-                console.log(response.data);
                 setPost([...response.data]);
                 SetLoading(false);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            });
+            axios.get("/material")
+            .then(function (response) {
+                setMaterial([...response.data]);
             })
             .catch(function (error) {
                 // handle error
@@ -53,6 +62,18 @@ function App() {
             </Col>
         );
     }
+
+    function mat(post)
+    {
+        return (
+        <Col sm={12} md={6} lg={4} key={post._id}>
+                <MaterialCard
+                    title={post.title}
+                    author={post.author}
+                    code = {post.subCode}
+                />
+        </Col>)
+    }
     
     function handleClick() 
     { 
@@ -74,6 +95,9 @@ function App() {
                     </Button>
                 </Link>
                 <h1>Materials</h1>
+                <Row>
+                    {material.map(mat)}
+                </Row>
                 {click && <Fragment>
                     <Link to="/newpost">
                     <Tooltip title="New Post" placement="left">
@@ -82,11 +106,13 @@ function App() {
                         </Fab>
                     </Tooltip>
                     </Link>
-                 <Tooltip title="New Material" placement="left">
-                    <Fab color="primary" onClick={handleClick} style={{ position: "fixed", bottom: "21vh", right: "3vw" }} aria-label="add">
-                            <LibraryAddOutlinedIcon />
-                    </Fab>
-                 </Tooltip>
+                    <Link to="/newmaterial">
+                        <Tooltip title="New Material" placement="left">
+                            <Fab color="primary" onClick={handleClick} style={{ position: "fixed", bottom: "21vh", right: "3vw" }} aria-label="add">
+                                    <LibraryAddOutlinedIcon />
+                            </Fab>
+                        </Tooltip>
+                    </Link>
                  </Fragment> }
                  <Fab color="primary" onClick={handleClick} style={{ position: "fixed", bottom: "3vh", right: "3vw" }} aria-label="add">
                           {click ? <CancelIcon /> : <AddIcon /> }

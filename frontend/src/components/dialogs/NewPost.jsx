@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from '../../firebase';
 import PostForm from "./PostForm";
+import MaterialForm from "./MaterialForm";
 
 class NewPost extends Component {
   constructor(props) {
@@ -52,9 +53,10 @@ class NewPost extends Component {
     uploadTask.on('state_changed', snapshot => uploadProgress(snapshot), (error) => { console.log(error); }, () => uploadComplete());
   }
 
-  render() {
+  render(props) {
     return (
       <div className="app">
+        {this.props.post ?
         <PostForm
           url={this.state.url}
           handleChange={this.handleChange}
@@ -62,6 +64,15 @@ class NewPost extends Component {
           progress={this.state.progress}
           fileChooseState={this.state.fileChooseState}
         />
+        :
+        <MaterialForm
+          url={this.state.url}
+          handleChange={this.handleChange}
+          handleUpload={this.handleUpload}
+          progress={this.state.progress}
+          fileChooseState={this.state.fileChooseState}
+        />
+        }
       </div>
     );
   }

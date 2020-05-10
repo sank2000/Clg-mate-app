@@ -6,6 +6,7 @@ const session = require("express-session")
 
 const post = require('./models/Post');
 const User = require('./models/Sign');
+const Material = require('./models/material');
 
 const app = express();
 
@@ -21,8 +22,19 @@ app.use(session({
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.get("/posts", function (req, res) {
-  console.log("Requesting...");
   post.find({}, function (err, result) {
+    if (!err) {
+      res.send(result);
+    }
+    else {
+      console.log(err);
+    }
+  })
+})
+
+
+app.get("/material", function (req, res) {
+  Material.find({}, function (err, result) {
     if (!err) {
       res.send(result);
     }
@@ -52,7 +64,7 @@ app.post("/newpost", function (req, res) {
         file: req.body.file,
         url: req.body.url,
       }
-      )
+      );
       p.save(function (err) {
         if (err) {
           console.log(err);
@@ -61,12 +73,43 @@ app.post("/newpost", function (req, res) {
           // res.send("<div><h1>Uploaded Successfully</h1><p>contact admin to remove files</p> </div>");
           res.redirect("/newpost/success");
         }
-       })
+       });
 
     }
   });
   
 })
+
+
+app.post("/newmaterial",function(req,res)
+{
+  User.findById(req.session.user,"username",function(err,result)
+  {
+    if(err)
+    {
+      console.log(err);
+    }
+    else
+    {
+      const m = new Material (
+        {
+           ...req.body,
+           postBy : result.username
+        }
+      );
+      m.save(function (err) {
+        if (err) {
+          console.log(err);
+        }
+        else {
+          // res.send("<div><h1>Uploaded Successfully</h1><p>contact admin to remove files</p> </div>");
+          res.redirect("/newpost/success");
+        }
+       });
+    }
+  });
+});
+
 
 
 app.post("/auth/signup", function (req, res) {

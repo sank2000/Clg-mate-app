@@ -59,12 +59,12 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-          <Link to="/">
-            <ListItem button key={"Home"} style={{textDecoration : "none"}}>
+          <Link to="/" style={{textDecoration : "none"}}>
+            <ListItem button key={"Home"} >
               <ListItemIcon>
                 <HomeWorkOutlinedIcon /> 
               </ListItemIcon>
-              <ListItemText primary={"Home"} />
+              <ListItemText primary={"Home"}  />
             </ListItem>
             </Link>
           <ListItem button key={"Time Table"}>
@@ -76,22 +76,30 @@ export default function SwipeableTemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        {["New Post", "New Material", "Expired Posts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index === 0 ? (
-                <Link to="/newpost">
-                <PostAddOutlinedIcon />
-                </Link>
-              ) : index === 1 ? (
-                <LibraryAddOutlinedIcon />
-              ) : (
-                <ArchiveOutlinedIcon />
-              )}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <Link to="/newpost" style={{textDecoration : "none"}}>
+          <ListItem button>
+              <ListItemIcon>
+                 <PostAddOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="New Post" />
+            </ListItem>
+        </Link>
+        <Link to="/newmaterial" style={{textDecoration : "none"}}>
+          <ListItem button>
+              <ListItemIcon>
+                 <LibraryAddOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="New Material" />
+            </ListItem>
+        </Link>
+        {/* <Link to="/newpost"> */}
+          <ListItem button>
+              <ListItemIcon>
+                 <ArchiveOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Expired Posts" />
+            </ListItem>
+        {/* </Link> */}
       </List>
       <Divider />
       <List>
