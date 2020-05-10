@@ -13,11 +13,9 @@ import { Link } from "react-router-dom";
 
 import HomeWorkOutlinedIcon from "@material-ui/icons/HomeWorkOutlined";
 import TodayOutlinedIcon from "@material-ui/icons/TodayOutlined";
-
 import PostAddOutlinedIcon from "@material-ui/icons/PostAddOutlined";
 import LibraryAddOutlinedIcon from "@material-ui/icons/LibraryAddOutlined";
 import ArchiveOutlinedIcon from "@material-ui/icons/ArchiveOutlined";
-
 import ReportOutlinedIcon from "@material-ui/icons/ReportOutlined";
 import FeedbackOutlinedIcon from "@material-ui/icons/FeedbackOutlined";
 import ContactSupportOutlinedIcon from "@material-ui/icons/ContactSupportOutlined";
@@ -54,6 +52,7 @@ export default function SwipeableTemporaryDrawer() {
       className={clsx(classes.list, {
         [classes.fullList]: anchor === "top" || anchor === "bottom"
       })}
+      style={{ textDecoration: "none" }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}

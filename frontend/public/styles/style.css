@@ -104,8 +104,7 @@ header {
   border-radius: .7rem !important;
 }
 
-.posted-on
-{
+.posted-on {
   margin-right: 35px;
 }
 
@@ -114,4 +113,8 @@ hr {
   margin-bottom: 1rem;
   border: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.MuiListItem-button * {
+  color: #666;
 }

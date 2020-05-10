@@ -11,7 +11,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import AuthApi from "./auth/AuthApi";
 import NewPost from "./dialogs/NewPost";
 import FullPost from "./main/FullPost";
-import NewMaterial from "./dialogs/MaterialForm";
 
 function Loading() {
   return (
