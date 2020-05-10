@@ -8,10 +8,15 @@ import DateFormat from 'dateformat';
 import NewPost from "./../dialogs/NewPost";
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import CancelIcon from '@material-ui/icons/Cancel';
+import PostAddOutlinedIcon from "@material-ui/icons/PostAddOutlined";
+import LibraryAddOutlinedIcon from "@material-ui/icons/LibraryAddOutlined";
+import Tooltip from '@material-ui/core/Tooltip';
 import {Link} from "react-router-dom";
 
 function App() {
     const [post, setPost] = useState([]);
+    const [click,setClick] = useState(false);
 
     useEffect(() => {
         // fetch("/work").then(res => console.log(res.json()));
@@ -24,7 +29,7 @@ function App() {
             .catch(function (error) {
                 // handle error
                 console.log(error);
-            })
+            });
     }, [])
 
     function data(post) {
@@ -43,8 +48,12 @@ function App() {
                 />
             </Col>
         );
-    };
-
+    }
+    
+    function handleClick() 
+    { 
+        setClick(!click);
+     }
     return (
         <Fragment>
             <NavigationBar />
@@ -54,11 +63,23 @@ function App() {
                 <Row>
                     {post.map(data)}
                 </Row>
-                <Link to="/newpost">
-                    <Fab color="primary" style={{ position: "fixed", bottom: "3vh", right: "3vw" }} aria-label="add">
-                            <AddIcon />
+                {click && <Fragment>
+                    <Link to="/newpost">
+                    <Tooltip title="New Post" placement="left">
+                        <Fab color="primary" onClick={handleClick} style={{ position: "fixed", bottom: "12vh", right: "3vw" }} aria-label="add">
+                            <PostAddOutlinedIcon />
+                        </Fab>
+                    </Tooltip>
+                    </Link>
+                 <Tooltip title="New Material" placement="left">
+                    <Fab color="primary" onClick={handleClick} style={{ position: "fixed", bottom: "21vh", right: "3vw" }} aria-label="add">
+                            <LibraryAddOutlinedIcon />
                     </Fab>
-                 </Link>
+                 </Tooltip>
+                 </Fragment> }
+                 <Fab color="primary" onClick={handleClick} style={{ position: "fixed", bottom: "3vh", right: "3vw" }} aria-label="add">
+                          {click ? <CancelIcon /> : <AddIcon /> }
+                    </Fab>
             </Container>
         </Fragment >
     )
