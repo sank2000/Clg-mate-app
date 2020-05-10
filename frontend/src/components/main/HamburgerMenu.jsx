@@ -59,14 +59,20 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Home", "Time Table"].map((text, index) => (
-          <ListItem button key={text}>
+          <Link to="/">
+            <ListItem button key={"Home"} style={{textDecoration : "none"}}>
+              <ListItemIcon>
+                <HomeWorkOutlinedIcon /> 
+              </ListItemIcon>
+              <ListItemText primary={"Home"} />
+            </ListItem>
+            </Link>
+          <ListItem button key={"Time Table"}>
             <ListItemIcon>
-              {index === 0 ? <HomeWorkOutlinedIcon /> : <TodayOutlinedIcon />}
+               <HomeWorkOutlinedIcon /> 
             </ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemText primary={"Time Table"} />
           </ListItem>
-        ))}
       </List>
       <Divider />
       <List>

@@ -13,10 +13,13 @@ import PostAddOutlinedIcon from "@material-ui/icons/PostAddOutlined";
 import LibraryAddOutlinedIcon from "@material-ui/icons/LibraryAddOutlined";
 import Tooltip from '@material-ui/core/Tooltip';
 import {Link} from "react-router-dom";
+import Button from '@material-ui/core/Button';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 function App() {
     const [post, setPost] = useState([]);
     const [click,setClick] = useState(false);
+    const [loading,SetLoading] = useState(true);
 
     useEffect(() => {
         // fetch("/work").then(res => console.log(res.json()));
@@ -24,7 +27,7 @@ function App() {
             .then(function (response) {
                 console.log(response.data);
                 setPost([...response.data]);
-
+                SetLoading(false);
             })
             .catch(function (error) {
                 // handle error
@@ -32,7 +35,8 @@ function App() {
             });
     }, [])
 
-    function data(post) {
+    function data(post,ind) {
+        if(ind < 6)
         return (
             <Col sm={12} md={6} lg={4} key={post._id}>
                 <PostCard
@@ -60,9 +64,16 @@ function App() {
             <TT />
             <Container fluid>
                 <h1>Posts</h1>
+                {loading && <LinearProgress />}
                 <Row>
                     {post.map(data)}
                 </Row>
+                <Link to="/fullpost">
+                    <Button variant="contained" color="primary" style={{ marginLeft : "50px" }}>
+                        show more
+                    </Button>
+                </Link>
+                <h1>Materials</h1>
                 {click && <Fragment>
                     <Link to="/newpost">
                     <Tooltip title="New Post" placement="left">
