@@ -59,8 +59,8 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <Link to="/">
-          <ListItem button key={"Home"} style={{ textDecoration: "none" }}>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <ListItem button key={"Home"} >
             <ListItemIcon>
               <HomeWorkOutlinedIcon />
             </ListItemIcon>
@@ -71,27 +71,39 @@ export default function SwipeableTemporaryDrawer() {
           <ListItemIcon>
             <HomeWorkOutlinedIcon />
           </ListItemIcon>
+          <ListItemText primary={"Home"} />
+        </ListItem>
+        <ListItem button key={"Time Table"}>
+          <ListItemIcon>
+            <HomeWorkOutlinedIcon />
+          </ListItemIcon>
           <ListItemText primary={"Time Table"} />
         </ListItem>
       </List>
       <Divider />
       <List>
-        {["New Post", "New Material", "Expired Posts"].map((text, index) => (
-          <ListItem button key={text}>
+        <Link to="/posts/new" style={{ textDecoration: "none" }}>
+          <ListItem button>
             <ListItemIcon>
-              {index === 0 ? (
-                <Link to="/posts/new">
-                  <PostAddOutlinedIcon />
-                </Link>
-              ) : index === 1 ? (
-                <LibraryAddOutlinedIcon />
-              ) : (
-                    <ArchiveOutlinedIcon />
-                  )}
+              <PostAddOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemText primary="New Post" />
           </ListItem>
-        ))}
+        </Link>
+        <Link to="/materials/new" style={{ textDecoration: "none" }}>
+          <ListItem button>
+            <ListItemIcon>
+              <LibraryAddOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary="New Material" />
+          </ListItem>
+        </Link>
+        <ListItem button>
+          <ListItemIcon>
+            <ArchiveOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Expired Posts" />
+        </ListItem>
       </List>
       <Divider />
       <List>
@@ -115,7 +127,7 @@ export default function SwipeableTemporaryDrawer() {
           </ListItem>
         ))}
       </List>
-    </div>
+    </div >
   );
 
   return (

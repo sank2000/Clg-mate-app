@@ -15,19 +15,27 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import MaterialCard from "./MaterialCard";
 
 function App() {
     const [post, setPost] = useState([]);
+    const [material, setMaterial] = useState([]);
     const [click, setClick] = useState(false);
     const [loading, SetLoading] = useState(true);
 
     useEffect(() => {
-        // fetch("/work").then(res => console.log(res.json()));
         axios.get("/posts")
             .then(function (response) {
-                console.log(response.data);
                 setPost([...response.data]);
                 SetLoading(false);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            });
+        axios.get("/materials")
+            .then(function (response) {
+                setMaterial([...response.data]);
             })
             .catch(function (error) {
                 // handle error
@@ -54,9 +62,21 @@ function App() {
             );
     }
 
+    function mat(post) {
+        return (
+            <Col sm={12} md={6} lg={4} key={post._id}>
+                <MaterialCard
+                    title={post.title}
+                    author={post.author}
+                    code={post.subCode}
+                />
+            </Col>)
+    }
+
     function handleClick() {
         setClick(!click);
     }
+
     return (
         <Fragment>
             <NavigationBar />
@@ -70,9 +90,12 @@ function App() {
                 <Link to="/fullpost">
                     <Button variant="contained" color="primary" style={{ marginLeft: "50px" }}>
                         show more
-                    </Button>
+          </Button>
                 </Link>
                 <h1>Materials</h1>
+                <Row>
+                    {material.map(mat)}
+                </Row>
                 {click && <Fragment>
                     <Link to="/posts/new">
                         <Tooltip title="New Post" placement="left">
@@ -81,16 +104,19 @@ function App() {
                             </Fab>
                         </Tooltip>
                     </Link>
-                    <Tooltip title="New Material" placement="left">
-                        <Fab color="primary" onClick={handleClick} style={{ position: "fixed", bottom: "21vh", right: "3vw" }} aria-label="add">
-                            <LibraryAddOutlinedIcon />
-                        </Fab>
-                    </Tooltip>
+
+                    <Link to="/materials/new">
+                        <Tooltip title="New Material" placement="left">
+                            <Fab color="primary" onClick={handleClick} style={{ position: "fixed", bottom: "21vh", right: "3vw" }} aria-label="add">
+                                <LibraryAddOutlinedIcon />
+                            </Fab>
+                        </Tooltip>
+                    </Link>
                 </Fragment>}
                 <Fab color="primary" onClick={handleClick} style={{ position: "fixed", bottom: "3vh", right: "3vw" }} aria-label="add">
                     {click ? <CancelIcon /> : <AddIcon />}
                 </Fab>
-            </Container>
+            </Container >
         </Fragment >
     )
 
