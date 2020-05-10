@@ -23,20 +23,18 @@ function PostForm(props) {
   };
   const [show, setShow] = useState(false);
 
-  const handleClose = () => 
-  { 
-     setShow(false);
-     window.open("/", "_top");
+  const handleClose = () => {
+    setShow(false);
+    window.open("/", "_top");
   };
   const handleShow = () => setShow(true);
   const applyMargin = {
     margin: "7px"
   };
-  
-  useState(() => 
-  {
-      handleShow();
-  },[])
+
+  useState(() => {
+    handleShow();
+  }, [])
 
   return (
     <>
@@ -47,7 +45,7 @@ function PostForm(props) {
         </Modal.Header>
         <Modal.Body>
           <div className="uploadForm">
-            <form action="/newpost" method="post">
+            <form action="/posts/new" method="post">
               <TextField style={applyMargin}
                 variant="outlined"
                 required type="text"

@@ -22,7 +22,6 @@ const signout = async () => {
     return result;
 }
 
-
 export {
     signin, signup, hasSigned, signout
 }

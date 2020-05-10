@@ -13,14 +13,15 @@ import NewPost from "./dialogs/NewPost";
 import FullPost from "./main/FullPost";
 
 function Loading() {
-  return (<div style={{
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100vh"
-  }}>
-    <CircularProgress style={{ color: "dodgerblue" }} size={46} />
-  </div >
+  return (
+    <div style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh"
+    }}>
+      <CircularProgress style={{ color: "dodgerblue" }} size={46} />
+    </div >
   );
 }
 
@@ -47,9 +48,9 @@ function MainApp() {
           <Router>
             <Switch>
               <RouteProtected path="/" exact component={App} />
-              <RouteProtected path="/newpost" exact component={NewPost} />
+              <RouteProtected path="/posts/new" exact component={NewPost} />
               <RouteProtected path="/fullpost" exact component={FullPost} />
-              <Route path="/newpost/success" exact component={SuccessMessage} />
+              <Route path="/posts/new/success" exact component={SuccessMessage} />
               <RouteRegistration path="/signup" exact component={SignUp} />
               <RouteRegistration path="/signin" exact component={SignIn} />
               <Route component={PageNotFound} />

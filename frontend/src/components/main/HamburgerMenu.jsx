@@ -9,7 +9,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import HomeWorkOutlinedIcon from "@material-ui/icons/HomeWorkOutlined";
 import TodayOutlinedIcon from "@material-ui/icons/TodayOutlined";
@@ -59,20 +59,20 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-          <Link to="/">
-            <ListItem button key={"Home"} style={{textDecoration : "none"}}>
-              <ListItemIcon>
-                <HomeWorkOutlinedIcon /> 
-              </ListItemIcon>
-              <ListItemText primary={"Home"} />
-            </ListItem>
-            </Link>
-          <ListItem button key={"Time Table"}>
+        <Link to="/">
+          <ListItem button key={"Home"} style={{ textDecoration: "none" }}>
             <ListItemIcon>
-               <HomeWorkOutlinedIcon /> 
+              <HomeWorkOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary={"Time Table"} />
+            <ListItemText primary={"Home"} />
           </ListItem>
+        </Link>
+        <ListItem button key={"Time Table"}>
+          <ListItemIcon>
+            <HomeWorkOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary={"Time Table"} />
+        </ListItem>
       </List>
       <Divider />
       <List>
@@ -80,14 +80,14 @@ export default function SwipeableTemporaryDrawer() {
           <ListItem button key={text}>
             <ListItemIcon>
               {index === 0 ? (
-                <Link to="/newpost">
-                <PostAddOutlinedIcon />
+                <Link to="/posts/new">
+                  <PostAddOutlinedIcon />
                 </Link>
               ) : index === 1 ? (
                 <LibraryAddOutlinedIcon />
               ) : (
-                <ArchiveOutlinedIcon />
-              )}
+                    <ArchiveOutlinedIcon />
+                  )}
             </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
@@ -109,7 +109,7 @@ export default function SwipeableTemporaryDrawer() {
         {["Help", "About"].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
-              {index === 0 ? <ContactSupportOutlinedIcon /> : <InfoOutlinedIcon /> }
+              {index === 0 ? <ContactSupportOutlinedIcon /> : <InfoOutlinedIcon />}
             </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
