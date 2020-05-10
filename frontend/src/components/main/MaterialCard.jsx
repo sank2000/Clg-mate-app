@@ -4,6 +4,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import ViewMore from "./../dialogs/PostDetails";
+import ViewMetMore from "./../dialogs/MaterialDetails";
 
 function PostCard(props) {
   return (
@@ -14,7 +15,7 @@ function PostCard(props) {
             <ScheduleIcon fontSize="small" className="due-icon" /> {props.dueDate}
           </span> */}
           <span className="post-type">
-            {props.code}
+            {props.subCode}
           </span>
         </div>
         <h2 className="post-title">
@@ -24,9 +25,9 @@ function PostCard(props) {
           {props.author}
         </div>
       </CardContent>
-      {/* <CardActions>
-        <ViewMore data={props} />
-      </CardActions> */}
+      <CardActions>
+        <ViewMetMore data={props} />
+      </CardActions>
     </Card>
   );
 }
