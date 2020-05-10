@@ -68,7 +68,13 @@ function App() {
                 <MaterialCard
                     title={post.title}
                     author={post.author}
-                    code={post.subCode}
+                    description={post.description}
+                    subName={post.subName}
+                    subCode={post.subCode}
+                    file={post.file}
+                    url={post.url}
+                    postBy={post.postBy}
+                    postedOn={DateFormat((new Date(post.updatedAt)), "d-mmm-yy, h:mm TT")}
                 />
             </Col>)
     }
@@ -92,6 +98,7 @@ function App() {
                         show more
           </Button>
                 </Link>
+                <hr></hr>
                 <h1>Materials</h1>
                 <Row>
                     {material.map(mat)}
