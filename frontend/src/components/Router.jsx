@@ -49,7 +49,7 @@ function MainApp() {
           <Router>
             <Switch>
               <RouteProtected path="/" exact component={App} />
-              <RouteProtected path="/posts/new" exact component={NewPost} />
+              <RouteProtected path="/posts/new" exact component={() => <NewPost post={true} />} />
               <RouteProtected path="/materials/new" exact component={() => <NewPost post={false} />} />
               <RouteProtected path="/fullpost" exact component={FullPost} />
               <Route path="/posts/new/success" exact component={SuccessMessage} />
