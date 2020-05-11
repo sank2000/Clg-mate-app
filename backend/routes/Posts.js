@@ -7,7 +7,7 @@ const User = require('../models/User');
 router.get('/', (req, res) => {
   var query = Post.find({}).limit(6).sort({
     'dueDate': 'desc'
-});
+  });
   query.exec(function (err, result) {
     if (!err) {
       res.send(result);
@@ -59,7 +59,5 @@ router.post("/new", function (req, res) {
     }
   });
 })
-
-
 
 module.exports = router;
