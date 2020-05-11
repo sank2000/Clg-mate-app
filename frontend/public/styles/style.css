@@ -124,3 +124,23 @@ hr {
 {
   text-decoration: none !important;
 }
+
+.fullPostHead
+{
+  background-color: white;
+  padding: 8px;
+
+}
+
+.filterSelect
+{ 
+    margin-top: 8px !important;
+    margin-bottom: 5px !important;
+    margin-right: 5px !important;
+    float: right;
+}
+.filterButton
+{
+  margin-top: 8px !important;
+  float: right;
+}

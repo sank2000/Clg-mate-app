@@ -5,16 +5,23 @@ import PostCard from "./PostCard";
 import { Container, Row, Col } from "react-bootstrap";
 import DateFormat from 'dateformat';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import Button from '@material-ui/core/Button';
+import FilterListIcon from '@material-ui/icons/FilterList';
 
 function App() {
     const [post, setPost] = useState([]);
+    const [type, setType] = useState("All");
     const [loading,SetLoading] = useState(true);
 
     useEffect(() => {
         // fetch("/work").then(res => console.log(res.json()));
-        axios.get("/posts/full")
+        let prms = new URLSearchParams({type : type});
+        axios.post("/posts/full", prms)
             .then(function (response) {
-                console.log(response.data);
                 setPost([...response.data]);
                 SetLoading(false);
 
@@ -25,6 +32,10 @@ function App() {
             });
     }, [])
 
+    const handleChange = event => {
+        setType(event.target.value);
+      };
+     
     function data(post,ind) {
         return (
             <Col sm={12} md={6} lg={4} key={post._id}>
@@ -42,11 +53,52 @@ function App() {
             </Col>
         );
     }
+
+    
+    const getFilter = async (user) => {
+        let prms = new URLSearchParams({type : type});
+        const result = await axios.post("/posts/full", prms);
+        return result;
+    }
+
+     const handleFilter= async() =>
+     {
+        SetLoading(true);
+         const response = await getFilter();
+         setPost([...response.data]);
+         SetLoading(false);
+          
+     }
+
     return (
         <Fragment>
             <NavigationBar />
-            <Container fluid>
-                <h1>Posts</h1>
+                <div className="fullPostHead">
+                    <h1 style={{display : "inline"}}>Posts</h1>
+                    <Button className="filterButton"
+                        variant="contained"
+                        color="primary"
+                        startIcon={<FilterListIcon />}
+                        onClick={handleFilter}
+                    >Apply Filter</Button>
+                    <FormControl variant='outlined' style={{minWidth : 140}} size="small" className="filterSelect" >
+                        <InputLabel>
+                        Post Type
+                        </InputLabel>
+                        <Select
+                        name="postType"
+                        value={type}
+                        onChange={handleChange}
+                        label="Post Type"
+                        >
+                        <MenuItem value={"All"}>All</MenuItem>
+                        <MenuItem value={"Other"}>Other</MenuItem>
+                        <MenuItem value={"Notes"}>Notes</MenuItem>
+                        <MenuItem value={"Assignment"}>Assignment</MenuItem>
+                        </Select>
+                </FormControl>
+                </div>
+                <Container fluid>
                 {loading && <LinearProgress />}
                 <Row>
                     {post.map(data)}
