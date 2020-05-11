@@ -58,7 +58,7 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/" className="linkStyle">
           <ListItem button key={"Home"} >
             <ListItemIcon>
               <HomeWorkOutlinedIcon />
@@ -75,7 +75,7 @@ export default function SwipeableTemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        <Link to="/posts/new" style={{ textDecoration: "none" }}>
+        <Link to="/posts/new" className="linkStyle">
           <ListItem button>
             <ListItemIcon>
               <PostAddOutlinedIcon />
@@ -83,7 +83,7 @@ export default function SwipeableTemporaryDrawer() {
             <ListItemText primary="New Post" />
           </ListItem>
         </Link>
-        <Link to="/materials/new" style={{ textDecoration: "none" }}>
+        <Link to="/materials/new" className="linkStyle">
           <ListItem button>
             <ListItemIcon>
               <LibraryAddOutlinedIcon />

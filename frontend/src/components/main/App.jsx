@@ -94,7 +94,7 @@ function App() {
                 <Row>
                     {post.map(data)}
                 </Row>
-                <Link to="/fullpost">
+                <Link to="/fullpost" className="linkStyle">
                     <Button variant="contained" color="primary" style={{ marginLeft: "50px" }}>
                         show more
                 </Button>
@@ -104,7 +104,7 @@ function App() {
                 <Row>
                     {material.map(mat)}
                 </Row>
-                <Link to="/fullmaterial">
+                <Link to="/fullmaterial" className="linkStyle">
                     <Button variant="contained" color="primary" style={{ marginLeft: "50px" }}>
                         show more
                 </Button>
