@@ -19,7 +19,7 @@ function SuccessMessage() {
                     <CheckIcon style={{
                         fontSize: "5rem", color: "#009688"
                     }} />
-                    <h1>Success!</h1>
+                    <h1>SUCCESS!</h1>
                     <p style={{ display: "block" }}>Operation successful.</p>
                     <Button onClick={() => {
                         window.open("/", "_self");
