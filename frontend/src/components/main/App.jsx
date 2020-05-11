@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import NavigationBar from "./AppBar";
 // import TT from "./Temp";
@@ -33,7 +32,6 @@ function App() {
 			.catch(function (error) {
 				// handle error
 				console.log(error);
-				<Redirect to='/oops' />
 			});
 		axios.get("/materials")
 			.then(function (response) {
@@ -42,7 +40,6 @@ function App() {
 			.catch(function (error) {
 				// handle error
 				console.log(error);
-				<Redirect to='/oops' />
 			});
 	}, [])
 
