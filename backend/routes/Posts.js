@@ -19,16 +19,28 @@ router.get('/', (req, res) => {
 }
 );
 
-router.get("/full", function (req, res) {
-  Post.find({}, function (err, result) {
-    if (!err) {
-      res.send(result);
+
+router.post("/full", function (req, res) 
+{
+    if(req.body.type === "All")
+    {
+      var query = Post.find({});
     }
-    else {
-      console.log(err);
+    else
+    {
+      var query = Post.find({postType : req.body.type});
     }
-  })
-});
+    query.exec(function (err, result) {
+      if (!err) {
+        res.send(result);
+      }
+      else {
+        console.log(err);
+      }
+    })
+  }
+);
+
 
 
 router.post("/new", function (req, res) {

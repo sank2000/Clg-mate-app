@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
 import NavigationBar from "../navigation/AppBar";
-// import TT from "./Temp";
+// import TT from "./Temp"; 
 import PostCard from "./PostCard";
 import { Container, Row, Col } from "react-bootstrap";
 import DateFormat from 'dateformat';
@@ -84,51 +84,56 @@ function App() {
 		setClick(!click);
 	}
 
-	return (
-		<Fragment>
-			<NavigationBar />
-			{/* <TT /> */}
-			<Container fluid>
-				<h1>Posts</h1>
-				<Backdrop style={{ zIndex: "20000" }} open={loading}>
-					<CircularProgress style={{ zIndex: "50001" }} color="inherit" />
-				</Backdrop>
-				<Row>
-					{post.map(data)}
-				</Row>
-				<Link to="/fullpost">
-					<Button variant="contained" color="primary" style={{ marginLeft: "50px" }}>
-						show more
-				</Button>
-				</Link>
-				<hr></hr>
-				<h1>Materials</h1>
-				<Row>
-					{material.map(mat)}
-				</Row>
-				{click && <Fragment>
-					<Link to="/posts/new">
-						<Tooltip title="New Post" placement="left">
-							<Fab color="primary" onClick={handleClick} style={{ position: "fixed", bottom: "12vh", right: "3vw" }} aria-label="add">
-								<PostAddOutlinedIcon />
-							</Fab>
-						</Tooltip>
-					</Link>
+    return (
+        <Fragment>
+            <NavigationBar />
+            {/* <TT /> */}
+            <Container fluid>
+                <h1>Posts</h1>
+                <Backdrop open={loading}>
+                    <CircularProgress color="inherit" />
+                 </Backdrop>
+                <Row>
+                    {post.map(data)}
+                </Row>
+                <Link to="/fullpost" className="linkStyle">
+                    <Button variant="contained" color="primary" style={{ marginLeft: "50px" }}>
+                        show more
+                </Button>
+                </Link>
+                <hr></hr>
+                <h1>Materials</h1>
+                <Row>
+                    {material.map(mat)}
+                </Row>
+                <Link to="/fullmaterial" className="linkStyle">
+                    <Button variant="contained" color="primary" style={{ marginLeft: "50px" }}>
+                        show more
+                </Button>
+                </Link>
+                {click && <Fragment>
+                    <Link to="/posts/new">
+                        <Tooltip title="New Post" placement="left">
+                            <Fab color="primary" onClick={handleClick} style={{ position: "fixed", bottom: "12vh", right: "3vw" }} aria-label="add">
+                                <PostAddOutlinedIcon />
+                            </Fab>
+                        </Tooltip>
+                    </Link>
 
-					<Link to="/materials/new">
-						<Tooltip title="New Material" placement="left">
-							<Fab color="primary" onClick={handleClick} style={{ position: "fixed", bottom: "21vh", right: "3vw" }} aria-label="add">
-								<LibraryAddOutlinedIcon />
-							</Fab>
-						</Tooltip>
-					</Link>
-				</Fragment>}
-				<Fab color="primary" onClick={handleClick} style={{ position: "fixed", bottom: "3vh", right: "3vw" }} aria-label="add">
-					{click ? <CancelIcon /> : <AddIcon />}
-				</Fab>
-			</Container >
-		</Fragment >
-	);
-}
+                    <Link to="/materials/new">
+                        <Tooltip title="New Material" placement="left">
+                            <Fab color="primary" onClick={handleClick} style={{ position: "fixed", bottom: "21vh", right: "3vw" }} aria-label="add">
+                                <LibraryAddOutlinedIcon />
+                            </Fab>
+                        </Tooltip>
+                    </Link>
+                </Fragment>}
+                <Fab color="primary" onClick={handleClick} style={{ position: "fixed", bottom: "3vh", right: "3vw" }} aria-label="add">
+                    {click ? <CancelIcon /> : <AddIcon />}
+                </Fab>
+            </Container >
+        </Fragment >
+    )
 
+				}
 export default App;
