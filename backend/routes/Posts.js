@@ -23,7 +23,6 @@ router.get('/', (req, res) => {
 }
 );
 
-
 router.post("/full", function (req, res) {
   if (req.body.type === "All") {
     var query = Post.find({});
@@ -41,8 +40,6 @@ router.post("/full", function (req, res) {
   })
 }
 );
-
-
 
 router.post("/new", function (req, res) {
   User.findById(req.session.user, "username", function (err, result) {

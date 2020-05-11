@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import firebase from '../../firebase';
-import PostForm from "./PostForm";
-import MaterialForm from "./MaterialForm";
+import PostForm from "./forms/PostForm";
+import MaterialForm from "./forms/MaterialForm";
 
 class NewPost extends Component {
   constructor(props) {

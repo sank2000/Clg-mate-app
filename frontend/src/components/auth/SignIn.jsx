@@ -15,7 +15,6 @@ import AuthApi from "./AuthApi";
 import { Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Snackbar from "@material-ui/core/Snackbar";
-import MuiAlert from "@material-ui/lab/Alert";
 import IconButton from "@material-ui/core/IconButton";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -24,9 +23,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+import Alert from '../messages/alerts/alert';
 
 function Copyright() {
   return (
@@ -121,8 +118,7 @@ function SignIn() {
     if (res.data.auth) {
       authApi.setAuth(true);
     }
-    else
-    {
+    else {
       setLoad(false);
       AhandleClick();
     }
@@ -151,42 +147,31 @@ function SignIn() {
             onChange={handleChange}
           />
           <FormControl variant="outlined" fullWidth required={true} >
-          <InputLabel htmlFor="outlined-adornment-password">
-            Password
+            <InputLabel htmlFor="outlined-adornment-password">
+              Password
           </InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type={PassValues.showPassword ? "text" : "password"}
-            value={PassValues.password}
-            fullWidth
-            name="password"
-            onChange={PassHandleChange("password")}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {PassValues.showPassword ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            }
-            labelWidth={70}
-          />
-        </FormControl>
-          {/* <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            onChange={handleChange}
-          /> */}
+            <OutlinedInput
+              id="outlined-adornment-password"
+              type={PassValues.showPassword ? "text" : "password"}
+              value={PassValues.password}
+              fullWidth
+              name="password"
+              onChange={PassHandleChange("password")}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {PassValues.showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              labelWidth={70}
+            />
+          </FormControl>
           <Button
             type="submit"
             fullWidth

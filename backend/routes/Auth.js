@@ -18,7 +18,6 @@ router.get("/", function (req, res) {
   }
 })
 
-
 router.post("/signup", function (req, res) {
   const userData = new User(req.body)
   req.session.user = userData._id;
