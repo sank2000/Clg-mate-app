@@ -4,9 +4,13 @@ var router = express.Router();
 const Post = require('../models/Post');
 const User = require('../models/User');
 
+const today = new Date();
+const oneDay = 86400000;
+const yesterday = new Date(today - oneDay);
+
 router.get('/', (req, res) => {
-  var query = Post.find({}).limit(6).sort({
-    'dueDate': 'desc'
+  var query = Post.find({ dueDate: { $gte: yesterday } }).limit(6).sort({
+    'dueDate': 'asc'
   });
   query.exec(function (err, result) {
     if (!err) {
@@ -20,25 +24,22 @@ router.get('/', (req, res) => {
 );
 
 
-router.post("/full", function (req, res) 
-{
-    if(req.body.type === "All")
-    {
-      var query = Post.find({});
-    }
-    else
-    {
-      var query = Post.find({postType : req.body.type});
-    }
-    query.exec(function (err, result) {
-      if (!err) {
-        res.send(result);
-      }
-      else {
-        console.log(err);
-      }
-    })
+router.post("/full", function (req, res) {
+  if (req.body.type === "All") {
+    var query = Post.find({});
   }
+  else {
+    var query = Post.find({ postType: req.body.type });
+  }
+  query.exec(function (err, result) {
+    if (!err) {
+      res.send(result);
+    }
+    else {
+      console.log(err);
+    }
+  })
+}
 );
 
 
