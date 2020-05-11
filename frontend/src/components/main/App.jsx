@@ -1,8 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
-import NavigationBar from "../navigation/AppBar";
-// import TT from "./Temp"; 
-import PostCard from "./PostCard";
 import { Container, Row, Col } from "react-bootstrap";
 import DateFormat from 'dateformat';
 import Fab from '@material-ui/core/Fab';
@@ -15,7 +12,11 @@ import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import MaterialCard from "./MaterialCard";
+
+import NavigationBar from "../navigation/AppBar";
+// import TT from "./Temp"; 
+import PostCard from "../cards/PostCard";
+import MaterialCard from "../cards/MaterialCard";
 
 function App() {
 	const [post, setPost] = useState([]);
