@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
-import NavigationBar from "./AppBar";
-import TT from "./Temp";
+import NavigationBar from "../navigation/AppBar";
+// import TT from "./Temp";
 import PostCard from "./PostCard";
 import { Container, Row, Col } from "react-bootstrap";
 import DateFormat from 'dateformat';
@@ -18,69 +18,69 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import MaterialCard from "./MaterialCard";
 
 function App() {
-    const [post, setPost] = useState([]);
-    const [material, setMaterial] = useState([]);
-    const [click, setClick] = useState(false);
-    const [loading, SetLoading] = useState(true);
+	const [post, setPost] = useState([]);
+	const [material, setMaterial] = useState([]);
+	const [click, setClick] = useState(false);
+	const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        axios.get("/posts")
-            .then(function (response) {
-                setPost([...response.data]);
-                SetLoading(false);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            });
-        axios.get("/materials")
-            .then(function (response) {
-                setMaterial([...response.data]);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            });
-    }, [])
+	useEffect(() => {
+		axios.get("/posts")
+			.then(function (response) {
+				setPost([...response.data]);
+				setLoading(false);
+			})
+			.catch(function (error) {
+				// handle error
+				console.log(error);
+			});
+		axios.get("/materials")
+			.then(function (response) {
+				setMaterial([...response.data]);
+			})
+			.catch(function (error) {
+				// handle error
+				console.log(error);
+			});
+	}, [])
 
-    function data(post, ind) {
-            return (
-                <Col sm={12} md={6} lg={4} key={post._id}>
-                    <PostCard
-                        title={post.title}
-                        postType={post.postType}
-                        description={post.description}
-                        subject={post.subName}
-                        dueDate={DateFormat((new Date(post.dueDate)), "d-mmm-yyyy")}
-                        postedBy={post.author}
-                        url={post.url}
-                        file={post.file}
-                        postedOn={DateFormat((new Date(post.updatedAt)), "d-mmm-yy, h:mm TT")}
-                    />
-                </Col>
-            );
-    }
+	function data(post, ind) {
+		return (
+			<Col sm={12} md={6} lg={4} key={post._id}>
+				<PostCard
+					title={post.title}
+					postType={post.postType}
+					description={post.description}
+					subject={post.subName}
+					dueDate={DateFormat((new Date(post.dueDate)), "d-mmm-yyyy")}
+					postedBy={post.author}
+					url={post.url}
+					file={post.file}
+					postedOn={DateFormat((new Date(post.updatedAt)), "d-mmm-yy, h:mm TT")}
+				/>
+			</Col>
+		);
+	}
 
-    function mat(post) {
-        return (
-            <Col sm={12} md={6} lg={4} key={post._id}>
-                <MaterialCard
-                    title={post.title}
-                    author={post.author}
-                    description={post.description}
-                    subName={post.subName}
-                    subCode={post.subCode}
-                    file={post.file}
-                    url={post.url}
-                    postBy={post.postBy}
-                    postedOn={DateFormat((new Date(post.updatedAt)), "d-mmm-yy, h:mm TT")}
-                />
-            </Col>)
-    }
+	function mat(post) {
+		return (
+			<Col sm={12} md={6} lg={4} key={post._id}>
+				<MaterialCard
+					title={post.title}
+					author={post.author}
+					description={post.description}
+					subName={post.subName}
+					subCode={post.subCode}
+					file={post.file}
+					url={post.url}
+					postBy={post.postBy}
+					postedOn={DateFormat((new Date(post.updatedAt)), "d-mmm-yy, h:mm TT")}
+				/>
+			</Col>)
+	}
 
-    function handleClick() {
-        setClick(!click);
-    }
+	function handleClick() {
+		setClick(!click);
+	}
 
     return (
         <Fragment>
@@ -133,6 +133,5 @@ function App() {
         </Fragment >
     )
 
-}
-
+				}
 export default App;

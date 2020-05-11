@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import App from "./main/App";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import PageNotFound from "./messages/errors/404";
+import SomethingWrong from "./messages/errors/5xx";
 import SignUp from "./auth/SignUp";
 import SignIn from "./auth/SignIn";
 import { hasSigned } from "./auth/RouteAccess"
@@ -21,7 +22,7 @@ function Loading() {
       alignItems: "center",
       height: "100vh"
     }}>
-      <CircularProgress style={{ color: "dodgerblue" }} size={46} />
+      <CircularProgress style={{ color: "dodgerblue" }} size={45} />
     </div >
   );
 }
@@ -56,6 +57,7 @@ function MainApp() {
               <Route path="/posts/new/success" exact component={SuccessMessage} />
               <RouteRegistration path="/signup" exact component={SignUp} />
               <RouteRegistration path="/signin" exact component={SignIn} />
+              <Route path="/oops" exact component={SomethingWrong} />
               <Route component={PageNotFound} />
             </Switch>
           </Router>

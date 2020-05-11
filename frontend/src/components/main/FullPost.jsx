@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
-import NavigationBar from "./AppBar";
+import NavigationBar from "../navigation/AppBar";
 import PostCard from "./PostCard";
 import { Container, Row, Col } from "react-bootstrap";
 import DateFormat from 'dateformat';
@@ -25,12 +25,12 @@ function App() {
                 setPost([...response.data]);
                 SetLoading(false);
 
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            });
-    }, [])
+			})
+			.catch(function (error) {
+				// handle error
+				console.log(error);
+			});
+	}, [])
 
     const handleChange = event => {
         setType(event.target.value);

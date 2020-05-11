@@ -85,7 +85,7 @@ function CustomizedDialogs(props) {
             <span>{props.data.description}</span>
           </div>
           <hr />
-          <div className="post-details">
+          <div  className="post-details">
             <span className="posted-on">Posted on: {props.data.postedOn}</span>
             <span className="posted-by" style={{ float: "right" }}> <PermIdentityOutlinedIcon /> {props.data.postedBy}</span>
           </div>
