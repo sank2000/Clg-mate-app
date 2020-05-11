@@ -97,13 +97,18 @@ function App() {
                 <Link to="/fullpost">
                     <Button variant="contained" color="primary" style={{ marginLeft: "50px" }}>
                         show more
-          </Button>
+                </Button>
                 </Link>
                 <hr></hr>
                 <h1>Materials</h1>
                 <Row>
                     {material.map(mat)}
                 </Row>
+                <Link to="/fullmaterial">
+                    <Button variant="contained" color="primary" style={{ marginLeft: "50px" }}>
+                        show more
+                </Button>
+                </Link>
                 {click && <Fragment>
                     <Link to="/posts/new">
                         <Tooltip title="New Post" placement="left">

@@ -4,7 +4,22 @@ var router = express.Router();
 const Material = require('../models/Material');
 const User = require('../models/User');
 
-router.get("/", function (req, res) {
+router.get('/', (req, res) => {
+  var query = Material.find({}).limit(6).sort({
+    'createdAt': 'desc'
+});
+  query.exec(function (err, result) {
+    if (!err) {
+      res.send(result);
+    }
+    else {
+      console.log(err);
+    }
+  })
+}
+);
+
+router.get("/full", function (req, res) {
   Material.find({}, function (err, result) {
     if (!err) {
       res.send(result);
@@ -14,6 +29,8 @@ router.get("/", function (req, res) {
     }
   })
 });
+
+
 
 router.post("/new", function (req, res) {
   User.findById(req.session.user, "username", function (err, result) {

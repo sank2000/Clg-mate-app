@@ -11,6 +11,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import AuthApi from "./auth/AuthApi";
 import NewPost from "./dialogs/NewPost";
 import FullPost from "./main/FullPost";
+import FullMaterial from "./main/FullMaterial";
 
 function Loading() {
   return (
@@ -51,6 +52,7 @@ function MainApp() {
               <RouteProtected path="/posts/new" exact component={() => <NewPost post={true} />} />
               <RouteProtected path="/materials/new" exact component={() => <NewPost post={false} />} />
               <RouteProtected path="/fullpost" exact component={FullPost} />
+              <RouteProtected path="/fullmaterial" exact component={FullMaterial} />
               <Route path="/posts/new/success" exact component={SuccessMessage} />
               <RouteRegistration path="/signup" exact component={SignUp} />
               <RouteRegistration path="/signin" exact component={SignIn} />
