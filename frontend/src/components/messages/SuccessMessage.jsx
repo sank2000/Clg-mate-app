@@ -1,18 +1,34 @@
-import React from 'react';
-import { Jumbotron, Button } from "react-bootstrap";
+import React, { Fragment } from 'react';
+import CheckIcon from '@material-ui/icons/Check';
+import Button from '@material-ui/core/Button';
+
+const error5xx = {
+    display: "flex",
+    justifyContent: "center",
+    textAlign: "center",
+    alignItems: "center",
+    height: "100vh",
+    background: "#fff"
+}
 
 function SuccessMessage() {
     return (
-        <Jumbotron fluid>
-            <h1>Post added</h1>
-            <p>You cannot edit/ remove your post as of now. But this feature will be available soon.</p>
-            <p>
-                <Button onClick={() => {
-                    window.open("/","_self");
-                }} variant="primary">Go To Home</Button>
-            </p>
-        </Jumbotron>
+        <Fragment>
+            <div style={error5xx}>
+                <div>
+                    <CheckIcon style={{
+                        fontSize: "5rem", color: "#009688"
+                    }} />
+                    <h1>Success!</h1>
+                    <p style={{ display: "block" }}>Operation successful.</p>
+                    <Button onClick={() => {
+                        window.open("/", "_self");
+                    }}>GO HOME</Button>
+                </div>
+            </div>
+        </Fragment>
     );
 }
+
 
 export default SuccessMessage;

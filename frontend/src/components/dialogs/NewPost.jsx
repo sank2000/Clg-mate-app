@@ -50,28 +50,31 @@ class NewPost extends Component {
         });
     };
 
-    uploadTask.on('state_changed', snapshot => uploadProgress(snapshot), (error) => { console.log(error); }, () => uploadComplete());
+    uploadTask.on('state_changed', snapshot => uploadProgress(snapshot), (error) => {
+      console.log(error);
+      window.open("/oops", "_self");
+    }, () => uploadComplete());
   }
 
   render(props) {
     return (
       <div className="app">
         {this.props.post ?
-        <PostForm
-          url={this.state.url}
-          handleChange={this.handleChange}
-          handleUpload={this.handleUpload}
-          progress={this.state.progress}
-          fileChooseState={this.state.fileChooseState}
-        />
-        :
-        <MaterialForm
-          url={this.state.url}
-          handleChange={this.handleChange}
-          handleUpload={this.handleUpload}
-          progress={this.state.progress}
-          fileChooseState={this.state.fileChooseState}
-        />
+          <PostForm
+            url={this.state.url}
+            handleChange={this.handleChange}
+            handleUpload={this.handleUpload}
+            progress={this.state.progress}
+            fileChooseState={this.state.fileChooseState}
+          />
+          :
+          <MaterialForm
+            url={this.state.url}
+            handleChange={this.handleChange}
+            handleUpload={this.handleUpload}
+            progress={this.state.progress}
+            fileChooseState={this.state.fileChooseState}
+          />
         }
       </div>
     );
