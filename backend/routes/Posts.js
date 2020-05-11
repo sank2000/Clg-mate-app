@@ -5,8 +5,10 @@ const Post = require('../models/Post');
 const User = require('../models/User');
 
 router.get('/', (req, res) => {
-  console.log("Requesting...");
-  Post.find({}, function (err, result) {
+  var query = Post.find({}).limit(6).sort({
+    'dueDate': 'desc'
+});
+  query.exec(function (err, result) {
     if (!err) {
       res.send(result);
     }
@@ -16,6 +18,17 @@ router.get('/', (req, res) => {
   })
 }
 );
+
+router.get("/full", function (req, res) {
+  Post.find({}, function (err, result) {
+    if (!err) {
+      res.send(result);
+    }
+    else {
+      console.log(err);
+    }
+  })
+});
 
 
 router.post("/new", function (req, res) {

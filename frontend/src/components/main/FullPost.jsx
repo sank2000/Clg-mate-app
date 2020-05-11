@@ -12,7 +12,7 @@ function App() {
 
     useEffect(() => {
         // fetch("/work").then(res => console.log(res.json()));
-        axios.get("/posts")
+        axios.get("/posts/full")
             .then(function (response) {
                 console.log(response.data);
                 setPost([...response.data]);

@@ -8,7 +8,7 @@ function SuccessMessage() {
             <p>You cannot edit/ remove your post as of now. But this feature will be available soon.</p>
             <p>
                 <Button onClick={() => {
-                    window.open("/");
+                    window.open("/","_self");
                 }} variant="primary">Go To Home</Button>
             </p>
         </Jumbotron>

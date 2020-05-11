@@ -7,7 +7,7 @@ function Emsg() {
         <p>oops something went wrong <span role="img" aria-label="emoji">😔</span></p>
         <p>
             <Button onClick={() => {
-                window.open("/");
+                window.open("/","_self");
             }} variant="primary">Go To Home</Button>
         </p>
     </Jumbotron>

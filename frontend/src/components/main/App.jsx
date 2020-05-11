@@ -13,7 +13,8 @@ import LibraryAddOutlinedIcon from "@material-ui/icons/LibraryAddOutlined";
 import Tooltip from '@material-ui/core/Tooltip';
 import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
-import LinearProgress from '@material-ui/core/LinearProgress';
+import Backdrop from "@material-ui/core/Backdrop";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import MaterialCard from "./MaterialCard";
 
 function App() {
@@ -43,7 +44,6 @@ function App() {
     }, [])
 
     function data(post, ind) {
-        if (ind < 6)
             return (
                 <Col sm={12} md={6} lg={4} key={post._id}>
                     <PostCard
@@ -85,10 +85,12 @@ function App() {
     return (
         <Fragment>
             <NavigationBar />
-            <TT />
+            {/* <TT /> */}
             <Container fluid>
                 <h1>Posts</h1>
-                {loading && <LinearProgress />}
+                <Backdrop open={loading}>
+                    <CircularProgress color="inherit" />
+                 </Backdrop>
                 <Row>
                     {post.map(data)}
                 </Row>
