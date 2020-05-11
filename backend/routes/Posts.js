@@ -25,10 +25,10 @@ router.get('/', (req, res) => {
 
 router.post("/full", function (req, res) {
   if (req.body.type === "All") {
-    var query = Post.find({});
+    var query = Post.find({}).sort({'dueDate': 'desc'});
   }
   else {
-    var query = Post.find({ postType: req.body.type });
+    var query = Post.find({ postType: req.body.type }).sort({'dueDate': 'desc'});
   }
   query.exec(function (err, result) {
     if (!err) {
