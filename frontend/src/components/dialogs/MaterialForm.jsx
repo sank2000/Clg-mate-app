@@ -87,6 +87,7 @@ function PostForm(props) {
                     {props.fileChooseState}
                   </Btn>
                 </label>
+                {props.fileChooseState === 'File Choosen' &&
                 <Btn
                   onClick={props.handleUpload}
                   size="medium"
@@ -98,6 +99,7 @@ function PostForm(props) {
                     className="uploadIcon" />
                 &nbsp; {props.progress}
                 </Btn>
+                }
               </div>
               {'Uploaded' === props.progress &&
                 <Btn style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Btn>
