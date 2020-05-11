@@ -19,7 +19,40 @@ router.get('/', (req, res) => {
 }
 );
 
-router.get("/full", function (req, res) {
+router.post('/search', (req, res) => {
+  if(req.body.search)
+  {
+    var query = Material.find({subCode : req.body.search}).sort({
+      'createdAt': 'desc'
+     });
+  }
+  else
+  {
+    var query = Material.find({}).sort({
+      'createdAt': 'desc'
+     });
+  }
+  query.exec(function (err, result) {
+    if (!err) {
+       if(result.length != 0)
+       {
+        res.send(result);
+       }
+       else
+       {
+         res.send([]);
+       }
+    }
+    else {
+      console.log(err);
+    }
+  })
+}
+);
+
+
+
+router.post("/full", function (req, res) {
   Material.find({}, function (err, result) {
     if (!err) {
       res.send(result);

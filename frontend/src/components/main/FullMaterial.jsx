@@ -16,11 +16,8 @@ function App() {
     const [post, setPost] = useState([]);
     const [loading, SetLoading] = useState(true);
     const [search, setSearch] = useState("");
+    const [found,setFound] = useState(true);
 
-    function handleSearch() {
-        console.log(search);
-    }
-     
     function handleCancel()
     {
         setSearch("");
@@ -32,7 +29,7 @@ function App() {
 
     useEffect(() => {
         // fetch("/work").then(res => console.log(res.json()));
-        axios.get("/materials/full")
+        axios.post("/materials/full")
             .then(function (response) {
                 setPost([...response.data]);
                 SetLoading(false);
@@ -61,6 +58,51 @@ function App() {
             </Col>
         );
     }
+
+    const getSearch = async () => {
+        let prms = new URLSearchParams({ search : search });
+        if(search)
+        {
+            const result = await axios.post("/materials/search", prms);
+            return result;
+        }
+        else
+        {
+            const result = await axios.post("/materials/full");
+            return result;
+        }
+    }
+ 
+    const handleSearch = async () => {
+        SetLoading(true);
+        const response = await getSearch();
+        if(response.data.length == 0)
+        {
+            setFound(false);
+        }
+        else{
+            setPost([...response.data]);
+            setFound(true);
+        }
+        SetLoading(false);
+
+    }
+    
+    function keyEntered(event) {
+        if (event.which == 13 || event.keyCode == 13) {
+            handleSearch();
+            return false;
+        }
+        return true;
+    }; 
+
+    function NoRecord()
+    {
+        return <Fragment>
+            <h1>No Record Found !!!</h1>
+        </Fragment>
+    }
+
     return (
         <Fragment>
             <NavigationBar />
@@ -70,10 +112,11 @@ function App() {
                     <Col >
                     <FormControl>
                         <OutlinedInput className="searchButton"
-                        placeholder ="search"
+                        placeholder ="sub code"
                         id="input-with-icon-adornment"
                         value={search}
                         onChange={SearchText}
+                        onKeyPress={keyEntered}
                         style={{ borderRadius: "2rem" }}
                         startAdornment={
                             <InputAdornment position="start">
@@ -96,9 +139,10 @@ function App() {
             </Container>
             <Container fluid>
                 {loading && <LinearProgress />}
-                <Row>
-                    {post.map(data)}
-                </Row>
+                {found ?
+                    <Row>
+                        {post.map(data)}
+                    </Row> : <NoRecord /> }
             </Container>
         </Fragment >
     )

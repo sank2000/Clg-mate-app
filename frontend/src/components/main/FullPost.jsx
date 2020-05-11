@@ -57,7 +57,7 @@ function App() {
     }
 
 
-    const getFilter = async (user) => {
+    const getFilter = async () => {
         let prms = new URLSearchParams({ type: type });
         const result = await axios.post("/posts/full", prms);
         return result;
