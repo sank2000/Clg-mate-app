@@ -14,12 +14,39 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import { KeyboardDatePicker } from "@material-ui/pickers";
 
+const subjects = [
+  {
+    code: 'SA0001',
+    name: 'Sample Subject 1',
+    shortName: 'SS1'
+  },
+  {
+    code: 'SA0002',
+    name: 'Sample Subject 2',
+    shortName: 'SS2'
+  },
+  {
+    code: 'GEN',
+    name: 'General',
+    shortName: 'GEN'
+  }
+]
+
+function renderSubjects(subject) {
+  return (
+    <MenuItem key={subject.code} value={subject.name}>{`${subject.code} - ${subject.name}`}</MenuItem>
+  );
+}
 
 function PostForm(props) {
-  const [type, setType] = useState("Other");
+  const [type, setType] = useState("");
+  const [subject, setSubject] = useState("");
   const [selectedDate, handleDateChange] = useState(new Date());
-  const handleChange = event => {
+  const handlePostTypeChange = event => {
     setType(event.target.value);
+  };
+  const handleSubjectChange = event => {
+    setSubject(event.target.value);
   };
   const [show, setShow] = useState(false);
 
@@ -52,19 +79,39 @@ function PostForm(props) {
                 name="title"
                 fullWidth
                 label="Title" />
-              <FormControl variant="outlined" style={applyMargin} fullWidth>
+              <FormControl required variant="outlined" style={applyMargin} size="small" fullWidth >
+                <InputLabel>
+                  Subject
+                  </InputLabel>
+                <Select
+                  name="subName"
+                  required
+                  value={subject}
+                  onChange={handleSubjectChange}
+                  label="Subject"
+                >
+                  <MenuItem disabled={true} value="">Select a Subject</MenuItem>
+                  {subjects.map(renderSubjects)}
+                </Select>
+              </FormControl>
+              <FormControl required variant="outlined" style={applyMargin} size="small" fullWidth >
                 <InputLabel>
                   Post Type
                   </InputLabel>
                 <Select
                   name="postType"
+                  required
                   value={type}
-                  onChange={handleChange}
+                  onChange={handlePostTypeChange}
                   label="Post Type"
                 >
-                  <MenuItem value={"Other"}>Other</MenuItem>
-                  <MenuItem value={"Notes"}>Notes</MenuItem>
+                  <MenuItem disabled={true} value="">Select a type</MenuItem>
                   <MenuItem value={"Assignment"}>Assignment</MenuItem>
+                  <MenuItem value={"Announcement"}>Announcement</MenuItem>
+                  <MenuItem value={"Home work"}>Home work</MenuItem>
+                  <MenuItem value={"Instruction"}>Instruction</MenuItem>
+                  <MenuItem value={"Test"}>Test</MenuItem>
+                  <MenuItem value={"Other"}>Other</MenuItem>
                 </Select>
               </FormControl>
               <TextField style={applyMargin}
@@ -75,7 +122,7 @@ function PostForm(props) {
                 fullWidth
                 multiline
                 label="Description" />
-              <TextField style={applyMargin}
+              {/* <TextField style={applyMargin}
                 variant="outlined"
                 required
                 type="text"
@@ -83,7 +130,7 @@ function PostForm(props) {
                 label="Subject"
                 className="halfWidth"
                 size="small"
-              />
+              /> */}
               <MuiPickersUtilsProvider utils={DateFnsUtils} >
                 <KeyboardDatePicker
                   size="small"
@@ -91,7 +138,7 @@ function PostForm(props) {
                   inputVariant="outlined"
                   name="dueDate"
                   label="Due Date"
-                  format="yyyy/MM/dd"
+                  format="dd-MMM-yyyy"
                   value={selectedDate}
                   onChange={date => handleDateChange(date)}
                   style={{ ...applyMargin, outline: "none" }}
@@ -116,7 +163,7 @@ function PostForm(props) {
                   size="medium"
                   variant="contained"
                   color="secondary"
-                  style={{ float: "right" }}>
+                  style={{ float: "right", marginRight: "-15px" }}>
                   <CloudUploadOutlinedIcon
                     fontSize="small"
                     className="uploadIcon" />

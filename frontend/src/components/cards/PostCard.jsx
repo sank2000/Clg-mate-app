@@ -7,7 +7,7 @@ import ViewMore from "../dialogs/details/PostDetails";
 
 function PostCard(props) {
   let due = {};
-  (new Date(props.dueDate).getDate() == new Date().getDate()) && (due = { color: 'red' })
+  (new Date(props.dueDate).getDate() === new Date().getDate()) && (due = { color: 'red' })
 
   return (
     <Card elevation={3} style={{ margin: "15px", borderRadius: "10px", padding: "3px" }}>

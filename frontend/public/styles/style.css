@@ -56,7 +56,7 @@ header {
 }
 
 .halfWidth {
-  width: 45%;
+  width: 50%;
 }
 
 .title {
@@ -120,27 +120,24 @@ hr {
 }
 
 
-.linkStyle
-{
+.linkStyle {
   text-decoration: none !important;
 }
 
-.fullPostHead
-{
+.fullPostHead {
   background-color: white;
   padding: 8px;
 
 }
 
-.filterSelect
-{ 
-    margin-top: 8px !important;
-    margin-bottom: 5px !important;
-    margin-right: 5px !important;
-    float: right;
+.filterSelect {
+  margin-top: 8px !important;
+  margin-bottom: 5px !important;
+  margin-right: 5px !important;
+  float: right;
 }
-.filterButton
-{
+
+.filterButton {
   margin-top: 8px !important;
   float: right;
 }
