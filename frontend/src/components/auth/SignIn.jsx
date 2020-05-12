@@ -10,10 +10,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { signin } from "./RouteAccess"
-import AuthApi from "./AuthApi";
 import { Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
@@ -23,6 +22,8 @@ import FormControl from "@material-ui/core/FormControl";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
+import { signin } from "./RouteAccess"
+import AuthApi from "./AuthApi";
 import Alert from '../messages/alerts/alert';
 
 function Copyright() {
@@ -146,6 +147,8 @@ function SignIn() {
             autoFocus
             onChange={handleChange}
           />
+
+
           <FormControl variant="outlined" fullWidth required={true} >
             <InputLabel htmlFor="outlined-adornment-password">
               Password
@@ -172,6 +175,8 @@ function SignIn() {
               labelWidth={70}
             />
           </FormControl>
+
+
           <Button
             type="submit"
             fullWidth

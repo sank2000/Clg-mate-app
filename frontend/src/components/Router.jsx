@@ -8,7 +8,7 @@ import App from "./main/App";
 import PageNotFound from "./messages/errors/404";
 import SomethingWrong from "./messages/errors/5xx";
 import SignUp from "./auth/NewSignUp";
-import SignIn from "./auth/SignIn";
+import SignIn from "./auth/NewSignIn";
 import { hasSigned } from "./auth/RouteAccess"
 import SuccessMessage from "./messages/SuccessMessage";
 import AuthApi from "./auth/AuthApi";
