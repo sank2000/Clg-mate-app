@@ -60,14 +60,14 @@ router.post("/full", function (req, res) {
 );
 
 router.post("/new", function (req, res) {
-  User.findById(req.session.user, "username", function (err, result) {
+  User.findById(req.session.user, "name", function (err, result) {
     if (err) {
       console.log(err);
     }
     else {
       const newPost = new Post({
         title: req.body.title,
-        author: result.username,
+        author: result.name,
         description: req.body.description,
         subName: req.body.subName,
         postType: req.body.postType,

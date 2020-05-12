@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -12,6 +12,7 @@ import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import { signout } from "../auth/RouteAccess";
 import AuthApi from "../auth/AuthApi";
 import HamburgerMenu from './HamburgerMenu';
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -69,9 +70,24 @@ const useStyles = makeStyles((theme) => ({
 export default function PrimarySearchAppBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [user,setUser] = React.useState("Profile");
 
   const isMenuOpen = Boolean(anchorEl);
 
+  useEffect(()=>
+  {
+        axios.get("/auth/user")
+          .then(function (response) {
+            setUser(response.data.user);
+          })
+          .catch(function (error) {
+              // handle error
+              console.log(error);
+              window.open("/oops", "_self");
+          });
+  },[]);
+
+  
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -97,11 +113,11 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={handleMenuClose}>{user}</MenuItem>
       <MenuItem onClick={logout}>Logout</MenuItem>
     </Menu>
   );
-
+   
   return (
     <div className={classes.grow}>
       <AppBar style={{ zIndex: "1000" }} position="fixed">

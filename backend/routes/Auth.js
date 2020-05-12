@@ -61,4 +61,17 @@ router.get("/signout", (req, res) => {
   });
 });
 
+router.get("/user",(req,res) =>
+{
+  User.findById(req.session.user, "name", function (err, result) 
+  {
+    if(!err)
+    {
+      res.json({
+        user : result.name
+      })
+    }
+  }  )
+})
+
 module.exports = router;
