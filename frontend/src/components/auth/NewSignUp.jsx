@@ -194,7 +194,7 @@ function SignUpForm(props) {
       </Grid>
       <Snackbar open={Aopen} autoHideDuration={6000} onClose={AhandleClose}>
               <Alert onClose={AhandleClose} severity="error">
-                Unable to create account...(try different ID)
+                Error creating account : Account already exists
               </Alert>
             </Snackbar>
     </form>);
