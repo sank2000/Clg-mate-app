@@ -5,10 +5,18 @@ const Schema = mongoose.Schema;
 mongoose.set('useCreateIndex', true);
 
 const User = new Schema({
-  username: {
+  unique_id : {
     type: String, required: true, unique: true
   },
-  password: { type: String, required: true }
+  name: {
+    type: String, required: true,
+  },
+  type : {
+    type: String, required: true,
+  },
+  password: { type: String, required: true },
+  email : { type: String, required: true },
+
 });
 
 const user = mongoose.model("loginDetails", User);

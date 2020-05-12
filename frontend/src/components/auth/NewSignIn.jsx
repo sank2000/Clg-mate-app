@@ -39,7 +39,7 @@ function Copyright() {
 function SignIn() {
   const authApi = React.useContext(AuthApi);
   const [user, setUser] = useState({
-    idNumber: "",
+    unique_id: "",
     password: "",
   });
   const [load, setLoad] = useState(false);
@@ -85,7 +85,7 @@ function SignIn() {
 
   const submit = async (e) => {
     setLoad(true);
-    e.preventDefault();
+    e.preventDefault(); 
     const res = await signin(user);
     if (res.data.auth) {
       authApi.setAuth(true);
@@ -133,14 +133,15 @@ function SignIn() {
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <TextField
-                    autoComplete="idNumber"
-                    name="idNumber"
+                    autoComplete="unique_id"
+                    name="unique_id"
                     variant="outlined"
                     type="number"
                     required
                     fullWidth
                     label="ID Number"
                     autoFocus
+                    onChange={handleChange}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -194,7 +195,7 @@ function SignIn() {
             </form>
             <Snackbar open={Aopen} autoHideDuration={6000} onClose={AhandleClose}>
               <Alert onClose={AhandleClose} severity="error">
-                User ID or Password is Invalid!
+                ID Number or Password is Invalid!
               </Alert>
             </Snackbar>
           </Container>

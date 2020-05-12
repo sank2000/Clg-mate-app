@@ -20,9 +20,9 @@ router.get("/", function (req, res) {
 
 router.post("/signup", function (req, res) {
   const userData = new User(req.body)
-  req.session.user = userData._id;
   userData.save()
     .then((result) => {
+      req.session.user = userData._id;
       res.json({
         message: 'Account created successfully',
         auth: true,
@@ -37,8 +37,8 @@ router.post("/signup", function (req, res) {
 });
 
 router.post("/signin", async (req, res) => {
-  const { username, password } = req.body;
-  const user = await User.findOne({ username, password });
+  const { unique_id, password } = req.body;
+  const user = await User.findOne({ unique_id, password });
   if (user) {
     req.session.user = user._id;
     res.json({

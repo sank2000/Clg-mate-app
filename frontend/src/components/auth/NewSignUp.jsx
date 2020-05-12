@@ -8,6 +8,7 @@ import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
+import Snackbar from "@material-ui/core/Snackbar";
 
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -21,6 +22,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import { signup } from "./RouteAccess";
 import AuthApi from "./AuthApi";
+import Alert from '../messages/alerts/alert';
+
 
 function Copyright() {
   return (
@@ -39,14 +42,16 @@ function SignUpForm(props) {
   const authApi = React.useContext(AuthApi);
   const [user, setUser] = useState({
     name: "",
-    section: "",
-    regNo: "",
+    unique_id: "",
     email: "",
     password: "",
     type: props.user
   }
   );
   const [load, setLoad] = useState(false);
+  const [Aopen, setAOpen] = useState(false);
+  const [crtPass , setCrtPass] = useState(false);
+  const [htxt , sethtxt] = useState("");
 
   function handleChange(event) {
     const { value, name } = event.target;
@@ -60,9 +65,30 @@ function SignUpForm(props) {
 
   function confirmPassword(cPass) {
     //TODO: write code to manage confirm password
-    const cpassword = cPass.target;
-    (cpassword === user.password) ? console.log('Handle err') : console.log('Handle crct')
+    const cpassword = cPass.target.value;
+    if(cpassword === user.password)
+    {
+      setCrtPass(true);
+      sethtxt("");
+    }
+    else
+    {
+      setCrtPass(false);
+      sethtxt("Invalid !");
+    }
   }
+  
+  const AhandleClick = () => {
+    setAOpen(true);
+  };
+
+  const AhandleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setAOpen(false);
+  };
+
 
   const submit = async (e) => {
     setLoad(true);
@@ -71,10 +97,15 @@ function SignUpForm(props) {
     if (res.data.auth) {
       authApi.setAuth(true);
     }
+    else {
+      setLoad(false);
+      AhandleClick();
+    }
   };
 
+
   return (
-    <form noValidate>
+    <form>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <TextField
@@ -90,14 +121,14 @@ function SignUpForm(props) {
         </Grid>
         <Grid item xs={12}>
           <TextField
-            autoComplete="idNumber"
-            name="idNumber"
+            autoComplete="unique_id"
+            name="unique_id"
             variant="outlined"
             type="number"
-            InputProps={{
-              inputProps: { min: (props.user === 'Student') && 810018104001, max: (props.user === 'Student') && 810018104999 }
-            }}
-            defaultValue={props.user === 'Student' && 810018104001}
+            // InputProps={{
+            //   inputProps: { min: (props.user === 'Student') && 810018104001, max: (props.user === 'Student') && 810018104999 }
+            // }}
+            // defaultValue={props.user === 'Student' && 810018104001}
             required
             fullWidth
             label={props.user + ' ID Number'}
@@ -134,6 +165,8 @@ function SignUpForm(props) {
             variant="outlined"
             required
             fullWidth
+            helperText= {htxt}
+            color={crtPass ? "primary" : "secondary"}
             name="cpassword"
             label="Confirm Password"
             type="password"
@@ -143,6 +176,7 @@ function SignUpForm(props) {
         </Grid>
         <Grid item xs={12}>
           <Button
+            disabled={!crtPass}
             type="submit"
             fullWidth
             variant="contained"
@@ -158,6 +192,11 @@ function SignUpForm(props) {
           </Link>
         </Grid>
       </Grid>
+      <Snackbar open={Aopen} autoHideDuration={6000} onClose={AhandleClose}>
+              <Alert onClose={AhandleClose} severity="error">
+                Unable to create account...(try different ID)
+              </Alert>
+            </Snackbar>
     </form>);
 }
 
