@@ -32,7 +32,7 @@ function App() {
                 console.log(error);
                 window.open("/oops", "_self");
             });
-    }, [])
+    })
 
     const handleChange = event => {
         setType(event.target.value);
@@ -78,7 +78,7 @@ function App() {
                 <Row>
                     <Col lg={9} xs={6}><h1 style={{ display: "inline" }}>Posts</h1></Col>
                     <Col >
-                    <FormControl variant='outlined' style={{ minWidth: 140 }} size="small" className="filterSelect" >
+                        <FormControl variant='outlined' style={{ minWidth: 140 }} size="small" className="filterSelect" >
                             <InputLabel>
                                 Post Type
                                 </InputLabel>

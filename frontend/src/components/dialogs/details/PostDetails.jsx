@@ -85,7 +85,7 @@ function CustomizedDialogs(props) {
             <span>{props.data.description}</span>
           </div>
           <hr />
-          <div  className="post-details">
+          <div className="post-details">
             <span className="posted-on">{props.data.postedOn}</span>
             <span className="posted-by" style={{ float: "right" }}> <PermIdentityOutlinedIcon /> {props.data.postedBy}</span>
           </div>
@@ -94,7 +94,7 @@ function CustomizedDialogs(props) {
           <Button onClick={handleClose} color="primary">
             OK
           </Button>
-          {props.data.url != "" &&
+          {props.data.url !== "" &&
             <Button color="primary" href={props.data.url}>
               Download Attachment
             </Button>
