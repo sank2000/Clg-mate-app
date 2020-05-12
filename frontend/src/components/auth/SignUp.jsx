@@ -54,7 +54,7 @@ const ContainerStyle =
   borderRadius: "1rem"
 }
 
-function SignIn() {
+function SignUp() {
   const authApi = React.useContext(AuthApi);
   const classes = useStyles();
   const [user, setUser] = useState(
@@ -129,7 +129,7 @@ function SignIn() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link to="/signin" variant="body2">
+              <Link to="/SignUp" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>
@@ -143,4 +143,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignUp;
