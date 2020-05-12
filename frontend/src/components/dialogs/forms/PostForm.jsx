@@ -122,15 +122,6 @@ function PostForm(props) {
                 fullWidth
                 multiline
                 label="Description" />
-              {/* <TextField style={applyMargin}
-                variant="outlined"
-                required
-                type="text"
-                name="subName"
-                label="Subject"
-                className="halfWidth"
-                size="small"
-              /> */}
               <MuiPickersUtilsProvider utils={DateFnsUtils} >
                 <KeyboardDatePicker
                   size="small"
@@ -140,6 +131,7 @@ function PostForm(props) {
                   label="Due Date"
                   format="dd-MMM-yyyy"
                   value={selectedDate}
+                  InputProps={{inputProps: { min: (new Date())} }}
                   onChange={date => handleDateChange(date)}
                   style={{ ...applyMargin, outline: "none" }}
                 />

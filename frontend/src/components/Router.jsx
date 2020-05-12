@@ -1,14 +1,16 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import App from "./main/App";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+import App from "./main/App";
 import PageNotFound from "./messages/errors/404";
 import SomethingWrong from "./messages/errors/5xx";
-import SignUp from "./auth/SignUp";
+import SignUp from "./auth/NewSignUp";
 import SignIn from "./auth/SignIn";
 import { hasSigned } from "./auth/RouteAccess"
 import SuccessMessage from "./messages/SuccessMessage";
-import "bootstrap/dist/css/bootstrap.min.css";
-import CircularProgress from '@material-ui/core/CircularProgress';
 import AuthApi from "./auth/AuthApi";
 import NewPost from "./dialogs/NewPost";
 import FullPost from "./main/FullPost";
