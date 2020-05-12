@@ -7,24 +7,32 @@ import ViewMore from "../dialogs/details/PostDetails";
 
 function PostCard(props) {
   let dueColor = {};
-  let tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  // console.log(tomorrow + ": tomorrow");
-  let today = new Date();
-  // console.log(today + ' : today');
-  let due = new Date(props.dueDate);
-  // fix this bug
 
-  if (due === today) {
-    console.log('due is today : ' + props.title);
-    dueColor.color = 'red';
-  } else if (due < today) {
-    console.log('due not today : ' + props.title);
-    dueColor.color = '#cc0000';
-  } else if (due === tomorrow) {
-    console.log('due is tomorrow : ' + props.title);
-    dueColor.color = 'green';
+
+  let DaTomorrow = new Date();
+  DaTomorrow.setDate(DaTomorrow.getDate() + 2);
+  DaTomorrow.setHours(0,0,0,0);
+
+  let today = new Date();
+  today.setHours(0,0,0,0);
+
+
+  let due = new Date(props.dueDate);
+
+
+
+  if (due < today) {
+    dueColor = { color: '#ff9999' }
   }
+  if(due > today && due < DaTomorrow)
+  {
+    dueColor = { color: 'blue' }
+  }
+  else if (due.getDate() == today.getDate() && due.getMonth() == today.getMonth() && due.getFullYear == today.getFullYear) 
+  {
+    dueColor = { color: 'red' }
+  }
+
 
   return (
     <Card elevation={3} style={{ margin: "15px", borderRadius: "10px", padding: "3px" }}>
