@@ -32,9 +32,11 @@ function SignUp() {
   const authApi = React.useContext(AuthApi);
   const [user, setUser] = useState({
     name: "",
+    section: "",
     regNo: "",
     email: "",
     password: "",
+    type: ""
   }
   );
   const [load, setLoad] = useState(false);
@@ -178,7 +180,7 @@ function SignUp() {
                   </Button>
                 </Grid>
                 <Grid item xs={12}>
-                  <Link href="#" variant="body2">
+                  <Link href="/SignIn" variant="body2">
                     Already have an account? Sign in
                   </Link>
                 </Grid>
