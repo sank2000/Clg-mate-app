@@ -57,7 +57,7 @@ function App() {
     }
 
 
-    const getFilter = async (user) => {
+    const getFilter = async () => {
         let prms = new URLSearchParams({ type: type });
         const result = await axios.post("/posts/full", prms);
         return result;
@@ -74,31 +74,35 @@ function App() {
     return (
         <Fragment>
             <NavigationBar />
-            <div className="fullPostHead">
-                <h1 style={{ display: "inline" }}>Posts</h1>
-                <Button className="filterButton"
-                    variant="contained"
-                    color="primary"
-                    startIcon={<FilterListIcon />}
-                    onClick={handleFilter}
-                >Apply Filter</Button>
-                <FormControl variant='outlined' style={{ minWidth: 140 }} size="small" className="filterSelect" >
-                    <InputLabel>
-                        Post Type
-                        </InputLabel>
-                    <Select
-                        name="postType"
-                        value={type}
-                        onChange={handleChange}
-                        label="Post Type"
-                    >
-                        <MenuItem value={"All"}>All</MenuItem>
-                        <MenuItem value={"Other"}>Other</MenuItem>
-                        <MenuItem value={"Notes"}>Notes</MenuItem>
-                        <MenuItem value={"Assignment"}>Assignment</MenuItem>
-                    </Select>
-                </FormControl>
-            </div>
+            <Container fluid className="fullPostHead">
+                <Row>
+                    <Col lg={9} xs={6}><h1 style={{ display: "inline" }}>Posts</h1></Col>
+                    <Col >
+                    <FormControl variant='outlined' style={{ minWidth: 140 }} size="small" className="filterSelect" >
+                            <InputLabel>
+                                Post Type
+                                </InputLabel>
+                            <Select
+                                name="postType"
+                                value={type}
+                                onChange={handleChange}
+                                label="Post Type"
+                            >
+                                <MenuItem value={"All"}>All</MenuItem>
+                                <MenuItem value={"Other"}>Other</MenuItem>
+                                <MenuItem value={"Notes"}>Notes</MenuItem>
+                                <MenuItem value={"Assignment"}>Assignment</MenuItem>
+                            </Select>
+                        </FormControl>
+                        <Button className="filterButton"
+                            variant="contained"
+                            color="primary"
+                            startIcon={<FilterListIcon />}
+                            onClick={handleFilter}
+                        >Apply Filter</Button>
+                    </Col>
+                </Row>
+            </Container>
             <Container fluid>
                 {loading && <LinearProgress />}
                 <Row>

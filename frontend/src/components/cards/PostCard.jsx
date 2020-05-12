@@ -6,9 +6,13 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 import ViewMore from "../dialogs/details/PostDetails";
 
 function PostCard(props) {
-  let due = {};
-  (new Date(props.dueDate).getDate() === new Date().getDate()) && (due = { color: 'red' })
-
+  let due = { color: 'blue' };
+  if (new Date(props.dueDate).getDate() < new Date().getDate()) {
+    due = { color: 'red' }
+  }
+  else if (new Date(props.dueDate).getDate() == new Date().getDate()) {
+    due = { color: 'green' }
+  }
   return (
     <Card elevation={3} style={{ margin: "15px", borderRadius: "10px", padding: "3px" }}>
       <CardContent>
