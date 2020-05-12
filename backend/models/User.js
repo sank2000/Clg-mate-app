@@ -6,7 +6,7 @@ mongoose.set('useCreateIndex', true);
 
 const User = new Schema({
   unique_id : {
-    type: String, required: true, unique: true
+    type: String, required: true, index : {unique: true}
   },
   name: {
     type: String, required: true,
