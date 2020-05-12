@@ -73,7 +73,7 @@ function SignUp() {
           justifyContent: "center",
           textAlign: "center",
           alignItems: "center",
-          height: "96vh",
+          height: "100vh",
           background: "#fff"
         }}
       >
