@@ -91,12 +91,14 @@ export default function SwipeableTemporaryDrawer() {
             <ListItemText primary="New Material" />
           </ListItem>
         </Link>
+        <Link to="/expiredpost" className="linkStyle">
         <ListItem button>
           <ListItemIcon>
             <ArchiveOutlinedIcon />
           </ListItemIcon>
           <ListItemText primary="Expired Posts" />
         </ListItem>
+        </Link>
       </List>
       <Divider />
       <List>
