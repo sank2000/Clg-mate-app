@@ -16,7 +16,7 @@ import HamburgerMenu from './HamburgerMenu';
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
-    height: 60
+    height: 65
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -80,7 +80,6 @@ export default function PrimarySearchAppBar() {
     setAnchorEl(null);
   };
 
-
   const authApi = React.useContext(AuthApi);
   const logout = async () => {
     await signout();
@@ -111,19 +110,6 @@ export default function PrimarySearchAppBar() {
           <Typography variant="h6" noWrap>
             Collegemate
           </Typography>
-          {/* <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div> */}
           <div className={classes.grow} />
           <IconButton
             edge="end"

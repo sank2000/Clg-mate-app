@@ -15,7 +15,7 @@ function SomethingWrong() {
     <Fragment>
       <div style={error5xx}>
         <div>
-          <ClearIcon style={{ fontSize: "5rem", color: "red" }} />
+          <ClearIcon style={{ fontSize: "5rem", color: '#ff1a1a' }} />
           <h1>Something went wrong!</h1>
           <p style={{ display: "block" }}>Something went wrong while performing the operation, report the bug so that we can fix it.</p>
         </div>

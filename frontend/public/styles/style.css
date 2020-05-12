@@ -20,6 +20,8 @@ button:focus {
 header {
   padding: .1em;
   /* background: url("./../images/navbar-bg.png"); */
+  background: #fff !important;
+  color: dodgerblue !important;
   z-index: "1000"
 }
 

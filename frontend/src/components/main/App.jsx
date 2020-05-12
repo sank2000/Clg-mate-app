@@ -14,7 +14,6 @@ import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import NavigationBar from "../navigation/AppBar";
-// import TT from "./Temp"; 
 import PostCard from "../cards/PostCard";
 import MaterialCard from "../cards/MaterialCard";
 
@@ -31,7 +30,6 @@ function App() {
 				setLoading(false);
 			})
 			.catch(function (error) {
-				// handle error
 				console.log(error);
 				window.open("/oops", "_self");
 			});
@@ -40,7 +38,6 @@ function App() {
 				setMaterial([...response.data]);
 			})
 			.catch(function (error) {
-				// handle error
 				console.log(error);
 				window.open("/oops", "_self");
 			});
@@ -88,7 +85,6 @@ function App() {
 	return (
 		<Fragment>
 			<NavigationBar />
-			{/* <TT /> */}
 			<Container fluid>
 				<h1>Posts</h1>
 				<Backdrop style={{ zIndex: "20000" }} open={loading}>
@@ -99,8 +95,8 @@ function App() {
 				</Row>
 				<Link to="/fullpost" className="linkStyle">
 					<Button variant="contained" color="primary" style={{ marginLeft: "50px" }}>
-						show more
-                </Button>
+						Show more
+          </Button>
 				</Link>
 				<hr></hr>
 				<h1>Materials</h1>
@@ -109,8 +105,8 @@ function App() {
 				</Row>
 				<Link to="/fullmaterial" className="linkStyle">
 					<Button variant="contained" color="primary" style={{ marginLeft: "50px" }}>
-						show more
-                </Button>
+						Show more
+         </Button>
 				</Link>
 				{click && <Fragment>
 					<Link to="/posts/new">

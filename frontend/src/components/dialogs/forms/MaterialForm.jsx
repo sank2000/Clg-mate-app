@@ -29,7 +29,7 @@ function PostForm(props) {
       <Modal show={show} onHide={handleClose} centered size="lg" dialogClassName="border-radius-1" >
         <Modal.Header> {/* Remove this default close button and add custom one */}
           <h1 className="modal-title w-100 text-center">New Material</h1>
-          <IconButton variant="outlined" onClick={handleClose} style={{ outline: "none" }}><CloseOutlinedIcon style={{ color: "#e53935" }} /></IconButton>
+          <IconButton variant="outlined" onClick={handleClose} style={{ outline: "none" }}><CloseOutlinedIcon style={{ color: '#ff1a1a' }} /></IconButton>
         </Modal.Header>
         <Modal.Body>
           <div className="uploadForm">

@@ -24,7 +24,7 @@ function PostCard(props) {
     dueColor = { color: '#3399ff' }
   }
   else if (due.getDate() === today.getDate() && due.getMonth() === today.getMonth() && due.getFullYear === today.getFullYear) {
-    dueColor = { color: 'red' }
+    dueColor = { color: '#ff1a1a' }
   }
 
   return (

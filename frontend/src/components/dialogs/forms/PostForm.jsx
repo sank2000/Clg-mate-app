@@ -68,7 +68,7 @@ function PostForm(props) {
       <Modal show={show} onHide={handleClose} centered size="lg" dialogClassName="border-radius-1" >
         <Modal.Header> {/* Remove this default close button and add custom one */}
           <h1 className="modal-title w-100 text-center">New Post</h1>
-          <IconButton variant="outlined" onClick={handleClose} style={{ outline: "none" }}><CloseOutlinedIcon style={{ color: "#e53935" }} /></IconButton>
+          <IconButton variant="outlined" onClick={handleClose} style={{ outline: "none" }}><CloseOutlinedIcon style={{ color: '#ff1a1a' }} /></IconButton>
         </Modal.Header>
         <Modal.Body>
           <div className="uploadForm">
@@ -131,7 +131,7 @@ function PostForm(props) {
                   label="Due Date"
                   format="dd-MMM-yyyy"
                   value={selectedDate}
-                  InputProps={{inputProps: { min: (new Date())} }}
+                  InputProps={{ inputProps: { min: (new Date()) } }}
                   onChange={date => handleDateChange(date)}
                   style={{ ...applyMargin, outline: "none" }}
                 />
