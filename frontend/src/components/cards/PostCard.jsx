@@ -6,18 +6,31 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 import ViewMore from "../dialogs/details/PostDetails";
 
 function PostCard(props) {
-  let due = { color: 'blue' };
-  if (new Date(props.dueDate).getDate() < new Date().getDate()) {
-    due = { color: 'red' }
+  let dueColor = {};
+  let tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  // console.log(tomorrow + ": tomorrow");
+  let today = new Date();
+  // console.log(today + ' : today');
+  let due = new Date(props.dueDate);
+  // fix this bug
+
+  if (due === today) {
+    console.log('due is today : ' + props.title);
+    dueColor.color = 'red';
+  } else if (due < today) {
+    console.log('due not today : ' + props.title);
+    dueColor.color = '#cc0000';
+  } else if (due === tomorrow) {
+    console.log('due is tomorrow : ' + props.title);
+    dueColor.color = 'green';
   }
-  else if (new Date(props.dueDate).getDate() == new Date().getDate()) {
-    due = { color: 'green' }
-  }
+
   return (
     <Card elevation={3} style={{ margin: "15px", borderRadius: "10px", padding: "3px" }}>
       <CardContent>
         <div className="top">
-          <span className="due-date" style={due}>
+          <span className="due-date" style={dueColor}>
             <ScheduleIcon fontSize="small" className="due-icon" /> {props.dueDate}
           </span>
           <span className="post-type">

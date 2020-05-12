@@ -30,7 +30,7 @@ const subjects = [
     name: 'General',
     shortName: 'GEN'
   }
-]
+];
 
 function renderSubjects(subject) {
   return (
