@@ -24,12 +24,18 @@ function App() {
 	const [material, setMaterial] = useState([]);
 	const [click, setClick] = useState(false);
 	const [loading, setLoading] = useState(true);
+	const [postEmty,setPostEmty] = useState(false);
+	const [materialEmty,setMaterialEmty] = useState(false);
 
 	useEffect(() => {
 		axios.get("/posts")
 			.then(function (response) {
 				setPost([...response.data]);
 				setLoading(false);
+				if(response.data.length != 0)
+				{
+					setPostEmty(true);
+				}
 			})
 			.catch(function (error) {
 				console.log(error);
@@ -38,12 +44,16 @@ function App() {
 		axios.get("/materials")
 			.then(function (response) {
 				setMaterial([...response.data]);
+				if(response.data.length != 0)
+				{
+					setMaterialEmty( true);
+				}
 			})
 			.catch(function (error) {
 				console.log(error);
 				window.open("/oops", "_self");
 			});
-	})
+	},[])
 
 	function data(post, ind) {
 		return (
@@ -86,6 +96,13 @@ function App() {
 		setClick(!click);
 	}
 
+	function Empt(props)
+	{
+		return <Fragment>
+           <h1>Your {props.type} will  appear here......</h1>
+		</Fragment>
+	}
+
 	return (
 		<Fragment>
 			<NavigationBar />
@@ -94,36 +111,40 @@ function App() {
 				<Backdrop style={{ zIndex: "20000" }} open={loading}>
 					<CircularProgress style={{ zIndex: "50000" }} color="auto" />
 				</Backdrop>
-				<Grid style={{ paddingTop: '1rem', paddingBottom: '1rem' }} container spacing={3}>
-					{post.map(data)}
-				</Grid>
-				<div style={{
-					display: 'flex',
-					justifyContent: 'center',
-					justifyItems: 'center'
-				}}>
-					<Link to="/fullpost" className="linkStyle" >
-						<Button variant="contained" color="primary">
-							Show more
-          </Button>
-					</Link>
-				</div>
+				{postEmty ? <Fragment>
+					<Grid style={{ paddingTop: '1rem', paddingBottom: '1rem' }} container spacing={3}>
+						{post.map(data)}
+					</Grid>
+					<div style={{
+						display: 'flex',
+						justifyContent: 'center',
+						justifyItems: 'center'
+					}}>
+						<Link to="/fullpost" className="linkStyle" >
+							<Button variant="contained" color="primary">
+								Show more
+							</Button>
+						</Link>
+					</div>
 				<hr />
+				</Fragment> : <Empt type="Posts" /> }
 				<Typography component="h1" variant='h3' align='center'>Materials</Typography>
-				<Grid style={{ paddingTop: '1rem', paddingBottom: '1rem' }} container spacing={3}>
-					{material.map(mat)}
-				</Grid>
-				<div style={{
-					display: 'flex',
-					justifyContent: 'center',
-					justifyItems: 'center'
-				}}>
-					<Link to="/fullmaterial" className="linkStyle">
-						<Button variant="contained" color="primary">
-							Show more
-         </Button>
-					</Link>
-				</div>
+				{materialEmty ?<Fragment>
+						<Grid style={{ paddingTop: '1rem', paddingBottom: '1rem' }} container spacing={3}>
+							{material.map(mat)}
+						</Grid>
+						<div style={{
+							display: 'flex',
+							justifyContent: 'center',
+							justifyItems: 'center'
+						}}>
+							<Link to="/fullmaterial" className="linkStyle">
+								<Button variant="contained" color="primary">
+									Show more
+				                </Button>
+							</Link>
+						</div>
+				</Fragment> : <Empt type="Materials" />}
 				{click && <Fragment>
 					<Link to="/posts/new">
 						<Tooltip title="New Post" placement="left">
