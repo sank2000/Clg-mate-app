@@ -73,9 +73,9 @@ function CustomizedDialogs(props) {
         </DialogTitle>
         <DialogContent dividers>
           <div className="main-details">
-            <span className="type">{props.data.subName}</span>
+            <span className="sub">{props.data.subName}</span>
             <span className="type" style={{ float: "right" }}>
-              Code: {props.data.subCode}
+              {props.data.materialType}
             </span>
           </div>
           <hr />

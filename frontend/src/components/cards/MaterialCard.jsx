@@ -2,29 +2,35 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
 import ShowDetails from "../dialogs/details/MaterialDetails";
 
-function PostCard(props) {
+function MaterialCard(props) {
   return (
     <Card elevation={3} style={{ margin: "15px", borderRadius: "10px", padding: "3px" }}>
       <CardContent>
         <div className="top">
+          <span className="due-date">
+            {props.subName}
+          </span>
           <span className="post-type">
-            {props.subCode}
+            {props.materialType}
           </span>
         </div>
         <h2 className="post-title">
           {props.title}
         </h2>
-        <div className="subject">
-          {props.author}
-        </div>
       </CardContent>
       <CardActions>
         <ShowDetails data={props} />
+        <Button color="primary" onClick={() => {
+          window.open(props.url, "_blank");
+        }}>
+          Download
+        </Button>
       </CardActions>
-    </Card>
+    </Card >
   );
 }
 
-export default PostCard;
+export default MaterialCard;
