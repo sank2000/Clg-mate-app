@@ -6,26 +6,21 @@ import Schedule from "./Schedule";
 import NavigationBar from '../navigation/AppBar';
 
 function head(val) {
-  return (
-    <th>
-      {val.start}-{val.end}
-    </th>
-  );
+  return <th> {val[0]}</th>;
 }
 
-function bdy(val) {
+function bdy(val, ind) {
   return (
     <Fragment>
       <tr>
-        <td>{val[0]}</td>
-        <td>{val[1]}</td>
-        <td>{val[2]}</td>
-        <td>{val[3]}</td>
-        <td>{val[4]}</td>
-        <td>{val[5]}</td>
-        <td>{val[6]}</td>
-        <td>{val[7]}</td>
-        <td>{val[8]}</td>
+        <th>
+          {time[ind].start}-{time[ind].end}
+        </th>
+        <td>{table[0][ind + 1]}</td>
+        <td>{table[1][ind + 1]}</td>
+        <td>{table[2][ind + 1]}</td>
+        <td>{table[3][ind + 1]}</td>
+        <td>{table[4][ind + 1]}</td>
       </tr>
     </Fragment>
   );
@@ -40,10 +35,10 @@ export default function App() {
         <thead>
           <tr>
             <th>#</th>
-            {time.map(head)}
+            {table.map(head)}
           </tr>
         </thead>
-        <tbody>{table.map(bdy)}</tbody>
+        <tbody>{time.map(bdy)}</tbody>
       </Table>
     </>
   );
