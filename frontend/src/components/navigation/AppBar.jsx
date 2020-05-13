@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -7,12 +7,14 @@ import Typography from '@material-ui/core/Typography';
 // import InputBase from '@material-ui/core/InputBase';  //for search
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 // import SearchIcon from '@material-ui/icons/Search';  //for search
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 import { signout } from "../auth/RouteAccess";
 import AuthApi from "../auth/AuthApi";
 import HamburgerMenu from './HamburgerMenu';
 import axios from "axios";
+import { ListItemIcon } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -70,24 +72,23 @@ const useStyles = makeStyles((theme) => ({
 export default function PrimarySearchAppBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [user,setUser] = React.useState("Profile");
+  const [user, setUser] = React.useState("Profile");
 
   const isMenuOpen = Boolean(anchorEl);
 
-  useEffect(()=>
-  {
-        axios.get("/auth/user")
-          .then(function (response) {
-            setUser(response.data.user);
-          })
-          .catch(function (error) {
-              // handle error
-              console.log(error);
-              window.open("/oops", "_self");
-          });
-  },[]);
+  useEffect(() => {
+    axios.get("/auth/user")
+      .then(function (response) {
+        setUser(response.data.user);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+        window.open("/oops", "_self");
+      });
+  }, []);
 
-  
+
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -114,10 +115,10 @@ export default function PrimarySearchAppBar() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>{user}</MenuItem>
-      <MenuItem onClick={logout}>Logout</MenuItem>
+      <MenuItem onClick={logout}> <ListItemIcon> <ExitToAppOutlinedIcon /> </ListItemIcon> Logout</MenuItem>
     </Menu>
   );
-   
+
   return (
     <div className={classes.grow}>
       <AppBar style={{ zIndex: "1000" }} position="fixed">

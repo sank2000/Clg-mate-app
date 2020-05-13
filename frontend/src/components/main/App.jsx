@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import DateFormat from 'dateformat';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import CancelIcon from '@material-ui/icons/Cancel';
+import ClearIcon from '@material-ui/icons/Clear';
 import PostAddOutlinedIcon from "@material-ui/icons/PostAddOutlined";
 import LibraryAddOutlinedIcon from "@material-ui/icons/LibraryAddOutlined";
 import Tooltip from '@material-ui/core/Tooltip';
@@ -125,22 +125,22 @@ function App() {
 				{click && <Fragment>
 					<Link to="/posts/new">
 						<Tooltip title="New Post" placement="left">
-							<Fab elevation={3} onClick={handleClick} style={{ backgroundColor: 'white !important', color: 'dodgerblue !important', position: "fixed", bottom: "12vh", right: "3vw" }} aria-label="add">
-								<PostAddOutlinedIcon />
+							<Fab elevation={3} onClick={handleClick} style={{ position: "fixed", bottom: "12vh", right: "3vw" }} aria-label="add">
+								<PostAddOutlinedIcon style={{ color: 'dodgerblue' }} />
 							</Fab>
 						</Tooltip>
 					</Link>
 
 					<Link to="/materials/new">
 						<Tooltip title="New Material" placement="left">
-							<Fab elevation={3} onClick={handleClick} style={{ backgroundColor: 'white !important', color: 'dodgerblue !important', position: "fixed", bottom: "21vh", right: "3vw" }} aria-label="add">
-								<LibraryAddOutlinedIcon />
+							<Fab elevation={3} onClick={handleClick} style={{ position: "fixed", bottom: "21vh", right: "3vw" }} aria-label="add">
+								<LibraryAddOutlinedIcon style={{ color: 'dodgerblue' }} />
 							</Fab>
 						</Tooltip>
 					</Link>
 				</Fragment>}
-				<Fab elevation={3} onClick={handleClick} style={{ backgroundColor: 'white !important', color: 'dodgerblue !important', position: "fixed", bottom: "3vh", right: "3vw" }} aria-label="add">
-					{click ? <CancelIcon /> : <AddIcon />}
+				<Fab elevation={3} onClick={handleClick} style={{ position: "fixed", bottom: "3vh", right: "3vw" }} aria-label="add">
+					{click ? <ClearIcon style={{ color: 'dodgerblue' }} /> : <AddIcon style={{ color: 'dodgerblue' }} />}
 				</Fab>
 			</Container >
 		</Fragment >
