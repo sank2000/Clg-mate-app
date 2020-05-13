@@ -69,6 +69,7 @@ function App() {
 					title={post.title}
 					author={post.author}
 					description={post.description}
+					materialType={post.materialType}
 					subName={post.subName}
 					subCode={post.subCode}
 					file={post.file}

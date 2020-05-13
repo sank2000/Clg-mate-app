@@ -21,7 +21,7 @@ class NewPost extends Component {
     const files = e.target.files[0];
     this.setState(() => ({ files }));
     let progress = 'Upload';
-    let fileChooseState = 'File Choosen';
+    let fileChooseState = 'File Chosen';
     this.setState(() => ({ progress }));
     this.setState(() => ({ fileChooseState }));
   }
