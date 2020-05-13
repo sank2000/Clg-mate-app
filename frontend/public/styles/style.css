@@ -109,7 +109,8 @@ header {
   color: #555;
 }
 
-.post-type {
+.post-type,
+.material-type {
   float: right;
 }
 
@@ -117,7 +118,8 @@ header {
   vertical-align: text-bottom;
 }
 
-.post-title {
+.post-title,
+.material-title {
   margin: .7rem 0px;
   color: #000;
   font-size: 2rem;
