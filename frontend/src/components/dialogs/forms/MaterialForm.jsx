@@ -149,7 +149,8 @@ function PostForm(props) {
                 </Btn>
               }
             </div>
-            {'Uploaded' === props.progress &&
+            {
+              'Uploaded' === props.progress &&
               <Btn style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Btn>
             }
           </form>

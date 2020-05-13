@@ -29,7 +29,9 @@ class NewPost extends Component {
   handleUpload = () => {
     console.log('Upload starting');
     const { files } = this.state;
-    const storageRef = firebase.storage().ref('files/' + files.name);
+    let storageRef = firebase.storage().ref('materials/' + files.name)
+    this.props.post &&
+      (storageRef = firebase.storage().ref('posts/' + files.name))
     const uploadTask = storageRef.put(files);
 
     const uploadProgress = (snapshot) => {
@@ -39,12 +41,15 @@ class NewPost extends Component {
     }
 
     const uploadComplete = () => {
-      firebase.storage().ref('files').child(files.name).getDownloadURL()
-        .then(url => {
-          this.setState(() => ({ url }));
-          let progress = 'Uploaded'
-          this.setState(() => ({ progress }));
-        })
+      let urlObtainer;
+      this.props.post ?
+        urlObtainer = firebase.storage().ref('posts').child(files.name).getDownloadURL() :
+        urlObtainer = firebase.storage().ref('materials').child(files.name).getDownloadURL();
+      urlObtainer.then(url => {
+        this.setState(() => ({ url }));
+        let progress = 'Uploaded'
+        this.setState(() => ({ progress }));
+      })
         .catch(e => {
           console.log('Error: ' + e);
         });
@@ -59,22 +64,23 @@ class NewPost extends Component {
   render() {
     return (
       <div className="app">
-        {this.props.post ?
-          <PostForm
-            url={this.state.url}
-            handleChange={this.handleChange}
-            handleUpload={this.handleUpload}
-            progress={this.state.progress}
-            fileChooseState={this.state.fileChooseState}
-          />
-          :
-          <MaterialForm
-            url={this.state.url}
-            handleChange={this.handleChange}
-            handleUpload={this.handleUpload}
-            progress={this.state.progress}
-            fileChooseState={this.state.fileChooseState}
-          />
+        {
+          this.props.post ?
+            <PostForm
+              url={this.state.url}
+              handleChange={this.handleChange}
+              handleUpload={this.handleUpload}
+              progress={this.state.progress}
+              fileChooseState={this.state.fileChooseState}
+            />
+            :
+            <MaterialForm
+              url={this.state.url}
+              handleChange={this.handleChange}
+              handleUpload={this.handleUpload}
+              progress={this.state.progress}
+              fileChooseState={this.state.fileChooseState}
+            />
         }
       </div>
     );
