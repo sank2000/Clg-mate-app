@@ -7,8 +7,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import App from "./main/App";
 import PageNotFound from "./messages/errors/404";
 import SomethingWrong from "./messages/errors/5xx";
-import SignUp from "./auth/NewSignUp";
-import SignIn from "./auth/NewSignIn";
+import SignUp from "./auth/SignUp";
+import SignIn from "./auth/SignIn";
 import { hasSigned } from "./auth/RouteAccess"
 import SuccessMessage from "./messages/SuccessMessage";
 import AuthApi from "./auth/AuthApi";
@@ -70,15 +70,12 @@ function MainApp() {
     );
   }
 
-
-
   return (
     <Fragment>
       {load ? <Loading /> : <Main />}
     </Fragment>
   );
 }
-
 
 const RouteRegistration = ({ component: Component, ...rest }) => {
   const AthApi = React.useContext(AuthApi);
