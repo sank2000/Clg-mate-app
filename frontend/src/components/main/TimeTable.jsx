@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Table } from "react-bootstrap";
 import { time, table } from "./Table";
 import Schedule from "./Schedule";
+import NavigationBar from '../navigation/AppBar';
 
 function head(val) {
   return (
@@ -32,7 +33,8 @@ function bdy(val) {
 
 export default function App() {
   return (
-    <div>
+    <>
+      <NavigationBar />
       <Schedule />
       <Table striped bordered hover variant="dark" size="sm">
         <thead>
@@ -43,6 +45,6 @@ export default function App() {
         </thead>
         <tbody>{table.map(bdy)}</tbody>
       </Table>
-    </div>
+    </>
   );
 }
