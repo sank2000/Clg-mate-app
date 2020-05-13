@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-// import LockOpenOutlinedIcon from '@material-ui/icons/LockOpenOutlined';
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -50,8 +49,8 @@ function SignUpForm(props) {
   );
   const [load, setLoad] = useState(false);
   const [Aopen, setAOpen] = useState(false);
-  const [crtPass , setCrtPass] = useState(false);
-  const [htxt , sethtxt] = useState("");
+  const [crtPass, setCrtPass] = useState(false);
+  const [helperText, setHelperText] = useState("");
 
   function handleChange(event) {
     const { value, name } = event.target;
@@ -66,18 +65,16 @@ function SignUpForm(props) {
   function confirmPassword(cPass) {
     //TODO: write code to manage confirm password
     const cpassword = cPass.target.value;
-    if(cpassword === user.password)
-    {
+    if (cpassword === user.password) {
       setCrtPass(true);
-      sethtxt("");
+      setHelperText("");
     }
-    else
-    {
+    else {
       setCrtPass(false);
-      sethtxt("Invalid !");
+      setHelperText("Invalid !");
     }
   }
-  
+
   const AhandleClick = () => {
     setAOpen(true);
   };
@@ -165,7 +162,7 @@ function SignUpForm(props) {
             variant="outlined"
             required
             fullWidth
-            helperText= {htxt}
+            helperText={helperText}
             color={crtPass ? "primary" : "secondary"}
             name="cpassword"
             label="Confirm Password"
@@ -193,11 +190,12 @@ function SignUpForm(props) {
         </Grid>
       </Grid>
       <Snackbar open={Aopen} autoHideDuration={6000} onClose={AhandleClose}>
-              <Alert onClose={AhandleClose} severity="error">
-                Error creating account : Account already exists
+        <Alert onClose={AhandleClose} severity="error">
+          Error creating account : Account already exists
               </Alert>
-            </Snackbar>
-    </form>);
+      </Snackbar>
+    </form>
+  );
 }
 
 function TabPanel(props) {

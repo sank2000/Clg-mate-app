@@ -94,29 +94,33 @@ function App() {
 				<Row>
 					{post.map(data)}
 				</Row>
-				<Link to="/fullpost" className="linkStyle" style={{
+				<div style={{
 					display: 'flex',
 					justifyContent: 'center',
 					justifyItems: 'center'
 				}}>
-					<Button variant="contained" color="primary">
-						Show more
+					<Link to="/fullpost" className="linkStyle" >
+						<Button variant="contained" color="primary">
+							Show more
           </Button>
-				</Link>
-				<hr></hr>
+					</Link>
+				</div>
+				<hr />
 				<Typography component="h1" variant='h3' align='center'>Materials</Typography>
 				<Row>
 					{material.map(mat)}
 				</Row>
-				<Link to="/fullmaterial" className="linkStyle" style={{
+				<div style={{
 					display: 'flex',
 					justifyContent: 'center',
 					justifyItems: 'center'
 				}}>
-					<Button variant="contained" color="primary">
-						Show more
+					<Link to="/fullmaterial" className="linkStyle">
+						<Button variant="contained" color="primary">
+							Show more
          </Button>
-				</Link>
+					</Link>
+				</div>
 				{click && <Fragment>
 					<Link to="/posts/new">
 						<Tooltip title="New Post" placement="left">
