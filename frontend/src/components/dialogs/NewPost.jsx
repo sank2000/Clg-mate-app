@@ -56,7 +56,7 @@ class NewPost extends Component {
     }, () => uploadComplete());
   }
 
-  render(props) {
+  render() {
     return (
       <div className="app">
         {this.props.post ?

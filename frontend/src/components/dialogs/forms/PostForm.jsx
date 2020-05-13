@@ -13,24 +13,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import { KeyboardDatePicker } from "@material-ui/pickers";
+import Grid from '@material-ui/core/Grid';
 
-const subjects = [
-  {
-    code: 'SA0001',
-    name: 'Sample Subject 1',
-    shortName: 'SS1'
-  },
-  {
-    code: 'SA0002',
-    name: 'Sample Subject 2',
-    shortName: 'SS2'
-  },
-  {
-    code: 'GEN',
-    name: 'General',
-    shortName: 'GEN'
-  }
-];
+import subjects from '../../../constants/subjects'
 
 function renderSubjects(subject) {
   return (
@@ -66,7 +51,7 @@ function PostForm(props) {
   return (
     <>
       <Modal show={show} onHide={handleClose} centered size="lg" dialogClassName="border-radius-1" >
-        <Modal.Header> {/* Remove this default close button and add custom one */}
+        <Modal.Header>
           <h1 className="modal-title w-100 text-center">New Post</h1>
           <IconButton variant="outlined" onClick={handleClose} style={{ outline: "none" }}><CloseOutlinedIcon style={{ color: '#ff1a1a' }} /></IconButton>
         </Modal.Header>
@@ -79,41 +64,51 @@ function PostForm(props) {
                 name="title"
                 fullWidth
                 label="Title" />
-              <FormControl required variant="outlined" style={applyMargin} size="small" fullWidth >
-                <InputLabel>
-                  Subject
+              <Grid container spacing={1}
+                direction="row"
+                justify="space-between"
+                alignItems="center">
+                <Grid item xs={12} sm={6}>
+                  <FormControl required variant="outlined" style={applyMargin} size="small" fullWidth >
+                    <InputLabel>
+                      Subject
                   </InputLabel>
-                <Select
-                  name="subName"
-                  required
-                  value={subject}
-                  onChange={handleSubjectChange}
-                  label="Subject"
-                >
-                  <MenuItem disabled={true} value="">Select a Subject</MenuItem>
-                  {subjects.map(renderSubjects)}
-                </Select>
-              </FormControl>
-              <FormControl required variant="outlined" style={applyMargin} size="small" fullWidth >
-                <InputLabel>
-                  Post Type
+                    <Select
+                      name="subName"
+                      required
+                      value={subject}
+                      onChange={handleSubjectChange}
+                      label="Subject"
+                    >
+                      <MenuItem disabled={true} value="">Select a Subject</MenuItem>
+                      {subjects.map(renderSubjects)}
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl required variant="outlined" style={applyMargin} size="small" fullWidth >
+                    <InputLabel>
+                      Post Type
                   </InputLabel>
-                <Select
-                  name="postType"
-                  required
-                  value={type}
-                  onChange={handlePostTypeChange}
-                  label="Post Type"
-                >
-                  <MenuItem disabled={true} value="">Select a type</MenuItem>
-                  <MenuItem value={"Assignment"}>Assignment</MenuItem>
-                  <MenuItem value={"Announcement"}>Announcement</MenuItem>
-                  <MenuItem value={"Home work"}>Home work</MenuItem>
-                  <MenuItem value={"Instruction"}>Instruction</MenuItem>
-                  <MenuItem value={"Test"}>Test</MenuItem>
-                  <MenuItem value={"Other"}>Other</MenuItem>
-                </Select>
-              </FormControl>
+                    <Select
+                      name="postType"
+                      required
+                      value={type}
+                      onChange={handlePostTypeChange}
+                      label="Post Type"
+                    >
+                      <MenuItem disabled={true} value="">Select a type</MenuItem>
+                      <MenuItem value={"Assignment"}>Assignment</MenuItem>
+                      <MenuItem value={"Announcement"}>Announcement</MenuItem>
+                      <MenuItem value={"Home work"}>Home work</MenuItem>
+                      <MenuItem value={"Instruction"}>Instruction</MenuItem>
+                      <MenuItem value={"Test"}>Test</MenuItem>
+                      <MenuItem value={"Other"}>Other</MenuItem>
+                    </Select>
+                  </FormControl>
+
+                </Grid>
+              </Grid>
               <TextField style={applyMargin}
                 variant="outlined"
                 required
