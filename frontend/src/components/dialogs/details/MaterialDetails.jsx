@@ -94,7 +94,7 @@ function CustomizedDialogs(props) {
             OK
           </Button>
           <Button color="primary" href={props.data.url}>
-            Download Attachment
+            Download
           </Button>
         </DialogActions>
       </Dialog>

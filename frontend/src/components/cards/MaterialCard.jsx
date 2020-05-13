@@ -2,7 +2,8 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import GetAppOutlinedIcon from '@material-ui/icons/GetAppOutlined';
 import ShowDetails from "../dialogs/details/MaterialDetails";
 
 function MaterialCard(props) {
@@ -21,13 +22,13 @@ function MaterialCard(props) {
           {props.title}
         </h2>
       </CardContent>
-      <CardActions>
+      <CardActions style={{ justifyContent: 'space-between' }} >
         <ShowDetails data={props} />
-        <Button color="primary" onClick={() => {
+        <IconButton color="primary" onClick={() => {
           window.open(props.url, "_blank");
         }}>
-          Download
-        </Button>
+          <GetAppOutlinedIcon />
+        </IconButton>
       </CardActions>
     </Card >
   );
