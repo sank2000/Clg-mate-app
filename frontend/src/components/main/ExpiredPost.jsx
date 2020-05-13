@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import DateFormat from 'dateformat';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import FormControl from "@material-ui/core/FormControl";
@@ -9,14 +9,15 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from '@material-ui/core/Button';
 import FilterListIcon from '@material-ui/icons/FilterList';
+import Grid from '@material-ui/core/Grid';
 
 import NavigationBar from "../navigation/AppBar";
 import PostCard from "../cards/PostCard";
 
-function App() {
+function ExpiredPosts() {
   const [post, setPost] = useState([]);
   const [type, setType] = useState("All");
-  const [loading, SetLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // fetch("/work").then(res => console.log(res.json()));
@@ -24,7 +25,7 @@ function App() {
     axios.post("/posts/expired", params)
       .then(function (response) {
         setPost([...response.data]);
-        SetLoading(false);
+        setLoading(false);
 
       })
       .catch(function (error) {
@@ -40,7 +41,7 @@ function App() {
 
   function data(post, ind) {
     return (
-      <Col sm={12} md={6} lg={4} key={post._id}>
+      <Grid item xs={12} sm={6} md={4} lg={4} key={post._id}>
         <PostCard
           title={post.title}
           postType={post.postType}
@@ -52,10 +53,9 @@ function App() {
           file={post.file}
           postedOn={DateFormat((new Date(post.updatedAt)), "d-mmm-yy, h:mm TT")}
         />
-      </Col>
+      </Grid>
     );
   }
-
 
   const getFilter = async () => {
     let params = new URLSearchParams({ type: type });
@@ -64,24 +64,23 @@ function App() {
   }
 
   const handleFilter = async () => {
-    SetLoading(true);
+    setLoading(true);
     const response = await getFilter();
     setPost([...response.data]);
-    SetLoading(false);
-
+    setLoading(false);
   }
 
   return (
     <Fragment>
       <NavigationBar />
       <Container fluid className="fullPostHead">
-        <Row>
-          <Col lg={9} xs={6}><h1 style={{ display: "inline" }}>Posts</h1></Col>
-          <Col >
+        <Grid container>
+          <Grid item lg={9} xs={6}><h1 style={{ display: "inline" }}>Posts</h1></Grid>
+          <Grid item>
             <FormControl variant='outlined' style={{ minWidth: 140 }} size="small" className="filterSelect" >
               <InputLabel>
                 Post Type
-                                </InputLabel>
+              </InputLabel>
               <Select
                 name="postType"
                 value={type}
@@ -100,18 +99,17 @@ function App() {
               startIcon={<FilterListIcon />}
               onClick={handleFilter}
             >Apply Filter</Button>
-          </Col>
-        </Row>
+          </Grid>
+        </Grid>
       </Container>
       <Container fluid>
         {loading && <LinearProgress />}
-        <Row>
+        <Grid container spacing={3}>
           {post.map(data)}
-        </Row>
+        </Grid>
       </Container>
     </Fragment >
-  )
-
+  );
 }
 
-export default App;
+export default ExpiredPosts;

@@ -8,7 +8,9 @@ import ShowDetails from "../dialogs/details/MaterialDetails";
 
 function MaterialCard(props) {
   return (
-    <Card elevation={3} style={{ margin: "15px", borderRadius: "10px", padding: "3px" }}>
+    <Card elevation={3} style={{
+      borderRadius: "10px", padding: "3px"
+    }}>
       <CardContent>
         <div className="top">
           <span className="due-date">

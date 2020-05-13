@@ -1,7 +1,8 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import DateFormat from 'dateformat';
+import Grid from '@material-ui/core/Grid';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import ClearOutlinedIcon from "@material-ui/icons/ClearOutlined";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -27,21 +28,19 @@ function App() {
   }
 
   useEffect(() => {
-    // fetch("/work").then(res => console.log(res.json()));
     axios.post("/materials/full")
       .then(function (response) {
         setPost([...response.data]);
         SetLoading(false);
       })
       .catch(function (error) {
-        // handle error
         console.log(error);
       });
   }, [])
 
   function data(post, ind) {
     return (
-      <Col sm={12} md={6} lg={4} key={post._id}>
+      <Grid item xs={12} sm={6} md={4} lg={4} key={post._id}>
         <MaterialCard
           title={post.title}
           author={post.author}
@@ -53,14 +52,14 @@ function App() {
           postBy={post.postBy}
           postedOn={DateFormat((new Date(post.updatedAt)), "d-mmm-yy, h:mm TT")}
         />
-      </Col>
+      </Grid>
     );
   }
 
   const getSearch = async () => {
-    let prms = new URLSearchParams({ search: search });
+    let params = new URLSearchParams({ search: search });
     if (search) {
-      const result = await axios.post("/materials/search", prms);
+      const result = await axios.post("/materials/search", params);
       return result;
     }
     else {
@@ -92,18 +91,20 @@ function App() {
   };
 
   function NoRecord() {
-    return <Fragment>
-      <h1>No Record Found !!!</h1>
-    </Fragment>
+    return (
+      <Fragment>
+        <h1>No Record Found !!!</h1>
+      </Fragment>
+    );
   }
 
   return (
     <Fragment>
       <NavigationBar />
       <Container fluid className="fullPostHead">
-        <Row>
-          <Col lg={9} xs={6}><h1 style={{ display: "inline" }}>Materials</h1></Col>
-          <Col >
+        <Grid container>
+          <Grid item lg={9} xs={6}><h1 style={{ display: "inline" }}>Materials</h1></Grid>
+          <Grid item>
             <FormControl>
               <OutlinedInput className="searchButton"
                 placeholder="sub code"
@@ -128,15 +129,17 @@ function App() {
                 }
               />
             </FormControl>
-          </Col>
-        </Row>
+          </Grid>
+        </Grid>
       </Container>
       <Container fluid>
         {loading && <LinearProgress />}
-        {found ?
-          <Row>
-            {post.map(data)}
-          </Row> : <NoRecord />}
+        {
+          found ?
+            <Grid container spacing={3}>
+              {post.map(data)}
+            </Grid> : <NoRecord />
+        }
       </Container>
     </Fragment >
   )

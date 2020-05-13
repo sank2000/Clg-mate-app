@@ -1,7 +1,8 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import DateFormat from 'dateformat';
+import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import ClearIcon from '@material-ui/icons/Clear';
@@ -42,11 +43,11 @@ function App() {
 				console.log(error);
 				window.open("/oops", "_self");
 			});
-	}, [])
+	})
 
 	function data(post, ind) {
 		return (
-			<Col sm={12} md={6} lg={4} key={post._id}>
+			<Grid item xs={12} sm={6} md={4} lg={4} key={post._id}>
 				<PostCard
 					title={post.title}
 					postType={post.postType}
@@ -58,13 +59,13 @@ function App() {
 					file={post.file}
 					postedOn={DateFormat((new Date(post.updatedAt)), "d-mmm-yy, h:mm TT")}
 				/>
-			</Col>
+			</Grid>
 		);
 	}
 
 	function mat(post) {
 		return (
-			<Col sm={12} md={6} lg={4} key={post._id}>
+			<Grid item xs={12} sm={6} md={4} lg={4} key={post._id}>
 				<MaterialCard
 					title={post.title}
 					author={post.author}
@@ -77,7 +78,8 @@ function App() {
 					postBy={post.postBy}
 					postedOn={DateFormat((new Date(post.updatedAt)), "d-mmm-yy, h:mm TT")}
 				/>
-			</Col>)
+			</Grid>
+		);
 	}
 
 	function handleClick() {
@@ -92,9 +94,9 @@ function App() {
 				<Backdrop style={{ zIndex: "20000" }} open={loading}>
 					<CircularProgress style={{ zIndex: "50000" }} color="inherit" />
 				</Backdrop>
-				<Row>
+				<Grid container spacing={3}>
 					{post.map(data)}
-				</Row>
+				</Grid>
 				<div style={{
 					display: 'flex',
 					justifyContent: 'center',
@@ -108,9 +110,9 @@ function App() {
 				</div>
 				<hr />
 				<Typography component="h1" variant='h3' align='center'>Materials</Typography>
-				<Row>
+				<Grid container spacing={3}>
 					{material.map(mat)}
-				</Row>
+				</Grid>
 				<div style={{
 					display: 'flex',
 					justifyContent: 'center',
