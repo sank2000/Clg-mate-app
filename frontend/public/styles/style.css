@@ -7,6 +7,43 @@
   font-family: 'Muli' !important;
 }
 
+/* Fix for nasty auto complete colors */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px white inset !important;
+}
+
+@-webkit-keyframes autofill {
+
+  0%,
+  100% {
+    color: #666;
+    background: transparent;
+  }
+}
+
+@keyframes autofill {
+
+  0%,
+  100% {
+    color: #666;
+    background: transparent;
+  }
+}
+
+input:-webkit-autofill {
+  -webkit-animation-delay: 1s;
+  -webkit-animation-name: autofill;
+  -webkit-animation-fill-mode: both;
+
+  animation-delay: 1s;
+  animation-name: autofill;
+  animation-fill-mode: both;
+}
+
 body {
   background-color: white;
   background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");

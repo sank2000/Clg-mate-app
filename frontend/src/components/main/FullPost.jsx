@@ -109,8 +109,7 @@ function App() {
                 </Grid>
             </Container>
         </Fragment >
-    )
-
+    );
 }
 
 export default App;
