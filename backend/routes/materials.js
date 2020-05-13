@@ -1,13 +1,13 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
 
 const Material = require('../models/Material');
 const User = require('../models/User');
 
 router.get('/', (req, res) => {
-  var query = Material.find({}).limit(6).sort({
+  let query = Material.find({}).limit(6).sort({
     'createdAt': 'desc'
-});
+  });
   query.exec(function (err, result) {
     if (!err) {
       res.send(result);
@@ -20,28 +20,24 @@ router.get('/', (req, res) => {
 );
 
 router.post('/search', (req, res) => {
-  if(req.body.search)
-  {
-    var query = Material.find({subCode : req.body.search}).sort({
+  if (req.body.search) {
+    let query = Material.find({ subCode: req.body.search }).sort({
       'createdAt': 'desc'
-     });
+    });
   }
-  else
-  {
-    var query = Material.find({}).sort({
+  else {
+    let query = Material.find({}).sort({
       'createdAt': 'desc'
-     });
+    });
   }
   query.exec(function (err, result) {
     if (!err) {
-       if(result.length != 0)
-       {
+      if (result.length != 0) {
         res.send(result);
-       }
-       else
-       {
-         res.send([]);
-       }
+      }
+      else {
+        res.send([]);
+      }
     }
     else {
       console.log(err);
@@ -63,20 +59,17 @@ router.post("/full", function (req, res) {
   })
 });
 
-
-
 router.post("/new", function (req, res) {
   User.findById(req.session.user, "name", function (err, result) {
     if (err) {
       console.log(err);
     }
     else {
-      const m = new Material(
-        {
-          ...req.body,
-          postBy: result.name
-        }
-      );
+      const m = new Material({
+        ...req.body,
+        subName: req.body.subName,
+        postBy: result.name
+      });
       m.save(function (err) {
         if (err) {
           console.log(err);

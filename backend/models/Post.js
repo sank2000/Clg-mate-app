@@ -10,7 +10,7 @@ const PostSchema = new Schema({
   dueDate: Date,
   file: String,
   url: String,
-  postType: { type: String, required: true, default: "Other" },
+  postType: { type: String, required: true, default: "Other" }
 }, {
   timestamps: true
 });
