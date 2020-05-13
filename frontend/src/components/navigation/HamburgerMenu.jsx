@@ -66,12 +66,14 @@ export default function SwipeableTemporaryDrawer() {
             <ListItemText primary={"Home"} />
           </ListItem>
         </Link>
-        <ListItem button key={"Time Table"}>
-          <ListItemIcon>
-            <TodayOutlinedIcon />
-          </ListItemIcon>
-          <ListItemText primary={"Time Table"} />
+        <Link to="/timetable" className="linkStyle">
+          <ListItem button key={"Time Table"}>
+            <ListItemIcon>
+              <TodayOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Time Table"} />
         </ListItem>
+        </Link>
       </List>
       <Divider />
       <List>

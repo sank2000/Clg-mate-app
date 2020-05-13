@@ -16,6 +16,7 @@ import NewPost from "./dialogs/NewPost";
 import FullPost from "./main/FullPost";
 import ExpiredPost from "./main/ExpiredPost";
 import FullMaterial from "./main/FullMaterial";
+import TymTable from "./main/TimeTable";
 
 function Loading() {
   return (
@@ -58,6 +59,7 @@ function MainApp() {
               <RouteProtected path="/fullpost" exact component={FullPost} />
               <RouteProtected path="/expiredpost" exact component={ExpiredPost} />
               <RouteProtected path="/fullmaterial" exact component={FullMaterial} />
+              <RouteProtected path="/timetable" exact component={TymTable} />
               <Route path="/posts/new/success" exact component={SuccessMessage} />
               <RouteRegistration path="/signup" exact component={SignUp} />
               <RouteRegistration path="/signin" exact component={SignIn} />
