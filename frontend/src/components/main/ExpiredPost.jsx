@@ -20,7 +20,6 @@ function ExpiredPosts() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // fetch("/work").then(res => console.log(res.json()));
     let params = new URLSearchParams({ type: type });
     axios.post("/posts/expired", params)
       .then(function (response) {
@@ -29,7 +28,6 @@ function ExpiredPosts() {
 
       })
       .catch(function (error) {
-        // handle error
         console.log(error);
         window.open("/oops", "_self");
       });
@@ -102,7 +100,7 @@ function ExpiredPosts() {
           </Grid>
         </Grid>
       </Container>
-      <Container fluid>
+      <Container style={{ paddingTop: '1rem', paddingBottom: '1rem' }} fluid>
         {loading && <LinearProgress />}
         <Grid container spacing={3}>
           {post.map(data)}

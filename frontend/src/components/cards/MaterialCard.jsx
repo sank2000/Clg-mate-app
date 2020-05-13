@@ -16,17 +16,17 @@ function MaterialCard(props) {
           <span className="due-date">
             {props.subName}
           </span>
-          <span className="post-type">
+          <span className="material-type">
             {props.materialType}
           </span>
         </div>
-        <h2 className="post-title">
+        <h2 className="material-title">
           {props.title}
         </h2>
       </CardContent>
       <CardActions style={{ justifyContent: 'space-between' }} >
         <ShowDetails data={props} />
-        <IconButton color="primary" onClick={() => {
+        <IconButton color="primary" style={{ padding: '7px' }} onClick={() => {
           window.open(props.url, "_blank");
         }}>
           <GetAppOutlinedIcon />

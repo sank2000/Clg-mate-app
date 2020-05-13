@@ -102,7 +102,7 @@ function App() {
                     </Grid>
                 </Grid>
             </Container>
-            <Container fluid>
+            <Container style={{ paddingTop: '1rem', paddingBottom: '1rem' }} fluid>
                 {loading && <LinearProgress />}
                 <Grid container spacing={3}>
                     {post.map(data)}

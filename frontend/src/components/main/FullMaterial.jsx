@@ -132,7 +132,7 @@ function App() {
           </Grid>
         </Grid>
       </Container>
-      <Container fluid>
+      <Container style={{ paddingTop: '1rem', paddingBottom: '1rem' }} fluid>
         {loading && <LinearProgress />}
         {
           found ?

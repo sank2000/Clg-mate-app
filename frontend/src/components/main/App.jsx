@@ -89,12 +89,12 @@ function App() {
 	return (
 		<Fragment>
 			<NavigationBar />
-			<Container fluid style={{ margin: '1rem 0px' }}>
-				<Typography component="h1" variant='h3' align='center'>Posts</Typography>
+			<Container style={{ padding: '1rem' }} fluid>
+				<Typography component="h2" variant='h3' align='center'>Posts</Typography>
 				<Backdrop style={{ zIndex: "20000" }} open={loading}>
-					<CircularProgress style={{ zIndex: "50000" }} color="inherit" />
+					<CircularProgress style={{ zIndex: "50000" }} color="auto" />
 				</Backdrop>
-				<Grid container spacing={3}>
+				<Grid style={{ paddingTop: '1rem', paddingBottom: '1rem' }} container spacing={3}>
 					{post.map(data)}
 				</Grid>
 				<div style={{
@@ -110,7 +110,7 @@ function App() {
 				</div>
 				<hr />
 				<Typography component="h1" variant='h3' align='center'>Materials</Typography>
-				<Grid container spacing={3}>
+				<Grid style={{ paddingTop: '1rem', paddingBottom: '1rem' }} container spacing={3}>
 					{material.map(mat)}
 				</Grid>
 				<div style={{
