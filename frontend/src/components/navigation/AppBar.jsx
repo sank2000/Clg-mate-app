@@ -15,6 +15,7 @@ import AuthApi from "../auth/AuthApi";
 import HamburgerMenu from './HamburgerMenu';
 import axios from "axios";
 import { ListItemIcon } from '@material-ui/core';
+import AccountBoxOutlinedIcon from '@material-ui/icons/AccountBoxOutlined';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -114,7 +115,7 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>{user}</MenuItem>
+      <MenuItem onClick={handleMenuClose}><ListItemIcon><AccountBoxOutlinedIcon /></ListItemIcon>{user}</MenuItem>
       <MenuItem onClick={logout}> <ListItemIcon> <ExitToAppOutlinedIcon /> </ListItemIcon> Logout</MenuItem>
     </Menu>
   );

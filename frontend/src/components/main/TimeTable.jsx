@@ -31,6 +31,7 @@ export default function App() {
     <>
       <NavigationBar />
       <Schedule />
+      <h3>Time Table</h3>
       <Table striped bordered hover variant="dark" size="sm">
         <thead>
           <tr>

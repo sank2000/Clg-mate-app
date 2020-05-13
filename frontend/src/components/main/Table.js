@@ -1,42 +1,42 @@
 const time = [
     {
-      start: 9.10,
-      end: 10.0,
+      start: "9.10",
+      end: "10.00",
       per: 1
     },
     {
-      start: 10.0,
-      end: 11.0,
+      start: "10.00",
+      end: "11.00",
       per: 2
     },
     {
-      start: 11.0,
-      end: 12.0,
+      start: "11.00",
+      end: "12.00",
       per: 3
     },
     {
-      start: 12.0,
-      end: 13.0,
+      start: "12.00",
+      end: "13.00",
       per: 4
     },
     {
-      start: 13.0,
-      end: 13.50,
+      start: "13.00",
+      end: "13.50",
       per: 5
     },
     {
-      start: 13.50,
-      end: 14.40,
+      start: "13.50",
+      end: "14.40",
       per: 6
     },
     {
-      start: 14.40,
-      end: 15.40,
+      start: "14.40",
+      end: "15.40",
       per: 7
     },
     {
-      start: 15.40,
-      end: 16.30,
+      start: "15.40",
+      end: "16.30",
       per: 8
     }
   ];
