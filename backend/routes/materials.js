@@ -20,13 +20,15 @@ router.get('/', (req, res) => {
 );
 
 router.post('/search', (req, res) => {
-  if (req.body.search) {
-    let query = Material.find({ subCode: req.body.search }).sort({
+  let query;
+  if (req.body.search) 
+  {
+    query = Material.find({ title: {'$regex': req.body.search,$options:'i'}}).sort({
       'createdAt': 'desc'
-    });
+    }); 
   }
   else {
-    let query = Material.find({}).sort({
+    query = Material.find({}).sort({
       'createdAt': 'desc'
     });
   }
