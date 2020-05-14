@@ -86,7 +86,7 @@ function NavigationBar(props) {
         console.log(error);
         window.open("/oops", "_self");
       });
-  });
+  },[]);
 
 
   const handleProfileMenuOpen = (event) => {

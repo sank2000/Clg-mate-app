@@ -30,7 +30,7 @@ function ExpiredPosts() {
         console.log(error);
         window.open("/oops", "_self");
       });
-  })
+  },[]);
 
   const handleChange = event => {
     setType(event.target.value);
