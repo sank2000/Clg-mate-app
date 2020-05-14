@@ -12,7 +12,7 @@ let transporter = nodemailer.createTransport({
     }
   });
 
-router.post("/",function(req,res)
+router.post("/forgot",function(req,res)
 {
     User.findOne({unique_id : req.body.id},function(err,result)
     {
@@ -44,7 +44,48 @@ router.post("/",function(req,res)
     })
 });
 
-router.post("/sendmail",function(req,res)
+router.post("/feedback",function(req,res)
+{
+        User.findById(req.session.user, "name", function (err, result) {
+        if (err) {
+          console.log(err);
+        }
+        else 
+        {  
+            let mailOptions =
+            {
+                    from: "collegematewebapp@gmail.com", 
+                    to: "santhoshvelr@gmail.com,akrishnamoorthy007@gmail.com",
+                    subject: "FeedBack from "+result.name + req.body.title +"- reg", 
+                    text: req.body.content
+                    // html: "<b>secret</b>" 
+            }
+            transporter.sendMail(mailOptions,function(err,dat)
+            {
+                    if(err)
+                    {
+                        console.log(err);
+                        res.json(
+                            {
+                                    msg : "Unable to send Feedback",
+                                    done : false
+                            }
+                        );
+                    }
+                    else{
+                        res.json(
+                            {
+                                    msg : "Feedback Sended Successfully",
+                                    done : true
+                            }
+                        );
+                    }
+            });
+       }
+    });
+});
+
+router.post("/forgot/sendmail",function(req,res)
 {
 
     User.findOne({unique_id : req.body.id},function(err,result)
@@ -104,7 +145,6 @@ router.post("/sendmail",function(req,res)
     
 
 });
-
 
 
 

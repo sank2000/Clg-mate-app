@@ -23,7 +23,7 @@ mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology
 app.use('/posts', posts);
 app.use('/auth', auth);
 app.use('/materials', materials);
-app.use('/forgot',mail);
+app.use('/mail',mail);
 
 app.listen(5000, () => {
   console.log("Server started at port 5000");

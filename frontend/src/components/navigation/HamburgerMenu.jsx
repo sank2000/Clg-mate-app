@@ -104,14 +104,20 @@ export default function SwipeableTemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        {["Report Abuse", "Send Feedback"].map((text, index) => (
-          <ListItem button key={text}>
+      <ListItem button>
             <ListItemIcon>
-              {index === 0 ? <ReportOutlinedIcon /> : <FeedbackOutlinedIcon />}
+               <ReportOutlinedIcon /> 
             </ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemText primary="Report Abuse" />
           </ListItem>
-        ))}
+          <Link to="/feedback" className="linkStyle">
+            <ListItem button>
+              <ListItemIcon>
+                  <FeedbackOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Send Feedback" />
+            </ListItem>
+          </Link>
       </List>
       <Divider />
       <List>

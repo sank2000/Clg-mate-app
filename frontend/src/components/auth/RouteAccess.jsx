@@ -24,12 +24,12 @@ const signout = async () => {
 
 const checkId = async (body) => {
     let prms = new URLSearchParams(body);
-    const result = await axios.post("/forgot", prms);
+    const result = await axios.post("/mail/forgot", prms);
     return result;
 }
 const sendMail = async (body) => {
     let prms = new URLSearchParams(body);
-    const result = await axios.post("/forgot/sendmail", prms);
+    const result = await axios.post("/mail/forgot/sendmail", prms);
     return result;
 }
 
