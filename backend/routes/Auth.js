@@ -24,13 +24,13 @@ router.post("/signup", function (req, res) {
     .then((result) => {
       req.session.user = userData._id;
       res.json({
-        message: 'Account created successfully',
+        message: 'Account created successfully.',
         auth: true,
       });
     })
     .catch((err) => {
       res.json({
-        message: 'Unable to create account',
+        message: 'Unable to create account.',
         auth: false,
       });
     });
@@ -40,18 +40,23 @@ router.post("/signin", async (req, res) => {
   const { unique_id, password } = req.body;
   try {
     const user = await User.findOne({ unique_id, password });
-    if (user) {
-      req.session.user = user._id;
+    if (!user) {
       res.json({
-        message: 'You are successfully login',
-        auth: true,
-      });
-    } else {
-      res.json({
-        message: 'Unable to login',
+        message: 'Incorrect ID or Password',
         auth: false,
       });
     }
+    if (['locked', 'restricted'].includes(user.state)) {
+      res.json({
+        message: `Your account is ${user.state}, you can't login.`,
+        auth: false,
+      });
+    }
+    req.session.user = user._id;
+    res.json({
+      message: `Welcome ${user.name}!`,
+      auth: true,
+    });
   } catch (err) {
     console.log('Error: Mongo DB server rejected the request!' + err);
   }
@@ -66,10 +71,12 @@ router.get("/signout", (req, res) => {
 });
 
 router.get("/user", (req, res) => {
-  User.findById(req.session.user, "name", function (err, result) {
+  User.findById(req.session.user, {}, function (err, result) {
     if (!err) {
       res.json({
-        user: result.name
+        user: result.name,
+        email: result.email,
+        state: result.state
       })
     }
   })

@@ -17,6 +17,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import LockOpenOutlinedIcon from '@material-ui/icons/LockOpenOutlined';
+import axios from "axios";
 
 import CopyrightNote from '../main/CopyrightNote';
 import { signin } from "./RouteAccess"
@@ -33,6 +34,7 @@ function SignIn() {
   });
   const [load, setLoad] = useState(false);
   const [Aopen, setAOpen] = useState(false);
+  const [message, setMessage] = useState(false);
   const [PassValues, setPassValues] = useState({
     password: "",
     showPassword: false
@@ -76,13 +78,10 @@ function SignIn() {
     setLoad(true);
     e.preventDefault();
     const res = await signin(user);
-    if (res.data.auth) {
-      authApi.setAuth(true);
-    }
-    else {
-      setLoad(false);
-      AhandleClick();
-    }
+    setMessage(res.data.message);
+    authApi.setAuth(res.data.auth);
+    setLoad(false);
+    AhandleClick();
   };
   return (
     <FlexContainer>
@@ -159,14 +158,14 @@ function SignIn() {
                   </Link>
               <Link href="/forgot" variant="body2" style={{ display: 'block' }}>
                 Forgot Password?
-                  </Link>
+              </Link>
             </Grid>
           </Grid>
         </form>
         <Snackbar open={Aopen} autoHideDuration={6000} onClose={AhandleClose}>
           <Alert onClose={AhandleClose} severity="error">
-            ID Number or Password is Invalid!
-              </Alert>
+            {message}
+          </Alert>
         </Snackbar>
       </Container>
       <Box mt={5}>
