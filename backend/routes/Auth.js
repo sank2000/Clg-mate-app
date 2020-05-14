@@ -38,18 +38,22 @@ router.post("/signup", function (req, res) {
 
 router.post("/signin", async (req, res) => {
   const { unique_id, password } = req.body;
-  const user = await User.findOne({ unique_id, password });
-  if (user) {
-    req.session.user = user._id;
-    res.json({
-      message: 'You are successfully login',
-      auth: true,
-    });
-  } else {
-    res.json({
-      message: 'Unable to login',
-      auth: false,
-    });
+  try {
+    const user = await User.findOne({ unique_id, password });
+    if (user) {
+      req.session.user = user._id;
+      res.json({
+        message: 'You are successfully login',
+        auth: true,
+      });
+    } else {
+      res.json({
+        message: 'Unable to login',
+        auth: false,
+      });
+    }
+  } catch (err) {
+    console.log('Error: Mongo DB server rejected the request!' + err);
   }
 });
 
@@ -61,17 +65,14 @@ router.get("/signout", (req, res) => {
   });
 });
 
-router.get("/user",(req,res) =>
-{
-  User.findById(req.session.user, "name", function (err, result) 
-  {
-    if(!err)
-    {
+router.get("/user", (req, res) => {
+  User.findById(req.session.user, "name", function (err, result) {
+    if (!err) {
       res.json({
-        user : result.name
+        user: result.name
       })
     }
-  }  )
+  })
 })
 
 module.exports = router;
