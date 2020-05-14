@@ -17,6 +17,7 @@ import FullPost from "./main/FullPost";
 import ExpiredPost from "./main/ExpiredPost";
 import FullMaterial from "./main/FullMaterial";
 import TimeTable from "./main/TimeTable";
+import About from "./main/About";
 import Forgot from "./auth/ForgotPassword";
 import FeedBack from "./main/Feedback";
 
@@ -63,6 +64,7 @@ function MainApp() {
               <RouteProtected path="/fullmaterial" exact component={FullMaterial} />
               <RouteProtected path="/timetable" exact component={TimeTable} />
               <RouteProtected path="/feedback" exact component={FeedBack} />
+              <RouteProtected path="/about" exact component={About} />
               <Route path="/posts/new/success" exact component={SuccessMessage} />
               <RouteRegistration path="/signup" exact component={SignUp} />
               <RouteRegistration path="/signin" exact component={SignIn} />
