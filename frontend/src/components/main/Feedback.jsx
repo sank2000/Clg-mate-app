@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,Fragment } from "react";
 import Container from "../containers/FlexContainer";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -6,6 +6,7 @@ import { Spinner } from "react-bootstrap";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import axios from "axios";
+import NavigationBar from "../navigation/AppBar";
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -41,6 +42,16 @@ export default function App() {
   };
   function submit() {
     setLoad(true);
+    if(msg.title==""||msg.content=="")
+    {
+        setMsg({
+            content: "Plz fill all the fields",
+            type: "error"
+        });
+        setOpen(true);
+        setLoad(false);
+        return;
+    }
     let prms = new URLSearchParams(bdy);
     axios.post("/mail/feedback",prms)
             .then(function (response) 
@@ -77,41 +88,44 @@ export default function App() {
   };
 
   return (
-    <Container className="App">
-      <h2>Feel free to send feedback to us!</h2>
-      <TextField
-        id="outlined-basic"
-        fullWidth
-        label="Title"
-        name="title"
-        variant="outlined"
-        onChange={handleChange}
-        style={marginstyle}
-      />
-      <TextField
-        id="outlined-multiline-static"
-        label="Content"
-        multiline
-        fullWidth
-        name="content"
-        rows={4}
-        variant="outlined"
-        onChange={handleChange}
-        style={marginstyle}
-      />
-      <Button
-        variant="outlined"
-        onClick={submit}
-        color="primary"
-        style={marginstyle}
-      >
-        Submit&nbsp;{load && <Spinner animation="border" size="sm" />}
-      </Button>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-          <Alert onClose={handleClose} severity={msg.type}>
-            {msg.content}
-          </Alert>
-        </Snackbar>
-    </Container>
+    <Fragment>
+        <NavigationBar />
+        <Container className="App">
+        <h2>Feel free to send feedback to us!</h2>
+        <TextField
+            id="outlined-basic"
+            fullWidth
+            label="Title"
+            name="title"
+            variant="outlined"
+            onChange={handleChange}
+            style={marginstyle}
+        />
+        <TextField
+            id="outlined-multiline-static"
+            label="Content"
+            multiline
+            fullWidth
+            name="content"
+            rows={4}
+            variant="outlined"
+            onChange={handleChange}
+            style={marginstyle}
+        />
+        <Button
+            variant="contained"
+            onClick={submit}
+            color="primary"
+            style={marginstyle}
+        >
+            Submit&nbsp;{load && <Spinner animation="border" size="sm" />}
+        </Button>
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity={msg.type}>
+                {msg.content}
+            </Alert>
+            </Snackbar>
+        </Container>
+    </Fragment>
   );
 }
