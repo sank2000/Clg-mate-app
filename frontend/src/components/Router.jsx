@@ -17,6 +17,7 @@ import FullPost from "./main/FullPost";
 import ExpiredPost from "./main/ExpiredPost";
 import FullMaterial from "./main/FullMaterial";
 import TimeTable from "./main/TimeTable";
+import Forgot from "./auth/ForgotPassword";
 
 function Loading() {
   return (
@@ -63,6 +64,7 @@ function MainApp() {
               <Route path="/posts/new/success" exact component={SuccessMessage} />
               <RouteRegistration path="/signup" exact component={SignUp} />
               <RouteRegistration path="/signin" exact component={SignIn} />
+              <RouteRegistration path="/forgot" exact component={Forgot} />
               <Route path="/oops" exact component={SomethingWrong} />
               <Route component={PageNotFound} />
             </Switch>
