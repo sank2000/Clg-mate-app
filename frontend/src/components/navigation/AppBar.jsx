@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function PrimarySearchAppBar() {
+function NavigationBar(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [user, setUser] = React.useState("Profile");
@@ -83,11 +83,10 @@ export default function PrimarySearchAppBar() {
         setUser(response.data.user);
       })
       .catch(function (error) {
-        // handle error
         console.log(error);
         window.open("/oops", "_self");
       });
-  }, []);
+  });
 
 
   const handleProfileMenuOpen = (event) => {
@@ -126,7 +125,7 @@ export default function PrimarySearchAppBar() {
         <Toolbar>
           <HamburgerMenu />
           <Typography variant="h6" noWrap>
-            Collegemate
+            {props.title || 'Collegemate'}
           </Typography>
           <div className={classes.grow} />
           <IconButton
@@ -145,3 +144,5 @@ export default function PrimarySearchAppBar() {
     </div>
   );
 }
+
+export default NavigationBar;

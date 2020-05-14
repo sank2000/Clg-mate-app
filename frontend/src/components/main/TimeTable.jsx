@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Table } from "react-bootstrap";
-import { time, table } from "./Table";
+import { time, table } from "../../constants/Table";
 import Schedule from "./Schedule";
 import NavigationBar from '../navigation/AppBar';
 
@@ -29,7 +29,7 @@ function bdy(val, ind) {
 export default function App() {
   return (
     <>
-      <NavigationBar />
+      <NavigationBar title="Time Table" />
       <Schedule />
       <h3>Time Table</h3>
       <Table striped bordered hover variant="dark" size="sm">

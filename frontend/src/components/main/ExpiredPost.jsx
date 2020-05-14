@@ -31,7 +31,7 @@ function ExpiredPosts() {
         console.log(error);
         window.open("/oops", "_self");
       });
-  },[])
+  }, [])
 
   const handleChange = event => {
     setType(event.target.value);
@@ -70,7 +70,7 @@ function ExpiredPosts() {
 
   return (
     <Fragment>
-      <NavigationBar />
+      <NavigationBar title="Expired posts" />
       <Container fluid className="fullPostHead">
         <Grid container>
           <Grid item lg={9} xs={6}><h1 style={{ display: "inline" }}>Posts</h1></Grid>

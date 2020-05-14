@@ -100,7 +100,7 @@ function App() {
 
   return (
     <Fragment>
-      <NavigationBar />
+      <NavigationBar title="All materials" />
       <Container fluid className="fullPostHead">
         <Grid container>
           <Grid item lg={9} xs={6}><h1 style={{ display: "inline" }}>Materials</h1></Grid>

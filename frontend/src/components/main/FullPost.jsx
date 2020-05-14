@@ -31,7 +31,7 @@ function App() {
                 console.log(error);
                 window.open("/oops", "_self");
             });
-    },[])
+    }, [])
 
     const handleChange = event => {
         setType(event.target.value);
@@ -72,7 +72,7 @@ function App() {
 
     return (
         <Fragment>
-            <NavigationBar />
+            <NavigationBar title="All Posts" />
             <Container fluid className="fullPostHead">
                 <Grid container>
                     <Grid item lg={9} xs={6}><h1 style={{ display: "inline" }}>Posts</h1></Grid>
