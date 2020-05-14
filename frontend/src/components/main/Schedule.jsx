@@ -9,7 +9,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import { time, table } from "./Table";
+import { time, table } from "../../constants/Table";
 
 const useStyles = makeStyles(theme => ({
   text: {
