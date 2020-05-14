@@ -22,6 +22,17 @@ const signout = async () => {
     return result;
 }
 
+const checkId = async (body) => {
+    let prms = new URLSearchParams(body);
+    const result = await axios.post("/forgot", prms);
+    return result;
+}
+const sendMail = async (body) => {
+    let prms = new URLSearchParams(body);
+    const result = await axios.post("/forgot/sendmail", prms);
+    return result;
+}
+
 export {
-    signin, signup, hasSigned, signout
+    signin, signup, hasSigned, signout,checkId,sendMail
 }

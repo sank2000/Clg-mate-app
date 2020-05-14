@@ -8,8 +8,10 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import { time, table } from "../../constants/Table";
+import Avatar from '@material-ui/core/Avatar';
+
+var today = new Date();
 
 const useStyles = makeStyles(theme => ({
   text: {
@@ -31,25 +33,59 @@ export default function BottomAppBar() {
     {
       id: 1,
       primary: "No schedule",
-      secondary: "for this time "
+      secondary: "for this time ",
+      per : 0
     },
     {
       id: 2,
-      primary: "No schedule",
-      secondary: "for this time "
+      primary: table[today.getDay() - 1][time[0].per],
+      secondary: time[0].start + " -- " + time[0].end,
+      per : time[0].per
     },
     {
       id: 3,
-      primary: "No schedule",
-      secondary: "for this time"
+      primary: table[today.getDay() - 1][time[1].per],
+      secondary: time[1].start + " -- " + time[1].end,
+      per : time[1].per
     }
   ]);
-  var today = new Date();
   let tym = Number(today.getHours() + "." + today.getMinutes());
 
   function find(value, ind) {
-    if (tym < 9 || tym > 17) return;
-    if (tym >= value.start && tym <= value.end) {
+    if(today.getDay() === 0 || today.getDay() === 6)
+    {
+          return;
+    }
+    else if (tym < 9)
+    {
+      return;
+    } 
+    else if(tym > 17)
+    {
+      setPer([
+        {
+          id: 1,
+          primary: "No schedule",
+          secondary: "for this time ",
+          per : 0
+        },
+        {
+          id: 2,
+          primary: table[today.getDay()][time[0].per],
+          secondary: time[0].start + " -- " + time[0].end,
+          per : time[0].per
+        },
+        {
+          id: 3,
+          primary: table[today.getDay()][time[1].per],
+          secondary: time[1].start + " -- " + time[1].end,
+          per : time[1].per
+        }
+      ]);
+      return;
+    } 
+    if (tym >= value.start && tym <= value.end) 
+    {
       setCrtPeriod(ind);
       return;
     }
@@ -61,17 +97,20 @@ export default function BottomAppBar() {
         {
           id: 1,
           primary: table[today.getDay() - 1][time[ind].per],
-          secondary: time[ind].start + " -- " + time[ind].end
+          secondary: time[ind].start + " -- " + time[ind].end,
+          per : time[ind].per
         },
         {
           id: 2,
           primary: "No schedule",
-          secondary: "for this time "
+          secondary: "for this time ",
+          per : 0
         },
         {
           id: 3,
-          primary: "No schedule",
-          secondary: "for this time"
+          primary: table[today.getDay()][time[0].per],
+          secondary: time[0].start + " -- " + time[0].end,
+          per : time[0].per
         }
       ]);
     } else if (ind === 6) {
@@ -79,17 +118,20 @@ export default function BottomAppBar() {
         {
           id: 1,
           primary: table[today.getDay() - 1][time[ind].per],
-          secondary: time[ind].start + " -- " + time[ind].end
+          secondary: time[ind].start + " -- " + time[ind].end,
+          per : time[ind].per
         },
         {
           id: 2,
           primary: table[today.getDay() - 1][time[ind].per + 1],
-          secondary: time[ind + 1].start + " -- " + time[ind + 1].end
+          secondary: time[ind + 1].start + " -- " + time[ind + 1].end,
+          per : time[ind].per + 1
         },
         {
           id: 3,
           primary: "No schedule",
-          secondary: "for this time"
+          secondary: "for this time",
+          per : 0
         }
       ]);
     } else {
@@ -97,17 +139,20 @@ export default function BottomAppBar() {
         {
           id: 1,
           primary: table[today.getDay() - 1][time[ind].per],
-          secondary: time[ind].start + " -- " + time[ind].end
+          secondary: time[ind].start + " -- " + time[ind].end,
+          per : time[ind].per
         },
         {
           id: 2,
           primary: table[today.getDay() - 1][time[ind].per + 1],
-          secondary: time[ind + 1].start + " -- " + time[ind + 1].end
+          secondary: time[ind + 1].start + " -- " + time[ind + 1].end,
+          per : time[ind].per+1
         },
         {
           id: 3,
           primary: table[today.getDay() - 1][time[ind].per + 2],
-          secondary: time[ind + 2].start + " -- " + time[ind + 2].end
+          secondary: time[ind + 2].start + " -- " + time[ind + 2].end,
+          per : time[ind].per+2
         }
       ]);
     }
@@ -128,7 +173,7 @@ export default function BottomAppBar() {
           Schedule
         </Typography>
         <List className={classes.list}>
-          {per.map(({ id, primary, secondary, person }) => (
+          {per.map(({ id, primary, secondary, per }) => (
             <React.Fragment key={id}>
               {id === 1 && (
                 <ListSubheader className={classes.subheader}>Now</ListSubheader>
@@ -145,7 +190,7 @@ export default function BottomAppBar() {
               )}
               <ListItem button>
                 <ListItemAvatar>
-                  <AccessTimeIcon />
+                <Avatar>{per}</Avatar>
                 </ListItemAvatar>
                 <ListItemText primary={primary} secondary={secondary} />
               </ListItem>
