@@ -17,7 +17,6 @@ import FormControl from "@material-ui/core/FormControl";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import LockOpenOutlinedIcon from '@material-ui/icons/LockOpenOutlined';
-import axios from "axios";
 
 import CopyrightNote from '../main/CopyrightNote';
 import { signin } from "./RouteAccess"
@@ -115,14 +114,14 @@ function SignIn() {
             </Grid>
             <Grid item xs={12}>
               <FormControl variant="outlined" fullWidth required={true} >
-                <InputLabel htmlFor="outlined-adornment-password">
-                  Password
-                     </InputLabel>
-                <OutlinedInput
+                <TextField
                   id="outlined-adornment-password"
                   type={PassValues.showPassword ? "text" : "password"}
                   value={PassValues.password}
                   fullWidth
+                  label="Password"
+                  variant="outlined"
+                  required
                   name="password"
                   onChange={PassHandleChange("password")}
                   endAdornment={
