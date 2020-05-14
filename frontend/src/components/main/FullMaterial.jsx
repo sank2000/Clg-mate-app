@@ -107,7 +107,7 @@ function App() {
           <Grid item>
             <FormControl>
               <OutlinedInput className="searchButton"
-                placeholder="sub code"
+                placeholder="subject"
                 id="input-with-icon-adornment"
                 value={search}
                 onChange={SearchText}
