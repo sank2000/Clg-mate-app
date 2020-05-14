@@ -7,6 +7,10 @@
   font-family: 'Muli' !important;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Fix for nasty auto complete colors */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
