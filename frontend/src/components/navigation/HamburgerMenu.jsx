@@ -72,7 +72,7 @@ export default function SwipeableTemporaryDrawer() {
               <TodayOutlinedIcon />
             </ListItemIcon>
             <ListItemText primary={"Time Table"} />
-        </ListItem>
+          </ListItem>
         </Link>
       </List>
       <Divider />
@@ -94,12 +94,12 @@ export default function SwipeableTemporaryDrawer() {
           </ListItem>
         </Link>
         <Link to="/expiredpost" className="linkStyle">
-        <ListItem button>
-          <ListItemIcon>
-            <ArchiveOutlinedIcon />
-          </ListItemIcon>
-          <ListItemText primary="Expired Posts" />
-        </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <ArchiveOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary="Expired Posts" />
+          </ListItem>
         </Link>
       </List>
       <Divider />
@@ -115,14 +115,22 @@ export default function SwipeableTemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        {["Help", "About"].map((text, index) => (
-          <ListItem button key={text}>
+        <Link to="/help" className="linkStyle">
+          <ListItem button>
             <ListItemIcon>
-              {index === 0 ? <ContactSupportOutlinedIcon /> : <InfoOutlinedIcon />}
+              <ContactSupportOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemText primary="Help" />
           </ListItem>
-        ))}
+        </Link>
+        <Link to="/about" className="linkStyle">
+          <ListItem button>
+            <ListItemIcon>
+              <InfoOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary="About" />
+          </ListItem>
+        </Link>
       </List>
     </div >
   );
