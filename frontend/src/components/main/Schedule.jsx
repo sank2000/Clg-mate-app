@@ -115,7 +115,7 @@ export default function BottomAppBar() {
 
   useEffect(() => {
     time.forEach(find);
-  }, []);
+  });
 
   const classes = useStyles();
 
