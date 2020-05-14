@@ -31,7 +31,7 @@ function App() {
 				console.log(error);
 				window.open("/oops", "_self");
 			});
-	})
+	},[])
 
 	const handleChange = event => {
 		setType(event.target.value);
@@ -88,9 +88,12 @@ function App() {
 								label="Post Type"
 							>
 								<MenuItem value={"All"}>All</MenuItem>
-								<MenuItem value={"Other"}>Other</MenuItem>
-								<MenuItem value={"Notes"}>Notes</MenuItem>
 								<MenuItem value={"Assignment"}>Assignment</MenuItem>
+								<MenuItem value={"Announcement"}>Announcement</MenuItem>
+								<MenuItem value={"Home work"}>Home work</MenuItem>
+								<MenuItem value={"Instruction"}>Instruction</MenuItem>
+								<MenuItem value={"Test"}>Test</MenuItem>
+								<MenuItem value={"Other"}>Other</MenuItem>
 							</Select>
 						</FormControl>
 						<Button className="filterButton"
