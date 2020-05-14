@@ -87,7 +87,7 @@ function App() {
 								onChange={handleChange}
 								label="Post Type"
 							>
-								<MenuItem disabled={true} value="">Select a type</MenuItem>
+								<MenuItem value={"All"}>All</MenuItem>
 								<MenuItem value={"Assignment"}>Assignment</MenuItem>
 								<MenuItem value={"Announcement"}>Announcement</MenuItem>
 								<MenuItem value={"Home work"}>Home work</MenuItem>
