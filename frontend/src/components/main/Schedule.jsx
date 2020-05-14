@@ -115,7 +115,8 @@ export default function BottomAppBar() {
 
   useEffect(() => {
     time.forEach(find);
-  },[]);
+    // eslint-disable-next-line
+  }, []);
 
   const classes = useStyles();
 

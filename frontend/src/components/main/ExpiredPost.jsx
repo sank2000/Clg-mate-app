@@ -30,7 +30,8 @@ function ExpiredPosts() {
         console.log(error);
         window.open("/oops", "_self");
       });
-  },[]);
+    // eslint-disable-next-line
+  }, []);
 
   const handleChange = event => {
     setType(event.target.value);
