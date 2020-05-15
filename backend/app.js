@@ -18,12 +18,17 @@ app.use(session({
   saveUninitialized: true,
 }));
 
-mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.DB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+});
 
 app.use('/posts', posts);
 app.use('/auth', auth);
 app.use('/materials', materials);
-app.use('/mail',mail);
+app.use('/mail', mail);
 
 app.listen(5000, () => {
   console.log("Server started at port 5000");
