@@ -8,6 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { Spinner } from "react-bootstrap";
 
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+import InputLabel from "@material-ui/core/InputLabel";
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -113,7 +115,10 @@ function SignIn() {
             </Grid>
             <Grid item xs={12}>
               <FormControl variant="outlined" fullWidth required={true} >
-                <TextField
+                <InputLabel htmlFor="outlined-adornment-password">
+                  Password
+                     </InputLabel>
+                <OutlinedInput
                   id="outlined-adornment-password"
                   type={PassValues.showPassword ? "text" : "password"}
                   value={PassValues.password}
@@ -135,7 +140,7 @@ function SignIn() {
                       </IconButton>
                     </InputAdornment>
                   }
-                  labelWidth={70}
+                  labelWidth={100}
                 />
               </FormControl>
             </Grid>
