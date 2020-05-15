@@ -20,6 +20,12 @@ import NavigationBar from "../navigation/AppBar";
 import PostCard from "../cards/PostCard";
 import MaterialCard from "../cards/MaterialCard";
 
+function BulbIcon() {
+	return (
+		<img src="./images/bulb.png" alt='bulb' style={{ height: '40%', width: '40%' }}></img>
+	);
+}
+
 function App() {
 	const [post, setPost] = useState([]);
 	const [material, setMaterial] = useState([]);
