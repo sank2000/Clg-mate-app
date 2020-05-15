@@ -5,13 +5,13 @@ import { time, table } from "../../constants/Table";
 import Schedule from "./Schedule";
 import NavigationBar from '../navigation/AppBar';
 
-function head(val) {
-  return <th> {val[0]}</th>;
+function head(val, ind) {
+  return <th key={ind}>  {val[0]}</th>;
 }
 
 function bdy(val, ind) {
   return (
-    <Fragment>
+    <Fragment key={ind}>
       <tr>
         <th>
           {time[ind].start}-{time[ind].end}
