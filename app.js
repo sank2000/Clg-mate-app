@@ -30,9 +30,6 @@ app.use('/auth', auth);
 app.use('/materials', materials);
 app.use('/mail', mail);
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log("Server started at port 5000");
-});
 
 
 if (process.env.NODE_ENV === 'production') {
@@ -43,3 +40,5 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
+
+export default app;
