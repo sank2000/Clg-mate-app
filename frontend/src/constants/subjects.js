@@ -1,17 +1,17 @@
 
 const subjects = [
   {
-    code: 'SA0001',
-    name: 'Sample Subject 1',
+    code: 'CS0001',
+    name: 'Computer Science',
     shortName: 'SS1'
   },
   {
-    code: 'SA0002',
-    name: 'Sample Subject 2',
+    code: 'EN0001',
+    name: 'English',
     shortName: 'SS2'
   },
   {
-    code: 'GEN',
+    code: 'GEN007',
     name: 'General',
     shortName: 'GEN'
   }

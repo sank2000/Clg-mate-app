@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import CheckIcon from '@material-ui/icons/Check';
 import Button from '@material-ui/core/Button';
 import NavBar from '../navigation/AppBar';
 
