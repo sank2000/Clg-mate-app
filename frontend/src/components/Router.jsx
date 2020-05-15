@@ -20,6 +20,7 @@ import TimeTable from "./main/TimeTable";
 import About from "./main/About";
 import Forgot from "./auth/ForgotPassword";
 import FeedBack from "./forms/Feedback";
+import UnderConstruction from './messages/UnderConstruction';
 
 function Loading() {
   return (
@@ -65,10 +66,14 @@ function MainApp() {
               <RouteProtected path="/timetable" exact component={TimeTable} />
               <RouteProtected path="/feedback" exact component={FeedBack} />
               <RouteProtected path="/about" exact component={About} />
-              <Route path="/posts/new/success" exact component={SuccessMessage} />
+
               <RouteRegistration path="/signup" exact component={SignUp} />
               <RouteRegistration path="/signin" exact component={SignIn} />
               <RouteRegistration path="/forgot" exact component={Forgot} />
+
+              <Route path="/posts/new/success" exact component={SuccessMessage} />
+              <Route path="/help" exact component={UnderConstruction} />
+              <Route path="/report" exact component={UnderConstruction} />
               <Route path="/oops" exact component={SomethingWrong} />
               <Route component={PageNotFound} />
             </Switch>
