@@ -14,6 +14,7 @@ import Button from '@material-ui/core/Button';
 import Backdrop from "@material-ui/core/Backdrop";
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Container2 from "../containers/FlexContainer";
 
 import NavigationBar from "../navigation/AppBar";
 import PostCard from "../cards/PostCard";
@@ -95,9 +96,9 @@ function App() {
 	}
 
 	function Empt(props) {
-		return <Fragment>
-			<h1>Your {props.type} will  appear here......</h1>
-		</Fragment>
+		return <Container2>
+			<h3>{props.type} you add appear here..</h3>
+		</Container2>
 	}
 
 	return (
