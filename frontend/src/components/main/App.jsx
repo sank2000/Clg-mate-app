@@ -102,12 +102,10 @@ function App() {
 	}
 
 	function Empt(props) {
-		return (
-			<Container2 background='transparent' height='60vh'>
-				<BulbIcon />
-				<h3>{props.type} you add appear here..</h3>
-			</Container2>
-		);
+		return <Container2 background='transparent' height='60vh'>
+		    <img src='./images/bulb.png' style={{ width: '7em', height: '7em', padding: '1rem' }} alt='' />
+			<h3>{props.type} you add appear here..</h3>
+		</Container2>
 	}
 
 	return (
