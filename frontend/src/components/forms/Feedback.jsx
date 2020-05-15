@@ -43,7 +43,7 @@ export default function App() {
   };
   function submit() {
     setLoad(true);
-    if (!msg.title || !msg.content) {
+    if (msg.title === '' || msg.content === '') {
       setMsg({
         content: "Please fill all the fields",
         type: "error"
@@ -105,6 +105,7 @@ export default function App() {
           variant="outlined"
           onChange={handleChange}
           style={marginstyle}
+          required
         />
         <TextField
           id="outlined-multiline-static"
@@ -116,6 +117,7 @@ export default function App() {
           variant="outlined"
           onChange={handleChange}
           style={marginstyle}
+          required
         />
         <Button
           variant="contained"
