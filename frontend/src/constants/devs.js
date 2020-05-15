@@ -18,7 +18,7 @@ const devs = [
     choices: ['github', 'twitter']
   },
   {
-    _id: 1,
+    _id: 8,
     name: 'Santhosh',
     avatar: 'https://pbs.twimg.com/profile_images/1261214612017430528/sjlqsZuV_400x400.jpg',
     role: 'Full Stacker',
@@ -32,7 +32,7 @@ const devs = [
       telegram: ''
     },
     note: 'Everybody Should learn how to program a Computer Because it teaches you how to Think..',
-    website: '',
+    website: 'https://sank2000.github.io/Personal_html/',
     choices: ['github, instagram']
   }
 ];
