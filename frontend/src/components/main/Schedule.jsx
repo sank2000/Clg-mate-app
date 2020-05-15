@@ -50,6 +50,8 @@ export default function BottomAppBar() {
     }
   ]);
   let tym = Number(today.getHours() + "." + today.getMinutes());
+  
+
 
   function find(value, ind) {
     if(today.getDay() === 0 || today.getDay() === 6)
@@ -92,7 +94,29 @@ export default function BottomAppBar() {
   }
 
   function setCrtPeriod(ind) {
-    if (ind === 7) {
+    if (ind === 7 && today.getDay() === 5) {
+      setPer([
+        {
+          id: 1,
+          primary: table[today.getDay() - 1][time[ind].per],
+          secondary: time[ind].start + " -- " + time[ind].end,
+          per : time[ind].per
+        },
+        {
+          id: 2,
+          primary: "No schedule",
+          secondary: "for this time ",
+          per : 0
+        },
+        {
+          id: 3,
+          primary: table[0][time[0].per],
+          secondary: time[0].start + " -- " + time[0].end,
+          per : time[0].per
+        }
+      ]);
+    } 
+    else if (ind === 7) {
       setPer([
         {
           id: 1,
@@ -113,7 +137,8 @@ export default function BottomAppBar() {
           per : time[0].per
         }
       ]);
-    } else if (ind === 6) {
+    } 
+    else if (ind === 6) {
       setPer([
         {
           id: 1,
