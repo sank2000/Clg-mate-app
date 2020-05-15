@@ -9,7 +9,8 @@ function FlexContainer(props) {
         justifyContent: "center",
         textAlign: "center",
         alignItems: "center",
-        height: props.height || '100vh',
+        minHeight: props.height || '100vh',
+        maxHeight: '100vh',
         background: props.background || "#fff"
       }}
       {...props.outer}
@@ -25,7 +26,7 @@ function FlexContainer(props) {
       >
         {props.children}
       </div>
-    </div>
+    </div >
   );
 }
 

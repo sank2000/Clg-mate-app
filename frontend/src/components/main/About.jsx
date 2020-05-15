@@ -20,12 +20,12 @@ function renderDevs(dev) {
   );
 }
 
-export default function SimpleContainer() {
+export default function About() {
   return (
     <React.Fragment>
       <NavigationBar title='About' />
       <CssBaseline />
-      <FlexContainer>
+      <FlexContainer height='90vh' >
         <img
           src={"./images/logo.png"}
           alt="Logo"
@@ -34,34 +34,24 @@ export default function SimpleContainer() {
           Collegemate
         </Typography>
         <Typography align="center" component="h5" variant="subtitle1">
-          Verision 0.5 B
+          Version 0.5 B
+        </Typography>
+      </FlexContainer>
+      <FlexContainer height='40vh'  >
+        <Typography align="center" component="div" variant="h6" style={{ padding: '40px' }}>
+          Collegemate is a web application built specially for a flawless
+          sharing of materials and remainders between students and staff
+          members without having to share personal contact credentials. This
+          helps students to greatly manage their schedule and the work they
+          have. This is not yet another Google Classroom. Unlike any other
+          online learning platforms, this is not designed for
+          #StudyFromHome. The Collegemate app is designed to work during
+          days of on field education only. The app is mainly focused on
+          managing all the works, assignments, home works and digital
+          materials with ease, without having to manually manage stuff.
         </Typography>
       </FlexContainer>
       <Container maxWidth="xl">
-        <Grid container spacing={3}>
-          <Grid item md={12}>
-            <Typography
-              style={{ padding: "1rem" }}
-              align="center"
-              component="h4"
-              variant="h4"
-            >
-              About Collegemate
-            </Typography>
-            <Typography align="center" component="div" variant="body1">
-              Collegemate is a web application built specially for a flawless
-              sharing of materials and remainders between students and staff
-              members without having to share personal contact credentials. This
-              helps students to greatly manage their schecudle and the work they
-              have. This is not yet another Google Classroom. Unlike any other
-              online learning playforms, this is not designed for
-              #StudyFromHome. The Collegemate app is designed to work during
-              days of on field education only. The app is mainly focused on
-              managing all the works, assignments, home works and digital
-              materials with ease, without having to manually manage stuff.
-            </Typography>
-          </Grid>
-        </Grid>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <Typography style={{ paddingTop: "1rem", paddingBottom: "1rem" }}
