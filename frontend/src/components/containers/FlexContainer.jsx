@@ -10,7 +10,7 @@ function FlexContainer(props) {
         textAlign: "center",
         alignItems: "center",
         height: props.height || '100vh',
-        background: "#fff"
+        background: props.background || "#fff"
       }}
       {...props.outer}
     >
