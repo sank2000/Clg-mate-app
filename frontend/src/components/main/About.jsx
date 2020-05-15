@@ -7,6 +7,18 @@ import Grid from "@material-ui/core/Grid";
 import NavigationBar from '../navigation/AppBar';
 import FlexContainer from "../containers/FlexContainer";
 import Dev from '../cards/DeveloperCard';
+import { shuffledDevs } from '../../constants/devs';
+
+function renderDevs(dev) {
+  return (
+    <Grid item xs={12} sm={12} md={4} lg={4}
+      style={{ textAlign: 'center' }}>
+      <Grid container justify="center">
+        <Dev dev={dev} />
+      </Grid>
+    </Grid>
+  );
+}
 
 export default function SimpleContainer() {
   return (
@@ -49,8 +61,17 @@ export default function SimpleContainer() {
               materials with ease, without having to manually manage stuff.
             </Typography>
           </Grid>
-          <Grid
-            item
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={12} md={12} lg={12}>
+            <Typography style={{ paddingTop: "1rem", paddingBottom: "1rem" }}
+              align="center"
+              component="h4"
+              variant="h4">
+              Technology Stack
+            </Typography>
+          </Grid>
+          <Grid item
             lg={12}
             md={12}
             sm={12}
@@ -58,14 +79,6 @@ export default function SimpleContainer() {
               background: "#fff"
             }}
           >
-            <Typography
-              style={{ padding: "1rem" }}
-              align="center"
-              component="h4"
-              variant="h4"
-            >
-              Technology Stack
-            </Typography>
             <Grid
               container
               direction="row"
@@ -100,19 +113,31 @@ export default function SimpleContainer() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid container>
-            <Typography style={{ padding: "1rem" }}
+        </Grid>
+        <Grid container
+          justify="space-around"
+          alignItems="center"
+          direction='row'
+          style={{ paddingTop: "1rem", paddingBottom: "1rem" }}
+        >
+          <Grid item xs={12} sm={12} md={12} lg={12}>
+            <Typography style={{ paddingTop: "1rem", paddingBottom: "1rem" }}
               align="center"
               component="h4"
               variant="h4">
               Our Team
             </Typography>
-            <Grid item sm={12} md={6}>
-              <Dev />
-            </Grid>
+          </Grid>
+          <Grid container
+            direction="row"
+            justify="space-evenly"
+            spacing={3}
+            alignItems="center"
+          >
+            {shuffledDevs.map(renderDevs)}
           </Grid>
         </Grid>
       </Container>
-    </React.Fragment>
+    </React.Fragment >
   );
 }

@@ -5,13 +5,16 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
+import Grid from "@material-ui/core/Grid";
 
 import TwitterIcon from "@material-ui/icons/Twitter";
 import GitHubIcon from "@material-ui/icons/GitHub";
-import EmailIcon from '@material-ui/icons/Email';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import LanguageIcon from '@material-ui/icons/Language';
+import InstagramIcon from '@material-ui/icons/Instagram';
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 345
@@ -22,20 +25,21 @@ const useStyles = makeStyles({
   }
 });
 
-export default function MediaCard() {
+function DeveloperCard(props) {
   const classes = useStyles();
+  console.log(props);
+
 
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="https://pbs.twimg.com/profile_images/1138865210687537152/0ZIM7rXG_400x400.jpg"
-          title="Contemplative Reptile"
+          image={props.dev.avatar}
         />
         <CardContent>
           <Typography variant="h5" component="h2">
-            Krishna Moorthy
+            {props.dev.name}
           </Typography>
           <Typography
             gutterBottom
@@ -43,28 +47,37 @@ export default function MediaCard() {
             color="textSecondary"
             component="h5"
           >
-            Full Stack Developer
+            {props.dev.role}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            {props.dev.note}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <IconButton aria-label="github">
-          <GitHubIcon />
-        </IconButton>
-        <IconButton aria-label="twitter">
-          <TwitterIcon />
-        </IconButton>
-        <IconButton aria-label="mail">
-          <EmailIcon />
-        </IconButton>
-        <Button size="small" color="primary">
-          About
-        </Button>
+      <CardActions >
+        <Grid container justify='center'>
+          <IconButton href={props.dev.social.github} aria-label="github">
+            <GitHubIcon />
+          </IconButton>
+          {
+            props.dev.choices.includes('twitter') ?
+              <IconButton href={props.dev.social.twitter} aria-label="twitter">
+                <TwitterIcon />
+              </IconButton> :
+              <IconButton href={props.dev.social.instagram} aria-label="insta">
+                <InstagramIcon />
+              </IconButton>
+          }
+          <IconButton href={`mailto:${props.dev.email}`} aria-label="mail">
+            <MailOutlineIcon />
+          </IconButton>
+          <IconButton href={props.dev.website} aria-label="mail">
+            <LanguageIcon />
+          </IconButton>
+        </Grid>
       </CardActions>
     </Card>
   );
 }
+
+export default DeveloperCard;

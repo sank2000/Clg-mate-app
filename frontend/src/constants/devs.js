@@ -1,0 +1,45 @@
+const devs = [
+  {
+    _id: 12,
+    name: 'Krishna Moorthy',
+    avatar: 'https://pbs.twimg.com/profile_images/1138865210687537152/0ZIM7rXG_400x400.jpg',
+    role: 'Full Stack Developer',
+    email: 'akrishnamoorthy007@gmail.com',
+    social: {
+      github: 'https://www.github.com/KrishnaMoorthy12',
+      slack: '',
+      twitter: 'https://www.twitter.com/12KrishnaMurty',
+      instagram: '',
+      facebook: 'https://www.facebook.com/akrishnamoorthy007',
+      telegram: ''
+    },
+    note: `Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica`,
+    website: 'https://www.about.me/akrishnamoorthy007',
+    choices: ['github', 'twitter']
+  },
+  {
+    _id: 1,
+    name: 'Santhosh',
+    avatar: '',
+    role: '',
+    email: 'santhoshvelr@gmail.com',
+    social: {
+      github: 'https://www.github.com/sank2000',
+      slack: '',
+      twitter: '',
+      instagram: '',
+      facebook: '',
+      telegram: ''
+    },
+    note: '',
+    website: '',
+    choices: ['github, instagram']
+  }
+];
+
+const shuffledDevs = function () {
+  const randomIndex = Math.round(Math.random());
+  return [devs[randomIndex], devs[Number(!(randomIndex))]];
+}();
+
+module.exports = { devs, shuffledDevs }
