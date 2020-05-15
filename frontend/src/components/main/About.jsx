@@ -7,12 +7,15 @@ import Grid from "@material-ui/core/Grid";
 import NavigationBar from '../navigation/AppBar';
 import FlexContainer from "../containers/FlexContainer";
 import Dev from '../cards/DeveloperCard';
+import Copyright from './CopyrightNote';
 import { shuffledDevs } from '../../constants/devs';
 
 function renderDevs(dev) {
   return (
     <Grid item xs={12} sm={12} md={4} lg={4}
-      style={{ textAlign: 'center' }}>
+      style={{ textAlign: 'center' }}
+      key={dev._id}
+    >
       <Grid container justify="center">
         <Dev dev={dev} />
       </Grid>
@@ -127,6 +130,7 @@ export default function About() {
             {shuffledDevs.map(renderDevs)}
           </Grid>
         </Grid>
+        <Copyright />
       </Container>
     </React.Fragment >
   );
