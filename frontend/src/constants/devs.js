@@ -20,18 +20,18 @@ const devs = [
   {
     _id: 1,
     name: 'Santhosh',
-    avatar: '',
-    role: '',
+    avatar: 'https://pbs.twimg.com/profile_images/1261214612017430528/sjlqsZuV_400x400.jpg',
+    role: 'Full Stacker',
     email: 'santhoshvelr@gmail.com',
     social: {
       github: 'https://www.github.com/sank2000',
       slack: '',
       twitter: '',
-      instagram: '',
+      instagram: 'https://www.instagram.com/santhoshvelr/?hl=en',
       facebook: '',
       telegram: ''
     },
-    note: '',
+    note: 'Everybody Should learn how to program a Computer Because it teaches you how to Think..',
     website: '',
     choices: ['github, instagram']
   }
