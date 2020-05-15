@@ -64,6 +64,29 @@ export default function BottomAppBar() {
     } 
     else if(tym > 17)
     {
+      if (today.getDay() === 5) {
+        setPer([
+          {
+            id: 1,
+            primary: "No schedule",
+            secondary: "for this time ",
+            per : 0
+          },
+          {
+            id: 2,
+            primary: table[0][time[0].per],
+            secondary: time[0].start + " -- " + time[0].end,
+            per : time[0].per
+          },
+          {
+            id: 3,
+            primary: table[0][time[1].per],
+            secondary: time[1].start + " -- " + time[1].end,
+            per : time[1].per
+          }
+        ]);
+        return;
+      }
       setPer([
         {
           id: 1,
