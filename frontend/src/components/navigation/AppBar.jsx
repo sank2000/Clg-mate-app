@@ -86,7 +86,7 @@ function NavigationBar(props) {
         console.log(error);
         window.open("/oops", "_self");
       });
-  },[]);
+  }, []);
 
 
   const handleProfileMenuOpen = (event) => {
@@ -114,17 +114,19 @@ function NavigationBar(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}><ListItemIcon><AccountBoxOutlinedIcon /></ListItemIcon>{user}</MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <ListItemIcon><AccountBoxOutlinedIcon /></ListItemIcon> {user}
+      </MenuItem>
       <MenuItem onClick={logout}> <ListItemIcon> <ExitToAppOutlinedIcon /> </ListItemIcon> Logout</MenuItem>
     </Menu>
   );
 
   return (
     <div className={classes.grow}>
-      <AppBar style={{ zIndex: "1000" }} position="fixed">
+      <AppBar style={{ zIndex: "1000" }} elevation={3} position="fixed">
         <Toolbar>
           <HamburgerMenu />
-          <Typography variant="h6" noWrap>
+          <Typography component='h1' variant="h6" noWrap>
             {props.title || 'Collegemate'}
           </Typography>
           <div className={classes.grow} />

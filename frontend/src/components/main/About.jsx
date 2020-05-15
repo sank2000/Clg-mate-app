@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 
 import NavigationBar from '../navigation/AppBar';
 import FlexContainer from "../containers/FlexContainer";
+import Dev from '../cards/DeveloperCard';
 
 export default function SimpleContainer() {
   return (
@@ -107,7 +108,7 @@ export default function SimpleContainer() {
               Our Team
             </Typography>
             <Grid item sm={12} md={6}>
-
+              <Dev />
             </Grid>
           </Grid>
         </Grid>
