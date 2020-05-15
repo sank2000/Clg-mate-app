@@ -81,25 +81,25 @@ export default function About() {
               style={{ textAlign: "center" }}
             >
               <Grid item xs={6} sm={6} md={4} lg={3}>
-                <img src="https://scontent.fmaa1-2.fna.fbcdn.net/v/t1.0-9/33123337_10160340520850557_9009936063736578048_n.png?_nc_cat=1&_nc_sid=7aed08&_nc_ohc=t8-QVpNo2MMAX-xv8Z2&_nc_ht=scontent.fmaa1-2.fna&oh=55aee0657ce993c5861b03cb24d27785&oe=5EE1CC7C" style={{ width: '10rem', height: '10rem' }} alt="mongo" />
+                <img src="https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg" style={{ width: '10rem', height: '10rem' }} alt="mongo" />
                 <Typography component="h5" variant="h5">
                   Mongo DB
                 </Typography>
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={3}>
-                <img src="https://expressjs.com/images/express-facebook-share.png" style={{ width: '10rem', height: '10rem' }} alt="express" />
+                <img src="https://www.vectorlogo.zone/logos/expressjs/expressjs-icon.svg" style={{ width: '10rem', height: '10rem' }} alt="express" />
                 <Typography component="h5" variant="h5">
                   Express JS
                 </Typography>
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={3}>
-                <img src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png" style={{ width: '10rem', height: '10rem' }} alt="React" />
+                <img src="https://www.vectorlogo.zone/logos/reactjs/reactjs-icon.svg" style={{ width: '10rem', height: '10rem' }} alt="React" />
                 <Typography component="h5" variant="h5">
                   React JS
                 </Typography>
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={3}>
-                <img src="https://miro.medium.com/max/800/1*7xUxphx7WwttvlFu5gVvVw.png" style={{ width: '10rem', height: '10rem' }} alt="Node" />
+                <img src="https://www.vectorlogo.zone/logos/nodejs/nodejs-icon.svg" style={{ width: '10rem', height: '10rem' }} alt="Node" />
                 <Typography component="h5" variant="h5">
                   Node JS
                 </Typography>
