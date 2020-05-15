@@ -96,7 +96,7 @@ function App() {
 	}
 
 	function Empt(props) {
-		return <Container2>
+		return <Container2 background='transparent' height='60vh'>
 			<h3>{props.type} you add appear here..</h3>
 		</Container2>
 	}
@@ -124,8 +124,8 @@ function App() {
 							</Button>
 						</Link>
 					</div>
-					<hr />
 				</Fragment> : <Empt type="Posts" />}
+				<hr />
 				<Typography component="h1" variant='h3' align='center'>Materials</Typography>
 				{materialEmty ? <Fragment>
 					<Grid style={{ paddingTop: '1rem', paddingBottom: '1rem' }} container spacing={3}>
