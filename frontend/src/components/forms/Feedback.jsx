@@ -43,9 +43,9 @@ export default function App() {
   };
   function submit() {
     setLoad(true);
-    if (msg.title == "" || msg.content == "") {
+    if (!msg.title || !msg.content) {
       setMsg({
-        content: "Plz fill all the fields",
+        content: "Please fill all the fields",
         type: "error"
       });
       setOpen(true);

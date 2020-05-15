@@ -106,7 +106,7 @@ function App() {
 			<Container style={{ padding: '1rem' }} fluid>
 				<Typography component="h2" variant='h3' align='center'>Posts</Typography>
 				<Backdrop style={{ zIndex: "20000" }} open={loading}>
-					<CircularProgress style={{ zIndex: "50000" }} color="auto" />
+					<CircularProgress style={{ zIndex: "50000" }} color="primary" />
 				</Backdrop>
 				{postEmty ? <Fragment>
 					<Grid style={{ paddingTop: '1rem', paddingBottom: '1rem' }} container spacing={3}>
