@@ -15,7 +15,7 @@ import DateFnsUtils from "@date-io/date-fns";
 import { KeyboardDatePicker } from "@material-ui/pickers";
 import Grid from '@material-ui/core/Grid';
 
-import subjects from '../../../constants/subjects'
+import subjects from '../../constants/subjects'
 
 function renderSubjects(subject) {
   return (

@@ -12,7 +12,7 @@ import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Grid from '@material-ui/core/Grid';
 
-import subjects from '../../../constants/subjects'
+import subjects from '../../constants/subjects'
 
 function renderSubjects(subject) {
   return (

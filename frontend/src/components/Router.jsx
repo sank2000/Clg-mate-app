@@ -19,7 +19,7 @@ import FullMaterial from "./main/FullMaterial";
 import TimeTable from "./main/TimeTable";
 import About from "./main/About";
 import Forgot from "./auth/ForgotPassword";
-import FeedBack from "./main/Feedback";
+import FeedBack from "./forms/Feedback";
 
 function Loading() {
   return (
