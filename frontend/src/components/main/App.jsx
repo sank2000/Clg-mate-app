@@ -20,12 +20,6 @@ import NavigationBar from "../navigation/AppBar";
 import PostCard from "../cards/PostCard";
 import MaterialCard from "../cards/MaterialCard";
 
-function BulbIcon() {
-	return (
-		<img src="./images/bulb.png" alt='bulb' style={{ height: '40%', width: '40%' }}></img>
-	);
-}
-
 function App() {
 	const [post, setPost] = useState([]);
 	const [material, setMaterial] = useState([]);
@@ -103,7 +97,7 @@ function App() {
 
 	function Empt(props) {
 		return <Container2 background='transparent' height='60vh'>
-		    <img src='./images/bulb.png' style={{ width: '7em', height: '7em', padding: '1rem' }} alt='' />
+			<img src='./images/bulb.png' style={{ width: '7em', height: '7em', padding: '1rem' }} alt='' />
 			<h3>{props.type} you add appear here..</h3>
 		</Container2>
 	}
