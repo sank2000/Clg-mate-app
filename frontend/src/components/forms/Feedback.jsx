@@ -1,11 +1,12 @@
 import React, { useState, Fragment } from "react";
-import Container from "../containers/FlexContainer";
+import FlexContainer from "../containers/FlexContainer";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Spinner } from "react-bootstrap";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import axios from "axios";
+import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import NavigationBar from "../navigation/AppBar";
 
 function Alert(props) {
@@ -86,12 +87,20 @@ export default function App() {
   return (
     <Fragment>
       <NavigationBar />
-      <Container className="App">
+      <FlexContainer height='89vh' background='transparent' className="App">
+        <CreateOutlinedIcon style={{
+          padding: "1rem",
+          background: "dodgerblue",
+          borderRadius: "50%",
+          color: "#fff",
+          fontSize: "3.5rem",
+          margin: '1rem'
+        }} />
         <h2>Feel free to send feedback to us!</h2>
         <TextField
           id="outlined-basic"
           fullWidth
-          label="Title"
+          label="Subject"
           name="title"
           variant="outlined"
           onChange={handleChange}
@@ -99,7 +108,7 @@ export default function App() {
         />
         <TextField
           id="outlined-multiline-static"
-          label="Content"
+          label="Description"
           multiline
           fullWidth
           name="content"
@@ -121,7 +130,7 @@ export default function App() {
             {msg.content}
           </Alert>
         </Snackbar>
-      </Container>
+      </FlexContainer>
     </Fragment>
   );
 }
