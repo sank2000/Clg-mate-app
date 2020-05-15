@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
+import Container from "../containers/FlexContainer";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import {checkId,sendMail} from "./RouteAccess";
@@ -87,7 +87,7 @@ const handleSend = async() => {
 
   return (
     <Fragment>
-      <Container>
+      {!found && <Container>
         <h2>Enter your ID number</h2>
         <TextField
           autoComplete="unique_id"
@@ -98,6 +98,7 @@ const handleSend = async() => {
           autoFocus
           disabled={found}
           onChange={handleChange}
+          style={{marginTop : "10px"}}
         />
         <br></br>
         <Button
@@ -105,6 +106,7 @@ const handleSend = async() => {
           color="primary"
           size="large"
           onClick={handleClick}
+          style={{marginTop : "10px"}}
         >
           ok&nbsp;{load && <Spinner animation="border" size="sm" />}
         </Button>
@@ -113,7 +115,7 @@ const handleSend = async() => {
             {msg.content}
           </Alert>
         </Snackbar>
-      </Container>
+      </Container>}
       {found && <Valid />}
     </Fragment>
   );
