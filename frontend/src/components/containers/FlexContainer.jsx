@@ -11,6 +11,7 @@ function FlexContainer(props) {
         alignItems: "center",
         minHeight: props.height || '100vh',
         maxHeight: '100vh',
+        padding: '10px',
         background: props.background || "#fff"
       }}
       {...props.outer}
