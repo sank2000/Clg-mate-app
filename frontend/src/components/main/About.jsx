@@ -23,6 +23,36 @@ function renderDevs(dev) {
   );
 }
 
+function renderTechStack(tech) {
+  return (
+    <Grid item xs={6} sm={6} md={4} lg={3} key={tech.name}>
+      <img src={tech.logoURL} style={{ width: '10rem', height: '10rem' }} alt={tech.name} />
+      <Typography component="h5" variant="h5">
+        {tech.name}
+      </Typography>
+    </Grid>
+  );
+}
+
+const techStack = [
+  {
+    logoURL: 'https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg',
+    name: 'Mongo DB'
+  },
+  {
+    logoURL: 'https://www.vectorlogo.zone/logos/expressjs/expressjs-icon.svg',
+    name: 'Express JS'
+  },
+  {
+    logoURL: 'https://www.vectorlogo.zone/logos/reactjs/reactjs-icon.svg',
+    name: 'React JS'
+  },
+  {
+    logoURL: 'https://www.vectorlogo.zone/logos/nodejs/nodejs-icon.svg',
+    name: 'Node JS'
+  }
+]
+
 export default function About() {
   return (
     <React.Fragment>
@@ -64,14 +94,7 @@ export default function About() {
               Technology Stack
             </Typography>
           </Grid>
-          <Grid item
-            lg={12}
-            md={12}
-            sm={12}
-            style={{
-              background: "#fff"
-            }}
-          >
+          <Grid item lg={12} md={12} sm={12} style={{ background: "#fff" }}>
             <Grid
               container
               direction="row"
@@ -80,30 +103,7 @@ export default function About() {
               spacing={3}
               style={{ textAlign: "center" }}
             >
-              <Grid item xs={6} sm={6} md={4} lg={3}>
-                <img src="https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg" style={{ width: '10rem', height: '10rem' }} alt="mongo" />
-                <Typography component="h5" variant="h5">
-                  Mongo DB
-                </Typography>
-              </Grid>
-              <Grid item xs={6} sm={6} md={4} lg={3}>
-                <img src="https://www.vectorlogo.zone/logos/expressjs/expressjs-icon.svg" style={{ width: '10rem', height: '10rem' }} alt="express" />
-                <Typography component="h5" variant="h5">
-                  Express JS
-                </Typography>
-              </Grid>
-              <Grid item xs={6} sm={6} md={4} lg={3}>
-                <img src="https://www.vectorlogo.zone/logos/reactjs/reactjs-icon.svg" style={{ width: '10rem', height: '10rem' }} alt="React" />
-                <Typography component="h5" variant="h5">
-                  React JS
-                </Typography>
-              </Grid>
-              <Grid item xs={6} sm={6} md={4} lg={3}>
-                <img src="https://www.vectorlogo.zone/logos/nodejs/nodejs-icon.svg" style={{ width: '10rem', height: '10rem' }} alt="Node" />
-                <Typography component="h5" variant="h5">
-                  Node JS
-                </Typography>
-              </Grid>
+              {techStack.map(renderTechStack)}
             </Grid>
           </Grid>
         </Grid>
