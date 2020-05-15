@@ -6,6 +6,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import {checkId,sendMail} from "./RouteAccess";
 import { Spinner } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -29,8 +30,13 @@ export default function App() {
       <Container>
         <h3>Your Mail id is {mail}</h3>
         <p> click below to sent password to your mail </p>
+        <Link to="/SignIn" className="linkStyle">
+          <Button variant="contained" color="secondary" onClick={handleSend} style={{marginRight : "10px"}}>
+            Go to Sign IN
+          </Button>
+        </Link>
         <Button variant="contained" color="primary" onClick={handleSend}>
-          Send&nbsp;{load2 && <Spinner animation="border" size="sm" />}
+          Send &nbsp;{load2 && <Spinner animation="border" size="sm" />}
         </Button>
       </Container>
     );
@@ -110,13 +116,13 @@ const handleSend = async() => {
         >
           ok&nbsp;{load && <Spinner animation="border" size="sm" />}
         </Button>
-        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+      </Container>}
+      {found && <Valid />}
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
           <Alert onClose={handleClose} severity={msg.type}>
             {msg.content}
           </Alert>
         </Snackbar>
-      </Container>}
-      {found && <Valid />}
     </Fragment>
   );
 }
