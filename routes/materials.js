@@ -1,7 +1,7 @@
 let express = require('express');
 let router = express.Router();
 
-const Material = require('./../models/Material');
+const Material = require('./../models/material');
 const User = require('./../models/User');
 
 router.get('/', (req, res) => {
