@@ -13,7 +13,7 @@ const devs = [
       facebook: 'https://www.facebook.com/akrishnamoorthy007',
       telegram: ''
     },
-    note: `Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica`,
+    note: `Once committed is done. Once promissed is held. Once learnt is kept.`,
     website: 'https://www.about.me/akrishnamoorthy007',
     choices: ['github', 'twitter']
   },
