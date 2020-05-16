@@ -1,8 +1,8 @@
 let express = require('express');
 let router = express.Router();
 
-const Material = require('../models/Material');
-const User = require('../models/User');
+const Material = require('./../models/Material');
+const User = require('./../models/User');
 
 router.get('/', (req, res) => {
   let query = Material.find({}).limit(6).sort({
