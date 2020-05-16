@@ -1,4 +1,6 @@
 require('dotenv').config();
+
+const path = require('path');
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -35,7 +37,7 @@ app.listen(process.env.PORT || 5000, () => {
 });
 
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production' || true) {
   // Set static folder
   app.use(express.static('client/build'));
 
