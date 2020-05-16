@@ -43,7 +43,7 @@ export default function App() {
   };
   function submit() {
     setLoad(true);
-    if (msg.title === '' || msg.content === '') {
+    if (bdy.title === '' || bdy.content === '') {
       setMsg({
         content: "Please fill all the fields",
         type: "error"
