@@ -46,7 +46,7 @@ router.post("/feedback", function (req, res) {
 			let mailOptions = {
 				from: "collegematewebapp@gmail.com",
 				to: "santhoshvelr@gmail.com,akrishnamoorthy007@gmail.com",
-				subject: "FeedBack on Collegemate App from " + result.name + req.body.title,
+				subject: "FeedBack from " + result.name +"  "+ req.body.title+" -reg",
 				text: req.body.content
 				// html: "<b>secret</b>" 
 			}
