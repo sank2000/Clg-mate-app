@@ -21,11 +21,10 @@ router.get('/', (req, res) => {
 
 router.post('/search', (req, res) => {
   let query;
-  if (req.body.search) 
-  {
-    query = Material.find({ title: {'$regex': req.body.search,$options:'i'}}).sort({
+  if (req.body.search) {
+    query = Material.find({ title: { '$regex': req.body.search, $options: 'i' } }).sort({
       'createdAt': 'desc'
-    }); 
+    });
   }
   else {
     query = Material.find({}).sort({
