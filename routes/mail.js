@@ -44,11 +44,14 @@ router.post("/feedback", function (req, res) {
 		}
 		else {
 			let mailOptions = {
-				from: "collegematewebapp@gmail.com",
+				from: `"${result.name} via Collegemate Feedback" collegematewebapp@gmail.com`,
 				to: "santhoshvelr@gmail.com,akrishnamoorthy007@gmail.com",
-				subject: "FeedBack on Collegemate App from " + result.name + req.body.title,
-				text: req.body.content
-				// html: "<b>secret</b>" 
+				subject: "FeedBack on Collegemate App from " + result.name,
+				// text: req.body.content,
+				html:
+					`<h1>${req.body.title}</h1>
+					<p>${req.body.content}</p>
+				`
 			}
 			transporter.sendMail(mailOptions, function (err, dat) {
 				if (err) {
@@ -78,11 +81,14 @@ router.post("/forgot/sendmail", function (req, res) {
 			if (result) {
 				let mailOptions =
 				{
-					from: "collegematewebapp@gmail.com",
+					from: '"Collegemate App" collegematewebapp@gmail.com',
 					to: result.email,
 					subject: "Your Collegemate Sign in password",
-					text: `Your Collegemate sign in password is: ${result.password}. If you don't know why you're getting this email, consider changing your password to avoid your account being misused/ locked.`
-					// html: "<b>secret</b>" 
+					html: `
+					<h3>Your Collegemate sign in password is:</h3> 
+					<h1>${result.password}</h1>
+					<h4>If you don't know why you're getting this email, consider changing your password to avoid your account being misused/ locked.</h4>
+					`
 				}
 
 				transporter.sendMail(mailOptions, function (err, dat) {
