@@ -10,7 +10,7 @@ function FlexContainer(props) {
         textAlign: "center",
         alignItems: "center",
         minHeight: props.height || '100vh',
-        maxHeight: '100vh',
+        maxHeight: props.maxHeight,
         padding: '10px',
         background: props.background || "#fff"
       }}
