@@ -7,9 +7,9 @@ const mongoose = require("mongoose");
 const session = require("express-session")
 
 const posts = require('./routes/Posts');
-const materials = require('./routes/materials');
 const auth = require('./routes/Auth');
 const mail = require('./routes/mail');
+const materials = require('./routes/materials');
 
 console.log("all require done");
 
