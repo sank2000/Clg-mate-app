@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import Container from "../containers/FlexContainer";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
-import {checkId,sendMail} from "./RouteAccess";
+import { checkId, sendMail } from "./RouteAccess";
 import { Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -18,7 +18,7 @@ export default function App() {
   const [load2, setLoad2] = useState(false);
   const [open, setOpen] = useState(false);
   const [found, SetFound] = useState(false);
-  const [mail,setMail]   = useState("");
+  const [mail, setMail] = useState("");
   const [msg, setMsg] = useState({
     content: "ID number Doesn't Exist",
     type: "error"
@@ -28,11 +28,12 @@ export default function App() {
   function Valid() {
     return (
       <Container>
-        <h3>Your Mail id is {mail}</h3>
-        <p> click below to sent password to your mail </p>
+        <img src='./images/mail.png' style={{ width: '10em', height: '10em', padding: '1rem' }} alt='' />
+        <h3>Get your password!</h3>
+        <p>Click on the button below to get your password on your email {mail}.</p>
         <Link to="/SignIn" className="linkStyle">
-          <Button variant="contained" color="secondary" onClick={handleSend} style={{marginRight : "10px"}}>
-            Go to Sign IN
+          <Button variant="contained" color="secondary" onClick={handleSend} style={{ marginRight: "10px" }}>
+            Go to Sign In
           </Button>
         </Link>
         <Button variant="contained" color="primary" onClick={handleSend}>
@@ -42,40 +43,38 @@ export default function App() {
     );
   }
 
-const handleSend = async() => {
+  const handleSend = async () => {
     setLoad2(true);
-    let idObj = { id : id};
+    let idObj = { id: id };
     const res = await sendMail(idObj);
     setLoad2(false);
-    if (res.data.done) 
-    {
-        setMsg({
-            content: res.data.msg,
-            type: "success"
-        });
-        setOpen(true);
+    if (res.data.done) {
+      setMsg({
+        content: res.data.msg,
+        type: "success"
+      });
+      setOpen(true);
     }
     else {
-        setMsg({
-            content: res.data.msg,
-            type: "error"
-        });
-        setOpen(true);
+      setMsg({
+        content: res.data.msg,
+        type: "error"
+      });
+      setOpen(true);
     }
   };
 
-  const handleClick = async() => {
+  const handleClick = async () => {
     setLoad(true);
-    let idObj = { id : id};
+    let idObj = { id: id };
     const res = await checkId(idObj);
     setLoad(false);
-    if (res.data.find) 
-    {
-        SetFound(true);
-        setMail(res.data.mail);
+    if (res.data.find) {
+      SetFound(true);
+      setMail(res.data.mail);
     }
     else {
-        setOpen(true);
+      setOpen(true);
     }
   };
 
@@ -94,6 +93,7 @@ const handleSend = async() => {
   return (
     <Fragment>
       {!found && <Container>
+        <img src='./images/forgot.png' style={{ width: '10em', height: '10em', padding: '1rem' }} alt='' />
         <h2>Enter your ID number</h2>
         <TextField
           autoComplete="unique_id"
@@ -104,7 +104,7 @@ const handleSend = async() => {
           autoFocus
           disabled={found}
           onChange={handleChange}
-          style={{marginTop : "10px"}}
+          style={{ marginTop: "10px" }}
         />
         <br></br>
         <Button
@@ -112,17 +112,17 @@ const handleSend = async() => {
           color="primary"
           size="large"
           onClick={handleClick}
-          style={{marginTop : "10px"}}
+          style={{ marginTop: "10px" }}
         >
           ok&nbsp;{load && <Spinner animation="border" size="sm" />}
         </Button>
       </Container>}
       {found && <Valid />}
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-          <Alert onClose={handleClose} severity={msg.type}>
-            {msg.content}
-          </Alert>
-        </Snackbar>
+        <Alert onClose={handleClose} severity={msg.type}>
+          {msg.content}
+        </Alert>
+      </Snackbar>
     </Fragment>
   );
 }
