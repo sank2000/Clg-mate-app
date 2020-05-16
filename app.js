@@ -6,9 +6,9 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require("express-session")
 
-const posts = require('./routes/posts');
+const posts = require('./routes/Posts');
 const materials = require('./routes/materials');
-const auth = require('./routes/auth');
+const auth = require('./routes/Auth');
 const mail = require('./routes/mail');
 
 const app = express();
