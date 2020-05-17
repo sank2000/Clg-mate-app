@@ -13,7 +13,7 @@ const devs = [
       facebook: 'https://www.facebook.com/akrishnamoorthy007',
       telegram: ''
     },
-    note: `Once committed is done. Once promissed is held. Once learnt is kept.`,
+    note: `People satisfy conditions to solve problems, Programmers are people who also exploit the conditions.`,
     website: 'https://www.about.me/akrishnamoorthy007',
     choices: ['github', 'twitter']
   },
