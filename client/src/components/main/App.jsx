@@ -111,7 +111,13 @@ function App() {
 					<CircularProgress style={{ zIndex: "50000" }} color="primary" />
 				</Backdrop>
 				{postEmty ? <Fragment>
-					<Grid style={{ paddingTop: '1rem', paddingBottom: '1rem' }} container spacing={3}>
+					<Grid container justify="space-evenly"
+						spacing={3}
+						alignItems="center"
+						style={{
+							paddingTop: '1rem',
+							paddingBottom: '1rem'
+						}}>
 						{post.map(data)}
 					</Grid>
 					<div style={{
@@ -129,7 +135,13 @@ function App() {
 				<hr />
 				<Typography component="h1" variant='h3' align='center'>Materials</Typography>
 				{materialEmty ? <Fragment>
-					<Grid style={{ paddingTop: '1rem', paddingBottom: '1rem' }} container spacing={3}>
+					<Grid container justify="space-evenly"
+						spacing={3}
+						alignItems="center"
+						style={{
+							paddingTop: '1rem',
+							paddingBottom: '1rem'
+						}}>
 						{material.map(mat)}
 					</Grid>
 					<div style={{
