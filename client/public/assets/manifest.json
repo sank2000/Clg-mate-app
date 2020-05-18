@@ -1,6 +1,6 @@
 {
+  "name": "Collegemate",
   "short_name": "Collegemate",
-  "name": "Collegemate app web client",
   "icons": [
     {
       "src": "android-icon-36x36.png",
@@ -41,6 +41,10 @@
   ],
   "start_url": "/",
   "display": "standalone",
+  "scope": ".",
   "theme_color": "#fff",
-  "background_color": "#fff"
+  "background_color": "#fff",
+  "description": "The PWA for the Collegemate web client.",
+  "dir": "ltr",
+  "lang": "en-US"
 }
