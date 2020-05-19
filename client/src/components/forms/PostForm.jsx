@@ -126,7 +126,7 @@ function PostForm(props) {
                   label="Due Date"
                   format="dd-MMM-yyyy"
                   value={selectedDate}
-                  InputProps={{ inputProps: { min: (new Date()) } }}
+                  minDate = {new Date()}
                   onChange={date => handleDateChange(date)}
                   style={{ ...applyMargin, outline: "none" }}
                 />
