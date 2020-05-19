@@ -98,7 +98,7 @@ function SignIn() {
         <Typography style={{ margin: "10px" }} component="h1" variant="h4">
           Sign In
             </Typography>
-        <form>
+        <form onSubmit={submit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -150,7 +150,6 @@ function SignIn() {
                 fullWidth
                 variant="contained"
                 style={{ backgroundColor: "#009688", color: "#fff" }}
-                onClick={submit}
               >
                 Sign In &nbsp;{load && <Spinner animation="border" size="sm" />}
               </Button>
