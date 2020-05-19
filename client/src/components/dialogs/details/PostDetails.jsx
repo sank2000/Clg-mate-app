@@ -10,6 +10,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
+import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
 
 const styles = (theme) => ({
   root: {
@@ -87,7 +88,7 @@ function CustomizedDialogs(props) {
           <hr />
           <div className="post-details">
             <span className="posted-on">{props.data.postedOn}</span>
-            <span className="posted-by" style={{ float: "right" }}> <PermIdentityOutlinedIcon /> {props.data.postedBy}</span>
+            <span className="posted-by" style={{ float: "right" }}> {props.data.authorType === "Staff" ?<VerifiedUserOutlinedIcon /> : <PermIdentityOutlinedIcon />} &nbsp; {props.data.postedBy}</span>
           </div>
         </DialogContent>
         <DialogActions>

@@ -83,7 +83,7 @@ router.post("/full", function (req, res) {
 router.post("/new", function (req, res) {
   if (req.session.user) 
   {
-    User.findById(req.session.user, "name", function (err, result) {
+    User.findById(req.session.user, function (err, result) {
       if (err) {
         console.log(err);
       }
@@ -91,7 +91,8 @@ router.post("/new", function (req, res) {
         const m = new Material({
           ...req.body,
           subName: req.body.subName,
-          postBy: result.name
+          postBy: result.name,
+          postByType : result.type
         });
         m.save(function (err) {
           if (err) {

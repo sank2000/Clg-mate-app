@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const PostSchema = new Schema({
   title: { type: String, required: true, trim: true },
   author: { type: String, required: true },
+  authorType : { type: String, required: true },
   description: { type: String, trim: true },
   subName: String,
   dueDate: Date,

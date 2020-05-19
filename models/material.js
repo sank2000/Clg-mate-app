@@ -10,6 +10,7 @@ const MaterialSchema = new Schema({
   file: { type: String, required: true },
   url: { type: String, required: true },
   postBy: { type: String, required: true },
+  postByType: { type: String, required: true },
   materialType: { type: String, default: "Other" }
 }, {
   timestamps: true

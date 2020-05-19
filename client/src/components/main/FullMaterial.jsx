@@ -50,6 +50,7 @@ function App() {
           file={post.file}
           url={post.url}
           postBy={post.postBy}
+          postByType={post.postByType}
           postedOn={DateFormat((new Date(post.updatedAt)), "d-mmm-yy, h:mm TT")}
         />
       </Grid>

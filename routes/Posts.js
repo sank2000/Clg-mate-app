@@ -82,7 +82,7 @@ router.post("/full", function (req, res) {
 router.post("/new", function (req, res) {
   if (req.session.user) 
   {
-    User.findById(req.session.user, "name", function (err, result) {
+    User.findById(req.session.user, function (err, result) {
       if (err) {
         console.log(err);
       }
@@ -90,6 +90,7 @@ router.post("/new", function (req, res) {
         const newPost = new Post({
           title: req.body.title,
           author: result.name,
+          authorType : result.type,
           description: req.body.description,
           subName: req.body.subName,
           postType: req.body.postType,
