@@ -29,10 +29,20 @@ router.post("/signup", function (req, res) {
       });
     })
     .catch((err) => {
-      res.json({
-        message: 'Unable to create account.',
-        auth: false,
-      });
+      if(err.code === 11000)
+      {
+        res.json({
+          message: 'Error creating account : Account already exists',
+          auth: false,
+        });
+      }
+      else
+      {
+        res.json({
+          message: 'Unable to create account : Error - '+ err.code,
+          auth: false,
+        });
+      }
     });
 });
 
