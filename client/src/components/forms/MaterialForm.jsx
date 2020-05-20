@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal } from "react-bootstrap";
 import IconButton from '@material-ui/core/IconButton';
 import TextField from "@material-ui/core/TextField";
@@ -16,7 +15,9 @@ import subjects from '../../constants/subjects'
 
 function renderSubjects(subject) {
   return (
-    <MenuItem key={subject.code} value={subject.name}>{`${subject.code} - ${subject.name}`}</MenuItem>
+    <MenuItem key={subject.code} value={subject.name}>
+      {`${subject.code} - ${subject.name}`}
+    </MenuItem>
   );
 }
 
