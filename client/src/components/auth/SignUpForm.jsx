@@ -19,7 +19,7 @@ function SignUpForm(props) {
 
   const [load, setLoad] = useState(false);
   const [Aopen, setAOpen] = useState(false);
-  const [msg,setMsg] = useState("");
+  const [msg, setMsg] = useState("");
 
 
   const AhandleClick = () => {
@@ -47,51 +47,43 @@ function SignUpForm(props) {
     }
   };
 
-  
-  const intialValues = 
-  {
+  const intialValues = {
     name: "",
     unique_id: "",
     email: "",
     password: "",
-    cpassword : "",
+    cpassword: "",
     type: props.user
   }
 
-  const ValidationSchema = Yup.object(
-  {
-    name : Yup.string().required("Field required !").min(3),
-    email : Yup.string().required("Field required !").email("Invalid Email"),
-    password : Yup.string().required('Field required !').min(5),
-    cpassword : Yup.string().required('Field required !').oneOf([Yup.ref('password'), null], 'Passwords must match')
+  const ValidationSchema = Yup.object({
+    name: Yup.string().required("Field required !").min(3),
+    email: Yup.string().required("Field required !").email("Invalid Email"),
+    password: Yup.string().required('Field required !').min(5),
+    cpassword: Yup.string().required('Field required !').oneOf([Yup.ref('password'), null], 'Passwords must match')
   });
 
   const formik = useFormik(
     {
-       initialValues : intialValues ,
-       validationSchema : ValidationSchema,
-       validate: values => {
+      initialValues: intialValues,
+      validationSchema: ValidationSchema,
+      validate: values => {
         let errors = {};
-        if (!values.unique_id) 
-        {
+        if (!values.unique_id) {
           errors.unique_id = "Field Required";
         }
-        else
-        {
-           if(props.user === "Student")
-           {
-              if(values.unique_id < 810018104001 || values.unique_id > 810018104999)
-              {
-                errors.unique_id  = "ID Number Invalid";
-              }
-           }
+        else {
+          if (props.user === "Student") {
+            if (values.unique_id < 810018104001 || values.unique_id > 810018104999) {
+              errors.unique_id = "ID Number Invalid";
+            }
+          }
         }
         return errors;
       },
-       onSubmit: values => 
-       {
+      onSubmit: values => {
         submit(values);
-       }
+      }
     }
   )
 
@@ -104,7 +96,7 @@ function SignUpForm(props) {
             name="name"
             {...formik.getFieldProps("name")}
             helperText={formik.touched.name && formik.errors.name}
-            error = {formik.touched.name && formik.errors.name !== undefined}
+            error={formik.touched.name && formik.errors.name !== undefined}
             variant="outlined"
             required
             fullWidth
@@ -117,7 +109,7 @@ function SignUpForm(props) {
             autoComplete="unique_id"
             name="unique_id"
             helperText={formik.touched.unique_id && formik.errors.unique_id}
-            error = {formik.touched.unique_id && formik.errors.unique_id !== undefined}
+            error={formik.touched.unique_id && formik.errors.unique_id !== undefined}
             {...formik.getFieldProps("unique_id")}
             variant="outlined"
             type="number"
@@ -136,7 +128,7 @@ function SignUpForm(props) {
             name="email"
             {...formik.getFieldProps("email")}
             helperText={formik.touched.email && formik.errors.email}
-            error = {formik.touched.email && formik.errors.email !== undefined}
+            error={formik.touched.email && formik.errors.email !== undefined}
             size="small"
             autoComplete="email"
           />
@@ -149,7 +141,7 @@ function SignUpForm(props) {
             name="password"
             {...formik.getFieldProps("password")}
             helperText={formik.touched.password && formik.errors.password}
-            error = {formik.touched.password && formik.errors.password !== undefined}
+            error={formik.touched.password && formik.errors.password !== undefined}
             label="Password"
             type="password"
             size="small"
@@ -163,7 +155,7 @@ function SignUpForm(props) {
             name="cpassword"
             {...formik.getFieldProps("cpassword")}
             helperText={formik.touched.cpassword && formik.errors.cpassword}
-            error = {formik.touched.cpassword && formik.errors.cpassword !== undefined}
+            error={formik.touched.cpassword && formik.errors.cpassword !== undefined}
             label="Confirm Password"
             type="password"
             size="small"

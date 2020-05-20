@@ -126,7 +126,7 @@ function PostForm(props) {
                   label="Due Date"
                   format="dd-MMM-yyyy"
                   value={selectedDate}
-                  minDate = {new Date()}
+                  minDate={new Date()}
                   onChange={date => handleDateChange(date)}
                   style={{ ...applyMargin, outline: "none" }}
                 />
@@ -138,6 +138,7 @@ function PostForm(props) {
                   type="file"
                   id="contained-button-file"
                   name="file"
+                  multiple
                   onChange={props.handleChange}
                 />
                 <label htmlFor="contained-button-file">

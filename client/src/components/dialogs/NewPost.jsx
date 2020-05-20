@@ -8,7 +8,7 @@ class NewPost extends Component {
     super(props);
     this.state = {
       files: null,
-      url: '',
+      url: [],
       progress: 'Upload',
       fileChooseState: 'Choose File'
     };
@@ -18,7 +18,9 @@ class NewPost extends Component {
 
   handleChange = e => {
     if (e.target.files.length === 0) return;
-    const files = e.target.files[0];
+    const files = Array.from(e.target.files);
+    console.log(files);
+
     this.setState(() => ({ files }));
     let progress = 'Upload';
     let fileChooseState = 'File Chosen';
@@ -29,37 +31,58 @@ class NewPost extends Component {
   handleUpload = () => {
     console.log('Upload starting');
     const { files } = this.state;
-    let storageRef = firebase.storage().ref('materials/' + files.name)
-    this.props.post &&
-      (storageRef = firebase.storage().ref('posts/' + files.name))
-    const uploadTask = storageRef.put(files);
-
-    const uploadProgress = (snapshot) => {
-      let percentComplete = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      let progress = `Uploading (${Math.round(percentComplete)}%)`;
-      this.setState(() => ({ progress }));
-    }
-
-    const uploadComplete = () => {
-      let urlObtainer;
+    let fileNo = 1;
+    files.forEach(file => {
+      let storageRef;
       this.props.post ?
-        urlObtainer = firebase.storage().ref('posts').child(files.name).getDownloadURL() :
-        urlObtainer = firebase.storage().ref('materials').child(files.name).getDownloadURL();
-      urlObtainer.then(url => {
-        this.setState(() => ({ url }));
-        let progress = 'Uploaded'
-        this.setState(() => ({ progress }));
-      })
-        .catch(e => {
-          console.log('Error: ' + e);
-        });
-    };
+        storageRef = firebase.storage().ref('posts/' + file.name) :
+        storageRef = firebase.storage().ref('materials/' + file.name);
+      const uploadTask = storageRef.put(file);
 
-    uploadTask.on('state_changed', snapshot => uploadProgress(snapshot), (error) => {
-      console.log(error);
-      window.open("/oops", "_self");
-    }, () => uploadComplete());
-  }
+      const uploadProgress = (snapshot) => {
+        let percentComplete = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        let progress = `Uploading file ${fileNo} (${Math.round(percentComplete)}%)`;
+        this.setState(() => ({ progress }));
+      }
+
+      const uploadComplete = () => {
+        let urlObtainer;
+        this.props.post ?
+          urlObtainer = firebase.storage().ref('posts').child(file.name).getDownloadURL() :
+          urlObtainer = firebase.storage().ref('materials').child(file.name).getDownloadURL();
+        urlObtainer.then(link => {
+          let mutatingArray = this.state.url;
+          mutatingArray.push({ fileName: file.name, downloadURL: link });
+
+          let progress = `Uploaded file ${fileNo}`;
+          this.setState(() => ({ progress }));
+          if (fileNo === files.length) {
+            let url = mutatingArray;
+            this.setState(() => ({ url }));
+            console.log(url);
+            let progress = `Uploaded all files`;
+            this.setState(() => ({ progress }));
+            return;
+          }
+          fileNo += 1;
+        })
+          .catch(e => {
+            console.log('Error: ' + e);
+          });
+      }
+
+      uploadTask.on(
+        'state_changed',
+        snapshot => uploadProgress(snapshot),
+        error => {
+          console.log(error);
+          // window.open("/oops", "_self");
+        },
+        () => uploadComplete()
+      );
+
+    });
+  };
 
   render() {
     return (
