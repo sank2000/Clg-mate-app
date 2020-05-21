@@ -60,12 +60,8 @@ router.post("/new", function (req, res) {
       postByType: result.type
     });
     m.save(function (err) {
-      if (err) {
-        console.log(err);
-      }
-      else {
-        res.redirect("../posts/new/success");
-      }
+      if (err) { console.log(err); return; }
+      res.redirect("../posts/new/success");
     });
   });
 });
