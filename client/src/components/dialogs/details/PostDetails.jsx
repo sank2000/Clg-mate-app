@@ -14,8 +14,6 @@ import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
 
 import DownloadButton from './AttachmentDownloadButton';
 
-// to inc: https://codesandbox.io/s/material-demo-4m8sm?file=/demo.js
-
 const styles = (theme) => ({
   root: {
     margin: 0,

@@ -28,6 +28,7 @@ function DownloadMenu(props) {
       <Button
         aria-controls="simple-menu"
         aria-haspopup="true"
+        color="primary"
         onClick={handleClick}
       >
         Download
