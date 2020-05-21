@@ -142,7 +142,7 @@ function App() {
 						<Link to="/fullmaterial" className="linkStyle">
 							<Button variant="contained" color="primary">
 								Show more
-				                </Button>
+				      </Button>
 						</Link>
 					</div>
 				</Fragment> : <Empt type="Materials" />}
