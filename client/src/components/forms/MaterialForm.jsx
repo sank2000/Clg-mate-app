@@ -121,13 +121,14 @@ function PostForm(props) {
               multiline
               label="Description" />
             <div className="file-section" style={applyMargin}>
-              <input type="hidden" name="url" value={props.url} />
+              <input id='urls' type="hidden" name="url" value={JSON.stringify(props.url)} />
               <input
                 required
                 style={{ display: "none" }}
                 type="file"
                 id="contained-button-file"
                 name="file"
+                multiple
                 onChange={props.handleChange}
               />
               <label htmlFor="contained-button-file">
@@ -150,13 +151,13 @@ function PostForm(props) {
               }
             </div>
             {
-              'Uploaded' === props.progress &&
+              'Uploaded all files' === props.progress &&
               <Btn style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Btn>
             }
           </form>
         </div>
       </Modal.Body>
-    </Modal>
+    </Modal >
   );
 }
 

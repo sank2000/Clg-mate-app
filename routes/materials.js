@@ -51,12 +51,17 @@ router.post("/new", function (req, res) {
   if (!req.session.user) { res.send("unauthorised"); }
   User.findById(req.session.user, function (err, result) {
     if (err) { console.log(err); return; }
+    // console.log(req.body);
+
     const m = new Material({
       ...req.body,
+      url: JSON.parse(req.body.url),
       subName: req.body.subName,
       postBy: result.name,
       postByType: result.type
     });
+    // console.log(m);
+
     m.save(function (err) {
       if (err) { console.log(err); return; }
       res.redirect("../posts/new/success");

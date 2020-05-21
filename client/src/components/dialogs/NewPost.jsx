@@ -19,7 +19,6 @@ class NewPost extends Component {
   handleChange = e => {
     if (e.target.files.length === 0) return;
     const files = Array.from(e.target.files);
-    console.log(files);
 
     this.setState(() => ({ files }));
     let progress = 'Upload';
@@ -35,8 +34,8 @@ class NewPost extends Component {
     files.forEach(file => {
       let storageRef;
       this.props.post ?
-        storageRef = firebase.storage().ref('posts/' + file.name) :
-        storageRef = firebase.storage().ref('materials/' + file.name);
+        storageRef = firebase.storage().ref('test/' + file.name) :
+        storageRef = firebase.storage().ref('test/' + file.name);
       const uploadTask = storageRef.put(file);
 
       const uploadProgress = (snapshot) => {
@@ -48,8 +47,8 @@ class NewPost extends Component {
       const uploadComplete = () => {
         let urlObtainer;
         this.props.post ?
-          urlObtainer = firebase.storage().ref('posts').child(file.name).getDownloadURL() :
-          urlObtainer = firebase.storage().ref('materials').child(file.name).getDownloadURL();
+          urlObtainer = firebase.storage().ref('test').child(file.name).getDownloadURL() :
+          urlObtainer = firebase.storage().ref('test').child(file.name).getDownloadURL();
         urlObtainer.then(link => {
           let mutatingArray = this.state.url;
           mutatingArray.push({ fileName: file.name, downloadURL: link });
@@ -59,7 +58,6 @@ class NewPost extends Component {
           if (fileNo === files.length) {
             let url = mutatingArray;
             this.setState(() => ({ url }));
-            console.log(url);
             let progress = `Uploaded all files`;
             this.setState(() => ({ progress }));
             return;
@@ -80,7 +78,6 @@ class NewPost extends Component {
         },
         () => uploadComplete()
       );
-
     });
   };
 
