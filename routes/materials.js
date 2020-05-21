@@ -39,8 +39,6 @@ router.post('/search', (req, res) => {
   })
 });
 
-
-
 router.post("/full", function (req, res) {
   if (!req.session.user) { res.send("unauthorised"); }
   Material.find({}, function (err, result) {

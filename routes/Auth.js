@@ -29,17 +29,15 @@ router.post("/signup", function (req, res) {
       });
     })
     .catch((err) => {
-      if(err.code === 11000)
-      {
+      if (err.code === 11000) {
         res.json({
           message: 'Error creating account : Account already exists',
           auth: false,
         });
       }
-      else
-      {
+      else {
         res.json({
-          message: 'Unable to create account : Error - '+ err.code,
+          message: 'Unable to create account : Error - ' + err.code,
           auth: false,
         });
       }
@@ -87,7 +85,7 @@ router.get("/user", (req, res) => {
         user: result.name,
         email: result.email,
         state: result.state,
-        type : result.type
+        type: result.type
       })
     }
   })
