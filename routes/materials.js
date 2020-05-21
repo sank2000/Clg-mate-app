@@ -5,110 +5,69 @@ const Material = require('./../models/material');
 const User = require('./../models/User');
 
 router.get('/', (req, res) => {
-    if (req.session.user) 
-    {
-      let query = Material.find({}).limit(6).sort({
-        'createdAt': 'desc'
-      });
-      query.exec(function (err, result) {
-        if (!err) {
-          res.send(result);
-        }
-        else {
-          console.log(err);
-        }
-      })
-    }
-    else
-    {
-      res.send("unauthorised");
-    }
-}
-);
+  if (!req.session.user) { res.send("unauthorised"); }
+  let query = Material.find({}).limit(6).sort({
+    'createdAt': 'desc'
+  });
+  query.exec(function (err, result) {
+    if (err) { console.log(err); return; }
+    res.send(result);
+  })
+});
 
 router.post('/search', (req, res) => {
-  if (req.session.user) 
-  {
-      let query;
-      if (req.body.search) {
-        query = Material.find({ title: { '$regex': req.body.search, $options: 'i' } }).sort({
-          'createdAt': 'desc'
-        });
-      }
-      else {
-        query = Material.find({}).sort({
-          'createdAt': 'desc'
-        });
-      }
-      query.exec(function (err, result) {
-        if (!err) {
-          if (result.length != 0) {
-            res.send(result);
-          }
-          else {
-            res.send([]);
-          }
-        }
-        else {
-          console.log(err);
-        }
-      })
+  if (!req.session.user) { res.send("unauthorised"); }
+  let query;
+  if (req.body.search) {
+    query = Material.find({ title: { '$regex': req.body.search, $options: 'i' } }).sort({
+      'createdAt': 'desc'
+    });
+  }
+  else {
+    query = Material.find({}).sort({
+      'createdAt': 'desc'
+    });
+  }
+  query.exec(function (err, result) {
+    if (err) { console.log(err); return; }
+    if (result.length != 0) {
+      res.send(result);
     }
-    else
-    {
-      res.send("unauthorised");
+    else {
+      res.send([]);
     }
-  });
+  })
+});
 
 
 
 router.post("/full", function (req, res) {
-    if (req.session.user) 
-    {
-      Material.find({}, function (err, result) {
-        if (!err) {
-          res.send(result);
-        }
-        else {
-          console.log(err);
-        }
-      })
-    }
-    else
-    {
-      res.send("unauthorised");
-    }
+  if (!req.session.user) { res.send("unauthorised"); }
+  Material.find({}, function (err, result) {
+    if (err) { console.log(err); return; }
+    res.send(result);
+  });
 });
 
 router.post("/new", function (req, res) {
-  if (req.session.user) 
-  {
-    User.findById(req.session.user, function (err, result) {
+  if (!req.session.user) { res.send("unauthorised"); }
+  User.findById(req.session.user, function (err, result) {
+    if (err) { console.log(err); return; }
+    const m = new Material({
+      ...req.body,
+      subName: req.body.subName,
+      postBy: result.name,
+      postByType: result.type
+    });
+    m.save(function (err) {
       if (err) {
         console.log(err);
       }
       else {
-        const m = new Material({
-          ...req.body,
-          subName: req.body.subName,
-          postBy: result.name,
-          postByType : result.type
-        });
-        m.save(function (err) {
-          if (err) {
-            console.log(err);
-          }
-          else {
-            res.redirect("../posts/new/success");
-          }
-        });
+        res.redirect("../posts/new/success");
       }
     });
-  }
-  else
-  {
-    res.send("unauthorised");
-  }
+  });
 });
 
 module.exports = router;
