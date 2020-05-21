@@ -58,7 +58,7 @@ router.post("/new", function (req, res) {
       postType: req.body.postType,
       dueDate: new Date(req.body.dueDate),
       file: req.body.file,
-      url: req.body.url,
+      url: JSON.parse(req.body.url),
     });
 
     newPost.save(function (err) {

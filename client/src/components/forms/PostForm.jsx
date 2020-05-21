@@ -132,7 +132,7 @@ function PostForm(props) {
                 />
               </MuiPickersUtilsProvider>
               <div className="file-section" style={applyMargin}>
-                <input type="hidden" name="url" value={props.url} />
+                <input type="hidden" name="url" value={JSON.stringify(props.url)} />
                 <input
                   style={{ display: "none" }}
                   type="file"
