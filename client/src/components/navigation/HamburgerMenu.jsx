@@ -13,10 +13,9 @@ import { Link } from "react-router-dom";
 
 import HomeWorkOutlinedIcon from "@material-ui/icons/HomeWorkOutlined";
 import TodayOutlinedIcon from "@material-ui/icons/TodayOutlined";
-import PostAddOutlinedIcon from "@material-ui/icons/PostAddOutlined";
-import LibraryAddOutlinedIcon from "@material-ui/icons/LibraryAddOutlined";
-import ArchiveOutlinedIcon from "@material-ui/icons/ArchiveOutlined";
-import ReportOutlinedIcon from "@material-ui/icons/ReportOutlined";
+import AlarmOffOutlinedIcon from '@material-ui/icons/AlarmOffOutlined';
+import LibraryBooksOutlinedIcon from '@material-ui/icons/LibraryBooksOutlined';
+import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 import FeedbackOutlinedIcon from "@material-ui/icons/FeedbackOutlined";
 import ContactSupportOutlinedIcon from "@material-ui/icons/ContactSupportOutlined";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
@@ -77,26 +76,26 @@ export default function SwipeableTemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        <Link to="/posts/new" className="linkStyle">
+        <Link to="/fullpost" className="linkStyle">
           <ListItem button>
             <ListItemIcon>
-              <PostAddOutlinedIcon />
+            <AssignmentOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary="New Post" />
+            <ListItemText primary="Post" />
           </ListItem>
         </Link>
-        <Link to="/materials/new" className="linkStyle">
+        <Link to="/fullmaterial" className="linkStyle">
           <ListItem button>
             <ListItemIcon>
-              <LibraryAddOutlinedIcon />
+              <LibraryBooksOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary="New Material" />
+            <ListItemText primary="Material" />
           </ListItem>
         </Link>
         <Link to="/expiredpost" className="linkStyle">
           <ListItem button>
             <ListItemIcon>
-              <ArchiveOutlinedIcon />
+               <AlarmOffOutlinedIcon />
             </ListItemIcon>
             <ListItemText primary="Expired Posts" />
           </ListItem>
@@ -104,14 +103,6 @@ export default function SwipeableTemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        <Link to="/report" className="linkStyle">
-          <ListItem button>
-            <ListItemIcon>
-              <ReportOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Report Abuse" />
-          </ListItem>
-        </Link>
         <Link to="/feedback" className="linkStyle">
           <ListItem button>
             <ListItemIcon>
