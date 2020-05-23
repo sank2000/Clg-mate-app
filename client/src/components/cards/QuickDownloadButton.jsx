@@ -6,7 +6,6 @@ function QuickDownload(props) {
 
   const handleClick = () => {
     props.fileArray.forEach(file => {
-      console.log(file);
       window.open(file.downloadURL, '_blank');
     });
   };
