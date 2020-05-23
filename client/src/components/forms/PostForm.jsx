@@ -155,17 +155,6 @@ function PostForm(props) {
                 &nbsp; {props.progress}
               </Btn>
             </div>
-            <Btn
-              onClick={props.handleUpload}
-              size="medium"
-              variant="contained"
-              color="secondary"
-              style={{ float: "right", marginRight: "-15px" }}>
-              <CloudUploadOutlinedIcon
-                fontSize="small"
-                className="uploadIcon" />
-                &nbsp; {props.progress}
-            </Btn>
             <Btn style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Btn>
           </form>
         </div>
