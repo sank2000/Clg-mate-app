@@ -28,7 +28,6 @@ class NewPost extends Component {
   }
 
   handleUpload = () => {
-    console.log('Upload starting');
     const { files } = this.state;
     let fileNo = 1;
     files.forEach(file => {

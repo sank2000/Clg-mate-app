@@ -16,7 +16,6 @@ function DownloadMenu(props) {
 
   let downloadAll = () => {
     props.fileArray.forEach(file => {
-      console.log(file);
       window.open(file.downloadURL, '_blank');
     });
   }
