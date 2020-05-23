@@ -20,7 +20,7 @@ function PostCard(props) {
 
   if (due < today) {
     dueColor = { color: '#ff9999' };
-    cardclr  = {backgroundColor : "#f7f7f7"};
+    cardclr = { backgroundColor: "rgba(220,220,220,.6)" };
   }
   if (due > today && due < DaTomorrow) {
     dueColor = { color: '#3399ff' }
@@ -30,7 +30,7 @@ function PostCard(props) {
   }
 
   return (
-    <Card elevation={3} style={{ borderRadius: "10px", padding: "3px" }} style={cardclr}>
+    <Card elevation={3} style={{ borderRadius: "10px", padding: "3px", ...cardclr }} >
       <CardContent>
         <div className="top">
           <span className="due-date" style={dueColor}>

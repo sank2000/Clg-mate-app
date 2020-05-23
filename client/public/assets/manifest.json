@@ -41,7 +41,6 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "scope": ".",
   "theme_color": "#fff",
   "background_color": "#fff",
   "description": "The PWA for the Collegemate web client.",
