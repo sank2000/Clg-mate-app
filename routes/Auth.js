@@ -21,43 +21,40 @@ router.get("/", function (req, res) {
 })
 
 router.post("/signup", function (req, res) {
-  bcrypt.hash(req.body.password, saltRounds, function(err, hash) 
-  {
+  bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
     const userData = new User({
       ...req.body,
-      password : hash
+      password: hash
     });
     userData.save()
-    .then((result) => {
-      req.session.user = userData._id;
-      res.json({
-        message: 'Account created successfully.',
-        auth: true,
+      .then((result) => {
+        req.session.user = userData._id;
+        res.json({
+          message: 'Account created successfully.',
+          auth: true,
+        });
+      })
+      .catch((err) => {
+        if (err.code === 11000) {
+          res.json({
+            message: 'Error creating account : Account already exists',
+            auth: false,
+          });
+        }
+        else {
+          res.json({
+            message: 'Unable to create account : Error - ' + err.code,
+            auth: false,
+          });
+        }
       });
-    })
-    .catch((err) => {
-      if(err.code === 11000)
-      {
-        res.json({
-          message: 'Error creating account : Account already exists',
-          auth: false,
-        });
-      }
-      else
-      {
-        res.json({
-          message: 'Unable to create account : Error - '+ err.code,
-          auth: false,
-        });
-      }
-    });
   });
 });
 
 router.post("/signin", async (req, res) => {
   const { unique_id, password } = req.body;
   try {
-    const user = await User.findOne({ unique_id});
+    const user = await User.findOne({ unique_id });
     if (!user) {
       res.json({
         message: 'Unique ID not exits',
@@ -70,17 +67,15 @@ router.post("/signin", async (req, res) => {
         auth: false,
       });
     }
-    bcrypt.compare(password, user.password, function(err, result) {
-      if(result)
-      {
+    bcrypt.compare(password, user.password, function (err, result) {
+      if (result) {
         req.session.user = user._id;
         res.json({
           message: `Welcome ${user.name}!`,
           auth: true,
         });
       }
-      else
-      {
+      else {
         res.json({
           message: 'Incorrect Password',
           auth: false,
@@ -107,7 +102,7 @@ router.get("/user", (req, res) => {
         user: result.name,
         email: result.email,
         state: result.state,
-        type : result.type
+        type: result.type
       })
     }
   })

@@ -79,9 +79,9 @@ export default function SwipeableTemporaryDrawer() {
         <Link to="/fullpost" className="linkStyle">
           <ListItem button>
             <ListItemIcon>
-            <AssignmentOutlinedIcon />
+              <AssignmentOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary="Post" />
+            <ListItemText primary="All Posts" />
           </ListItem>
         </Link>
         <Link to="/fullmaterial" className="linkStyle">
@@ -89,13 +89,13 @@ export default function SwipeableTemporaryDrawer() {
             <ListItemIcon>
               <LibraryBooksOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary="Material" />
+            <ListItemText primary="All Materials" />
           </ListItem>
         </Link>
         <Link to="/expiredpost" className="linkStyle">
           <ListItem button>
             <ListItemIcon>
-               <AlarmOffOutlinedIcon />
+              <AlarmOffOutlinedIcon />
             </ListItemIcon>
             <ListItemText primary="Expired Posts" />
           </ListItem>
