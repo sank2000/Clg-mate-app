@@ -27,8 +27,6 @@ const useStyles = makeStyles({
 
 function DeveloperCard(props) {
   const classes = useStyles();
-  console.log(props);
-
 
   return (
     <Card className={classes.root}>
@@ -64,7 +62,7 @@ function DeveloperCard(props) {
               <IconButton href={props.dev.social.twitter} aria-label="twitter">
                 <TwitterIcon />
               </IconButton> :
-              <IconButton href={props.dev.social.instagram} aria-label="insta">
+              <IconButton href={props.dev.social.instagram} aria-label="instagram">
                 <InstagramIcon />
               </IconButton>
           }

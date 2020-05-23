@@ -1,7 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
-import "bootstrap/dist/css/bootstrap.min.css";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import App from "./main/App";
@@ -73,7 +72,6 @@ function MainApp() {
 
               <Route path="/posts/new/success" exact component={SuccessMessage} />
               <Route path="/help" exact component={UnderConstruction} />
-              <Route path="/report" exact component={UnderConstruction} />
               <Route path="/oops" exact component={SomethingWrong} />
               <Route component={PageNotFound} />
             </Switch>

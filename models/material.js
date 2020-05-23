@@ -7,9 +7,10 @@ const MaterialSchema = new Schema({
   author: { type: String, trim: true },
   description: { type: String, trim: true },
   subName: { type: String, trim: true, default: "General" },
-  file: { type: String, required: true },
-  url: { type: String, required: true },
+  file: { type: Array, required: true },
+  url: { type: Array, required: true },
   postBy: { type: String, required: true },
+  postByType: { type: String, required: true },
   materialType: { type: String, default: "Other" }
 }, {
   timestamps: true

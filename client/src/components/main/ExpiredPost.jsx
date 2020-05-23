@@ -28,7 +28,7 @@ function ExpiredPosts() {
       })
       .catch(function (error) {
         console.log(error);
-        window.open("/oops", "_self");
+        // window.open("/oops", "_self");
       });
     // eslint-disable-next-line
   }, []);
@@ -47,6 +47,7 @@ function ExpiredPosts() {
           subject={post.subName}
           dueDate={DateFormat((new Date(post.dueDate)), "d-mmm-yyyy")}
           postedBy={post.author}
+          authorType={post.authorType}
           url={post.url}
           file={post.file}
           postedOn={DateFormat((new Date(post.updatedAt)), "d-mmm-yy, h:mm TT")}

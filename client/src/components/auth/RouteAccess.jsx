@@ -33,6 +33,19 @@ const sendMail = async (body) => {
     return result;
 }
 
+const verifyOTP = async (body) => {
+    let prms = new URLSearchParams(body);
+    const result = await axios.post("/mail/forgot/verify", prms);
+    return result;
+}
+
+const resetPassword = async (body) => {
+    let prms = new URLSearchParams(body);
+    const result = await axios.post("/mail/forgot/reset", prms);
+    return result;
+}
+
+
 export {
-    signin, signup, hasSigned, signout,checkId,sendMail
+    signin, signup, hasSigned, signout,checkId,sendMail,verifyOTP,resetPassword
 }

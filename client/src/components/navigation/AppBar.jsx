@@ -13,6 +13,7 @@ import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import axios from "axios";
 import { ListItemIcon } from '@material-ui/core';
 import AccountBoxOutlinedIcon from '@material-ui/icons/AccountBoxOutlined';
+import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
 import { signout } from "../auth/RouteAccess";
 import AuthApi from "../auth/AuthApi";
 import HamburgerMenu from './HamburgerMenu';
@@ -73,7 +74,12 @@ const useStyles = makeStyles((theme) => ({
 function NavigationBar(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [user, setUser] = React.useState("Profile");
+  const [user, setUser] = React.useState(
+    {
+      name: "guest",
+      type: "",
+    }
+  );
 
   const isMenuOpen = Boolean(anchorEl);
 
@@ -81,10 +87,14 @@ function NavigationBar(props) {
     axios.get("/auth/user")
       .then(function (response) {
         setUser(response.data.user);
+        setUser({
+          name: response.data.user,
+          type: response.data.type,
+        });
       })
       .catch(function (error) {
         console.log(error);
-        window.open("/oops", "_self");
+        // window.open("/oops", "_self");
       });
   }, []);
 
@@ -115,7 +125,7 @@ function NavigationBar(props) {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>
-        <ListItemIcon><AccountBoxOutlinedIcon /></ListItemIcon> {user}
+        <ListItemIcon>{user.type === "Staff" ? <VerifiedUserOutlinedIcon /> : <AccountBoxOutlinedIcon />} </ListItemIcon> {user.name}
       </MenuItem>
       <MenuItem onClick={logout}> <ListItemIcon> <ExitToAppOutlinedIcon /> </ListItemIcon> Logout</MenuItem>
     </Menu>

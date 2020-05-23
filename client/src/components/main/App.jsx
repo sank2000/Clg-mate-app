@@ -39,7 +39,7 @@ function App() {
 			})
 			.catch(function (error) {
 				console.log(error);
-				window.open("/oops", "_self");
+				// window.open("/oops", "_self");
 			});
 		axios.get("/materials")
 			.then(function (response) {
@@ -50,7 +50,7 @@ function App() {
 			})
 			.catch(function (error) {
 				console.log(error);
-				window.open("/oops", "_self");
+				// window.open("/oops", "_self");
 			});
 	}, [])
 
@@ -64,6 +64,7 @@ function App() {
 					subject={post.subName}
 					dueDate={DateFormat((new Date(post.dueDate)), "d-mmm-yyyy")}
 					postedBy={post.author}
+					authorType={post.authorType}
 					url={post.url}
 					file={post.file}
 					postedOn={DateFormat((new Date(post.updatedAt)), "d-mmm-yy, h:mm TT")}
@@ -85,6 +86,7 @@ function App() {
 					file={post.file}
 					url={post.url}
 					postBy={post.postBy}
+					postByType={post.postByType}
 					postedOn={DateFormat((new Date(post.updatedAt)), "d-mmm-yy, h:mm TT")}
 				/>
 			</Grid>
@@ -140,7 +142,7 @@ function App() {
 						<Link to="/fullmaterial" className="linkStyle">
 							<Button variant="contained" color="primary">
 								Show more
-				                </Button>
+				      </Button>
 						</Link>
 					</div>
 				</Fragment> : <Empt type="Materials" />}

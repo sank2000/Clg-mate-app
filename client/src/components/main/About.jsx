@@ -67,7 +67,7 @@ export default function About() {
           Collegemate
         </Typography>
         <Typography align="center" component="h5" variant="subtitle1">
-          Version 0.5 B
+          Version 0.7 B
         </Typography>
       </FlexContainer>
       <FlexContainer height='40vh'  >
