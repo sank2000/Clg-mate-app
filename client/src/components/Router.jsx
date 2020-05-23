@@ -72,7 +72,6 @@ function MainApp() {
 
               <Route path="/posts/new/success" exact component={SuccessMessage} />
               <Route path="/help" exact component={UnderConstruction} />
-              <Route path="/report" exact component={UnderConstruction} />
               <Route path="/oops" exact component={SomethingWrong} />
               <Route component={PageNotFound} />
             </Switch>
