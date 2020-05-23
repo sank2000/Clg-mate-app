@@ -7,6 +7,7 @@ import ViewMore from "../dialogs/details/PostDetails";
 
 function PostCard(props) {
   let dueColor = {};
+  let cardclr = {};
 
   let DaTomorrow = new Date();
   DaTomorrow.setDate(DaTomorrow.getDate() + 2);
@@ -18,7 +19,8 @@ function PostCard(props) {
   let due = new Date(props.dueDate);
 
   if (due < today) {
-    dueColor = { color: '#ff9999' }
+    dueColor = { color: '#ff9999' };
+    cardclr  = {backgroundColor : "#f7f7f7"};
   }
   if (due > today && due < DaTomorrow) {
     dueColor = { color: '#3399ff' }
@@ -28,7 +30,7 @@ function PostCard(props) {
   }
 
   return (
-    <Card elevation={3} style={{ borderRadius: "10px", padding: "3px" }}>
+    <Card elevation={3} style={{ borderRadius: "10px", padding: "3px" }} style={cardclr}>
       <CardContent>
         <div className="top">
           <span className="due-date" style={dueColor}>
