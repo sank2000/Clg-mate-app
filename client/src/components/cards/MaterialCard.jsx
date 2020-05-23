@@ -2,9 +2,9 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import IconButton from '@material-ui/core/IconButton';
-import GetAppOutlinedIcon from '@material-ui/icons/GetAppOutlined';
 import ShowDetails from "../dialogs/details/MaterialDetails";
+
+import QuickDownloadButton from './QuickDownloadButton';
 
 function MaterialCard(props) {
   return (
@@ -26,11 +26,7 @@ function MaterialCard(props) {
       </CardContent>
       <CardActions style={{ justifyContent: 'space-between' }} >
         <ShowDetails data={props} />
-        <IconButton color="primary" style={{ padding: '7px' }} onClick={() => {
-          window.open(props.url, "_blank");
-        }}>
-          <GetAppOutlinedIcon />
-        </IconButton>
+        <QuickDownloadButton fileArray={props.url} />
       </CardActions>
     </Card >
   );

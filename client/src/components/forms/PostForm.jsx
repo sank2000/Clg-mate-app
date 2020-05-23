@@ -126,18 +126,19 @@ function PostForm(props) {
                   label="Due Date"
                   format="dd-MMM-yyyy"
                   value={selectedDate}
-                  minDate = {new Date()}
+                  minDate={new Date()}
                   onChange={date => handleDateChange(date)}
                   style={{ ...applyMargin, outline: "none" }}
                 />
               </MuiPickersUtilsProvider>
               <div className="file-section" style={applyMargin}>
-                <input type="hidden" name="url" value={props.url} />
+                <input type="hidden" name="url" value={JSON.stringify(props.url)} />
                 <input
                   style={{ display: "none" }}
                   type="file"
                   id="contained-button-file"
                   name="file"
+                  multiple
                   onChange={props.handleChange}
                 />
                 <label htmlFor="contained-button-file">

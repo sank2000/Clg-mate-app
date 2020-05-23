@@ -12,6 +12,8 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
 
+import DownloadButton from './AttachmentDownloadButton';
+
 const styles = (theme) => ({
   root: {
     margin: 0,
@@ -88,17 +90,15 @@ function CustomizedDialogs(props) {
           <hr />
           <div className="post-details">
             <span className="posted-on">{props.data.postedOn}</span>
-            <span className="posted-by" style={{ float: "right" }}> {props.data.authorType === "Staff" ?<VerifiedUserOutlinedIcon /> : <PermIdentityOutlinedIcon />} &nbsp; {props.data.postedBy}</span>
+            <span className="posted-by" style={{ float: "right" }}> {props.data.authorType === "Staff" ? <VerifiedUserOutlinedIcon /> : <PermIdentityOutlinedIcon />} &nbsp; {props.data.postedBy}</span>
           </div>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             OK
           </Button>
-          {props.data.url !== "" &&
-            <Button color="primary" href={props.data.url}>
-              Download Attachment
-            </Button>
+          {(props.data.url.length !== 0 && props.data.url[0] !== "") &&
+            <DownloadButton fileArray={props.data.url} />
           }
         </DialogActions>
       </Dialog>
