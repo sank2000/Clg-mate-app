@@ -88,71 +88,59 @@ function PostForm(props) {
                   <InputLabel>
                     Post Type
                   </InputLabel>
-                    <Select
-                      name="postType"
-                      required
-                      value={type}
-                      onChange={handlePostTypeChange}
-                      label="Post Type"
-                    >
-                      <MenuItem disabled={true} value="">Select a type</MenuItem>
-                      <MenuItem value={"Assignment"}>Assignment</MenuItem>
-                      <MenuItem value={"Announcement"}>Announcement</MenuItem>
-                      <MenuItem value={"Home work"}>Home work</MenuItem>
-                      <MenuItem value={"Instruction"}>Instruction</MenuItem>
-                      <MenuItem value={"Test"}>Test</MenuItem>
-                      <MenuItem value={"Other"}>Other</MenuItem>
-                    </Select>
-                  </FormControl>
-                </Grid>
+                  <Select
+                    name="postType"
+                    required
+                    value={type}
+                    onChange={handlePostTypeChange}
+                    label="Post Type"
+                  >
+                    <MenuItem disabled={true} value="">Select a type</MenuItem>
+                    <MenuItem value={"Assignment"}>Assignment</MenuItem>
+                    <MenuItem value={"Announcement"}>Announcement</MenuItem>
+                    <MenuItem value={"Home work"}>Home work</MenuItem>
+                    <MenuItem value={"Instruction"}>Instruction</MenuItem>
+                    <MenuItem value={"Test"}>Test</MenuItem>
+                    <MenuItem value={"Other"}>Other</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
-              <TextField style={applyMargin}
-                variant="outlined"
-                required
-                name="description"
-                rows={4}
-                fullWidth
-                multiline
-                label="Description" />
-              <MuiPickersUtilsProvider utils={DateFnsUtils} >
-                <KeyboardDatePicker
-                  size="small"
-                  variant="inline"
-                  inputVariant="outlined"
-                  name="dueDate"
-                  label="Due Date"
-                  format="dd-MMM-yyyy"
-                  value={selectedDate}
-                  minDate={new Date()}
-                  onChange={date => handleDateChange(date)}
-                  style={{ ...applyMargin, outline: "none" }}
-                />
-              </MuiPickersUtilsProvider>
-              <div className="file-section" style={applyMargin}>
-                <input type="hidden" name="url" value={JSON.stringify(props.url)} />
-                <input
-                  style={{ display: "none" }}
-                  type="file"
-                  id="contained-button-file"
-                  name="file"
-                  multiple
-                  onChange={props.handleChange}
-                />
-                <label htmlFor="contained-button-file">
-                  <Btn variant="contained" component="span" disableElevation>
-                    {props.fileChooseState}
-                  </Btn>
-                </label>
-                <Btn
-                  onClick={props.handleUpload}
-                  size="medium"
-                  variant="contained"
-                  color="secondary"
-                  style={{ float: "right", marginRight: "-15px" }}>
-                  <CloudUploadOutlinedIcon
-                    fontSize="small"
-                    className="uploadIcon" />
-                &nbsp; {props.progress}
+            </Grid>
+            <TextField style={applyMargin}
+              variant="outlined"
+              required
+              name="description"
+              rows={4}
+              fullWidth
+              multiline
+              label="Description" />
+            <MuiPickersUtilsProvider utils={DateFnsUtils} >
+              <KeyboardDatePicker
+                size="small"
+                variant="inline"
+                inputVariant="outlined"
+                name="dueDate"
+                label="Due Date"
+                format="dd-MMM-yyyy"
+                value={selectedDate}
+                minDate={new Date()}
+                onChange={date => handleDateChange(date)}
+                style={{ ...applyMargin, outline: "none" }}
+              />
+            </MuiPickersUtilsProvider>
+            <div className="file-section" style={applyMargin}>
+              <input type="hidden" name="url" value={JSON.stringify(props.url)} />
+              <input
+                style={{ display: "none" }}
+                type="file"
+                id="contained-button-file"
+                name="file"
+                multiple
+                onChange={props.handleChange}
+              />
+              <label htmlFor="contained-button-file">
+                <Btn variant="contained" component="span" disableElevation>
+                  {props.fileChooseState}
                 </Btn>
               </label>
               <Btn
@@ -167,6 +155,17 @@ function PostForm(props) {
                 &nbsp; {props.progress}
               </Btn>
             </div>
+            <Btn
+              onClick={props.handleUpload}
+              size="medium"
+              variant="contained"
+              color="secondary"
+              style={{ float: "right", marginRight: "-15px" }}>
+              <CloudUploadOutlinedIcon
+                fontSize="small"
+                className="uploadIcon" />
+                &nbsp; {props.progress}
+            </Btn>
             <Btn style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Btn>
           </form>
         </div>
