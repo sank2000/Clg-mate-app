@@ -15,7 +15,9 @@ import subjects from '../../constants/subjects'
 
 function renderSubjects(subject) {
   return (
-    <MenuItem key={subject.code} value={subject.name}>{`${subject.code} - ${subject.name}`}</MenuItem>
+    <MenuItem key={subject.code} value={subject.name}>
+      {`${subject.code} - ${subject.name}`}
+    </MenuItem>
   );
 }
 
