@@ -28,7 +28,7 @@ function ExpiredPosts() {
       })
       .catch(function (error) {
         console.log(error);
-        window.open("/oops", "_self");
+        // window.open("/oops", "_self");
       });
     // eslint-disable-next-line
   }, []);

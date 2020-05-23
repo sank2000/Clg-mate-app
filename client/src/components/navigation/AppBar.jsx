@@ -76,8 +76,8 @@ function NavigationBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [user, setUser] = React.useState(
     {
-      name : "guest",
-      type : "",
+      name: "guest",
+      type: "",
     }
   );
 
@@ -88,13 +88,13 @@ function NavigationBar(props) {
       .then(function (response) {
         setUser(response.data.user);
         setUser({
-          name : response.data.user,
-          type : response.data.type,
+          name: response.data.user,
+          type: response.data.type,
         });
       })
       .catch(function (error) {
         console.log(error);
-        window.open("/oops", "_self");
+        // window.open("/oops", "_self");
       });
   }, []);
 
@@ -125,7 +125,7 @@ function NavigationBar(props) {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>
-        <ListItemIcon>{user.type === "Staff" ?<VerifiedUserOutlinedIcon /> : <AccountBoxOutlinedIcon />} </ListItemIcon> {user.name}
+        <ListItemIcon>{user.type === "Staff" ? <VerifiedUserOutlinedIcon /> : <AccountBoxOutlinedIcon />} </ListItemIcon> {user.name}
       </MenuItem>
       <MenuItem onClick={logout}> <ListItemIcon> <ExitToAppOutlinedIcon /> </ListItemIcon> Logout</MenuItem>
     </Menu>

@@ -14,9 +14,16 @@ function renderItem(item) {
 function DownloadMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
+  let downloadAll = () => {
+    props.fileArray.forEach(file => {
+      console.log(file);
+      window.open(file.downloadURL, '_blank');
+    });
+  }
+
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
-    props.fileArray.length === 1 && console.log(props.fileArray[0].fileName);
+    props.fileArray.length === 1 && window.open(props.fileArray[0].downloadURL);
   };
 
   const handleClose = () => {
@@ -40,6 +47,7 @@ function DownloadMenu(props) {
           onClose={handleClose}
         >
           {props.fileArray.map(renderItem)}
+          <MenuItem onClick={downloadAll}>Download all</MenuItem>
         </Menu>
       )}
     </div>
