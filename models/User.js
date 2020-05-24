@@ -16,7 +16,8 @@ const User = new Schema({
   },
   password: { type: String, required: true },
   email: { type: String, required: true },
-  state: { type: String, required: true, default: 'default' }
+  state: { type: String, required: true, default: 'default' },
+  url : { type: String, default: '' }
 });
 
 const user = mongoose.model("loginDetails", User);

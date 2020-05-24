@@ -61,11 +61,8 @@ export default function HideAppBar(props) {
   useEffect(() => {
     axios.get("/auth/user")
       .then(function (response) {
-        setUser(response.data.user);
-        setUser({
-          name: response.data.user,
-          type: response.data.type,
-        });
+        setUser(response.data);
+        console.log(user);
       })
       .catch(function (error) {
         console.log(error);

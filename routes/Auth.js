@@ -96,16 +96,90 @@ router.get("/signout", (req, res) => {
 });
 
 router.get("/user", (req, res) => {
-  User.findById(req.session.user, {}, function (err, result) {
-    if (!err) {
-      res.json({
-        user: result.name,
-        email: result.email,
-        state: result.state,
-        type: result.type
-      })
-    }
-  })
+  if(req.session.user)
+  {
+    User.findById(req.session.user, {password : 0}, function (err, result) {
+      if (!err) {
+        res.json(result);
+      }
+    });
+  }
+  else
+  { res.send("unauthorised"); }
+  
 })
+
+
+router.get("/delete", (req, res) => {
+  if(req.session.user)
+  {
+    User.findByIdAndDelete(req.session.user, function (err, docs) { 
+      if (err){ 
+          console.log(err); 
+      } 
+      else{ 
+        req.session.destroy(function (err) {
+          res.json({
+            done    : true,
+            message : "Deleted Successfully .."
+          });
+        }); 
+      } 
+  });
+  }
+  else
+  { res.send("unauthorised"); }
+})
+
+ 
+
+router.post("/update", (req, res) => {
+  if(req.session.user)
+  {
+      User.findByIdAndUpdate(req.session.user, { name:req.body.name , email:req.body.email ,url : req.body.url }, function(err, result) {
+      if (err) {
+         console.log(err);
+      } 
+      else
+      {
+        res.json({
+          done    : true,
+          message : "Data Updated Successfully .."
+        });
+      }
+      });
+  }
+  else
+  { res.send("unauthorised"); }
+});
+
+
+router.get("/updatePassword", (req, res) => {
+  if(req.session.user)
+  {
+    bcrypt.hash(req.body.password, saltRounds, function (err, hash) 
+    {
+      if (err) {
+        console.log(err);
+      } 
+      else{
+        User.findByIdAndUpdate(req.session.user, { password : hash }, function(err, result) {
+          if (err) {
+            console.log(err);
+          } 
+          else
+          {
+            res.json({
+              done    : true,
+              message : "Password Updated Successfully .."
+            });
+          }
+          });
+      }
+    });
+  }
+  else
+  { res.send("unauthorised"); }
+});
 
 module.exports = router;
