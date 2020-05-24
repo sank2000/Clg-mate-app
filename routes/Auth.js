@@ -115,13 +115,17 @@ router.get("/delete", (req, res) => {
   {
     User.findByIdAndDelete(req.session.user, function (err, docs) { 
       if (err){ 
-          console.log(err); 
+          console.log(err);
+          res.json({
+            done    : false,
+            message : "Unable to Delete "
+          });
       } 
       else{ 
         req.session.destroy(function (err) {
           res.json({
             done    : true,
-            message : "Deleted Successfully .."
+            message : "Deleted Successfully "
           });
         }); 
       } 
@@ -139,12 +143,16 @@ router.post("/update", (req, res) => {
       User.findByIdAndUpdate(req.session.user, { name:req.body.name , email:req.body.email ,url : req.body.url }, function(err, result) {
       if (err) {
          console.log(err);
+         res.json({
+          done    : false,
+          message : "Unable to update "
+        });
       } 
       else
       {
         res.json({
           done    : true,
-          message : "Data Updated Successfully .."
+          message : "Updated Successfully "
         });
       }
       });
@@ -154,27 +162,51 @@ router.post("/update", (req, res) => {
 });
 
 
-router.get("/updatePassword", (req, res) => {
+router.post("/updatePassword", (req, res) => {
   if(req.session.user)
   {
-    bcrypt.hash(req.body.password, saltRounds, function (err, hash) 
-    {
-      if (err) {
+      User.findById(req.session.user, function (err, result) {
+      if (err) 
+      {  
         console.log(err);
-      } 
-      else{
-        User.findByIdAndUpdate(req.session.user, { password : hash }, function(err, result) {
-          if (err) {
-            console.log(err);
-          } 
-          else
+        res.json({
+          message: 'Unable to Update Password',
+          done : false,
+        }); 
+      }
+      else
+      {
+        bcrypt.compare(req.body.currentpassword, result.password, function (err, result) {
+          if (result) 
           {
-            res.json({
-              done    : true,
-              message : "Password Updated Successfully .."
+            bcrypt.hash(req.body.password, saltRounds, function (err, hash) 
+            {
+              if (err) {
+                console.log(err);
+              } 
+              else{
+                User.findByIdAndUpdate(req.session.user, { password : hash }, function(err, result) {
+                  if (err) {
+                    console.log(err);
+                  } 
+                  else
+                  {
+                    res.json({
+                      done    : true,
+                      message : "Password Updated Successfully "
+                    });
+                  }
+                  });
+              }
             });
           }
-          });
+          else {
+            res.json({
+              message: 'Incorrect Password',
+              done : false,
+            });
+          }
+        });
       }
     });
   }

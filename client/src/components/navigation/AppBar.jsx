@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -12,13 +12,12 @@ import Slide from '@material-ui/core/Slide';
 
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
-import axios from "axios";
 import { ListItemIcon } from '@material-ui/core';
 import AccountBoxOutlinedIcon from '@material-ui/icons/AccountBoxOutlined';
-import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
 import { signout } from "../auth/RouteAccess";
 import AuthApi from "../auth/AuthApi";
 import HamburgerMenu from './HamburgerMenu';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -49,32 +48,12 @@ function HideOnScroll(props) {
 export default function HideAppBar(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [user, setUser] = React.useState(
-    {
-      name: "guest",
-      type: "",
-    }
-  );
-
+  
   const isMenuOpen = Boolean(anchorEl);
-
-  useEffect(() => {
-    axios.get("/auth/user")
-      .then(function (response) {
-        setUser(response.data);
-        console.log(user);
-      })
-      .catch(function (error) {
-        console.log(error);
-        // window.open("/oops", "_self");
-      });
-  }, []);
-
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
@@ -95,9 +74,11 @@ export default function HideAppBar(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>
-        <ListItemIcon>{user.type === "Staff" ? <VerifiedUserOutlinedIcon /> : <AccountBoxOutlinedIcon />} </ListItemIcon> {user.name}
-      </MenuItem>
+      <Link to="/profile" className="linkStyle">
+        <MenuItem>
+          <ListItemIcon><AccountBoxOutlinedIcon /> </ListItemIcon> Profile
+        </MenuItem>
+      </Link>
       <MenuItem onClick={logout}> <ListItemIcon> <ExitToAppOutlinedIcon /> </ListItemIcon> Logout</MenuItem>
     </Menu>
   );
