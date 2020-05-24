@@ -20,6 +20,7 @@ import { signout } from "../auth/RouteAccess";
 import AuthApi from "../auth/AuthApi";
 import HamburgerMenu from './HamburgerMenu';
 import deleteFile from "../../firebaseFileDelete";
+import Avatar from "@material-ui/core/Avatar";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -61,6 +62,7 @@ export default function HideAppBar(props) {
   };
 
   const authApi = React.useContext(AuthApi);
+  const user = authApi.auth;
   const logout = async () => {
     await signout();
     authApi.setAuth({auth : false});
@@ -78,7 +80,13 @@ export default function HideAppBar(props) {
     >
       <Link to="/profile" className="linkStyle">
         <MenuItem>
-          <ListItemIcon><AccountBoxOutlinedIcon /> </ListItemIcon> Profile
+          <ListItemIcon>
+              <Avatar
+              alt={user.name}
+              src={user.url}
+            >
+              {user.name[0]}
+            </Avatar> </ListItemIcon> {user.name}
         </MenuItem>
       </Link>
       <MenuItem onClick={logout}> <ListItemIcon> <ExitToAppOutlinedIcon /> </ListItemIcon> Logout</MenuItem>

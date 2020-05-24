@@ -22,7 +22,7 @@ function Card() {
         <tr>
           <td>
             <Avatar
-              alt="santhosh"
+              alt={user.name}
               variant="rounded"
               src={user.url}
               style={Object.assign({}, avatarImageStyle, {
