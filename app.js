@@ -20,13 +20,12 @@ app.use(session({
   saveUninitialized: true,
 }));
 
-mongoose.connect(process.env.DB_URL, {
+const dbConnection = mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
   useCreateIndex: true
 });
-
 
 app.use('/posts', posts);
 

@@ -6,7 +6,7 @@ const saltRounds = 5;
 require('dotenv');
 
 const User = require('../models/User');
-const OTP =require("../models/OTP");
+const OTP = require("../models/OTP");
 let transporter = nodemailer.createTransport({
 	service: 'gmail',
 	auth: {
@@ -59,30 +59,28 @@ router.post("/forgot/sendmail", function (req, res) {
 });
 
 
-router.post("/forgot/sendmail", function (req, res) 
-{
+router.post("/forgot/sendmail", function (req, res) {
 	var num = Math.floor(Math.random() * 900000) + 100000;
-	OTP.findOneAndUpdate({doc_id : req.body.doc_id}, { OTP    : num }, function(err, result) {
+	OTP.findOneAndUpdate({ doc_id: req.body.doc_id }, { OTP: num }, function (err, result) {
 		if (err) {
-		   console.log(err);
-		} 
-		else
-		{
-			if(result === null)
-			{
+			console.log(err);
+		}
+		else {
+			if (result === null) {
 				const nOtp = new OTP(
 					{
-						doc_id : req.body.doc_id,
-						OTP    : num
+						doc_id: req.body.doc_id,
+						OTP: num
 					}
 				);
-				   nOtp.save(function (err) {
+				nOtp.save(function (err) {
 					if (err) {
-					  console.log(err);
-					}});
+						console.log(err);
+					}
+				});
 			}
 		}
-	  });
+	});
 	let mailOptions =
 	{
 		from: '"Collegemate App" collegematewebapp@gmail.com',
@@ -111,53 +109,48 @@ router.post("/forgot/sendmail", function (req, res)
 			}
 			);
 		}
-});
+	});
 
 });
 
-router.post("/forgot/verify", function (req, res) 
-{
-	OTP.findOne({ doc_id : req.body.doc_id , OTP : req.body.OTP }, function (err, result) 
-	{
+router.post("/forgot/verify", function (req, res) {
+	OTP.findOne({ doc_id: req.body.doc_id, OTP: req.body.OTP }, function (err, result) {
 		if (!err) {
-			if (result) 
-			{
+			if (result) {
 				res.json({
-				  verified : true
+					verified: true
 				});
 			}
-			else
-			{
+			else {
 				{
 					res.json({
-					  verified : false
+						verified: false
 					});
 				}
 			}
 		}
-		else{
+		else {
 			console.log(err);
 		}
 	})
 });
 
 
-router.post("/forgot/reset", function (req, res) 
-{
+router.post("/forgot/reset", function (req, res) {
 	bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
-	User.findByIdAndUpdate({ _id: req.body.doc_id },{ password: hash },function(err, result) {
-		  if (err) {
-			res.json({
-				changed : false
-			});
-		  } else {
-			res.json({
-				changed : true
-			});
-		  }
+		User.findByIdAndUpdate({ _id: req.body.doc_id }, { password: hash }, function (err, result) {
+			if (err) {
+				res.json({
+					changed: false
+				});
+			} else {
+				res.json({
+					changed: true
+				});
+			}
 		}
-	  );
+		);
 	});
 });
- 
+
 module.exports = router;
