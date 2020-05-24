@@ -42,7 +42,7 @@ export default function DeleteAccount() {
         setOpen(true);
         setTimeout(() =>
         {
-          authApi.setAuth(false);
+          authApi.setAuth({auth : false});
         },3000);
     }
     else {

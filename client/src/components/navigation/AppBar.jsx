@@ -63,7 +63,7 @@ export default function HideAppBar(props) {
   const authApi = React.useContext(AuthApi);
   const logout = async () => {
     await signout();
-    authApi.setAuth(false);
+    authApi.setAuth({auth : false});
   }
   const menuId = 'primary-search-account-menu';
   const renderMenu = (

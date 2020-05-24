@@ -78,8 +78,11 @@ function SignIn() {
     setLoad(true);
     e.preventDefault();
     const res = await signin(user);
+    if(res.data.auth)
+    {
+      authApi.setAuth(res.data);
+    }
     setMessage(res.data.message);
-    authApi.setAuth(res.data.auth);
     setLoad(false);
     AhandleClick();
   };

@@ -11,11 +11,14 @@ import * as Yup from "yup";
 import {updateAccount} from "../auth/RouteAccess";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from '../messages/alerts/alert';
+import AuthApi from "../auth/AuthApi";
 
-export default function Detail(props) {
+export default function Detail() {
   const [show, setShow] = useState(false);
   const [load, setLoad] = useState(false);
   const [open, setOpen] = useState(false);
+  const authApi = React.useContext(AuthApi); 
+  const user = authApi.auth;
   const [msg, setMsg] = useState({
     content: "",
     type: "error"
@@ -33,14 +36,14 @@ export default function Detail(props) {
   const handleShow = () => setShow(true);
  
   const intialValues = {
-    name: props.user.name,
-    url:  props.user.url,
-    email: props.user.email
+    name: user.name,
+    url:  user.url,
+    email: user.email
   };
   
-  const submit = async (user) => {
+  const submit = async (values) => {
     setLoad(true);
-    const res = await updateAccount(user);
+    const res = await updateAccount(values);
     setLoad(false);
     if (res.data.done) 
     {
@@ -49,10 +52,7 @@ export default function Detail(props) {
           type: "success"
         });
         setOpen(true);
-        props.setUser({
-          ...props.user,
-          ...user
-        });
+        authApi.setAuth({...user,...values});
         handleClose();
     }
     else {

@@ -38,7 +38,7 @@ function SignUpForm(props) {
     setLoad(true);
     const res = await signup(user);
     if (res.data.auth) {
-      authApi.setAuth(true);
+      authApi.setAuth(res.data);
     }
     else {
       setLoad(false);

@@ -42,14 +42,14 @@ function MainApp() {
   const readSession = async () => {
     const res = await hasSigned();
     if (res.data.auth) {
-      setAuth(true);
+      setAuth(res.data);
     }
     setLoad(false);
   }
 
   useEffect(() => {
     readSession();
-  });
+  },[]);
 
   function Main() {
     return (
@@ -96,7 +96,7 @@ const RouteRegistration = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        !AthApi.auth ? <Component {...props} /> : <Redirect to="/" />
+        !AthApi.auth.auth ? <Component {...props} /> : <Redirect to="/" />
       }
     />
   );
@@ -108,7 +108,7 @@ const RouteProtected = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        AthApi.auth ? <Component {...props} /> : <Redirect to="/signin" />
+        AthApi.auth.auth ? <Component {...props} /> : <Redirect to="/signin" />
       }
     />
   );

@@ -7,9 +7,14 @@ const User = require('../models/User');
 
 router.get("/", function (req, res) {
   if (req.session.user) {
-    res.json({
-      message: 'You are signed in!',
-      auth: true,
+    User.findById(req.session.user, {password : 0}, function (err, result) {
+      if (!err) {
+        res.json({
+          ...result._doc,
+          message: 'You are signed in!',
+          auth: true,
+        });
+      }
     });
   }
   else {
@@ -29,7 +34,9 @@ router.post("/signup", function (req, res) {
     userData.save()
       .then((result) => {
         req.session.user = userData._id;
+        const {password , ...Data} = userData._doc;
         res.json({
+          ...Data,
           message: 'Account created successfully.',
           auth: true,
         });
@@ -70,7 +77,9 @@ router.post("/signin", async (req, res) => {
     bcrypt.compare(password, user.password, function (err, result) {
       if (result) {
         req.session.user = user._id;
+        const {password , ...Data} = user._doc;
         res.json({
+          ...Data,
           message: `Welcome ${user.name}!`,
           auth: true,
         });
