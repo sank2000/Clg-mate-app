@@ -52,6 +52,7 @@ function App() {
           url={post.url}
           postBy={post.postBy}
           postByType={post.postByType}
+          postedById={post.postById}
           postedOn={DateFormat((new Date(post.updatedAt)), "d-mmm-yy, h:mm TT")}
         />
       </Grid>

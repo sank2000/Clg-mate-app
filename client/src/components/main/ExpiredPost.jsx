@@ -42,6 +42,7 @@ function ExpiredPosts() {
       <Grid item xs={12} sm={6} md={4} lg={4} key={post._id}>
         <PostCard
           doc_id={post._id}
+          postedById={post.authorId}
           title={post.title}
           postType={post.postType}
           description={post.description}

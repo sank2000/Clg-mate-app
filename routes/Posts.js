@@ -53,6 +53,7 @@ router.post("/new", function (req, res) {
       title: req.body.title,
       author: result.name,
       authorType: result.type,
+      authorId  : req.session.user,
       description: req.body.description,
       subName: req.body.subName,
       postType: req.body.postType,

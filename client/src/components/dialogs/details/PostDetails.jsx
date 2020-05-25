@@ -12,7 +12,7 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
 import Delete from "./DeletePost";
-
+import AuthApi from "../../auth/AuthApi";
 import DownloadButton from './AttachmentDownloadButton';
 
 const styles = (theme) => ({
@@ -58,7 +58,8 @@ const DialogActions = withStyles((theme) => ({
 
 function CustomizedDialogs(props) {
   const [open, setOpen] = React.useState(false);
-
+  const authApi = React.useContext(AuthApi); 
+  const user = authApi.auth;
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -95,7 +96,7 @@ function CustomizedDialogs(props) {
           </div>
         </DialogContent>
         <DialogActions>
-        <Delete data={props.data} />
+        {(user._id === props.data.postedById  || user.type === "Staff") &&<Delete data={props.data}  type="post"/>}
           <Button onClick={handleClose} color="primary">
             OK
           </Button>

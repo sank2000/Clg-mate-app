@@ -11,6 +11,7 @@ const MaterialSchema = new Schema({
   url: { type: Array, required: true },
   postBy: { type: String, required: true },
   postByType: { type: String, required: true },
+  postById: { type: String, required: true },
   materialType: { type: String, default: "Other" }
 }, {
   timestamps: true

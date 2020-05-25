@@ -58,7 +58,8 @@ router.post("/new", function (req, res) {
       url: JSON.parse(req.body.url),
       subName: req.body.subName,
       postBy: result.name,
-      postByType: result.type
+      postByType: result.type,
+      postById  : req.session.user
     });
     // console.log(m);
 

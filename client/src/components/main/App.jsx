@@ -59,6 +59,7 @@ function App() {
 			<Grid item xs={12} sm={6} md={4} lg={4} key={post._id}>
 				<PostCard
 				    doc_id={post._id}
+					postedById={post.authorId}
 					title={post.title}
 					postType={post.postType}
 					description={post.description}
@@ -89,6 +90,7 @@ function App() {
 					url={post.url}
 					postBy={post.postBy}
 					postByType={post.postByType}
+					postedById={post.postById}
 					postedOn={DateFormat((new Date(post.updatedAt)), "d-mmm-yy, h:mm TT")}
 				/>
 			</Grid>

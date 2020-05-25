@@ -10,7 +10,7 @@ export default (props) =>
          console.log(props);
     }
 
-    return  (<IconButton color="secondary" onClick={handleClick}>
+    return  (<IconButton color="secondary" onClick={handleClick} >
               <DeleteIcon />
             </IconButton>);
 }
