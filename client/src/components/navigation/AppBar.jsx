@@ -15,7 +15,6 @@ import Slide from '@material-ui/core/Slide';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 import { ListItemIcon } from '@material-ui/core';
-import AccountBoxOutlinedIcon from '@material-ui/icons/AccountBoxOutlined';
 import { signout } from "../auth/RouteAccess";
 import AuthApi from "../auth/AuthApi";
 import HamburgerMenu from './HamburgerMenu';

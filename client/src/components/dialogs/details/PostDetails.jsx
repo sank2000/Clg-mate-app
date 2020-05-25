@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
+import Delete from "./DeletePost";
 
 import DownloadButton from './AttachmentDownloadButton';
 
@@ -94,6 +95,7 @@ function CustomizedDialogs(props) {
           </div>
         </DialogContent>
         <DialogActions>
+        <Delete data={props.data} />
           <Button onClick={handleClose} color="primary">
             OK
           </Button>

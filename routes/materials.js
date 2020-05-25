@@ -69,4 +69,24 @@ router.post("/new", function (req, res) {
   });
 });
 
+router.post("/delete", function (req, res) {
+  if (!req.session.user) { res.send("unauthorised"); }
+  Material.findByIdAndDelete(req.body.id, function (err, docs) { 
+    if (err){ 
+        console.log(err);
+        res.json({
+					deleted : false
+				}); 
+    } 
+    else{ 
+      res.json({
+        deleted : true
+      }); 
+    } 
+}); 
+});
+
+
+
+
 module.exports = router;
