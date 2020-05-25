@@ -72,7 +72,7 @@ router.post("/new", function (req, res) {
 
 router.post("/delete", function (req, res) {
   if (!req.session.user) { res.send("unauthorised"); }
-  User.findByIdAndDelete(req.body.id, function (err, docs) { 
+  Post.findByIdAndDelete(req.body.id, function (err, docs) { 
     if (err){ 
         console.log(err);
         res.json({
@@ -80,9 +80,18 @@ router.post("/delete", function (req, res) {
 				}); 
     } 
     else{ 
-      res.json({
-        deleted : true
-      }); 
+      if(docs === null)
+      {
+        res.json({
+					deleted : false
+				}); 
+      }
+      else{
+        res.json({
+          deleted : true
+        });
+      }
+       
     } 
 }); 
 });

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Button from "@material-ui/core/Button";
 import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
@@ -18,7 +17,6 @@ import { ListItemIcon } from '@material-ui/core';
 import { signout } from "../auth/RouteAccess";
 import AuthApi from "../auth/AuthApi";
 import HamburgerMenu from './HamburgerMenu';
-import deleteFile from "../../firebaseFileDelete";
 import Avatar from "@material-ui/core/Avatar";
 
 const useStyles = makeStyles((theme) => ({
@@ -103,7 +101,6 @@ export default function HideAppBar(props) {
               {props.title || 'Collegemate'}
             </Typography>
             <div className={classes.grow} />
-            <Button onClick={() => deleteFile('materials/needed.json')}>TEST DELETE</Button>
             <IconButton
               edge="end"
               aria-label="account of current user"
