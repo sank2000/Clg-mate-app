@@ -57,79 +57,63 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <Link to="/" className="linkStyle">
-          <ListItem button key={"Home"} >
-            <ListItemIcon>
-              <HomeWorkOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Home"} />
-          </ListItem>
-        </Link>
-        <Link to="/timetable" className="linkStyle">
-          <ListItem button key={"Time Table"}>
-            <ListItemIcon>
-              <TodayOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Time Table"} />
-          </ListItem>
-        </Link>
+        <ListItem onClick={() => window.open('/', '_self')} button key={"Home"} >
+          <ListItemIcon>
+            <HomeWorkOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary={"Home"} />
+        </ListItem>
+        <ListItem onClick={() => window.open('/timetable', '_self')} button key={"Time Table"}>
+          <ListItemIcon>
+            <TodayOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary={"Time Table"} />
+        </ListItem>
       </List>
       <Divider />
       <List>
-        <Link to="/fullpost" className="linkStyle">
-          <ListItem button>
-            <ListItemIcon>
-              <AssignmentOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="All Posts" />
-          </ListItem>
-        </Link>
-        <Link to="/fullmaterial" className="linkStyle">
-          <ListItem button>
-            <ListItemIcon>
-              <LibraryBooksOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="All Materials" />
-          </ListItem>
-        </Link>
-        <Link to="/expiredpost" className="linkStyle">
-          <ListItem button>
-            <ListItemIcon>
-              <AlarmOffOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Expired Posts" />
-          </ListItem>
-        </Link>
+        <ListItem onClick={() => window.open('/fullpost', '_self')} button>
+          <ListItemIcon>
+            <AssignmentOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="All Posts" />
+        </ListItem>
+        <ListItem onClick={() => window.open('/fullmaterial', '_self')} button>
+          <ListItemIcon>
+            <LibraryBooksOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="All Materials" />
+        </ListItem>
+        <ListItem onClick={() => window.open('/expiredpost', '_self')} button>
+          <ListItemIcon>
+            <AlarmOffOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Expired Posts" />
+        </ListItem>
       </List>
       <Divider />
       <List>
-        <Link to="/feedback" className="linkStyle">
-          <ListItem button>
-            <ListItemIcon>
-              <FeedbackOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Send Feedback" />
-          </ListItem>
-        </Link>
+        <ListItem onClick={() => window.open('/feedback', '_self')} button>
+          <ListItemIcon>
+            <FeedbackOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Send Feedback" />
+        </ListItem>
       </List>
       <Divider />
       <List>
-        <Link to="/help" className="linkStyle">
-          <ListItem button>
-            <ListItemIcon>
-              <ContactSupportOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Help" />
-          </ListItem>
-        </Link>
-        <Link to="/about" className="linkStyle">
-          <ListItem button>
-            <ListItemIcon>
-              <InfoOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="About" />
-          </ListItem>
-        </Link>
+        <ListItem onClick={() => window.open('/help', '_self')} button>
+          <ListItemIcon>
+            <ContactSupportOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Help" />
+        </ListItem>
+        <ListItem onClick={() => window.open('/about', '_self')} button>
+          <ListItemIcon>
+            <InfoOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="About" />
+        </ListItem>
       </List>
     </div >
   );
