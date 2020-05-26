@@ -14,6 +14,7 @@ import Delete from "./DeletePost";
 import AuthApi from "../../auth/AuthApi";
 
 import DownloadButton from './AttachmentDownloadButton';
+import { Grid } from '@material-ui/core';
 
 const styles = (theme) => ({
   root: {
@@ -97,7 +98,9 @@ function CustomizedDialogs(props) {
           </div>
         </DialogContent>
         <DialogActions>
-          {(user._id === props.data.postedById  || user.type === "Staff") &&<Delete data={props.data} type="material"/>}
+          <Grid container>
+            {(user._id === props.data.postedById || user.type === "Staff") && <Delete data={props.data} type="material" />}
+          </Grid>
           <Button onClick={handleClose} color="primary">
             OK
           </Button>

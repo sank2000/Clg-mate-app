@@ -2,6 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
+import Grid from '@material-ui/core/Grid';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions';
@@ -58,7 +59,7 @@ const DialogActions = withStyles((theme) => ({
 
 function CustomizedDialogs(props) {
   const [open, setOpen] = React.useState(false);
-  const authApi = React.useContext(AuthApi); 
+  const authApi = React.useContext(AuthApi);
   const user = authApi.auth;
   const handleClickOpen = () => {
     setOpen(true);
@@ -96,10 +97,12 @@ function CustomizedDialogs(props) {
           </div>
         </DialogContent>
         <DialogActions>
-        {(user._id === props.data.postedById  || user.type === "Staff") &&<Delete data={props.data}  type="post"/>}
+          <Grid container>
+            {(user._id === props.data.postedById || user.type === "Staff") && <Delete data={props.data} type="post" />}
+          </Grid>
           <Button onClick={handleClose} color="primary">
             OK
-          </Button>
+            </Button>
           {(props.data.url.length !== 0 && props.data.url[0] !== "") &&
             <DownloadButton fileArray={props.data.url} />
           }
