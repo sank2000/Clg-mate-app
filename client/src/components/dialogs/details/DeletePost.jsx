@@ -32,8 +32,7 @@ export default (props) =>
                     }
                     else
                     {
-                         console.log(Fdelete(props.data.file,"posts"));
-                         window.location.reload();
+                         Fdelete(props.data.file,"posts");
                     }
                }
                else{
@@ -47,8 +46,7 @@ export default (props) =>
                const result = await axios.post("/materials/delete", prms);
                if(result.data.deleted)
                {
-                    console.log(Fdelete(props.data.file,"materials"));
-                    window.location.reload();
+                    Fdelete(props.data.file,"materials");
                }
                else{
                     setOpen(true);
@@ -61,7 +59,7 @@ export default (props) =>
 
     return  (
           <>
-          <IconButton color="secondary" onClick={handleClick} >
+          <IconButton color="secondary" onClick={handleClick} style={{position : "absolute",right : "85%"}}>
                <DeleteIcon />
           </IconButton>
           <Snackbar open={open} autoHideDuration={6000} onClose={AhandleClose}>

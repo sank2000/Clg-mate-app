@@ -13,22 +13,23 @@ const storageRef = firebase.storage().ref();
 //   });
 // }
 
-function deleteFile(files,type) {
-    let done = true;
+const deleteFile =  async(files,type)  => {
     for(var i=0;i<files.length;i++)
     {
-      let relativeFilePath = type+"/"+files[i];
+      let relativeFilePath = type+"/"+files[i]; 
       const fileRef = storageRef.child(relativeFilePath);
-      fileRef.delete().then(() => {
+      await fileRef.delete().then(() => {
         console.log('File deleted successfully.');
-        done = true;
       }).catch(error => {
         console.error('There was an error deleting the '+ files[i] +'file.');
-        done = false;
+        window.location.reload();
         return;
       });
+      if(i===files.length - 1)
+      {
+        window.location.reload();
+      }
     }
-    return done;
 }
 
 export default deleteFile;

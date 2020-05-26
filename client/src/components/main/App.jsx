@@ -117,9 +117,8 @@ function App() {
 					<CircularProgress style={{ zIndex: "50000" }} color="primary" />
 				</Backdrop>
 				{postEmty ? <Fragment>
-					<Grid container justify="space-evenly"
+					<Grid container
 						spacing={3}
-						alignItems="center"
 						style={{
 							paddingTop: '1rem',
 							paddingBottom: '1rem'
@@ -141,9 +140,8 @@ function App() {
 				<hr />
 				<Typography component="h1" variant='h3' align='center'>Materials</Typography>
 				{materialEmty ? <Fragment>
-					<Grid container justify="space-evenly"
+					<Grid container
 						spacing={3}
-						alignItems="center"
 						style={{
 							paddingTop: '1rem',
 							paddingBottom: '1rem'
