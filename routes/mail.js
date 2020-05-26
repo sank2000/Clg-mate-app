@@ -15,49 +15,70 @@ let transporter = nodemailer.createTransport({
 	}
 });
 
-router.post("/forgot/sendmail", function (req, res) {
-	User.findOne({ unique_id: req.body.id }, function (err, result) {
-		if (err) { console.log(err); return; }
-		if (result) {
-			let mailOptions =
-			{
-				from: '"Collegemate App" collegematewebapp@gmail.com',
-				to: result.email,
-				subject: "Your Collegemate Sign in password",
-				html: `
-					<h3>Your Collegemate sign in password is:</h3> 
-					<h1>${result.password}</h1>
-					<h4>If you don't know why you're getting this email, consider changing your password to avoid your account being misused/ locked.</h4> `
-			}
 
+router.post("/feedback", function (req, res) {
+	User.findById(req.session.user, "name", function (err, result) {
+		if (err) {
+			console.log(err);
+		}
+		else {
+			let mailOptions = {
+				from: `"${result.name} via Collegemate Feedback" collegematewebapp@gmail.com`,
+				to: "santhoshvelr@gmail.com,akrishnamoorthy007@gmail.com",
+				subject: "FeedBack on Collegemate App from " + result.name,
+				// text: req.body.content,
+				html:
+					`<h1>${req.body.title}</h1>
+					<p>${req.body.content}</p>
+				`
+			}
 			transporter.sendMail(mailOptions, function (err, dat) {
 				if (err) {
 					console.log(err);
-					res.json({
-						msg: "Unable to send Email",
-						done: false
-					}
+					res.json(
+						{
+							msg: "Unable to send Feedback",
+							done: false
+						}
 					);
 				}
 				else {
 					res.json({
-						msg: "Mail sent Successfully",
+						msg: "Feedback sent Successfully",
 						done: true
 					}
 					);
 				}
 			});
 		}
-		else {
-			res.json({
-				find: false,
-				done: false,
-				msg: "Unable to send Email",
-			});
-		}
 	});
 });
 
+router.post("/forgot", function (req, res) {
+	User.findOne({ unique_id: req.body.id }, function (err, result) {
+		if (!err) {
+			if (result) {
+				res.json(
+					{
+						find: true,
+						mail: result.email,
+						unique_id: result.unique_id,
+						doc_id: result._id
+					}
+				);
+			}
+			else {
+				res.json({
+					find: false
+				}
+				);
+			}
+		}
+		else {
+			console.log(err);
+		}
+	});
+});
 
 router.post("/forgot/sendmail", function (req, res) {
 	var num = Math.floor(Math.random() * 900000) + 100000;
@@ -81,8 +102,7 @@ router.post("/forgot/sendmail", function (req, res) {
 			}
 		}
 	});
-	let mailOptions =
-	{
+	let mailOptions = {
 		from: '"Collegemate App" collegematewebapp@gmail.com',
 		to: req.body.mail,
 		subject: "OTP to reset password",
@@ -134,7 +154,6 @@ router.post("/forgot/verify", function (req, res) {
 		}
 	})
 });
-
 
 router.post("/forgot/reset", function (req, res) {
 	bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
