@@ -34,57 +34,54 @@ export default function BottomAppBar() {
       id: 1,
       primary: "No schedule",
       secondary: "for this time ",
-      per : 0
+      per: 0
     },
     {
       id: 2,
       primary: table[0][time[0].per],
       secondary: time[0].start + " -- " + time[0].end,
-      per : time[0].per
+      per: time[0].per
     },
     {
       id: 3,
       primary: table[0][time[1].per],
       secondary: time[1].start + " -- " + time[1].end,
-      per : time[1].per
+      per: time[1].per
     }
   ]);
   let tym = Number(today.getHours() + "." + today.getMinutes());
-  
+
 
 
   function find(value, ind) {
-    if(today.getDay() === 0 || today.getDay() === 6)
-    {
-          return;
+    if (today.getDay() === 0 || today.getDay() === 6) {
+      return;
     }
-    else if (tym < 9){
+    else if (tym < 9) {
       setPer([
         {
           id: 1,
           primary: "No schedule",
           secondary: "for this time ",
-          per : 0
+          per: 0
         },
         {
           id: 2,
           primary: table[today.getDay() - 1][time[0].per],
           secondary: time[0].start + " -- " + time[0].end,
-          per : time[0].per
+          per: time[0].per
         },
         {
           id: 3,
           primary: table[today.getDay() - 1][time[1].per],
           secondary: time[1].start + " -- " + time[1].end,
-          per : time[1].per
+          per: time[1].per
         }
       ]);
       return;
     }
-    else if(tym > 17)
-    {
-      if (today.getDay() === 5)
-      {
+    else if (tym > 17) {
+      if (today.getDay() === 5) {
         return;
       }
       setPer([
@@ -92,25 +89,24 @@ export default function BottomAppBar() {
           id: 1,
           primary: "No schedule",
           secondary: "for this time ",
-          per : 0
+          per: 0
         },
         {
           id: 2,
           primary: table[today.getDay()][time[0].per],
           secondary: time[0].start + " -- " + time[0].end,
-          per : time[0].per
+          per: time[0].per
         },
         {
           id: 3,
           primary: table[today.getDay()][time[1].per],
           secondary: time[1].start + " -- " + time[1].end,
-          per : time[1].per
+          per: time[1].per
         }
       ]);
       return;
-    } 
-    if (tym >= value.start && tym <= value.end) 
-    {
+    }
+    if (tym >= value.start && tym <= value.end) {
       setCrtPeriod(ind);
       return;
     }
@@ -123,63 +119,63 @@ export default function BottomAppBar() {
           id: 1,
           primary: table[today.getDay() - 1][time[ind].per],
           secondary: time[ind].start + " -- " + time[ind].end,
-          per : time[ind].per
+          per: time[ind].per
         },
         {
           id: 2,
           primary: "No schedule",
           secondary: "for this time ",
-          per : 0
+          per: 0
         },
         {
           id: 3,
           primary: table[0][time[0].per],
           secondary: time[0].start + " -- " + time[0].end,
-          per : time[0].per
+          per: time[0].per
         }
       ]);
-    } 
+    }
     else if (ind === 7) {
       setPer([
         {
           id: 1,
           primary: table[today.getDay() - 1][time[ind].per],
           secondary: time[ind].start + " -- " + time[ind].end,
-          per : time[ind].per
+          per: time[ind].per
         },
         {
           id: 2,
           primary: "No schedule",
           secondary: "for this time ",
-          per : 0
+          per: 0
         },
         {
           id: 3,
           primary: table[today.getDay()][time[0].per],
           secondary: time[0].start + " -- " + time[0].end,
-          per : time[0].per
+          per: time[0].per
         }
       ]);
-    } 
+    }
     else if (ind === 6) {
       setPer([
         {
           id: 1,
           primary: table[today.getDay() - 1][time[ind].per],
           secondary: time[ind].start + " -- " + time[ind].end,
-          per : time[ind].per
+          per: time[ind].per
         },
         {
           id: 2,
           primary: table[today.getDay() - 1][time[ind].per + 1],
           secondary: time[ind + 1].start + " -- " + time[ind + 1].end,
-          per : time[ind].per + 1
+          per: time[ind].per + 1
         },
         {
           id: 3,
           primary: "No schedule",
           secondary: "for this time",
-          per : 0
+          per: 0
         }
       ]);
     } else {
@@ -188,19 +184,19 @@ export default function BottomAppBar() {
           id: 1,
           primary: table[today.getDay() - 1][time[ind].per],
           secondary: time[ind].start + " -- " + time[ind].end,
-          per : time[ind].per
+          per: time[ind].per
         },
         {
           id: 2,
           primary: table[today.getDay() - 1][time[ind].per + 1],
           secondary: time[ind + 1].start + " -- " + time[ind + 1].end,
-          per : time[ind].per+1
+          per: time[ind].per + 1
         },
         {
           id: 3,
           primary: table[today.getDay() - 1][time[ind].per + 2],
           secondary: time[ind + 2].start + " -- " + time[ind + 2].end,
-          per : time[ind].per+2
+          per: time[ind].per + 2
         }
       ]);
     }
@@ -238,7 +234,7 @@ export default function BottomAppBar() {
               )}
               <ListItem button>
                 <ListItemAvatar>
-                <Avatar>{per}</Avatar>
+                  <Avatar>{per}</Avatar>
                 </ListItemAvatar>
                 <ListItemText primary={primary} secondary={secondary} />
               </ListItem>
