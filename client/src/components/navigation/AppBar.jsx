@@ -109,7 +109,7 @@ export default function HideAppBar(props) {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <Avatar style={{ width: 'inherit', height: 'inherit', backgroundColor: 'inherit', color: 'inherit' }}
+              <Avatar style={{ width: '1.6rem', height: '1.6rem', backgroundColor: 'inherit', color: 'inherit' }}
                 alt={user.name}
                 src={user.url}
               >
