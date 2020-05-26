@@ -62,7 +62,7 @@ export default function HideAppBar(props) {
   const user = authApi.auth;
   const logout = async () => {
     await signout();
-    authApi.setAuth({auth : false});
+    authApi.setAuth({ auth: false });
   }
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -75,19 +75,19 @@ export default function HideAppBar(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <Link to="/profile" className="linkStyle">
-        <MenuItem>
-          <ListItemIcon>
-              <Avatar
-              alt={user.name}
-              src={user.url}
-            >
-              {user.name[0]}
-            </Avatar> </ListItemIcon> {user.name}
-        </MenuItem>
-      </Link>
+      <MenuItem onClick={() => window.open('/profile', '_self')}>
+        <ListItemIcon>
+          <Avatar
+            alt={user.name}
+            src={user.url}
+            style={{ width: '1.6rem', height: '1.6rem' }}
+          >
+            {user.name[0]}
+          </Avatar>
+        </ListItemIcon> {user.name}
+      </MenuItem>
       <MenuItem onClick={logout}> <ListItemIcon> <ExitToAppOutlinedIcon /> </ListItemIcon> Logout</MenuItem>
-    </Menu>
+    </Menu >
   );
 
   return (
@@ -109,7 +109,12 @@ export default function HideAppBar(props) {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircleOutlinedIcon />
+              <Avatar style={{ width: 'inherit', height: 'inherit', backgroundColor: 'inherit', color: 'inherit' }}
+                alt={user.name}
+                src={user.url}
+              >
+                <AccountCircleOutlinedIcon />
+              </Avatar>
             </IconButton>
           </Toolbar>
         </AppBar>
