@@ -135,6 +135,7 @@ function PostForm(props) {
                 type="file"
                 id="contained-button-file"
                 name="file"
+                accept="image/*, .pdf, .xls, .doc, .odt"
                 multiple
                 onChange={props.handleChange}
               />
