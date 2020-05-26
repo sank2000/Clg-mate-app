@@ -56,8 +56,8 @@ export default (props) => {
 			</IconButton>
 			<Snackbar open={open} autoHideDuration={6000} onClose={AhandleClose}>
 				<Alert onClose={AhandleClose} severity="error">
-					"Unable to delete.."
-        </Alert>
+					Failed to remove {props.type}
+				</Alert>
 			</Snackbar>
 		</>
 	);
