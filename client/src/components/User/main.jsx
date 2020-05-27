@@ -11,25 +11,24 @@ export default function Main() {
   return (
     <>
       <NavigationBar title="Profile" />
-      <Container fluid>
-        <Grid
-          container
-          direction="column"
-          justify="center"
-          alignItems="center"
-          spacing={3}
-        >
-          <Grid item md={10} lg={8}>
-            <Card />
-          </Grid>
-          <Grid item md={6} lg={4}>
-            <ChangePassword />
-          </Grid>
-          <Grid item md={6} lg={4}>
-            <DeleteAccount />
-          </Grid>
+      <NavigationBar title="Profile" />
+      <Grid
+        container fluid
+        direction="column"
+        justify="center"
+        alignItems="center"
+        spacing={3}
+      >
+        <Grid item md={10} lg={8}>
+          <Card />
         </Grid>
-      </Container>
+        <Grid item xs={12} md={4} sm={6} >
+          <ChangePassword />
+        </Grid>
+        <Grid item xs={12} md={4} sm={6}>
+          <DeleteAccount />
+        </Grid>
+      </Grid>
     </>
   );
 }
