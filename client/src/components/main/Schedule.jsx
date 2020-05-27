@@ -10,6 +10,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import { time, table } from "../../constants/Table";
 import Avatar from "@material-ui/core/Avatar";
+import NavigationBar from '../navigation/AppBar'
 var today = new Date();
 
 const useStyles = makeStyles(theme => ({
@@ -27,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function BottomAppBar() {
+export default function Schedule() {
   const [per, setPer] = useState([
     {
       id: 1,
@@ -204,11 +205,9 @@ export default function BottomAppBar() {
 
   return (
     <React.Fragment>
+      <NavigationBar title="Schedule" />
       <CssBaseline />
       <Paper square className={classes.paper}>
-        <Typography className={classes.text} variant="h5" gutterBottom>
-          Schedule
-        </Typography>
         <List className={classes.list}>
           {per.map(({ id, primary, secondary, per }) => (
             <React.Fragment key={id}>
@@ -225,7 +224,7 @@ export default function BottomAppBar() {
                   Later
                 </ListSubheader>
               )}
-              <ListItem button>
+              <ListItem>
                 <ListItemAvatar>
                   <Avatar>{per}</Avatar>
                 </ListItemAvatar>
