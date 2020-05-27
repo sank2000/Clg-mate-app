@@ -1,46 +1,143 @@
-import React, { Fragment } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Table } from "react-bootstrap";
+import React from "react";
+import Grid from "@material-ui/core/Grid";
+import Avatar from "@material-ui/core/Avatar";
+import { Table, Container } from "react-bootstrap";
 import { time, table } from "../../constants/Table";
+import IconButton from "@material-ui/core/IconButton";
 import Schedule from "./Schedule";
-import NavigationBar from '../navigation/AppBar';
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function head(val, ind) {
-  return <th key={ind}>  {val[0]}</th>;
-}
+const avatarImageStyle = {
+  width: 40,
+  height: 40
+};
 
-function bdy(val, ind) {
+function tab(ind, day) {
   return (
-    <Fragment key={ind}>
-      <tr>
-        <th>
-          {time[ind].start}-{time[ind].end}
-        </th>
-        <td>{table[0][ind + 1]}</td>
-        <td>{table[1][ind + 1]}</td>
-        <td>{table[2][ind + 1]}</td>
-        <td>{table[3][ind + 1]}</td>
-        <td>{table[4][ind + 1]}</td>
-      </tr>
-    </Fragment>
+    <tr key={ind}>
+      <td>{time[ind].start} </td>
+      <td>{table[day][ind]}</td>
+      <td>{time[ind].end}</td>
+    </tr>
   );
 }
 
-export default function App() {
+function Timetable(props) {
   return (
-    <>
-      <NavigationBar title="Time Table" />
-      <Schedule />
-      <h3>Time Table</h3>
-      <Table striped bordered hover variant="dark" size="sm">
+    <Container style={{ marginTop: "25px", backgroundColor: "white" }}>
+      <Table striped bordered hover size="sm" style={{ textAlign: "center" }}>
         <thead>
           <tr>
-            <th>#</th>
-            {table.map(head)}
+            <th>Start</th>
+            <th>Period</th>
+            <th>End</th>
           </tr>
         </thead>
-        <tbody>{time.map(bdy)}</tbody>
+        <tbody>
+          {time.map((data, ind) => {
+            return tab(ind, props.day);
+          })}
+        </tbody>
       </Table>
+    </Container>
+  );
+}
+
+function getDay() {
+  let d = new Date();
+  return d.getDay() - 1;
+}
+
+const avaStyle1 = {
+  fontSize: "15px",
+  border: "4px solid white",
+  backgroundColor: "#606060"
+};
+const avaStyle2 = {
+  fontSize: "15px",
+  border: "4px solid white",
+  backgroundColor: "black"
+};
+const avaStyle3 = {
+  fontSize: "15px",
+  border: "4px solid white",
+  backgroundColor: "blue"
+};
+export default function () {
+  const [activeStep, setActiveStep] = React.useState(getDay());
+
+  function Div(props) {
+    return (
+      <div>
+        <IconButton
+          style={{ outline: "none" }}
+          onClick={() => setActiveStep(props.day)}
+        >
+          <Avatar
+            style={
+              getDay() === props.day
+                ? Object.assign({}, avatarImageStyle, avaStyle3)
+                : activeStep === props.day
+                  ? Object.assign({}, avatarImageStyle, avaStyle2)
+                  : Object.assign({}, avatarImageStyle, avaStyle1)
+            }
+          >
+            {props.ico}
+          </Avatar>
+        </IconButton>
+        <br />
+        <p
+          style={
+            getDay() === props.day
+              ? { display: "inline", color: "blue" }
+              : activeStep === props.day
+                ? { display: "inline", color: "black" }
+                : { display: "inline" }
+          }
+        >
+          {props.title}
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <Schedule />
+      <Container style={{ position: "relative" }}>
+        <hr
+          style={{
+            border: "0.5px solid #303030",
+            position: "absolute",
+            width: "80%",
+            left: "10%",
+            top: "20%"
+          }}
+        />
+        <Grid
+          container
+          direction="row"
+          justify="space-around"
+          alignItems="center"
+        >
+          <Grid item style={{ flexShrink: "3" }}>
+            <Div ico={"M"} title={"Monday"} day={0} />
+          </Grid>
+          <Grid item>
+            <Div ico={"Tu"} title={"Tuesday"} day={1} />
+          </Grid>
+          <Grid item>
+            <Div ico={"W"} title={"Wednesday"} day={2} />
+          </Grid>
+          <Grid item>
+            <Div ico={"Th"} title={"Thursday"} day={3} />
+          </Grid>
+          <Grid item>
+            <Div ico={"F"} title={"Friday"} day={4} />
+          </Grid>
+        </Grid>
+      </Container>
+      <Timetable day={activeStep} />
     </>
   );
 }
