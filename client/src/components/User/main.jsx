@@ -4,13 +4,11 @@ import ChangePassword from "./ChangePassword";
 import Card from "./card";
 import DeleteAccount from "./DeleteAccount";
 import NavigationBar from "../navigation/AppBar";
-import { Container } from "@material-ui/core";
 
 export default function Main() {
 
   return (
     <>
-      <NavigationBar title="Profile" />
       <NavigationBar title="Profile" />
       <Grid
         container fluid

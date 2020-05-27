@@ -49,7 +49,7 @@ export default function Reset(props) {
   const ValidationSchema = Yup.object(
     {
       password: Yup.string().required('Field required !').matches(
-        /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+        /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
         "Must Contain 8 Characters, Letter, Number and Special Character"
       ),
       cpassword: Yup.string().required('Field required !').oneOf([Yup.ref('password'), null], 'Passwords must match')

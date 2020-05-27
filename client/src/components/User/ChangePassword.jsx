@@ -60,12 +60,12 @@ export default function ChangePassword() {
 
   const ValidationSchema = Yup.object({
     currentpassword: Yup.string()
-      .required("Field required !")
+      .required("Field required!")
       .min(5),
     password: Yup.string()
-      .required("Field required !")
+      .required("Field required!")
       .matches(
-        /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+        /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
         "Must Contain 8 Characters, Letter, Number and Special Character"
       ),
     cpassword: Yup.string()
