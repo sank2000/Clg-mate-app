@@ -8,8 +8,8 @@ const PostSchema = new Schema({
   authorType: { type: String, required: true },
   authorId: { type: String, required: true },
   description: { type: String, trim: true },
-  subName: String,
-  dueDate: Date,
+  subName: {type: String, required: true},
+  dueDate: {type: Date, required: true},
   file: Array,
   url: Array,
   postType: { type: String, required: true, default: "Other" }

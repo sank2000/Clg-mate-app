@@ -14,10 +14,10 @@ const User = new Schema({
   type: {
     type: String, required: true,
   },
-  password: { type: String, required: true },
+  password: { type: String, required: true, minlength: 8 },
   email: { type: String, required: true },
   state: { type: String, required: true, default: 'default' },
-  url : { type: String, default: '' }
+  url: { type: String, default: '' }
 });
 
 const user = mongoose.model("loginDetails", User);
