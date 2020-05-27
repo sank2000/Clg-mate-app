@@ -15,7 +15,7 @@ function SignUp() {
         <LockOutlinedIcon
           style={{
             padding: "10px",
-            background: "dodgerblue",
+            background: "#2196f3",
             borderRadius: "50%",
             color: "#fff",
             fontSize: "3rem"

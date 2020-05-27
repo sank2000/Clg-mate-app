@@ -89,7 +89,8 @@ export default function ChangePassword() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <form onSubmit={formik.handleSubmit}>
-            <Grid container direction="column"
+            <Grid container
+              direction="column"
               justify="center"
               alignItems="center"
               spacing={3}>
@@ -152,7 +153,7 @@ export default function ChangePassword() {
                   type="submit"
                   variant="contained"
                   style={{
-                    backgroundColor: "dodgerblue",
+                    backgroundColor: "#2196f3",
                     color: "#fff",
                     // float: "right"
                   }}

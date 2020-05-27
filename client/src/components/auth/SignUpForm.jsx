@@ -166,7 +166,7 @@ function SignUpForm(props) {
             type="submit"
             fullWidth
             variant="contained"
-            style={{ backgroundColor: "dodgerblue", color: "#fff" }}
+            style={{ backgroundColor: "#2196f3", color: "#fff" }}
           >
             Sign Up &nbsp;{load && <Spinner animation="border" size="sm" />}
           </Button>

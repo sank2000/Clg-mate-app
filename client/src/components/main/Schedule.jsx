@@ -21,7 +21,9 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(2)
   },
   subheader: {
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
+    textTransform: 'uppercase',
+    padding: theme.spacing(2, 2, 0)
   },
   grow: {
     flexGrow: 1
@@ -212,17 +214,17 @@ export default function Schedule() {
           {per.map(({ id, primary, secondary, per }) => (
             <React.Fragment key={id}>
               {id === 1 && (
-                <ListSubheader className={classes.subheader}>Now</ListSubheader>
+                <Typography variant="h6" className={classes.subheader}>Now</Typography>
               )}
               {id === 2 && (
-                <ListSubheader className={classes.subheader}>
+                <Typography variant="h6" className={classes.subheader}>
                   Next
-                </ListSubheader>
+                </Typography>
               )}
               {id === 3 && (
-                <ListSubheader className={classes.subheader}>
+                <Typography variant="h6" className={classes.subheader}>
                   Later
-                </ListSubheader>
+                </Typography>
               )}
               <ListItem>
                 <ListItemAvatar>

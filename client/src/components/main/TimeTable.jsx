@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
 import { Table, Container } from "react-bootstrap";
@@ -70,20 +70,18 @@ const todayStyle = {
   backgroundColor: "#f50057"
 };
 
-
 const todayLabel = {
   display: "inline", color: "#fff",
   backgroundColor: "#f50057", padding: "3px 5px", borderRadius: '150px'
-}
+};
 
 const selectedLabel = {
   display: "inline", color: "#fff",
   backgroundColor: "#2196f3", padding: "3px 5px", borderRadius: '150px'
-}
+};
 
 export default function () {
-  const [activeStep,
-    setActiveStep] = React.useState(getDay());
+  const [activeStep, setActiveStep] = useState(getDay());
 
   function DayLabel(props) {
     return (
