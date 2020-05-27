@@ -9,8 +9,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import { time, table } from "../../constants/Table";
-import Avatar from '@material-ui/core/Avatar';
-
+import Avatar from "@material-ui/core/Avatar";
 var today = new Date();
 
 const useStyles = makeStyles(theme => ({
@@ -38,26 +37,23 @@ export default function BottomAppBar() {
     },
     {
       id: 2,
-      primary: table[0][time[0].per],
+      primary: table[0][0],
       secondary: time[0].start + " -- " + time[0].end,
       per: time[0].per
     },
     {
       id: 3,
-      primary: table[0][time[1].per],
+      primary: table[0][1],
       secondary: time[1].start + " -- " + time[1].end,
       per: time[1].per
     }
   ]);
   let tym = Number(today.getHours() + "." + today.getMinutes());
 
-
-
   function find(value, ind) {
     if (today.getDay() === 0 || today.getDay() === 6) {
       return;
-    }
-    else if (tym < 9) {
+    } else if (tym < 9) {
       setPer([
         {
           id: 1,
@@ -67,20 +63,19 @@ export default function BottomAppBar() {
         },
         {
           id: 2,
-          primary: table[today.getDay() - 1][time[0].per],
+          primary: table[today.getDay() - 1][0],
           secondary: time[0].start + " -- " + time[0].end,
           per: time[0].per
         },
         {
           id: 3,
-          primary: table[today.getDay() - 1][time[1].per],
+          primary: table[today.getDay() - 1][1],
           secondary: time[1].start + " -- " + time[1].end,
           per: time[1].per
         }
       ]);
       return;
-    }
-    else if (tym > 17) {
+    } else if (tym > 16.3) {
       if (today.getDay() === 5) {
         return;
       }
@@ -93,13 +88,13 @@ export default function BottomAppBar() {
         },
         {
           id: 2,
-          primary: table[today.getDay()][time[0].per],
+          primary: table[today.getDay()][0],
           secondary: time[0].start + " -- " + time[0].end,
           per: time[0].per
         },
         {
           id: 3,
-          primary: table[today.getDay()][time[1].per],
+          primary: table[today.getDay()][1],
           secondary: time[1].start + " -- " + time[1].end,
           per: time[1].per
         }
@@ -117,7 +112,7 @@ export default function BottomAppBar() {
       setPer([
         {
           id: 1,
-          primary: table[today.getDay() - 1][time[ind].per],
+          primary: table[today.getDay() - 1][ind],
           secondary: time[ind].start + " -- " + time[ind].end,
           per: time[ind].per
         },
@@ -129,17 +124,16 @@ export default function BottomAppBar() {
         },
         {
           id: 3,
-          primary: table[0][time[0].per],
+          primary: table[0][0],
           secondary: time[0].start + " -- " + time[0].end,
           per: time[0].per
         }
       ]);
-    }
-    else if (ind === 7) {
+    } else if (ind === 7) {
       setPer([
         {
           id: 1,
-          primary: table[today.getDay() - 1][time[ind].per],
+          primary: table[today.getDay() - 1][ind],
           secondary: time[ind].start + " -- " + time[ind].end,
           per: time[ind].per
         },
@@ -151,23 +145,22 @@ export default function BottomAppBar() {
         },
         {
           id: 3,
-          primary: table[today.getDay()][time[0].per],
+          primary: table[today.getDay()][0],
           secondary: time[0].start + " -- " + time[0].end,
           per: time[0].per
         }
       ]);
-    }
-    else if (ind === 6) {
+    } else if (ind === 6) {
       setPer([
         {
           id: 1,
-          primary: table[today.getDay() - 1][time[ind].per],
+          primary: table[today.getDay() - 1][ind],
           secondary: time[ind].start + " -- " + time[ind].end,
           per: time[ind].per
         },
         {
           id: 2,
-          primary: table[today.getDay() - 1][time[ind].per + 1],
+          primary: table[today.getDay() - 1][ind + 1],
           secondary: time[ind + 1].start + " -- " + time[ind + 1].end,
           per: time[ind].per + 1
         },
@@ -182,19 +175,19 @@ export default function BottomAppBar() {
       setPer([
         {
           id: 1,
-          primary: table[today.getDay() - 1][time[ind].per],
+          primary: table[today.getDay() - 1][ind],
           secondary: time[ind].start + " -- " + time[ind].end,
           per: time[ind].per
         },
         {
           id: 2,
-          primary: table[today.getDay() - 1][time[ind].per + 1],
+          primary: table[today.getDay() - 1][ind + 1],
           secondary: time[ind + 1].start + " -- " + time[ind + 1].end,
           per: time[ind].per + 1
         },
         {
           id: 3,
-          primary: table[today.getDay() - 1][time[ind].per + 2],
+          primary: table[today.getDay() - 1][ind + 2],
           secondary: time[ind + 2].start + " -- " + time[ind + 2].end,
           per: time[ind].per + 2
         }
