@@ -64,7 +64,10 @@ export default function ChangePassword() {
       .min(5),
     password: Yup.string()
       .required("Field required !")
-      .min(5),
+      .matches(
+        /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+        "Must Contain 8 Characters, Letter, Number and Special Character"
+      ),
     cpassword: Yup.string()
       .required("Field required !")
       .oneOf([Yup.ref("password"), null], "Passwords must match")
