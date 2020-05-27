@@ -24,8 +24,8 @@ function tab(ind, day) {
 
 function Timetable(props) {
   return (
-    <Container style={{ marginTop: "25px", backgroundColor: "white" }} >
-      <Table striped bordered hover size="sm" style={{ textAlign: "center" }}   >
+    <Container style={{ marginTop: "25px" }} >
+      <Table striped bordered hover size="sm" style={{ backgroundColor: '#fff', textAlign: "center" }}   >
         <thead>
           <tr>
             <th>Start</th>
@@ -52,29 +52,33 @@ function getDay() {
 const defaultStyle = {
   fontSize: "15px",
   border: "4px solid white",
-  backgroundColor: "#757575"
+  backgroundColor: "#757575",
 };
 
 const selectedStyle = {
   fontSize: "15px",
   border: "4px solid white",
-  backgroundColor: "#2196f3"
+  backgroundColor: "#2196f3",
 };
 
 const todayStyle = {
   fontSize: "15px",
   border: "4px solid white",
-  backgroundColor: "#f50057"
+  backgroundColor: "#f50057",
 };
 
 const todayLabel = {
   display: "inline", color: "#fff",
-  backgroundColor: "#f50057", padding: "3px 5px", borderRadius: '150px'
+  backgroundColor: "#f50057",
+  padding: "3px 5px",
+  borderRadius: '150px',
 };
 
 const selectedLabel = {
   display: "inline", color: "#fff",
-  backgroundColor: "#2196f3", padding: "3px 5px", borderRadius: '150px'
+  backgroundColor: "#2196f3",
+  padding: "3px 5px",
+  borderRadius: '150px'
 };
 
 export default function () {
