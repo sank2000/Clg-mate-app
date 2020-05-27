@@ -6,9 +6,9 @@ import Grid from "@material-ui/core/Grid";
 import Snackbar from "@material-ui/core/Snackbar";
 import { Spinner } from "react-bootstrap";
 
-import { signup } from "./RouteAccess";
-import AuthApi from "./AuthApi";
-import Alert from '../messages/alerts/alert';
+import { signup } from "../RouteAccess";
+import AuthApi from "../AuthApi";
+import Alert from '../../messages/alerts/alert';
 
 
 import { useFormik } from "formik";

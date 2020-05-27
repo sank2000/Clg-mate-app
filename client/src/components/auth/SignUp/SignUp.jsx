@@ -5,8 +5,8 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 
 import SignUpView from './SignUpView';
-import CopyrightNote from '../main/CopyrightNote';
-import FlexContainer from "../containers/FlexContainer";
+import CopyrightNote from '../../main/CopyrightNote';
+import FlexContainer from "../../containers/FlexContainer";
 
 function SignUp() {
   return (

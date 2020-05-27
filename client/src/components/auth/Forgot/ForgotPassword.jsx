@@ -1,29 +1,28 @@
 import React, { useState, Fragment } from "react";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
-import Start from "./Forgot/Start";
-import Valid from "./Forgot/Valid";
-import Reset from "./Forgot/Reset";
-import Send from "./Forgot/Send";
+import Start from "./Start";
+import Valid from "./Valid";
+import Reset from "./Reset";
+import Send from "./Send";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-export default function App() {
+export default function ForgotPassword() {
   const [open, setOpen] = useState(false);
   const [found, SetFound] = useState(0);
   const [data, setData] = useState({});
   const [msg, setMsg] = useState({
-    content: "ID number Doesn't Exist",
+    content: "ID number does not exist",
     type: "error"
   });
-  
+
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
-
     setOpen(false);
   };
 

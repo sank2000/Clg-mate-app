@@ -5,7 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import App from "./main/App";
 import PageNotFound from "./messages/errors/404";
 import SomethingWrong from "./messages/errors/5xx";
-import SignUp from "./auth/SignUp";
+import SignUp from "./auth/SignUp/SignUp";
 import SignIn from "./auth/SignIn";
 import { hasSigned } from "./auth/RouteAccess"
 import SuccessMessage from "./messages/SuccessMessage";
@@ -16,7 +16,7 @@ import ExpiredPost from "./main/ExpiredPost";
 import FullMaterial from "./main/FullMaterial";
 import TimeTable from "./main/TimeTable";
 import About from "./main/About";
-import Forgot from "./auth/ForgotPassword";
+import Forgot from "./auth/Forgot/ForgotPassword";
 import FeedBack from "./forms/Feedback";
 import UnderConstruction from './messages/UnderConstruction';
 import UserDetails from "./User/main";
