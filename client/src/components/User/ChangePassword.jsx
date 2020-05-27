@@ -92,11 +92,7 @@ export default function ChangePassword() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <form onSubmit={formik.handleSubmit}>
-            <Grid container
-              direction="column"
-              justify="center"
-              alignItems="center"
-              spacing={3}>
+            <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
                   variant="outlined"
@@ -158,7 +154,7 @@ export default function ChangePassword() {
                   style={{
                     backgroundColor: "#2196f3",
                     color: "#fff",
-                    // float: "right"
+                    float: "right"
                   }}
                 >
                   Confirm &nbsp;{load && <Spinner animation="border" size="sm" />}
