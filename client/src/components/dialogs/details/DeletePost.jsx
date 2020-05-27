@@ -11,11 +11,12 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Alert from '../../messages/alerts/alert';
 import Fdelete from '../../../firebaseFileDelete';
-
+import { Spinner } from "react-bootstrap";
 
 export default (props) => {
 	const [open, setOpen] = useState(false);
 	const [Aopen, setAOpen] = useState(false);
+	const [load, setLoad] = useState(false);
 
 	const handleClickOpen = () => {
 		setOpen(true);
@@ -33,6 +34,7 @@ export default (props) => {
 	};
 
 	const handleClick = async () => {
+		setLoad(true);
 		if (props.type === 'post') {
 			let prms = new URLSearchParams({ id: props.data.doc_id });
 			const result = await axios.post("/posts/delete", prms);
@@ -86,8 +88,8 @@ export default (props) => {
 						Cancel
           </Button>
 					<Button onClick={handleClick} color="secondary" autoFocus>
-						Yes
-          </Button>
+						Yes&nbsp;{load && <Spinner animation="grow" variant="danger" size="sm" />}
+					</Button>
 				</DialogActions>
 			</Dialog>
 			<Snackbar open={Aopen} autoHideDuration={6000} onClose={AhandleClose}>
