@@ -75,8 +75,8 @@ function CustomizedDialogs(props) {
         View Details
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-        <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          {props.data.title}
+        <DialogTitle disableTypography id="customized-dialog-title" onClose={handleClose}>
+          <Typography variant="h5"> {props.data.title} </Typography>
           <div className="subject">{props.data.author}</div>
         </DialogTitle>
         <DialogContent dividers>
