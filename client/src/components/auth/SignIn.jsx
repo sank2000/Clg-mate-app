@@ -78,14 +78,15 @@ function SignIn() {
     setLoad(true);
     e.preventDefault();
     const res = await signin(user);
-    if(res.data.auth)
-    {
+    if (res.data.auth) {
       authApi.setAuth(res.data);
+      return;
     }
     setMessage(res.data.message);
     setLoad(false);
     AhandleClick();
-  };
+  }
+
   return (
     <FlexContainer>
       <Container component="main" spacing={2} maxWidth="xs">

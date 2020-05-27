@@ -11,7 +11,7 @@ export default function Main() {
     <>
       <NavigationBar title="Profile" />
       <Grid
-        container fluid
+        container
         direction="column"
         justify="center"
         alignItems="center"
