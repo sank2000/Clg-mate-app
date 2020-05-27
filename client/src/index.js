@@ -14,7 +14,7 @@ const theme = createMuiTheme({
 
 if ('serviceWorker' in navigator) {
   const regEvt = navigator.serviceWorker.register('./ServiceWorker.js');
-  regEvt.then(() => console.log('Service worker registered successfully'));
+  regEvt.then(regObj => console.log('Service worker registered successfully.', 'Scope: ', regObj.scope));
   regEvt.catch(err => console.error('Unable to register service worker.'));
 }
 

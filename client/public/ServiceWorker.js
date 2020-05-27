@@ -1,10 +1,25 @@
-self.addEventListener('install', event => {
-  console.log('[Service Worker] Installing...', event);
+
+var CACHE_NAME = 'clg-mate-cache-v1';
+var urlsToCache = [
+  '/',
+  '/styles/style.css',
+  '/images/',
+  '/assets/'
+];
+self.addEventListener('install', function (event) {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(function (cache) {
+        // Open a cache and cache our files
+        return cache.addAll(urlsToCache);
+      })
+  );
 });
 
-self.addEventListener('activate', event => {
-  console.log('[Service Worker] Activating...', event);
-  return self.clients.claim();
-})
-
-console.log('Service worker attempted to run.');
+self.addEventListener('fetch', function (event) {
+  event.respondWith(
+    caches.match(event.request).then(function (response) {
+      return response || fetch(event.request);
+    })
+  );
+});
