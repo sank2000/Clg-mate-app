@@ -7,7 +7,6 @@ import IconButton from "@material-ui/core/IconButton";
 import { time, table } from "../../constants/Table";
 import Schedule from "./Schedule";
 import "bootstrap/dist/css/bootstrap.min.css";
-import NavigationBar from "../navigation/AppBar";
 
 const avatarImageStyle = {
   width: 40,
@@ -112,7 +111,6 @@ export default function () {
 
   return (
     <>
-      <NavigationBar />
       <Schedule />
       <Container style={{ position: "relative" }}>
         <hr style={{
