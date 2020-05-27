@@ -28,7 +28,12 @@ const useStyles = makeStyles({
   }
 });
 
-export default function SwipeableTemporaryDrawer() {
+
+const selected = {
+  background: '#bbdefb', borderTopRightRadius: '150px', borderBottomRightRadius: '150px'
+}
+
+export default function HamburgerMenu(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     left: false
@@ -56,13 +61,13 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem onClick={() => window.open('/', '_self')} button key={"Home"} >
+        <ListItem onClick={() => window.open('/', '_self')} button key={"Home"} style={props.selected === "Collegemate" ? { ...selected } : null} >
           <ListItemIcon>
             <HomeWorkOutlinedIcon />
           </ListItemIcon>
           <ListItemText primary={"Home"} />
         </ListItem>
-        <ListItem onClick={() => window.open('/timetable', '_self')} button key={"Time Table"}>
+        <ListItem onClick={() => window.open('/timetable', '_self')} button key={"Time Table"} style={props.selected === "Time Table" ? { ...selected } : null}>
           <ListItemIcon>
             <TodayOutlinedIcon />
           </ListItemIcon>
@@ -71,19 +76,19 @@ export default function SwipeableTemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        <ListItem onClick={() => window.open('/fullpost', '_self')} button>
+        <ListItem onClick={() => window.open('/fullpost', '_self')} button style={props.selected === "All Posts" ? { ...selected } : null}>
           <ListItemIcon>
             <AssignmentOutlinedIcon />
           </ListItemIcon>
           <ListItemText primary="All Posts" />
         </ListItem>
-        <ListItem onClick={() => window.open('/fullmaterial', '_self')} button>
+        <ListItem onClick={() => window.open('/fullmaterial', '_self')} button style={props.selected === "All materials" ? { ...selected } : null}>
           <ListItemIcon>
             <LibraryBooksOutlinedIcon />
           </ListItemIcon>
           <ListItemText primary="All Materials" />
         </ListItem>
-        <ListItem onClick={() => window.open('/expiredpost', '_self')} button>
+        <ListItem onClick={() => window.open('/expiredpost', '_self')} button style={props.selected === "Expired posts" ? { ...selected } : null}>
           <ListItemIcon>
             <AlarmOffOutlinedIcon />
           </ListItemIcon>
@@ -92,7 +97,7 @@ export default function SwipeableTemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        <ListItem onClick={() => window.open('/feedback', '_self')} button>
+        <ListItem onClick={() => window.open('/feedback', '_self')} button style={props.selected === "Feedback" ? { ...selected } : null}>
           <ListItemIcon>
             <FeedbackOutlinedIcon />
           </ListItemIcon>
@@ -101,13 +106,13 @@ export default function SwipeableTemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        <ListItem onClick={() => window.open('/help', '_self')} button>
+        <ListItem onClick={() => window.open('/help', '_self')} button style={props.selected === "Help" ? { ...selected } : null}>
           <ListItemIcon>
             <ContactSupportOutlinedIcon />
           </ListItemIcon>
           <ListItemText primary="Help" />
         </ListItem>
-        <ListItem onClick={() => window.open('/about', '_self')} button>
+        <ListItem onClick={() => window.open('/about', '_self')} button style={props.selected === "About" ? { ...selected } : null}>
           <ListItemIcon>
             <InfoOutlinedIcon />
           </ListItemIcon>

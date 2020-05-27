@@ -13,7 +13,7 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-export default function App() {
+export default function Feedback() {
   const [load, setLoad] = useState(false);
   const [open, setOpen] = useState(false);
   const [bdy, setBdy] = useState({
@@ -86,7 +86,7 @@ export default function App() {
 
   return (
     <Fragment>
-      <NavigationBar />
+      <NavigationBar title="Feedback" />
       <FlexContainer height='89vh' background='transparent' className="App">
         <CreateOutlinedIcon style={{
           padding: "1rem",

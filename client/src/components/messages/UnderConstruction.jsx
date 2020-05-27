@@ -7,7 +7,7 @@ import FlexContainer from '../containers/FlexContainer';
 function MenAtWork() {
     return (
         <Fragment>
-            <NavBar />
+            <NavBar title="Help" />
             <FlexContainer height='90vh'>
                 <img src='./images/people.png' style={{ width: '10em', height: '10em', padding: '1rem' }} alt='' />
                 <h1>MEN AT WORK!</h1>

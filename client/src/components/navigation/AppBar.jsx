@@ -95,7 +95,7 @@ export default function HideAppBar(props) {
       <HideOnScroll {...props}>
         <AppBar style={{ zIndex: '1000' }} elevation={3}>
           <Toolbar>
-            <HamburgerMenu />
+            <HamburgerMenu selected={props.title || 'Collegemate'} />
             <Typography component='h1' variant="h6" noWrap>
               {props.title || 'Collegemate'}
             </Typography>
