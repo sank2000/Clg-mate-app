@@ -26,9 +26,11 @@ function PostForm(props) {
   const [type, setType] = useState("");
   const [subject, setSubject] = useState("");
   const [selectedDate, handleDateChange] = useState(new Date());
+  
   const handlePostTypeChange = event => {
     setType(event.target.value);
   };
+
   const handleSubjectChange = event => {
     setSubject(event.target.value);
   };
@@ -38,6 +40,7 @@ function PostForm(props) {
     setShow(false);
     window.open("/", "_top");
   };
+
   const handleShow = () => setShow(true);
   const applyMargin = {
     margin: "7px"
