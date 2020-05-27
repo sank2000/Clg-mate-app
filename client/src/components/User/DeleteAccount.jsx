@@ -106,8 +106,7 @@ export default function DeleteAccount() {
                     style={{ float: "right" }}
                     onClick={handleConfirmOpen}
                   > <DeleteForeverOutlinedIcon />
-                  Delete&nbsp;
-                  {load && <Spinner animation="border" size="sm" />}
+                  Delete
                   </Button>
                   <Dialog
                     open={cOpen}
@@ -127,7 +126,8 @@ export default function DeleteAccount() {
                         Cancel
                       </Button>
                       <Button onClick={() => submit()} color="secondary" autoFocus>
-                        Yes
+                        Yes &nbsp;
+                  {load && <Spinner animation="grow" variant="danger" size="sm" />}
                       </Button>
                     </DialogActions>
                   </Dialog>

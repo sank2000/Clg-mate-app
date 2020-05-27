@@ -6,6 +6,7 @@ import IconButton from "@material-ui/core/IconButton";
 
 import { time, table } from "../../constants/Table";
 import Schedule from "./Schedule";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const avatarImageStyle = {
   width: 40,
@@ -28,8 +29,9 @@ function Timetable(props) {
       <Table striped bordered hover size="sm" style={{ backgroundColor: '#fff', textAlign: "center" }}   >
         <thead>
           <tr>
-            <th>Start</th>
-            <th>Period</th> <th>End</th>
+            <th><h5>Start</h5></th>
+            <th><h5>Period</h5></th>
+            <th><h5>End</h5></th>
           </tr>
         </thead>
         <tbody>

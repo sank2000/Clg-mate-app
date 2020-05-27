@@ -206,7 +206,7 @@ export default function Schedule() {
 
   return (
     <React.Fragment>
-      <NavigationBar title="Schedule" />
+      <NavigationBar title="Time Table" />
       <CssBaseline />
       <Paper square className={classes.paper}>
         <List className={classes.list}>
