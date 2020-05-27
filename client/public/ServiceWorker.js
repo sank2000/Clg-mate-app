@@ -1,7 +1,6 @@
 
 var CACHE_NAME = 'clg-mate-cache-v1';
 var urlsToCache = [
-  '/',
   '/styles/style.css',
   '/images/',
   '/assets/'
@@ -10,7 +9,6 @@ self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(function (cache) {
-        // Open a cache and cache our files
         return cache.addAll(urlsToCache);
       })
   );
