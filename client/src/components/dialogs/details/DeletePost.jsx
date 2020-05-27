@@ -80,7 +80,7 @@ export default (props) => {
 				<DialogTitle id="alert-dialog-title">{`Do you really want to delete this ${props.type}?`}</DialogTitle>
 				<DialogContent>
 					<DialogContentText id="alert-dialog-description">
-						This action is permanent and cannot be reversed. Any files linked with this {props.type} will also be deleted. Proceed with caution.
+						This action is permanent and cannot be reversed. All the files attached to this {props.type} will also be deleted. Proceed with caution.
           </DialogContentText>
 				</DialogContent>
 				<DialogActions>
