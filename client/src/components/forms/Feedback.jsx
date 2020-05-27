@@ -90,7 +90,7 @@ export default function App() {
       <FlexContainer height='89vh' background='transparent' className="App">
         <CreateOutlinedIcon style={{
           padding: "1rem",
-          background: "dodgerblue",
+          background: "#2196f3",
           borderRadius: "50%",
           color: "#fff",
           fontSize: "3.5rem",

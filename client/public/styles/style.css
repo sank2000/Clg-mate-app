@@ -62,7 +62,7 @@ header {
   padding: .1em;
   /* background: url("./../images/navbar-bg.png"); */
   background: #fff !important;
-  color: dodgerblue !important;
+  color: #2196f3 !important;
   z-index: "1000"
 }
 

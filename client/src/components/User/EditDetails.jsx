@@ -8,7 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import {updateAccount} from "../auth/RouteAccess";
+import { updateAccount } from "../auth/RouteAccess";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from '../messages/alerts/alert';
 import AuthApi from "../auth/AuthApi";
@@ -17,13 +17,13 @@ export default function Detail() {
   const [show, setShow] = useState(false);
   const [load, setLoad] = useState(false);
   const [open, setOpen] = useState(false);
-  const authApi = React.useContext(AuthApi); 
+  const authApi = React.useContext(AuthApi);
   const user = authApi.auth;
   const [msg, setMsg] = useState({
     content: "",
     type: "error"
   });
-  
+
   const AhandleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -34,26 +34,25 @@ export default function Detail() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
- 
+
   const intialValues = {
     name: user.name,
-    url:  user.url,
+    url: user.url,
     email: user.email
   };
-  
+
   const submit = async (values) => {
     setLoad(true);
     const res = await updateAccount(values);
     setLoad(false);
-    if (res.data.done) 
-    {
-        setMsg({
-          content: res.data.message,
-          type: "success"
-        });
-        setOpen(true);
-        authApi.setAuth({...user,...values});
-        handleClose();
+    if (res.data.done) {
+      setMsg({
+        content: res.data.message,
+        type: "success"
+      });
+      setOpen(true);
+      authApi.setAuth({ ...user, ...values });
+      handleClose();
     }
     else {
       setMsg({
@@ -159,7 +158,7 @@ export default function Detail() {
             <Button
               type="submit"
               variant="outline-primary"
-              style={{ backgroundColor: "dodgerblue", color: "#fff" }}
+              style={{ backgroundColor: "#2196f3", color: "#fff" }}
             >
               submit &nbsp;
               {load && <Spinner animation="border" size="sm" />}

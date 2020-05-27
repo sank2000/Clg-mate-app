@@ -29,7 +29,7 @@ function Loading() {
       alignItems: "center",
       height: "100vh"
     }}>
-      <CircularProgress style={{ color: "dodgerblue" }} size={45} />
+      <CircularProgress style={{ color: "#2196f3" }} size={45} />
     </div >
   );
 }
@@ -48,7 +48,7 @@ function MainApp() {
 
   useEffect(() => {
     readSession();
-  },[]);
+  }, []);
 
   function Main() {
     return (
