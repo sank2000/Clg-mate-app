@@ -85,7 +85,7 @@ export default function DeleteAccount() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Grid container spacing={1}>
-            <Grid item xs={12}>
+            <Grid item>
               <h6>
                 Type{" "}
                 <span>

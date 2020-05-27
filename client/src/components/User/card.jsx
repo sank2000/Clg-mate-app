@@ -8,12 +8,13 @@ const avatarImageStyle = {
   height: 223
 };
 function Card() {
-  const authApi = React.useContext(AuthApi); 
+  const authApi = React.useContext(AuthApi);
   const user = authApi.auth;
   const CardStyle = {
     textAlign: "center",
-    backgroundColor : "white",
-    marginTop     : "20px"
+    backgroundColor: "white",
+    marginTop: "20px",
+    width: '100%'
   }
 
   return (
@@ -36,7 +37,7 @@ function Card() {
           <td style={{ width: "223px" }}>
             <h6>{user.name}</h6>
             <h6>{user.unique_id}</h6>
-            <h6>{user.email}</h6>
+            {/* <h6>{user.email}</h6> */}
             <Edit />
           </td>
         </tr>
