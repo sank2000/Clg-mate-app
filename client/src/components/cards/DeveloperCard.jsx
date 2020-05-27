@@ -30,7 +30,7 @@ function DeveloperCard(props) {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea disabled={true}	>
         <CardMedia
           className={classes.media}
           image={props.dev.avatar}
