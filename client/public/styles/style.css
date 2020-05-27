@@ -160,11 +160,6 @@ hr {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.MuiListItem-button * {
-  color: #666;
-}
-
-
 .linkStyle {
   text-decoration: none !important;
 }

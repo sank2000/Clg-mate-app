@@ -8,8 +8,9 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import Typography from "@material-ui/core/Typography";
 
+import MenuIcon from "@material-ui/icons/Menu";
 import HomeWorkOutlinedIcon from "@material-ui/icons/HomeWorkOutlined";
 import TodayOutlinedIcon from "@material-ui/icons/TodayOutlined";
 import AlarmOffOutlinedIcon from '@material-ui/icons/AlarmOffOutlined';
@@ -30,7 +31,11 @@ const useStyles = makeStyles({
 
 
 const selected = {
-  background: '#bbdefb', borderTopRightRadius: '150px', borderBottomRightRadius: '150px'
+  background: '#e3f2fd', borderTopRightRadius: '150px', borderBottomRightRadius: '150px', color: "#1976d2"
+}
+
+const selectedIcon = {
+  color: "#1976d2"
 }
 
 export default function HamburgerMenu(props) {
@@ -61,15 +66,26 @@ export default function HamburgerMenu(props) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem onClick={() => window.open('/', '_self')} button key={"Home"} style={props.selected === "Collegemate" ? { ...selected } : null} >
+        <ListItem disabled button style={{ padding: '15px', color: '#1e88e5', fontWeight: 'bold', opacity: '1' }} >
           <ListItemIcon>
-            <HomeWorkOutlinedIcon />
+            <img src="images/logo.png" width="45" alt="logo" />
+          </ListItemIcon>
+          <ListItemText >
+            <Typography variant="h5">Collegemate</Typography>
+          </ListItemText>
+        </ListItem>
+      </List>
+      <Divider />
+      <List>
+        <ListItem onClick={() => window.open('/', '_self')} button style={props.selected === "Collegemate" ? { ...selected } : null} >
+          <ListItemIcon>
+            <HomeWorkOutlinedIcon style={props.selected === "Collegemate" ? { ...selectedIcon } : null} />
           </ListItemIcon>
           <ListItemText primary={"Home"} />
         </ListItem>
-        <ListItem onClick={() => window.open('/timetable', '_self')} button key={"Time Table"} style={props.selected === "Time Table" ? { ...selected } : null}>
+        <ListItem onClick={() => window.open('/timetable', '_self')} button style={props.selected === "Time Table" ? { ...selected } : null}>
           <ListItemIcon>
-            <TodayOutlinedIcon />
+            <TodayOutlinedIcon style={props.selected === "Time Table" ? { ...selectedIcon } : null} />
           </ListItemIcon>
           <ListItemText primary={"Time Table"} />
         </ListItem>
@@ -78,19 +94,19 @@ export default function HamburgerMenu(props) {
       <List>
         <ListItem onClick={() => window.open('/fullpost', '_self')} button style={props.selected === "All Posts" ? { ...selected } : null}>
           <ListItemIcon>
-            <AssignmentOutlinedIcon />
+            <AssignmentOutlinedIcon style={props.selected === "All Posts" ? { ...selectedIcon } : null} />
           </ListItemIcon>
           <ListItemText primary="All Posts" />
         </ListItem>
         <ListItem onClick={() => window.open('/fullmaterial', '_self')} button style={props.selected === "All materials" ? { ...selected } : null}>
           <ListItemIcon>
-            <LibraryBooksOutlinedIcon />
+            <LibraryBooksOutlinedIcon style={props.selected === "All materials" ? { ...selectedIcon } : null} />
           </ListItemIcon>
           <ListItemText primary="All Materials" />
         </ListItem>
         <ListItem onClick={() => window.open('/expiredpost', '_self')} button style={props.selected === "Expired posts" ? { ...selected } : null}>
           <ListItemIcon>
-            <AlarmOffOutlinedIcon />
+            <AlarmOffOutlinedIcon style={props.selected === "Expired posts" ? { ...selectedIcon } : null} />
           </ListItemIcon>
           <ListItemText primary="Expired Posts" />
         </ListItem>
@@ -99,7 +115,7 @@ export default function HamburgerMenu(props) {
       <List>
         <ListItem onClick={() => window.open('/feedback', '_self')} button style={props.selected === "Feedback" ? { ...selected } : null}>
           <ListItemIcon>
-            <FeedbackOutlinedIcon />
+            <FeedbackOutlinedIcon style={props.selected === "Feedback" ? { ...selectedIcon } : null} />
           </ListItemIcon>
           <ListItemText primary="Send Feedback" />
         </ListItem>
@@ -108,13 +124,13 @@ export default function HamburgerMenu(props) {
       <List>
         <ListItem onClick={() => window.open('/help', '_self')} button style={props.selected === "Help" ? { ...selected } : null}>
           <ListItemIcon>
-            <ContactSupportOutlinedIcon />
+            <ContactSupportOutlinedIcon style={props.selected === "Help" ? { ...selectedIcon } : null} />
           </ListItemIcon>
           <ListItemText primary="Help" />
         </ListItem>
         <ListItem onClick={() => window.open('/about', '_self')} button style={props.selected === "About" ? { ...selected } : null}>
           <ListItemIcon>
-            <InfoOutlinedIcon />
+            <InfoOutlinedIcon style={props.selected === "About" ? { ...selectedIcon } : null} />
           </ListItemIcon>
           <ListItemText primary="About" />
         </ListItem>
