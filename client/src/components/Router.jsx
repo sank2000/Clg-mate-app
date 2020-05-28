@@ -20,6 +20,7 @@ import Forgot from "./auth/Forgot/ForgotPassword";
 import FeedBack from "./forms/Feedback";
 import UnderConstruction from './messages/UnderConstruction';
 import UserDetails from "./User/main";
+import Verify from "./auth/verify/main";
 
 function Loading() {
   return (
@@ -70,6 +71,7 @@ function MainApp() {
               <RouteRegistration path="/signup" exact component={SignUp} />
               <RouteRegistration path="/signin" exact component={SignIn} />
               <RouteRegistration path="/forgot" exact component={Forgot} />
+              <RouteRegistration path="/verify" exact component={Verify} />
 
               <Route path="/posts/new/success" exact component={SuccessMessage} />
               <Route path="/help" exact component={UnderConstruction} />

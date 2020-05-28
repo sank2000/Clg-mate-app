@@ -11,7 +11,7 @@ export default function Valid(props) {
 
   const handleSend = async () => {
     setLoad(true);
-    const res = await sendMail(props.data);
+    const res = await sendMail({ ...props.data, mailType: "reset" });
     setLoad(false);
     if (res.data.done) {
       props.SetFound(2);
