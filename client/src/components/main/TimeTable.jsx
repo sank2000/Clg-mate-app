@@ -100,13 +100,9 @@ export default function () {
           </Avatar>
         </IconButton> <br />
         <p style={
-          getDay() === props.day ? {
-            ...todayLabel
-          } : activeStep === props.day ? {
-            ...selectedLabel
-          } : {
-                display: "inline"
-              }} >
+          getDay() === props.day ? todayLabel : activeStep === props.day ? selectedLabel : {
+            display: "inline"
+          }} >
           {props.title}
         </p>
       </div>

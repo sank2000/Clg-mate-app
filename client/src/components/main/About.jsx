@@ -129,6 +129,32 @@ export default function About() {
           >
             {shuffledDevs.map(renderDevs)}
           </Grid>
+          <Grid container direction="row"
+            justify="space-evenly"
+            spacing={3}
+            alignItems="center"
+            style={{ paddingTop: '1rem' }}>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+              <Typography
+                align="center"
+                component="h5"
+                variant="h5">
+                Our Sincere attributions to:
+            </Typography>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3} lg={3} style={{ textAlign: 'center' }}>
+              <Typography variant="overline" component="span" align="center">Material UI</Typography>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3} lg={3} style={{ textAlign: 'center' }}>
+              <Typography variant="overline" component="span" align="center">Flaticons</Typography>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3} lg={3} style={{ textAlign: 'center' }}>
+              <Typography variant="overline" component="span" align="center">Icons 8</Typography>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3} lg={3} style={{ textAlign: 'center' }}>
+              <Typography variant="overline" component="span" align="center">Stack Overflow</Typography>
+            </Grid>
+          </Grid>
         </Grid>
         <Copyright />
       </Container>
