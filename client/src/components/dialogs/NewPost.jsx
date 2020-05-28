@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import Snackbar from "@material-ui/core/Snackbar";
+import Alert from '../messages/alerts/alert';
+
 import firebase from '../../firebase';
 import PostForm from "../forms/PostForm";
 import MaterialForm from "../forms/MaterialForm";
@@ -8,11 +11,32 @@ function NewPost(props) {
   const [url, setUrl] = useState([]);
   const [progress, setProgress] = useState('Upload');
   const [fileChooseState, setFileChooseState] = useState('Choose File');
+  const allowedTypes = ['pdf', 'jpg', 'png', 'bmp', 'doc', 'odt', 'xls', 'txt'];
+  const [message, setMessage] = useState('');;
 
-  const handleChange = e => {
-    if (e.target.files.length === 0) return;
-    const chosenFiles = Array.from(e.target.files);
+  const [Aopen, setAOpen] = useState(false);
+  const AhandleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setAOpen(false);
+  };
 
+  const handleChange = event => {
+    if (event.target.files.length === 0) return;
+    const chosenFiles = Array.from(event.target.files);
+    let proceed = true;
+
+    chosenFiles.forEach(chosenFile => {
+      const chosenFileType = chosenFile.name.toString().split('.').pop();
+      if (!allowedTypes.includes(chosenFileType)) {
+        setMessage(`Files of type '${chosenFileType}' are not allowed.`);
+        setAOpen(true);
+        proceed = false;
+      }
+    });
+
+    if (!proceed) return;
     setFiles(chosenFiles);
     let progress = 'Upload';
     let fileChooseState = 'File Chosen';
@@ -93,6 +117,11 @@ function NewPost(props) {
             fileChooseState={fileChooseState}
           />
       }
+      <Snackbar open={Aopen} autoHideDuration={6000} onClose={AhandleClose}>
+        <Alert onClose={AhandleClose} severity="error">
+          {message}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }
