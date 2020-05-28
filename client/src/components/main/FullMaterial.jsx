@@ -10,7 +10,7 @@ import FormControl from "@material-ui/core/FormControl";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import IconButton from "@material-ui/core/IconButton";
-import NavigationBar from "../navigation/AppBar";
+import NavigationBar from "../navigation/AppBar2";
 import MaterialCard from "../cards/MaterialCard";
 
 function App() {

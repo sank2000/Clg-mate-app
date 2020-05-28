@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Container2 from "../containers/FlexContainer";
 
-import NavigationBar from "../navigation/AppBar";
+import NavigationBar from "../navigation/AppBar2";
 import PostCard from "../cards/PostCard";
 import MaterialCard from "../cards/MaterialCard";
 

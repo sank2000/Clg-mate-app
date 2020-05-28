@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import Grid from '@material-ui/core/Grid';
 
-import NavigationBar from "../navigation/AppBar";
+import NavigationBar from "../navigation/AppBar2";
 import PostCard from "../cards/PostCard";
 
 function ExpiredPosts() {
@@ -89,12 +89,12 @@ function ExpiredPosts() {
                 label="Post Type"
               >
                 <MenuItem value={"All"}>All</MenuItem>
-								<MenuItem value={"Assignment"}>Assignment</MenuItem>
-								<MenuItem value={"Announcement"}>Announcement</MenuItem>
-								<MenuItem value={"Home work"}>Home work</MenuItem>
-								<MenuItem value={"Instruction"}>Instruction</MenuItem>
-								<MenuItem value={"Test"}>Test</MenuItem>
-								<MenuItem value={"Other"}>Other</MenuItem>
+                <MenuItem value={"Assignment"}>Assignment</MenuItem>
+                <MenuItem value={"Announcement"}>Announcement</MenuItem>
+                <MenuItem value={"Home work"}>Home work</MenuItem>
+                <MenuItem value={"Instruction"}>Instruction</MenuItem>
+                <MenuItem value={"Test"}>Test</MenuItem>
+                <MenuItem value={"Other"}>Other</MenuItem>
               </Select>
             </FormControl>
             <Button className="filterButton"

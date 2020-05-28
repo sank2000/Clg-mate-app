@@ -192,7 +192,7 @@ export default function Detail() {
         dialogClassName="border-radius-1"
       >
           <Modal.Header>
-            <h3 className="modal-title w-100 text-center">Confrim</h3>
+            <h3 className="modal-title w-100 text-center">Confirm</h3>
             <IconButton
               variant="outlined"
               onClick={handleClose}
@@ -206,6 +206,7 @@ export default function Detail() {
             <TextField
               name="password"
               variant="outlined"
+              type="password"
               fullWidth
               id="name"
               label="Password"

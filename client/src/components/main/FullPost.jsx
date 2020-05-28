@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import FilterListIcon from '@material-ui/icons/FilterList';
 
-import NavigationBar from "../navigation/AppBar";
+import NavigationBar from "../navigation/AppBar2";
 import PostCard from "../cards/PostCard";
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
 		return (
 			<Grid item xs={12} sm={6} md={4} lg={4} key={post._id}>
 				<PostCard
-				    doc_id={post._id}
+					doc_id={post._id}
 					postedById={post.authorId}
 					title={post.title}
 					postType={post.postType}
