@@ -29,6 +29,15 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const nowStyle = {
+  background: '#00b0ff',
+  color: '#fff'
+}
+
+const nextStyle = {
+  background: '#1de9b6'
+}
+
 export default function Schedule() {
   const [per, setPer] = useState([
     {
@@ -213,10 +222,10 @@ export default function Schedule() {
           {per.map(({ id, primary, secondary, per }) => (
             <React.Fragment key={id}>
               {id === 1 && (
-                <Typography variant="h6" className={classes.subheader}>Now</Typography>
+                <Typography variant="h6" style={nowStyle} className={classes.subheader}>Now</Typography>
               )}
               {id === 2 && (
-                <Typography variant="h6" className={classes.subheader}>
+                <Typography variant="h6" style={nextStyle} className={classes.subheader}>
                   Next
                 </Typography>
               )}
@@ -225,11 +234,11 @@ export default function Schedule() {
                   Later
                 </Typography>
               )}
-              <ListItem>
+              <ListItem style={(id === 1) ? (nowStyle) : (id === 2) ? (nextStyle) : null}>
                 <ListItemAvatar>
                   <Avatar>{per}</Avatar>
                 </ListItemAvatar>
-                <ListItemText primary={primary} secondary={secondary} />
+                <ListItemText style={(id === 1) ? (nowStyle) : (id === 2) ? (nextStyle) : null} primary={primary} secondary={secondary} />
               </ListItem>
             </React.Fragment>
           ))}
