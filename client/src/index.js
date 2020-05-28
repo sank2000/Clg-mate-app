@@ -12,11 +12,11 @@ const theme = createMuiTheme({
   },
 });
 
-// if ('serviceWorker' in navigator) {
-//   const regEvt = navigator.serviceWorker.register('./ServiceWorker.js');
-//   regEvt.then(regObj => console.log('Service worker registered successfully.', 'Scope: ', regObj.scope));
-//   regEvt.catch(err => console.error('Unable to register service worker.'));
-// }
+if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+  const regEvt = navigator.serviceWorker.register('./ServiceWorker.js');
+  regEvt.then(regObj => console.log('Service worker registered successfully.', 'Scope: ', regObj.scope));
+  regEvt.catch(err => console.error('Unable to register service worker.'));
+}
 
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>
