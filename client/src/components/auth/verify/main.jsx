@@ -48,10 +48,12 @@ export default function () {
   return (
     <>
       {!send ? <Container>
-        <img src='./images/confused.png' style={{ width: '10em', height: '10em', padding: '1rem' }} alt='' />
-        <h4>Get verified at instance</h4>
+        <img src='./images/verified.png' style={{ width: '10em', height: '10em', padding: '1rem' }} alt='' />
+        <h4>Account Verification</h4>
         <p>Don't worry, let us help you to verify your account.</p>
-        <Button variant="contained" color="secondary" style={{ marginRight: "10px" }}>
+        <Button variant="contained" color="secondary" style={{ marginRight: "10px" }} onClick={() => {
+          window.open("/", "_self");
+        }}>
           Cancel
         </Button>
         <Button variant="contained" color="primary" onClick={handleSend}>
