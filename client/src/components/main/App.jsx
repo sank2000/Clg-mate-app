@@ -3,12 +3,6 @@ import axios from "axios";
 import { Container } from "react-bootstrap";
 import DateFormat from 'dateformat';
 import Grid from '@material-ui/core/Grid';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
-import ClearIcon from '@material-ui/icons/Clear';
-import PostAddOutlinedIcon from "@material-ui/icons/PostAddOutlined";
-import LibraryAddOutlinedIcon from "@material-ui/icons/LibraryAddOutlined";
-import Tooltip from '@material-ui/core/Tooltip';
 import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import Backdrop from "@material-ui/core/Backdrop";
@@ -20,10 +14,11 @@ import NavigationBar from "../navigation/AppBar";
 import PostCard from "../cards/PostCard";
 import MaterialCard from "../cards/MaterialCard";
 
+import Add from "./Add";
+
 function App() {
 	const [post, setPost] = useState([]);
 	const [material, setMaterial] = useState([]);
-	const [click, setClick] = useState(false);
 	const [loading, setLoading] = useState(true);
 	const [postEmty, setPostEmty] = useState(false);
 	const [materialEmty, setMaterialEmty] = useState(false);
@@ -97,9 +92,6 @@ function App() {
 		);
 	}
 
-	function handleClick() {
-		setClick(!click);
-	}
 
 	function Empt(props) {
 		return <Container2 background='transparent' height='60vh'>
@@ -160,26 +152,7 @@ function App() {
 						</Link>
 					</div>
 				</Fragment> : <Empt type="Materials" />}
-				{click && <Fragment>
-					<Link to="/posts/new">
-						<Tooltip title="New Post" placement="left">
-							<Fab elevation={3} onClick={handleClick} style={{ position: "fixed", bottom: "13vh", right: "3vw" }} aria-label="add">
-								<PostAddOutlinedIcon style={{ color: '#2196f3' }} />
-							</Fab>
-						</Tooltip>
-					</Link>
-
-					<Link to="/materials/new">
-						<Tooltip title="New Material" placement="left">
-							<Fab elevation={3} onClick={handleClick} style={{ position: "fixed", bottom: "23vh", right: "3vw" }} aria-label="add">
-								<LibraryAddOutlinedIcon style={{ color: '#2196f3' }} />
-							</Fab>
-						</Tooltip>
-					</Link>
-				</Fragment>}
-				<Fab elevation={3} onClick={handleClick} style={{ position: "fixed", bottom: "3vh", right: "3vw" }} aria-label="add">
-					{click ? <ClearIcon style={{ color: '#2196f3' }} /> : <AddIcon style={{ color: '#2196f3' }} />}
-				</Fab>
+				<Add />
 			</Container >
 		</Fragment >
 	)

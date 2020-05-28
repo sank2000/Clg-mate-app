@@ -50,7 +50,7 @@ export default function () {
       {!send ? <Container>
         <img src='./images/verified.png' style={{ width: '10em', height: '10em', padding: '1rem' }} alt='' />
         <h4>Account Verification</h4>
-        <p>Don't worry, let us help you to verify your account.</p>
+        <p>Don't worry, let us help you to verify your account and it is one time process.</p>
         <Button variant="contained" color="secondary" style={{ marginRight: "10px" }} onClick={() => {
           window.open("/", "_self");
         }}>

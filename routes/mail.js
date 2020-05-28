@@ -174,7 +174,7 @@ router.post("/forgot/verify", function (req, res) {
 				}
 				else {
 					res.json({
-						verified: false
+						verified: true
 					});
 				}
 			}

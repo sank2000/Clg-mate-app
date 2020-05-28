@@ -29,7 +29,7 @@ export default function Reset(props) {
       props.setOpen(true);
       setTimeout(() => {
         window.open("/signin", "_self");
-      }, 5000);
+      }, 3000);
     }
     else {
       props.setMsg({

@@ -12,14 +12,26 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Alert from '../../messages/alerts/alert';
 import Fdelete from '../../../firebaseFileDelete';
 import { Spinner } from "react-bootstrap";
+import Backdrop from "@material-ui/core/Backdrop";
+import Alert2 from "@material-ui/lab/Alert";
+
+import AuthApi from "../../auth/AuthApi";
 
 export default (props) => {
 	const [open, setOpen] = useState(false);
 	const [Aopen, setAOpen] = useState(false);
 	const [load, setLoad] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const authApi = React.useContext(AuthApi);
+	const user = authApi.auth;
 
 	const handleClickOpen = () => {
-		setOpen(true);
+		if (user.state !== "verified") {
+			setLoading(true);
+		}
+		else {
+			setOpen(true);
+		}
 	};
 
 	const handleClose = () => {
@@ -97,6 +109,19 @@ export default (props) => {
 					Failed to remove {props.type}
 				</Alert>
 			</Snackbar>
+			<Backdrop style={{ zIndex: "20000" }} open={loading}>
+				<Alert2
+					onClose={() => {
+						setLoading(false);
+					}}
+					variant="filled"
+					severity="error"
+					style={{ zIndex: "50000" }}
+				>
+					In order to access this you need to get verified &nbsp; — &nbsp; <a href="/verify">verify now</a>
+				</Alert2>
+			</Backdrop>
+
 		</>
 	);
 }

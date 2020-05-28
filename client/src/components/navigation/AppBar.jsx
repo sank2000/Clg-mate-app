@@ -18,8 +18,6 @@ import AuthApi from "../auth/AuthApi";
 import HamburgerMenu from './HamburgerMenu';
 import Avatar from "@material-ui/core/Avatar";
 
-import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -103,11 +101,6 @@ export default function HideAppBar(props) {
               {props.title || 'Collegemate'}
             </Typography>
             <div className={classes.grow} />
-            <Link to="/verify" className="linkStyle">
-              <Button variant="contained" color="secondary" style={{ marginRight: "10px" }}>
-                Verify
-                    </Button>
-            </Link>
             <IconButton
               edge="end"
               aria-label="account of current user"
