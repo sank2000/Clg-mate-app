@@ -11,6 +11,7 @@ import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Grid from '@material-ui/core/Grid';
 
+import LinearProgressWithLabel from './LinearProgressWithLabel';
 import subjects from '../../constants/subjects'
 
 function renderSubjects(subject) {
@@ -130,7 +131,6 @@ function PostForm(props) {
                 id="contained-button-file"
                 name="file"
                 multiple
-                accept="image/*, .pdf, .xls, .doc, .odt"
                 onChange={props.handleChange}
               />
               <label htmlFor="contained-button-file">
@@ -148,8 +148,12 @@ function PostForm(props) {
                   <CloudUploadOutlinedIcon
                     fontSize="small"
                     className="uploadIcon" />
-                &nbsp; {props.progress}
-                </Btn>
+                &nbsp; Upload
+              </Btn>
+              }
+              {(props.progress !== 0 && props.progress !== 100) ?
+                <LinearProgressWithLabel value={props.progress} /> :
+                (props.progress !== 0 && <p>Uploaded</p>)
               }
             </div>
             {

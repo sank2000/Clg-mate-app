@@ -9,10 +9,10 @@ import MaterialForm from "../forms/MaterialForm";
 function NewPost(props) {
   const [files, setFiles] = useState(null);
   const [url, setUrl] = useState([]);
-  const [progress, setProgress] = useState('Upload');
+  const [progress, setProgress] = useState(0);
   const [fileChooseState, setFileChooseState] = useState('Choose File');
-  const allowedTypes = ['pdf', 'jpg', 'png', 'bmp', 'doc', 'odt', 'xls', 'txt'];
-  const [message, setMessage] = useState('');;
+  const allowedTypes = ['pdf', 'jpg', 'png', 'bmp', 'doc', 'odt', 'xls', 'txt', 'docx', 'xlsx'];
+  const [message, setMessage] = useState('');
 
   const [Aopen, setAOpen] = useState(false);
   const AhandleClose = (event, reason) => {
@@ -38,15 +38,20 @@ function NewPost(props) {
 
     if (!proceed) return;
     setFiles(chosenFiles);
-    let progress = 'Upload';
     let fileChooseState = 'File Chosen';
-    setProgress(progress);
     setFileChooseState(fileChooseState);
   }
 
   const handleUpload = () => {
     const chosenFiles = files;
     let fileNo = 1;
+    let totalFileSize = 0;
+    let totalBytesTransferred = 0;
+    chosenFiles.map((chosenFile) => {
+      totalFileSize += chosenFile.size;
+      console.log('Upon calculating:', totalFileSize);
+      return null;
+    });
     chosenFiles.forEach(file => {
       let storageRef;
       props.post ?
@@ -55,8 +60,11 @@ function NewPost(props) {
       const uploadTask = storageRef.put(file);
 
       const uploadProgress = (snapshot) => {
-        let percentComplete = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        let progressText = `Uploading file ${fileNo} (${Math.round(percentComplete)}%)`;
+        console.log('Upon file uploading: ', totalFileSize);
+        if (file.size === snapshot.bytesTransferred + totalBytesTransferred) {
+          totalBytesTransferred = file.size;
+        }
+        let progressText = ((totalBytesTransferred + snapshot.bytesTransferred) / totalFileSize) * 100;
         setProgress(progressText);
       }
 
@@ -69,13 +77,10 @@ function NewPost(props) {
           let mutatingArray = url;
           mutatingArray.push({ fileName: file.name, downloadURL: link });
 
-          let calcProgress = `Uploaded file ${fileNo}`;
-          setProgress(calcProgress);
           if (fileNo === files.length) {
             let obtainedUrl = mutatingArray;
             setUrl(obtainedUrl);
-            let calcProgress = `Uploaded all files`;
-            setProgress(calcProgress);
+            setProgress(100);
             return;
           }
           fileNo += 1;

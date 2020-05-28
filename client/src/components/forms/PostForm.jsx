@@ -14,6 +14,7 @@ import DateFnsUtils from "@date-io/date-fns";
 import { KeyboardDatePicker } from "@material-ui/pickers";
 import Grid from '@material-ui/core/Grid';
 
+import LinearProgressWithLabel from './LinearProgressWithLabel';
 import subjects from '../../constants/subjects'
 
 function renderSubjects(subject) {
@@ -26,7 +27,7 @@ function PostForm(props) {
   const [type, setType] = useState("");
   const [subject, setSubject] = useState("");
   const [selectedDate, handleDateChange] = useState(new Date());
-  
+
   const handlePostTypeChange = event => {
     setType(event.target.value);
   };
@@ -138,7 +139,6 @@ function PostForm(props) {
                 type="file"
                 id="contained-button-file"
                 name="file"
-                accept="image/*, .pdf, .xls, .doc, .odt"
                 multiple
                 onChange={props.handleChange}
               />
@@ -147,17 +147,23 @@ function PostForm(props) {
                   {props.fileChooseState}
                 </Btn>
               </label>
-              <Btn
-                onClick={props.handleUpload}
-                size="medium"
-                variant="contained"
-                color="secondary"
-                style={{ float: "right", marginRight: "-15px" }}>
-                <CloudUploadOutlinedIcon
-                  fontSize="small"
-                  className="uploadIcon" />
-                &nbsp; {props.progress}
+              {props.fileChooseState === 'File Chosen' &&
+                <Btn
+                  onClick={props.handleUpload}
+                  size="medium"
+                  variant="contained"
+                  color="secondary"
+                  style={{ float: "right", marginRight: "-15px" }}>
+                  <CloudUploadOutlinedIcon
+                    fontSize="small"
+                    className="uploadIcon" />
+                &nbsp; Upload
               </Btn>
+              }
+              {(props.progress !== 0 && props.progress !== 100) ?
+                <LinearProgressWithLabel value={props.progress} /> :
+                (props.progress !== 0 && <p>Uploaded</p>)
+              }
             </div>
             <Btn style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Btn>
           </form>
