@@ -184,3 +184,21 @@ hr {
 .searchButton {
   margin-top: 6px !important;
 }
+
+.outer-flex-noscript {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  min-height: 100vh;
+  max-height: 100%;
+  padding: 10px;
+  overflow: hidden;
+  background: #fff
+}
+
+.inner-flex-noscript {
+  display: block;
+  align-items: center;
+  text-align: center
+}
