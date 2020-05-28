@@ -12,17 +12,36 @@ import { updateAccount } from "../auth/RouteAccess";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from '../messages/alerts/alert';
 import AuthApi from "../auth/AuthApi";
+import { signin } from "../auth/RouteAccess";
 
 export default function Detail() {
   const [show, setShow] = useState(false);
   const [load, setLoad] = useState(false);
   const [open, setOpen] = useState(false);
+  const [password, setPassword] = useState("");
+  const [editModel, setEditModel] = useState(false);
   const authApi = React.useContext(AuthApi);
   const user = authApi.auth;
   const [msg, setMsg] = useState({
     content: "",
     type: "error"
   });
+
+  const submitPassword = async () => {
+    setLoad(true);
+    const res = await signin({ unique_id: user.unique_id, password: password });
+    setLoad(false);
+    if (res.data.auth) {
+      setEditModel(true);
+    }
+    else {
+      setMsg({
+        content: "Incorrect Password",
+        type: "error"
+      });
+      setOpen(true);
+    }
+  }
 
   const AhandleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -89,7 +108,7 @@ export default function Detail() {
       >
         <EditOutlinedIcon />
       </IconButton>
-      <Modal
+      {editModel ? <Modal
         show={show}
         onHide={handleClose}
         centered
@@ -165,7 +184,45 @@ export default function Detail() {
             </Button>
           </Modal.Footer>
         </form>
-      </Modal>
+      </Modal> : <Modal
+        show={show}
+        onHide={handleClose}
+        centered
+        size="sm"
+        dialogClassName="border-radius-1"
+      >
+          <Modal.Header>
+            <h3 className="modal-title w-100 text-center">Confrim</h3>
+            <IconButton
+              variant="outlined"
+              onClick={handleClose}
+              style={{ outline: "none" }}
+            >
+              <CloseOutlinedIcon style={{ color: "#ff1a1a" }} />
+            </IconButton>
+          </Modal.Header>
+          <Modal.Body>
+            <h5>Enter your password to continue :</h5>
+            <TextField
+              name="password"
+              variant="outlined"
+              fullWidth
+              id="name"
+              label="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              onClick={submitPassword}
+              variant="outline-primary"
+              style={{ backgroundColor: "#2196f3", color: "#fff" }}
+            >
+              submit &nbsp;
+              {load && <Spinner animation="border" size="sm" />}
+            </Button>
+          </Modal.Footer>
+        </Modal>}
       <Snackbar open={open} autoHideDuration={6000} onClose={AhandleClose}>
         <Alert onClose={AhandleClose} severity={msg.type}>
           {msg.content}
