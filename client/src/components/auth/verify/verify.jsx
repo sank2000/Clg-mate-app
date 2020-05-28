@@ -25,7 +25,7 @@ export default function Valid(props) {
       props.setOpen(true);
       setTimeout(() => {
         window.open("/", "_self");
-      }, 4000)
+      }, 3000)
     }
     else {
       props.setMsg({
@@ -50,7 +50,9 @@ export default function Valid(props) {
         onChange={(event) => setOtp(event.target.value)}
         style={{ marginTop: "10px", marginBottom: "10px" }}
       /><br></br>
-      <Button variant="contained" color="secondary" name="verifyButton" style={{ marginRight: "10px" }}>
+      <Button variant="contained" color="secondary" style={{ marginRight: "10px" }} onClick={() => {
+        window.open("/", "_self");
+      }}>
         Cancel
       </Button>
       <Button variant="contained" color="primary" onClick={handleSend}>

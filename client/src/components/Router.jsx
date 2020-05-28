@@ -67,11 +67,11 @@ function MainApp() {
               <RouteProtected path="/feedback" exact component={FeedBack} />
               <RouteProtected path="/about" exact component={About} />
               <RouteProtected path="/profile" exact component={UserDetails} />
+              <RouteProtected path="/verify" exact component={Verify} />
 
               <RouteRegistration path="/signup" exact component={SignUp} />
               <RouteRegistration path="/signin" exact component={SignIn} />
               <RouteRegistration path="/forgot" exact component={Forgot} />
-              <RouteRegistration path="/verify" exact component={Verify} />
 
               <Route path="/posts/new/success" exact component={SuccessMessage} />
               <Route path="/help" exact component={UnderConstruction} />
