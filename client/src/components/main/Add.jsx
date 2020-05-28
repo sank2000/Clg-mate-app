@@ -10,6 +10,8 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Alert from "@material-ui/lab/Alert";
 
 import AuthApi from "../auth/AuthApi";
+import NewPost from "../forms/PostForm";
+import NewMaterial from "../forms/MaterialForm";
 
 export default function () {
   const [click, setClick] = useState(false);
@@ -30,21 +32,8 @@ export default function () {
   return (
     <>
       {click && <Fragment>
-        <Link to="/posts/new">
-          <Tooltip title="New Post" placement="left">
-            <Fab elevation={3} style={{ position: "fixed", bottom: "13vh", right: "3vw" }} aria-label="add">
-              <PostAddOutlinedIcon style={{ color: '#2196f3' }} />
-            </Fab>
-          </Tooltip>
-        </Link>
-
-        <Link to="/materials/new">
-          <Tooltip title="New Material" placement="left">
-            <Fab elevation={3} style={{ position: "fixed", bottom: "23vh", right: "3vw" }} aria-label="add">
-              <LibraryAddOutlinedIcon style={{ color: '#2196f3' }} />
-            </Fab>
-          </Tooltip>
-        </Link>
+        <NewPost />
+        <NewMaterial />
       </Fragment>}
       <Fab elevation={3} onClick={handleClick} style={{ position: "fixed", bottom: "3vh", right: "3vw" }} aria-label="add">
         {click ? <ClearIcon style={{ color: '#2196f3' }} /> : <AddIcon style={{ color: '#2196f3' }} />}

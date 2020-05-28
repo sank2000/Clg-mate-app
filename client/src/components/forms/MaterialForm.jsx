@@ -10,6 +10,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Grid from '@material-ui/core/Grid';
+import LibraryAddOutlinedIcon from "@material-ui/icons/LibraryAddOutlined";
+import Tooltip from '@material-ui/core/Tooltip';
+import Fab from '@material-ui/core/Fab';
 
 import LinearProgressWithLabel from './LinearProgressWithLabel';
 import subjects from '../../constants/subjects'
@@ -36,134 +39,136 @@ function PostForm(props) {
 
   const handleClose = () => {
     setShow(false);
-    window.open("/", "_top");
   };
   const handleShow = () => setShow(true);
   const applyMargin = {
     margin: "7px"
   };
 
-  useState(() => {
-    handleShow();
-  })
-
   return (
-    <Modal show={show} onHide={handleClose} centered size="lg" dialogClassName="border-radius-1" >
-      <Modal.Header>
-        <h1 className="modal-title w-100 text-center">New Material</h1>
-        <IconButton variant="outlined" onClick={handleClose} style={{ outline: "none" }}>
-          <CloseOutlinedIcon style={{ color: '#ff1a1a' }} />
-        </IconButton>
-      </Modal.Header>
-      <Modal.Body>
-        <div className="uploadForm">
-          <form method="post" action="/materials/new">
-            <TextField style={applyMargin}
-              variant="outlined"
-              required type="text"
-              name="title"
-              fullWidth
-              label="Title" />
-            <Grid container spacing={1}
-              direction="row"
-              justify="space-between"
-              alignItems="center">
-              <Grid item xs={12} sm={6}>
-                <FormControl required variant="outlined" style={applyMargin} size="small" fullWidth >
-                  <InputLabel>
-                    Subject
+    <>
+      <Tooltip title="New Material" placement="left">
+        <Fab elevation={3} style={{ position: "fixed", bottom: "23vh", right: "3vw" }} aria-label="add" onClick={handleShow}>
+          <LibraryAddOutlinedIcon style={{ color: '#2196f3' }} />
+        </Fab>
+      </Tooltip>
+      <Modal show={show} onHide={handleClose} centered size="lg" dialogClassName="border-radius-1" >
+        <Modal.Header>
+          <h1 className="modal-title w-100 text-center">New Material</h1>
+          <IconButton variant="outlined" onClick={handleClose} style={{ outline: "none" }}>
+            <CloseOutlinedIcon style={{ color: '#ff1a1a' }} />
+          </IconButton>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="uploadForm">
+            <form method="post" action="/materials/new">
+              <TextField style={applyMargin}
+                variant="outlined"
+                required type="text"
+                name="title"
+                fullWidth
+                label="Title" />
+              <Grid container spacing={1}
+                direction="row"
+                justify="space-between"
+                alignItems="center">
+                <Grid item xs={12} sm={6}>
+                  <FormControl required variant="outlined" style={applyMargin} size="small" fullWidth >
+                    <InputLabel>
+                      Subject
                   </InputLabel>
-                  <Select
-                    name="subName"
-                    required
-                    value={subject}
-                    onChange={handleSubjectChange}
-                    label="Subject"
-                  >
-                    <MenuItem disabled={true} value=''>Select a Subject</MenuItem>
-                    {subjects.map(renderSubjects)}
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <FormControl required variant="outlined" style={applyMargin} size="small" fullWidth >
-                  <InputLabel>
-                    Post Type
+                    <Select
+                      name="subName"
+                      required
+                      value={subject}
+                      onChange={handleSubjectChange}
+                      label="Subject"
+                    >
+                      <MenuItem disabled={true} value=''>Select a Subject</MenuItem>
+                      {subjects.map(renderSubjects)}
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl required variant="outlined" style={applyMargin} size="small" fullWidth >
+                    <InputLabel>
+                      Post Type
                   </InputLabel>
-                  <Select
-                    name="materialType"
-                    required
-                    value={type}
-                    onChange={handleMaterialTypeChange}
-                    label="Post Type"
-                  >
-                    <MenuItem disabled={true} value="">Select a type</MenuItem>
-                    <MenuItem value={"Book"}>Book</MenuItem>
-                    <MenuItem value={"Form"}>Form</MenuItem>
-                    <MenuItem value={"Question Bank"}>Question Bank</MenuItem>
-                    <MenuItem value={"Question Paper"}>Question Paper</MenuItem>
-                    <MenuItem value={"Notes"}>Notes</MenuItem>
-                    <MenuItem value={"Other"}>Other</MenuItem>
-                  </Select>
-                </FormControl>
+                    <Select
+                      name="materialType"
+                      required
+                      value={type}
+                      onChange={handleMaterialTypeChange}
+                      label="Post Type"
+                    >
+                      <MenuItem disabled={true} value="">Select a type</MenuItem>
+                      <MenuItem value={"Book"}>Book</MenuItem>
+                      <MenuItem value={"Form"}>Form</MenuItem>
+                      <MenuItem value={"Question Bank"}>Question Bank</MenuItem>
+                      <MenuItem value={"Question Paper"}>Question Paper</MenuItem>
+                      <MenuItem value={"Notes"}>Notes</MenuItem>
+                      <MenuItem value={"Other"}>Other</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
               </Grid>
-            </Grid>
-            <TextField style={applyMargin}
-              variant="outlined"
-              type="text"
-              name="author"
-              fullWidth
-              label="Author" />
-            <TextField style={applyMargin}
-              variant="outlined"
-              required
-              name="description"
-              rows={4}
-              fullWidth
-              multiline
-              label="Description" />
-            <div className="file-section" style={applyMargin}>
-              <input id='urls' type="hidden" name="url" value={JSON.stringify(props.url)} />
-              <input
+              <TextField style={applyMargin}
+                variant="outlined"
+                type="text"
+                name="author"
+                fullWidth
+                label="Author" />
+              <TextField style={applyMargin}
+                variant="outlined"
                 required
-                style={{ display: "none" }}
-                type="file"
-                id="contained-button-file"
-                name="file"
-                multiple
-                onChange={props.handleChange}
-              />
-              <label htmlFor="contained-button-file">
-                <Btn variant="contained" component="span" disableElevation>
-                  {props.fileChooseState}
-                </Btn>
-              </label>
-              {props.fileChooseState === 'File Chosen' &&
-                <Btn
-                  onClick={props.handleUpload}
-                  size="medium"
-                  variant="contained"
-                  color="secondary"
-                  style={{ float: "right", marginRight: "-15px" }}>
-                  <CloudUploadOutlinedIcon
-                    fontSize="small"
-                    className="uploadIcon" />
+                name="description"
+                rows={4}
+                fullWidth
+                multiline
+                label="Description" />
+              <div className="file-section" style={applyMargin}>
+                <input id='urls' type="hidden" name="url" value={JSON.stringify(props.url)} />
+                <input
+                  required
+                  style={{ display: "none" }}
+                  type="file"
+                  id="contained-button-file"
+                  name="file"
+                  multiple
+                  onChange={props.handleChange}
+                />
+                <label htmlFor="contained-button-file">
+                  <Btn variant="contained" component="span" disableElevation>
+                    {props.fileChooseState}
+                  </Btn>
+                </label>
+                {props.fileChooseState === 'File Chosen' &&
+                  <Btn
+                    onClick={props.handleUpload}
+                    size="medium"
+                    variant="contained"
+                    color="secondary"
+                    style={{ float: "right", marginRight: "-15px" }}>
+                    <CloudUploadOutlinedIcon
+                      fontSize="small"
+                      className="uploadIcon" />
                 &nbsp; Upload
               </Btn>
+                }
+                {(props.progress !== 0 && props.progress !== 100) ?
+                  <LinearProgressWithLabel value={props.progress} /> :
+                  (props.progress !== 0 && <p>Uploaded</p>)
+                }
+              </div>
+              {
+                'Uploaded all files' === props.progress &&
+                <Btn style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Btn>
               }
-              {(props.progress !== 0 && props.progress !== 100) ?
-                <LinearProgressWithLabel value={props.progress} /> :
-                (props.progress !== 0 && <p>Uploaded</p>)
-              }
-            </div>
-            {
-              'Uploaded all files' === props.progress &&
-              <Btn style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Btn>
-            }
-          </form>
-        </div>
-      </Modal.Body>
-    </Modal >
+            </form>
+          </div>
+        </Modal.Body>
+      </Modal >
+    </>
   );
 }
 
