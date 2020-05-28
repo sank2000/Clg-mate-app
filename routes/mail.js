@@ -82,7 +82,6 @@ router.post("/forgot", function (req, res) {
 
 
 router.post("/forgot/sendmail", function (req, res) {
-	console.log(req.body);
 	var num = Math.floor(Math.random() * 900000) + 100000;
 	OTP.findOneAndUpdate({ doc_id: req.body.doc_id }, { OTP: num }, function (err, result) {
 		if (err) {
