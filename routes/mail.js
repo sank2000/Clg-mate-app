@@ -80,7 +80,9 @@ router.post("/forgot", function (req, res) {
 	});
 });
 
+
 router.post("/forgot/sendmail", function (req, res) {
+	console.log(req.body);
 	var num = Math.floor(Math.random() * 900000) + 100000;
 	OTP.findOneAndUpdate({ doc_id: req.body.doc_id }, { OTP: num }, function (err, result) {
 		if (err) {
@@ -102,17 +104,33 @@ router.post("/forgot/sendmail", function (req, res) {
 			}
 		}
 	});
-	let mailOptions = {
-		from: '"Collegemate App" collegematewebapp@gmail.com',
-		to: req.body.mail,
-		subject: "OTP to reset password",
-		html: `
+
+	let mailOptions;
+
+	if (req.body.mailType === "reset") {
+		mailOptions = {
+			from: '"Collegemate App" collegematewebapp@gmail.com',
+			to: req.body.mail,
+			subject: "OTP to reset password",
+			html: `
 		<h3>Your OTP to reset  password is:</h3> 
 		<h1>${num}</h1>
 		<h4>If you don't know why you're getting this email, consider changing your password to avoid your account being misused/ locked.</h4>
 		`
-	};
-
+		};
+	}
+	else {
+		mailOptions = {
+			from: '"Collegemate App" collegematewebapp@gmail.com',
+			to: req.body.email,
+			subject: "OTP to verify Email",
+			html: `
+		<h3>Your OTP to verify Email is:</h3> 
+		<h1>${num}</h1>
+		<h4>If you don't know why you're getting this email, consider changing your password to avoid your account being misused/ locked.</h4>
+		`
+		};
+	}
 	transporter.sendMail(mailOptions, function (err, dat) {
 		if (err) {
 			console.log(err);
@@ -137,12 +155,25 @@ router.post("/forgot/verify", function (req, res) {
 	OTP.findOne({ doc_id: req.body.doc_id, OTP: req.body.OTP }, function (err, result) {
 		if (!err) {
 			if (result) {
-				res.json({
-					verified: true
-				});
-			}
-			else {
-				{
+				if (req.body.mailType === "verify") {
+					User.findOneAndUpdate({ _id: req.body.doc_id }, { state: "verified" }, function (err, result) {
+						if (err) {
+							console.log(err);
+						}
+						else {
+							if (result === null) {
+								console.log("account not found");
+								res.json({
+									verified: false
+								});
+							}
+						}
+					});
+					res.json({
+						verified: true
+					});
+				}
+				else {
 					res.json({
 						verified: false
 					});
