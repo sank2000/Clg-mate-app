@@ -28,7 +28,7 @@ export default function Start(props)
       <img src='./images/forgot.png' style={{ width: '10em', height: '10em', padding: '1rem' }} alt='' />
       <h2>Enter your ID number</h2>
       <TextField
-        autoComplete="unique_id"
+        autoComplete="username"
         name="unique_id"
         variant="outlined"
         type="number"

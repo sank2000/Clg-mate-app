@@ -61,7 +61,7 @@ function SignUpForm(props) {
     email: Yup.string().required("Field required !").email("Invalid Email"),
     password: Yup.string().required('Field required !').matches(
       /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
-      "Must Contain 8 Characters, Letter, Number and Special Character"
+      "Minimum 8 characters with at least 1 alphabet, 1 number and 1 special character"
     ),
     cpassword: Yup.string().required('Field required !').oneOf([Yup.ref('password'), null], 'Passwords must match')
   });
@@ -109,7 +109,7 @@ function SignUpForm(props) {
         </Grid>
         <Grid item xs={12}>
           <TextField
-            autoComplete="unique_id"
+            autoComplete="username"
             name="unique_id"
             helperText={formik.touched.unique_id && formik.errors.unique_id}
             error={formik.touched.unique_id && formik.errors.unique_id !== undefined}
@@ -123,6 +123,7 @@ function SignUpForm(props) {
         </Grid>
         <Grid item xs={12}>
           <TextField
+            autoComplete="email"
             variant="outlined"
             required
             fullWidth

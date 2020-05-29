@@ -106,7 +106,7 @@ function SignIn() {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                autoComplete="unique_id"
+                autoComplete="username"
                 name="unique_id"
                 variant="outlined"
                 type="number"
