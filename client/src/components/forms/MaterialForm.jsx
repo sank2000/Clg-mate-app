@@ -155,9 +155,9 @@ function PostForm(props) {
                 &nbsp; Upload
               </Btn>
                 }
-                {(props.progress !== 0 && props.progress !== 100) ?
+                {(props.progress !== -1 && props.progress !== 100) ?
                   <LinearProgressWithLabel value={props.progress} /> :
-                  (props.progress !== 0 && <p>Uploaded</p>)
+                  (props.progress !== -1 && <p>Uploaded</p>)
                 }
               </div>
               {
