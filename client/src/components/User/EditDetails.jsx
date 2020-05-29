@@ -83,7 +83,7 @@ export default function Detail() {
       });
       setOpen(true);
       authApi.setAuth({ ...user, ...values });
-      handleClose();
+      handleShow();
     }
     else {
       setMsg({

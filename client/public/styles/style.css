@@ -21,7 +21,7 @@ header {
   padding: .1em;
   /* background: url("./../images/navbar-bg.png"); */
   background: #fff !important;
-color: #2196f3 !important;
+  color: #2196f3 !important;
   z-index: "1000"
 }
 
@@ -38,31 +38,11 @@ color: #2196f3 !important;
   margin-right: 20px;
 }
 
-.head h1 {
-  display: block;
-  text-align: center;
-  color: black;
-}
-
-.close {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
-
 .uploadForm {
   border-radius: 15px;
   background-color: white;
   margin: 3px;
   padding-right: 15px;
-}
-
-.halfWidth {
-  width: 46%;
-}
-
-.title {
-  margin: 5px
 }
 
 /* for new card  */
@@ -119,14 +99,9 @@ hr {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.linkStyle {
-  text-decoration: none !important;
-}
-
 .fullPostHead {
   background-color: white;
   padding: 8px;
-
 }
 
 

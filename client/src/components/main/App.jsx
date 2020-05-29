@@ -3,7 +3,6 @@ import axios from "axios";
 import { Container } from "react-bootstrap";
 import DateFormat from 'dateformat';
 import Grid from '@material-ui/core/Grid';
-import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import Backdrop from "@material-ui/core/Backdrop";
 import Typography from '@material-ui/core/Typography';
@@ -122,11 +121,9 @@ function App() {
 						justifyContent: 'center',
 						justifyItems: 'center'
 					}}>
-						<Link to="/fullpost" className="linkStyle" >
-							<Button variant="contained" color="primary">
-								Show more
-							</Button>
-						</Link>
+						<Button onClick={() => window.open('/fullpost', '_self')} variant="contained" color="primary">
+							Show more
+						</Button>
 					</div>
 				</Fragment> : <Empt type="Posts" />}
 				<hr />
@@ -145,11 +142,9 @@ function App() {
 						justifyContent: 'center',
 						justifyItems: 'center'
 					}}>
-						<Link to="/fullmaterial" className="linkStyle">
-							<Button variant="contained" color="primary">
-								Show more
-				      </Button>
-						</Link>
+						<Button onClick={() => window.open('/fullmaterial', '_self')} variant="contained" color="primary">
+							Show more
+				    </Button>
 					</div>
 				</Fragment> : <Empt type="Materials" />}
 				<Add />
