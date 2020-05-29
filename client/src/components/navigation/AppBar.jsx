@@ -9,14 +9,16 @@ import Menu from '@material-ui/core/Menu';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Slide from '@material-ui/core/Slide';
+import Badge from '@material-ui/core/Badge';
+import Avatar from "@material-ui/core/Avatar";
 
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
-import { ListItemIcon } from '@material-ui/core';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+
 import { signout } from "../auth/RouteAccess";
 import AuthApi from "../auth/AuthApi";
 import HamburgerMenu from './HamburgerMenu';
-import Avatar from "@material-ui/core/Avatar";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -77,13 +79,35 @@ export default function HideAppBar(props) {
     >
       <MenuItem onClick={() => window.open('/profile', '_self')}>
         <ListItemIcon>
-          <Avatar
-            alt={user.name}
-            src={user.url}
-            style={{ width: '1.6rem', height: '1.6rem' }}
-          >
-            {user.name[0]}
-          </Avatar>
+          {
+            user.state !== "verified"
+              ?
+              <Badge
+                overlap="circle"
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'right',
+                }}
+                color='secondary'
+                badgeContent="!"
+              >
+                <Avatar
+                  alt={user.name}
+                  src={user.url}
+                  style={{ width: '1.6rem', height: '1.6rem' }}
+                >
+                  {user.name[0]}
+                </Avatar>
+              </Badge>
+              :
+              <Avatar
+                alt={user.name}
+                src={user.url}
+                style={{ width: '1.6rem', height: '1.6rem' }}
+              >
+                {user.name[0]}
+              </Avatar>
+          }
         </ListItemIcon> {user.name}
       </MenuItem>
       <MenuItem onClick={logout}> <ListItemIcon> <ExitToAppOutlinedIcon /> </ListItemIcon> Logout</MenuItem>
@@ -109,12 +133,34 @@ export default function HideAppBar(props) {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <Avatar style={{ backgroundColor: 'inherit', color: 'inherit' }}
-                alt={user.name}
-                src={user.url}
-              >
-                <AccountCircleOutlinedIcon />
-              </Avatar>
+              {
+                user.state !== "verified"
+                  ?
+                  <Badge
+                    overlap="circle"
+                    anchorOrigin={{
+                      vertical: 'bottom',
+                      horizontal: 'right',
+                    }}
+                    color='secondary'
+                    badgeContent="!"
+                  >
+                    <Avatar style={{ backgroundColor: 'inherit', color: 'inherit' }}
+                      alt={user.name}
+                      src={user.url}
+                    >
+                      <AccountCircleOutlinedIcon />
+                    </Avatar>
+                  </Badge>
+                  :
+                  <Avatar style={{ backgroundColor: 'inherit', color: 'inherit' }}
+                    alt={user.name}
+                    src={user.url}
+                  >
+                    <AccountCircleOutlinedIcon />
+                  </Avatar>
+              }
+
             </IconButton>
           </Toolbar>
         </AppBar>
