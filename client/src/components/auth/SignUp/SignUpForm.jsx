@@ -134,7 +134,6 @@ function SignUpForm(props) {
             helperText={formik.touched.email && formik.errors.email}
             error={formik.touched.email && formik.errors.email !== undefined}
             size="small"
-            autoComplete="email"
           />
         </Grid>
         <Grid item xs={12} sm={6}>

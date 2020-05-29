@@ -2,7 +2,7 @@ const devs = [
   {
     _id: 12,
     name: 'Krishna Moorthy',
-    avatar: 'https://pbs.twimg.com/profile_images/1263732273494573057/nxXwuIYL_400x400.jpg',
+    avatar: 'https://avatars2.githubusercontent.com/u/41967554?s=400&u=69dc07ff57f177df9ca1751df8e9f9028d46fc74&v=4',
     role: 'Full Stack Developer',
     email: 'akrishnamoorthy007@gmail.com',
     social: {
