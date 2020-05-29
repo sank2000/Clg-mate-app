@@ -5,7 +5,7 @@ import { Table, Container } from "react-bootstrap";
 import IconButton from "@material-ui/core/IconButton";
 
 import { time, table } from "../../constants/Table";
-import Schedule from "./Schedule";
+import Schedule from "./Schedule2";
 import { Typography } from "@material-ui/core";
 
 const avatarImageStyle = {
