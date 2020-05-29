@@ -2,6 +2,7 @@ function getRatio(timeIntervalObject) {
   let startTime = new Date();
   let endTime = new Date();
   const nowTime = new Date();
+  nowTime.setHours(12, 10);
 
 
   const { start, end } = timeIntervalObject;
@@ -19,7 +20,7 @@ function getRatio(timeIntervalObject) {
   const expiredTimeInMinutes = expiredTimeInMilliseconds / 60000;
 
   const ratio = expiredTimeInMinutes / timeIntervalInMinutes;
-
+  console.log("ratio : " + ratio);
   return ratio;
 }
 
