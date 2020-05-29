@@ -6,12 +6,13 @@ import firebase from '../../firebase';
 import PostForm from "../forms/PostForm";
 import MaterialForm from "../forms/MaterialForm";
 
+import allowedTypes from './../../constants/supportedFileTypes';
+
 function NewPost(props) {
   const [files, setFiles] = useState(null);
   const [url, setUrl] = useState([]);
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(-1);
   const [fileChooseState, setFileChooseState] = useState('Choose File');
-  const allowedTypes = ['pdf', 'jpg', 'png', 'bmp', 'doc', 'odt', 'xls', 'txt', 'docx', 'xlsx'];
   const [message, setMessage] = useState('');
 
   const [Aopen, setAOpen] = useState(false);
@@ -47,6 +48,7 @@ function NewPost(props) {
     let fileNo = 1;
     let totalFileSize = 0;
     let totalBytesTransferred = 0;
+    setProgress(0);
     chosenFiles.map((chosenFile) => {
       totalFileSize += chosenFile.size;
       console.log('Upon calculating:', totalFileSize);
@@ -61,7 +63,7 @@ function NewPost(props) {
 
       const uploadProgress = (snapshot) => {
         console.log('Upon file uploading: ', totalFileSize);
-        if (file.size === snapshot.bytesTransferred + totalBytesTransferred) {
+        if ((file.size === snapshot.bytesTransferred + totalBytesTransferred) && !chosenFiles.length === 1) {
           totalBytesTransferred = file.size;
         }
         let progressText = ((totalBytesTransferred + snapshot.bytesTransferred) / totalFileSize) * 100;

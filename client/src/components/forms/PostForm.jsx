@@ -162,12 +162,12 @@ function PostForm(props) {
                     <CloudUploadOutlinedIcon
                       fontSize="small"
                       className="uploadIcon" />
-                &nbsp; Upload
-              </Btn>
+                    &nbsp; Upload
+                  </Btn>
                 }
-                {(props.progress !== 0 && props.progress !== 100) ?
+                {(props.progress !== -1 && props.progress !== 100) ?
                   <LinearProgressWithLabel value={props.progress} /> :
-                  (props.progress !== 0 && <p>Uploaded</p>)
+                  (props.progress !== -1 && <p>Uploaded</p>)
                 }
               </div>
               <Btn style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Btn>
