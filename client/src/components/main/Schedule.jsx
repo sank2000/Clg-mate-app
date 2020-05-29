@@ -9,7 +9,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import { time, table } from "../../constants/Table";
 import Avatar from "@material-ui/core/Avatar";
-import NavigationBar from '../navigation/AppBar2'
+import NavigationBar from '../navigation/AppBar'
 
 import Grid from '@material-ui/core/Grid';
 
@@ -232,10 +232,10 @@ export default function Schedule() {
         direction="row"
         justify="center"
         alignItems="center"
-        container spacing={3}
+        spacing={3}
       >
         <Grid item xs={12} sm={8}>
-          <h1>Schedule</h1>
+          <Typography variant='h4' component='h1'>Schedule</Typography>
         </Grid>
         <Grid item xs={12} sm={8}>
           <Paper square className={classes.paper}>

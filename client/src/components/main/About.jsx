@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 
-import NavigationBar from '../navigation/AppBar2';
+import NavigationBar from '../navigation/AppBar';
 import FlexContainer from "../containers/FlexContainer";
 import Dev from '../cards/DeveloperCard';
 import Copyright from './CopyrightNote';

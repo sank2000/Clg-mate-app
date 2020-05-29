@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import FilterListIcon from '@material-ui/icons/FilterList';
 
-import NavigationBar from "../navigation/AppBar2";
+import NavigationBar from "../navigation/AppBar";
 import PostCard from "../cards/PostCard";
 
 function App() {

@@ -95,7 +95,7 @@ export default function HideAppBar(props) {
       <CssBaseline />
       <HideOnScroll {...props}>
         <AppBar style={{ zIndex: '1000' }} elevation={3}>
-          <Toolbar>
+          <Toolbar style={{ height: '4.2rem' }}>
             <HamburgerMenu selected={props.title || 'Collegemate'} />
             <Typography component='h1' variant="h6" noWrap>
               {props.title || 'Collegemate'}
@@ -119,7 +119,7 @@ export default function HideAppBar(props) {
           </Toolbar>
         </AppBar>
       </HideOnScroll>
-      <Toolbar />
+      <Toolbar style={{ height: 'calc(4.2rem + 5px)' }} />
       {renderMenu}
     </React.Fragment >
   );
