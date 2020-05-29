@@ -25,7 +25,6 @@ export default function Detail() {
   const [load, setLoad] = useState(false);
   const [open, setOpen] = useState(false);
   const [password, setPassword] = useState("");
-  const [editModel, setEditModel] = useState(false);
   const [dialogOpen, setDialogOpen] = React.useState(false);
 
   const authApi = React.useContext(AuthApi);
@@ -44,7 +43,8 @@ export default function Detail() {
     const res = await signin({ unique_id: user.unique_id, password: password });
     setLoad(false);
     if (res.data.auth) {
-      setEditModel(true);
+      handleDialogClose();
+      handleShow();
     }
     else {
       setMsg({
@@ -120,7 +120,7 @@ export default function Detail() {
       >
         <EditOutlinedIcon />
       </IconButton>
-      {editModel ? <Modal
+      <Modal
         show={show}
         onHide={handleClose}
         centered
@@ -188,7 +188,6 @@ export default function Detail() {
           <Modal.Footer>
             <Button
               type="submit"
-              variant="outline-primary"
               style={{ backgroundColor: "#2196f3", color: "#fff" }}
             >
               submit &nbsp;
@@ -196,34 +195,32 @@ export default function Detail() {
             </Button>
           </Modal.Footer>
         </form>
-      </Modal> :
-
-        <Dialog open={dialogOpen} onClose={handleDialogClose} aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title">Confirm</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              Confirm your password to edit your information
+      </Modal>
+      <Dialog open={dialogOpen} onClose={handleDialogClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Confirm</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Confirm your password to edit your information
           </DialogContentText>
-            <TextField
-              autoFocus
-              variant="outlined"
-              id="password"
-              label="Password"
-              type="password"
-              fullWidth
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleDialogClose} color="primary">
-              Cancel
+          <TextField
+            autoFocus
+            variant="outlined"
+            id="password"
+            label="Password"
+            type="password"
+            fullWidth
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleDialogClose} color="primary">
+            Cancel
           </Button>
-            <Button onClick={submitPassword} color="primary">
-              Ok  {load && <Spinner animation="border" size="sm" />}
-            </Button>
-          </DialogActions>
-        </Dialog>
-      }
+          <Button onClick={submitPassword} color="primary">
+            Ok  {load && <Spinner animation="border" size="sm" />}
+          </Button>
+        </DialogActions>
+      </Dialog>
       <Snackbar open={open} autoHideDuration={6000} onClose={AhandleClose}>
         <Alert onClose={AhandleClose} severity={msg.type}>
           {msg.content}
