@@ -19,8 +19,8 @@ function App() {
 	const [post, setPost] = useState([]);
 	const [material, setMaterial] = useState([]);
 	const [loading, setLoading] = useState(true);
-	const [postEmty, setPostEmty] = useState(false);
-	const [materialEmty, setMaterialEmty] = useState(false);
+	const [postsAvailable, setPostsAvailable] = useState(false);
+	const [materialsAvailable, setMaterialsAvailable] = useState(false);
 
 	useEffect(() => {
 		axios.get("/posts")
@@ -28,7 +28,7 @@ function App() {
 				setPost([...response.data]);
 				setLoading(false);
 				if (response.data.length !== 0) {
-					setPostEmty(true);
+					setPostsAvailable(true);
 				}
 			})
 			.catch(function (error) {
@@ -39,7 +39,7 @@ function App() {
 			.then(function (response) {
 				setMaterial([...response.data]);
 				if (response.data.length !== 0) {
-					setMaterialEmty(true);
+					setMaterialsAvailable(true);
 				}
 			})
 			.catch(function (error) {
@@ -92,7 +92,7 @@ function App() {
 	}
 
 
-	function Empt(props) {
+	function NotAvailable(props) {
 		return <Container2 background='transparent' height='60vh'>
 			<img src='./images/bulb.png' style={{ width: '7em', height: '7em', padding: '1rem' }} alt='' />
 			<h3>{props.type} you add appear here..</h3>
@@ -107,46 +107,52 @@ function App() {
 				<Backdrop style={{ zIndex: "20000" }} open={loading}>
 					<CircularProgress style={{ zIndex: "50000" }} color="primary" />
 				</Backdrop>
-				{postEmty ? <Fragment>
-					<Grid container
-						spacing={3}
-						style={{
-							paddingTop: '1rem',
-							paddingBottom: '1rem'
+				{
+					postsAvailable ? <Fragment>
+						<Grid container
+							spacing={3}
+							style={{
+								paddingTop: '1rem',
+								paddingBottom: '1rem'
+							}}>
+							{post.map(data)}
+						</Grid>
+						<div style={{
+							display: 'flex',
+							justifyContent: 'center',
+							justifyItems: 'center'
 						}}>
-						{post.map(data)}
-					</Grid>
-					<div style={{
-						display: 'flex',
-						justifyContent: 'center',
-						justifyItems: 'center'
-					}}>
-						<Button onClick={() => window.open('/fullpost', '_self')} variant="contained" color="primary">
-							Show more
+							<Button onClick={() => window.open('/fullpost', '_self')} variant="contained" color="primary">
+								Show more
 						</Button>
-					</div>
-				</Fragment> : <Empt type="Posts" />}
+						</div>
+					</Fragment> :
+						<NotAvailable type="Posts" />
+				}
 				<hr />
 				<Typography component="h1" variant='h3' align='center'>Materials</Typography>
-				{materialEmty ? <Fragment>
-					<Grid container
-						spacing={3}
-						style={{
-							paddingTop: '1rem',
-							paddingBottom: '1rem'
+				{
+					materialsAvailable ? <Fragment>
+						<Grid container
+							spacing={3}
+							style={{
+								paddingTop: '1rem',
+								paddingBottom: '1rem'
+							}}>
+							{material.map(mat)}
+						</Grid>
+						<div style={{
+							display: 'flex',
+							justifyContent: 'center',
+							justifyItems: 'center'
 						}}>
-						{material.map(mat)}
-					</Grid>
-					<div style={{
-						display: 'flex',
-						justifyContent: 'center',
-						justifyItems: 'center'
-					}}>
-						<Button onClick={() => window.open('/fullmaterial', '_self')} variant="contained" color="primary">
-							Show more
+							<Button onClick={() => window.open('/fullmaterial', '_self')} variant="contained" color="primary">
+								Show more
 				    </Button>
-					</div>
-				</Fragment> : <Empt type="Materials" />}
+						</div>
+					</Fragment> :
+						<NotAvailable type="Materials" />
+				}
 				<Add />
 			</Container >
 		</Fragment >
