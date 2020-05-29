@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from '../messages/alerts/alert';
 
-import firebase from '../../firebase';
+import firebase from '../../functions/firebase';
 import PostForm from "../forms/PostForm";
 import MaterialForm from "../forms/MaterialForm";
 

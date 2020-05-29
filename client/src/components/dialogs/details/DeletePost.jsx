@@ -10,7 +10,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Alert from '../../messages/alerts/alert';
-import Fdelete from '../../../firebaseFileDelete';
+import Fdelete from '../../../functions/firebaseFileDelete';
 import { Spinner } from "react-bootstrap";
 import Backdrop from "@material-ui/core/Backdrop";
 import Alert2 from "@material-ui/lab/Alert";
