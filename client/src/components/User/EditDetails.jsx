@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Spinner } from "react-bootstrap";
+import { Modal, Spinner } from "react-bootstrap";
 import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
 import IconButton from "@material-ui/core/IconButton";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
@@ -13,6 +13,12 @@ import Snackbar from "@material-ui/core/Snackbar";
 import Alert from '../messages/alerts/alert';
 import AuthApi from "../auth/AuthApi";
 import { signin } from "../auth/RouteAccess";
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 export default function Detail() {
   const [show, setShow] = useState(false);
@@ -20,12 +26,18 @@ export default function Detail() {
   const [open, setOpen] = useState(false);
   const [password, setPassword] = useState("");
   const [editModel, setEditModel] = useState(false);
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+
   const authApi = React.useContext(AuthApi);
   const user = authApi.auth;
   const [msg, setMsg] = useState({
     content: "",
     type: "error"
   });
+
+  const handleDialogOpen = () => { setDialogOpen(true); };
+
+  const handleDialogClose = () => { setDialogOpen(false); };
 
   const submitPassword = async () => {
     setLoad(true);
@@ -104,7 +116,7 @@ export default function Detail() {
     <>
       <IconButton
         style={{ float: "right", outline: "none" }}
-        onClick={handleShow}
+        onClick={handleDialogOpen}
       >
         <EditOutlinedIcon />
       </IconButton>
@@ -184,46 +196,34 @@ export default function Detail() {
             </Button>
           </Modal.Footer>
         </form>
-      </Modal> : <Modal
-        show={show}
-        onHide={handleClose}
-        centered
-        size="sm"
-        dialogClassName="border-radius-1"
-      >
-          <Modal.Header>
-            <h3 className="modal-title w-100 text-center">Confirm</h3>
-            <IconButton
-              variant="outlined"
-              onClick={handleClose}
-              style={{ outline: "none" }}
-            >
-              <CloseOutlinedIcon style={{ color: "#ff1a1a" }} />
-            </IconButton>
-          </Modal.Header>
-          <Modal.Body>
-            <h5>Enter your password to continue :</h5>
+      </Modal> :
+
+        <Dialog open={dialogOpen} onClose={handleDialogClose} aria-labelledby="form-dialog-title">
+          <DialogTitle id="form-dialog-title">Confirm</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Confirm your password to edit your information
+          </DialogContentText>
             <TextField
-              name="password"
+              autoFocus
               variant="outlined"
+              id="password"
+              label="Password"
               type="password"
               fullWidth
-              id="name"
-              label="Password"
               onChange={(e) => setPassword(e.target.value)}
             />
-          </Modal.Body>
-          <Modal.Footer>
-            <Button
-              onClick={submitPassword}
-              variant="outline-primary"
-              style={{ backgroundColor: "#2196f3", color: "#fff" }}
-            >
-              submit &nbsp;
-              {load && <Spinner animation="border" size="sm" />}
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleDialogClose} color="primary">
+              Cancel
+          </Button>
+            <Button onClick={submitPassword} color="primary">
+              Ok  {load && <Spinner animation="border" size="sm" />}
             </Button>
-          </Modal.Footer>
-        </Modal>}
+          </DialogActions>
+        </Dialog>
+      }
       <Snackbar open={open} autoHideDuration={6000} onClose={AhandleClose}>
         <Alert onClose={AhandleClose} severity={msg.type}>
           {msg.content}
