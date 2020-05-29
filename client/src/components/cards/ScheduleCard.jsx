@@ -48,7 +48,7 @@ export default function SimpleCard(props) {
         </CardContent>
         {props.when === "now" && (
           <LinearProgress
-            color="primary"
+            color="secondary"
             variant="determinate"
             value={props.progress}
           />
