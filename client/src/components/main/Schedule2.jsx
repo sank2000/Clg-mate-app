@@ -9,30 +9,30 @@ import Container from "@material-ui/core/Container";
 import getPer from "../../functions/timeDifference";
 
 var today = new Date();
-today.setHours(12, 30);
+
+const NoSchedule = {
+  subject: "No schedule",
+  time: "for this time ",
+  per: 0
+}
 
 export default function Schedule() {
   const [per, setPer] = useState([
     {
       when: "now",
-      subject: "No schedule",
-      time: "for this time ",
-      per: 0,
-      progress: 0
+      ...NoSchedule
     },
     {
       when: "next",
       subject: table[0][0],
       time: time[0].start + " to " + time[0].end,
-      per: time[0].per,
-      progress: 0
+      per: time[0].per
     },
     {
       when: "later",
       subject: table[0][1],
       time: time[1].start + " to " + time[1].end,
-      per: time[1].per,
-      progress: 0
+      per: time[1].per
     }
   ]);
   let tym = Number(today.getHours() + "." + today.getMinutes());
@@ -44,24 +44,19 @@ export default function Schedule() {
       setPer([
         {
           when: "now",
-          subject: "No schedule",
-          time: "for this time ",
-          per: 0,
-          progress: 40
+          ...NoSchedule
         },
         {
           when: "next",
           subject: table[today.getDay() - 1][0],
           time: time[0].start + " to " + time[0].end,
-          per: time[0].per,
-          progress: 0
+          per: time[0].per
         },
         {
           when: "later",
           subject: table[today.getDay() - 1][1],
           time: time[1].start + " to " + time[1].end,
-          per: time[1].per,
-          progress: 0
+          per: time[1].per
         }
       ]);
       return;
@@ -72,24 +67,19 @@ export default function Schedule() {
       setPer([
         {
           when: "now",
-          subject: "No schedule",
-          time: "for this time ",
-          per: 0,
-          progress: 40
+          ...NoSchedule
         },
         {
           when: "next",
           subject: table[today.getDay()][0],
           time: time[0].start + " to " + time[0].end,
-          per: time[0].per,
-          progress: 0
+          per: time[0].per
         },
         {
           when: "later",
           subject: table[today.getDay()][1],
           time: time[1].start + " to " + time[1].end,
-          per: time[1].per,
-          progress: 0
+          per: time[1].per
         }
       ]);
       return;
@@ -114,17 +104,13 @@ export default function Schedule() {
         },
         {
           when: "next",
-          subject: "No schedule",
-          time: "for this time ",
-          per: 0,
-          progress: 0
+          ...NoSchedule
         },
         {
           when: "later",
           subject: table[0][0],
           time: time[0].start + " to " + time[0].end,
-          per: time[0].per,
-          progress: 0
+          per: time[0].per
         }
       ]);
     } else if (ind === 7) {
@@ -138,17 +124,13 @@ export default function Schedule() {
         },
         {
           when: "next",
-          subject: "No schedule",
-          time: "for this time ",
-          per: 0,
-          progress: 0
+          ...NoSchedule
         },
         {
           when: "later",
           subject: table[today.getDay()][0],
           time: time[0].start + " to " + time[0].end,
-          per: time[0].per,
-          progress: 0
+          per: time[0].per
         }
       ]);
     } else if (ind === 6) {
@@ -157,22 +139,17 @@ export default function Schedule() {
           when: "now",
           subject: table[today.getDay() - 1][ind],
           time: time[ind].start + " to " + time[ind].end,
-          per: time[ind].per,
-          progress: per
+          per: time[ind].per
         },
         {
           when: "next",
           subject: table[today.getDay() - 1][ind + 1],
           time: time[ind + 1].start + " to " + time[ind + 1].end,
-          per: time[ind].per + 1,
-          progress: 0
+          per: time[ind].per + 1
         },
         {
           when: "later",
-          subject: "No schedule",
-          time: "for this time",
-          per: 0,
-          progress: 0
+          ...NoSchedule
         }
       ]);
     } else {
@@ -188,15 +165,13 @@ export default function Schedule() {
           when: "next",
           subject: table[today.getDay() - 1][ind + 1],
           time: time[ind + 1].start + " to " + time[ind + 1].end,
-          per: time[ind].per + 1,
-          progress: 0
+          per: time[ind].per + 1
         },
         {
           when: "later",
           subject: table[today.getDay() - 1][ind + 2],
           time: time[ind + 2].start + " to " + time[ind + 2].end,
-          per: time[ind].per + 2,
-          progress: 0
+          per: time[ind].per + 2
         }
       ]);
     }
@@ -214,6 +189,7 @@ export default function Schedule() {
         subject={SCHEDULE.subject}
         time={SCHEDULE.time}
         progress={SCHEDULE.progress}
+        per={SCHEDULE.per}
       />
     );
   }
