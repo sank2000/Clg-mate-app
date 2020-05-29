@@ -58,7 +58,7 @@ export default function About() {
     <React.Fragment>
       <NavigationBar title='About' />
       <CssBaseline />
-      <FlexContainer height='90vh' >
+      <FlexContainer withAppBar >
         <img
           src={"./images/logo.png"}
           alt="Logo"
