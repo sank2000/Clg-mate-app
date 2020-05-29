@@ -4,10 +4,9 @@ import NavigationBar from '../navigation/AppBar';
 import Grid from '@material-ui/core/Grid';
 
 import ScheduleCard from "../cards/ScheduleCard";
-
+import Container from "@material-ui/core/Container";
 
 var today = new Date();
-
 
 export default function Schedule() {
   const [per, setPer] = useState([
@@ -217,10 +216,11 @@ export default function Schedule() {
   return (
     <React.Fragment>
       <NavigationBar title="Time Table" />
-      <h1>Schedule</h1>
-      <Grid container spacing={2}>
-        {per.map(renderSchedules)}
-      </Grid>
+      <Container fluid style={{ padding: '1rem' }}>
+        <Grid container spacing={2}>
+          {per.map(renderSchedules)}
+        </Grid>
+      </Container>
     </React.Fragment>
   );
 }

@@ -4,7 +4,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import LinearProgress from "@material-ui/core/LinearProgress";
-import { Grid } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
 
 export default function SimpleCard(props) {
   useEffect(() => {
@@ -23,8 +23,8 @@ export default function SimpleCard(props) {
 
   const classes = useStyles();
   return (
-    <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
-      <Card
+    <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+      <Card elevation={5}
         className={
           props.when === "now"
             ? classes.now
