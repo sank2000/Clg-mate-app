@@ -9,7 +9,7 @@ import Container from "@material-ui/core/Container";
 import getPer from "../../functions/timeDifference";
 
 var today = new Date();
-today.setHours(12, 30);
+today.setHours(13, 30);
 
 export default function Schedule() {
   const [per, setPer] = useState([
