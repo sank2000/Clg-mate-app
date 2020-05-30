@@ -21,6 +21,8 @@ import { signout } from "../auth/RouteAccess";
 import AuthApi from "../auth/AuthApi";
 import HamburgerMenu from './HamburgerMenu';
 
+import Darkmode from "../dark/Darkmode";
+
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -133,6 +135,7 @@ export default function HideAppBar(props) {
               {props.title || 'Collegemate'}
             </Typography>
             <div className={classes.grow} />
+            <Darkmode />
             <IconButton
               edge="end"
               aria-label="account of current user"

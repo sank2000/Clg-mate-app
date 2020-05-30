@@ -5,11 +5,17 @@ import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import blue from '@material-ui/core/colors/blue';
 import pink from '@material-ui/core/colors/pink';
 
+let mode = "light";
+if (window.localStorage.getItem("dark") === true) {
+  mode = "dark";
+}
+console.log("mode :" + mode);
+
 const theme = createMuiTheme({
   palette: {
-    type: 'dark',
     primary: blue,
-    secondary: pink
+    secondary: pink,
+    type: mode
   },
 });
 
