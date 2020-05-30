@@ -94,7 +94,11 @@ function CustomizedDialogs(props) {
           <Divider variant='fullWidth' style={{ margin: '15px' }} />
           <div style={{ minWidth: '40vw' }}>
             <Typography component="span" variant="body2" style={{ paddingRight: '5px' }}> {props.data.postedOn}</Typography>
-            <Typography component="span" variant="body2" style={{ float: "right" }}> {props.data.postByType === "Staff" ? <VerifiedUserOutlinedIcon /> : <PermIdentityOutlinedIcon />} &nbsp; {props.data.postBy}</Typography>
+            <Typography component="span" variant="body2" style={{ float: "right" }}>
+              {
+                props.data.postByType === "Staff" ?
+                  <VerifiedUserOutlinedIcon /> : <PermIdentityOutlinedIcon />
+              } &nbsp; {props.data.postedBy}</Typography>
           </div>
         </DialogContent>
         <DialogActions>
