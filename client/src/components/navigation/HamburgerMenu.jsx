@@ -24,17 +24,17 @@ const useStyles = makeStyles({
   list: {
     width: 250
   },
+  appBanner: { padding: '15px', color: '#1e88e5', fontWeight: 'bold', opacity: '1' },
   fullList: {
     width: "auto"
   },
   selected: {
     background: 'rgba(0, 134, 244, 0.1)', borderTopRightRadius: '150px', borderBottomRightRadius: '150px', color: "#1976d2"
+  },
+  selectedIcon: {
+    color: "#1976d2"
   }
 });
-
-const selectedIcon = {
-  color: "#1976d2"
-}
 
 export default function HamburgerMenu(props) {
   const classes = useStyles();
@@ -64,7 +64,7 @@ export default function HamburgerMenu(props) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem disabled button style={{ padding: '15px', color: '#1e88e5', fontWeight: 'bold', opacity: '1' }} >
+        <ListItem className={classes.appBanner}>
           <ListItemIcon>
             <img src="images/logo.png" width="45" alt="logo" />
           </ListItemIcon>
@@ -77,13 +77,13 @@ export default function HamburgerMenu(props) {
       <List>
         <ListItem onClick={() => window.open('/', '_self')} button className={props.selected === "Collegemate" ? classes.selected : null} >
           <ListItemIcon>
-            <HomeWorkOutlinedIcon style={props.selected === "Collegemate" ? { ...selectedIcon } : null} />
+            <HomeWorkOutlinedIcon className={(props.selected === "Collegemate") ? classes.selectedIcon : null} />
           </ListItemIcon>
           <ListItemText primary={"Home"} />
         </ListItem>
         <ListItem onClick={() => window.open('/timetable', '_self')} button className={props.selected === "Time Table" ? classes.selected : null}>
           <ListItemIcon>
-            <TodayOutlinedIcon style={props.selected === "Time Table" ? { ...selectedIcon } : null} />
+            <TodayOutlinedIcon className={(props.selected === "Time Table") ? classes.selectedIcon : null} />
           </ListItemIcon>
           <ListItemText primary={"Time Table"} />
         </ListItem>
@@ -92,19 +92,19 @@ export default function HamburgerMenu(props) {
       <List>
         <ListItem onClick={() => window.open('/fullpost', '_self')} button className={props.selected === "All Posts" ? classes.selected : null}>
           <ListItemIcon>
-            <AssignmentOutlinedIcon style={props.selected === "All Posts" ? { ...selectedIcon } : null} />
+            <AssignmentOutlinedIcon className={(props.selected === "All Posts") ? classes.selectedIcon : null} />
           </ListItemIcon>
           <ListItemText primary="All Posts" />
         </ListItem>
         <ListItem onClick={() => window.open('/fullmaterial', '_self')} button className={props.selected === "All materials" ? classes.selected : null}>
           <ListItemIcon>
-            <LibraryBooksOutlinedIcon style={props.selected === "All materials" ? { ...selectedIcon } : null} />
+            <LibraryBooksOutlinedIcon className={(props.selected === "All materials") ? classes.selectedIcon : null} />
           </ListItemIcon>
           <ListItemText primary="All Materials" />
         </ListItem>
         <ListItem onClick={() => window.open('/expiredpost', '_self')} button className={props.selected === "Expired posts" ? classes.selected : null}>
           <ListItemIcon>
-            <AlarmOffOutlinedIcon style={props.selected === "Expired posts" ? { ...selectedIcon } : null} />
+            <AlarmOffOutlinedIcon className={(props.selected === "Expired posts") ? classes.selectedIcon : null} />
           </ListItemIcon>
           <ListItemText primary="Expired Posts" />
         </ListItem>
@@ -113,7 +113,7 @@ export default function HamburgerMenu(props) {
       <List>
         <ListItem onClick={() => window.open('/feedback', '_self')} button className={props.selected === "Feedback" ? classes.selected : null}>
           <ListItemIcon>
-            <FeedbackOutlinedIcon style={props.selected === "Feedback" ? { ...selectedIcon } : null} />
+            <FeedbackOutlinedIcon className={(props.selected === "Feedback") ? classes.selectedIcon : null} />
           </ListItemIcon>
           <ListItemText primary="Send Feedback" />
         </ListItem>
@@ -122,13 +122,13 @@ export default function HamburgerMenu(props) {
       <List>
         <ListItem onClick={() => window.open('/help', '_self')} button className={props.selected === "Help" ? classes.selected : null}>
           <ListItemIcon>
-            <ContactSupportOutlinedIcon style={props.selected === "Help" ? { ...selectedIcon } : null} />
+            <ContactSupportOutlinedIcon className={(props.selected === "Help") ? classes.selectedIcon : null} />
           </ListItemIcon>
           <ListItemText primary="Help" />
         </ListItem>
         <ListItem onClick={() => window.open('/about', '_self')} button className={props.selected === "About" ? classes.selected : null}>
           <ListItemIcon>
-            <InfoOutlinedIcon style={props.selected === "About" ? { ...selectedIcon } : null} />
+            <InfoOutlinedIcon className={(props.selected === "About") ? classes.selectedIcon : null} />
           </ListItemIcon>
           <ListItemText primary="About" />
         </ListItem>
