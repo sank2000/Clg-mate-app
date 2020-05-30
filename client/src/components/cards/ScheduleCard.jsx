@@ -9,8 +9,8 @@ import Avatar from '@material-ui/core/Avatar';
 
 export default function SimpleCard(props) {
   useEffect(() => {
-
   }, [props]);
+
   const useStyles = makeStyles({
     now: {
       background: "#0091ea",
@@ -38,13 +38,21 @@ export default function SimpleCard(props) {
           <Typography variant="overline" gutterBottom>
             {props.when}
           </Typography>
-          <Typography variant="h4" component="h3" gutterBottom>
-            <Avatar>{props.per}</Avatar>
-            {props.subject}
-          </Typography>
-          <Typography variant="body2" component="p">
-            {props.time}
-          </Typography>
+          <Grid container direction='row' spacing={2}>
+            {props.per !== 0 &&
+              <Grid item>
+                <Avatar>{props.per}</Avatar>
+              </Grid>
+            }
+            <Grid item>
+              <Typography variant="h4" component="h3" gutterBottom>
+                {props.subject}
+              </Typography>
+              <Typography variant="body2" component="p">
+                {props.time}
+              </Typography>
+            </Grid>
+          </Grid>
         </CardContent>
         {props.when === "now" && (
           <LinearProgress
