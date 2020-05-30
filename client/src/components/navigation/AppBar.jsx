@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -12,6 +11,8 @@ import Slide from '@material-ui/core/Slide';
 import Badge from '@material-ui/core/Badge';
 import Avatar from "@material-ui/core/Avatar";
 
+import { makeStyles } from '@material-ui/core/styles';
+
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -20,11 +21,15 @@ import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
 import { signout } from "../auth/RouteAccess";
 import AuthApi from "../auth/AuthApi";
 import HamburgerMenu from './HamburgerMenu';
-
 import Darkmode from "../dark/Darkmode";
 
+// const theme = useTheme();
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.background.paper,
+    color: theme.palette.primary.light
+  },
   grow: {
     flexGrow: 1,
     height: '10vh'
@@ -128,7 +133,7 @@ export default function HideAppBar(props) {
     <React.Fragment>
       <CssBaseline />
       <HideOnScroll {...props}>
-        <AppBar style={{ zIndex: '1000' }} elevation={3}>
+        <AppBar className={classes.root} elevation={3}>
           <Toolbar style={{ height: '4.2rem' }}>
             <HamburgerMenu selected={props.title || 'Collegemate'} />
             <Typography component='h1' variant="h6" noWrap>

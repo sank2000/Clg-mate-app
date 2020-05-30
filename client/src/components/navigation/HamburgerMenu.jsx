@@ -26,13 +26,11 @@ const useStyles = makeStyles({
   },
   fullList: {
     width: "auto"
+  },
+  selected: {
+    background: 'rgba(0, 134, 244, 0.1)', borderTopRightRadius: '150px', borderBottomRightRadius: '150px', color: "#1976d2"
   }
 });
-
-
-const selected = {
-  background: '#e3f2fd', borderTopRightRadius: '150px', borderBottomRightRadius: '150px', color: "#1976d2"
-}
 
 const selectedIcon = {
   color: "#1976d2"
@@ -77,13 +75,13 @@ export default function HamburgerMenu(props) {
       </List>
       <Divider />
       <List>
-        <ListItem onClick={() => window.open('/', '_self')} button style={props.selected === "Collegemate" ? { ...selected } : null} >
+        <ListItem onClick={() => window.open('/', '_self')} button className={props.selected === "Collegemate" ? classes.selected : null} >
           <ListItemIcon>
             <HomeWorkOutlinedIcon style={props.selected === "Collegemate" ? { ...selectedIcon } : null} />
           </ListItemIcon>
           <ListItemText primary={"Home"} />
         </ListItem>
-        <ListItem onClick={() => window.open('/timetable', '_self')} button style={props.selected === "Time Table" ? { ...selected } : null}>
+        <ListItem onClick={() => window.open('/timetable', '_self')} button className={props.selected === "Time Table" ? classes.selected : null}>
           <ListItemIcon>
             <TodayOutlinedIcon style={props.selected === "Time Table" ? { ...selectedIcon } : null} />
           </ListItemIcon>
@@ -92,19 +90,19 @@ export default function HamburgerMenu(props) {
       </List>
       <Divider />
       <List>
-        <ListItem onClick={() => window.open('/fullpost', '_self')} button style={props.selected === "All Posts" ? { ...selected } : null}>
+        <ListItem onClick={() => window.open('/fullpost', '_self')} button className={props.selected === "All Posts" ? classes.selected : null}>
           <ListItemIcon>
             <AssignmentOutlinedIcon style={props.selected === "All Posts" ? { ...selectedIcon } : null} />
           </ListItemIcon>
           <ListItemText primary="All Posts" />
         </ListItem>
-        <ListItem onClick={() => window.open('/fullmaterial', '_self')} button style={props.selected === "All materials" ? { ...selected } : null}>
+        <ListItem onClick={() => window.open('/fullmaterial', '_self')} button className={props.selected === "All materials" ? classes.selected : null}>
           <ListItemIcon>
             <LibraryBooksOutlinedIcon style={props.selected === "All materials" ? { ...selectedIcon } : null} />
           </ListItemIcon>
           <ListItemText primary="All Materials" />
         </ListItem>
-        <ListItem onClick={() => window.open('/expiredpost', '_self')} button style={props.selected === "Expired posts" ? { ...selected } : null}>
+        <ListItem onClick={() => window.open('/expiredpost', '_self')} button className={props.selected === "Expired posts" ? classes.selected : null}>
           <ListItemIcon>
             <AlarmOffOutlinedIcon style={props.selected === "Expired posts" ? { ...selectedIcon } : null} />
           </ListItemIcon>
@@ -113,7 +111,7 @@ export default function HamburgerMenu(props) {
       </List>
       <Divider />
       <List>
-        <ListItem onClick={() => window.open('/feedback', '_self')} button style={props.selected === "Feedback" ? { ...selected } : null}>
+        <ListItem onClick={() => window.open('/feedback', '_self')} button className={props.selected === "Feedback" ? classes.selected : null}>
           <ListItemIcon>
             <FeedbackOutlinedIcon style={props.selected === "Feedback" ? { ...selectedIcon } : null} />
           </ListItemIcon>
@@ -122,13 +120,13 @@ export default function HamburgerMenu(props) {
       </List>
       <Divider />
       <List>
-        <ListItem onClick={() => window.open('/help', '_self')} button style={props.selected === "Help" ? { ...selected } : null}>
+        <ListItem onClick={() => window.open('/help', '_self')} button className={props.selected === "Help" ? classes.selected : null}>
           <ListItemIcon>
             <ContactSupportOutlinedIcon style={props.selected === "Help" ? { ...selectedIcon } : null} />
           </ListItemIcon>
           <ListItemText primary="Help" />
         </ListItem>
-        <ListItem onClick={() => window.open('/about', '_self')} button style={props.selected === "About" ? { ...selected } : null}>
+        <ListItem onClick={() => window.open('/about', '_self')} button className={props.selected === "About" ? classes.selected : null}>
           <ListItemIcon>
             <InfoOutlinedIcon style={props.selected === "About" ? { ...selectedIcon } : null} />
           </ListItemIcon>

@@ -17,14 +17,6 @@ button:focus {
   box-shadow: none;
 }
 
-header {
-  padding: .1em;
-  /* background: url("./../images/navbar-bg.png"); */
-  background: #fff !important;
-  color: #2196f3 !important;
-  z-index: "1000"
-}
-
 .app {
   display: inline;
 }
