@@ -7,10 +7,12 @@ import pink from '@material-ui/core/colors/pink';
 
 const theme = createMuiTheme({
   palette: {
+    type: 'dark',
     primary: blue,
-    secondary: pink,
+    secondary: pink
   },
 });
+
 
 if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
   const regEvt = navigator.serviceWorker.register('./ServiceWorker.js');
