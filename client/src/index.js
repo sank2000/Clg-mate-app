@@ -6,10 +6,11 @@ import blue from '@material-ui/core/colors/blue';
 import pink from '@material-ui/core/colors/pink';
 
 let mode = "light";
-if (window.localStorage.getItem("dark") === true) {
+if (window.localStorage.getItem("dark") === 'true') {
   mode = "dark";
 }
 console.log("mode :" + mode);
+console.log(window.localStorage.getItem("dark"));
 
 const theme = createMuiTheme({
   palette: {

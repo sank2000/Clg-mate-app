@@ -3,7 +3,7 @@ import Switch from '@material-ui/core/Switch';
 
 let mode = false;
 if (window.localStorage.getItem("dark")) {
-  if (window.localStorage.getItem("dark") === true) {
+  if (window.localStorage.getItem("dark") === 'true') {
     mode = true;
   }
 }
@@ -13,6 +13,7 @@ export default function () {
   const handleChange = (e) => {
     setState(e.target.checked);
     window.localStorage.setItem("dark", e.target.checked);
+    window.location.reload();
   };
 
   return (
