@@ -15,6 +15,7 @@ import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
 import Delete from "./DeletePost";
 import AuthApi from "../../auth/AuthApi";
 import DownloadButton from './AttachmentDownloadButton';
+import Divider from '@material-ui/core/Divider';
 
 const styles = (theme) => ({
   root: {
@@ -76,24 +77,24 @@ function CustomizedDialogs(props) {
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle disableTypography id="customized-dialog-title" onClose={handleClose}>
           <Typography component="span" variant="h5">{props.data.title}</Typography>
-          <div className="subject">{props.data.subject}</div>
+          <Typography component="div" variant="body1">{props.data.subject}</Typography>
         </DialogTitle>
         <DialogContent dividers>
-          <div className="main-details">
-            <span className="type">{props.data.postType}</span>
-            <span className="type" style={{ float: "right" }}>
+          <div>
+            <Typography variant="body1" component="span">{props.data.postType}</Typography>
+            <Typography variant="body1" component="span" style={{ float: "right" }}>
               <ScheduleIcon fontSize="small" className="due-icon" /> Due on: {props.data.dueDate}
-            </span>
+            </Typography>
           </div>
-          <hr />
-          <div style={{ margin: "5px 0px" }} className="description">
-            <h5>Description:</h5>
-            <span>{props.data.description}</span>
+          <Divider variant='fullWidth' style={{ margin: '15px' }} />
+          <div style={{ margin: "5px 0px" }}>
+            <Typography variant="h5" component="h5">Description:</Typography>
+            <Typography variant="body1" component="div">{props.data.description}</Typography>
           </div>
-          <hr />
-          <div className="post-details">
-            <span className="posted-on">{props.data.postedOn}</span>
-            <span className="posted-by" style={{ float: "right" }}> {props.data.authorType === "Staff" ? <VerifiedUserOutlinedIcon /> : <PermIdentityOutlinedIcon />} &nbsp; {props.data.postedBy}</span>
+          <Divider variant='fullWidth' style={{ margin: '15px' }} />
+          <div style={{ minWidth: '40vw' }}>
+            <Typography component="span" variant="body2" style={{ paddingRight: '5px' }}> {props.data.postedOn}</Typography>
+            <Typography component="span" variant="body2" style={{ float: "right" }}> {props.data.postByType === "Staff" ? <VerifiedUserOutlinedIcon /> : <PermIdentityOutlinedIcon />} &nbsp; {props.data.postBy}</Typography>
           </div>
         </DialogContent>
         <DialogActions>
