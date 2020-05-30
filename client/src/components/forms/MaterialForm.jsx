@@ -189,7 +189,8 @@ function PostForm(props) {
                     </label>
                   </Grid>
                   <Grid item>
-                    {props.fileChooseState === 'File Chosen' &&
+                    {
+                      props.fileChooseState === 'File Chosen' &&
                       <Btn
                         onClick={props.handleUpload}
                         size="medium"
@@ -198,8 +199,8 @@ function PostForm(props) {
                         <CloudUploadOutlinedIcon
                           fontSize="small"
                           className="uploadIcon" />
-                    &nbsp; Upload
-                  </Btn>
+                         &nbsp; Upload
+                      </Btn>
                     }
                   </Grid>
                 </Grid>

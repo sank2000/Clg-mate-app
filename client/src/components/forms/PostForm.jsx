@@ -105,10 +105,10 @@ function PostForm(props) {
       </Tooltip>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={show}>
         <DialogTitle disableTypography id="customized-dialog-title" onClose={handleClose}>
-          <Typography component="span" variant="h5"> New Material </Typography>
+          <Typography component="span" variant="h5"> New Post </Typography>
         </DialogTitle>
-        <form action="/posts/new" method="post">
-          <DialogContent dividers>
+        <DialogContent dividers>
+          <form action="/posts/new" method="post" style={{ paddingRight: '15px' }}>
             <TextField style={applyMargin}
               variant="outlined"
               required type="text"
@@ -181,47 +181,57 @@ function PostForm(props) {
                 style={{ ...applyMargin, outline: "none" }}
               />
             </MuiPickersUtilsProvider>
-
-          </DialogContent>
-          <DialogActions>
-            <Grid container>
-              <div className="file-section" style={applyMargin}>
-                <input type="hidden" name="url" value={JSON.stringify(props.url)} />
-                <input
-                  style={{ display: "none" }}
-                  type="file"
-                  id="contained-button-file"
-                  name="file"
-                  multiple
-                  onChange={props.handleChange}
-                />
-                <label htmlFor="contained-button-file">
-                  <Btn variant="contained" component="span" disableElevation>
-                    {props.fileChooseState}
-                  </Btn>
-                </label>
-                {props.fileChooseState === 'File Chosen' &&
-                  <Btn
-                    onClick={props.handleUpload}
-                    size="medium"
-                    variant="contained"
-                    color="secondary"
-                    style={{ float: "right", marginRight: "-15px" }}>
-                    <CloudUploadOutlinedIcon
-                      fontSize="small"
-                      className="uploadIcon" />
-                    &nbsp; Upload
-                  </Btn>
+            <Grid container direction="column">
+              <Grid item>
+                <Grid container direction="row" justify="space-between">
+                  <Grid item>
+                    <div className="file-section" style={applyMargin}>
+                      <input type="hidden" name="url" value={JSON.stringify(props.url)} />
+                      <input
+                        style={{ display: "none" }}
+                        type="file"
+                        id="contained-button-file"
+                        name="file"
+                        multiple
+                        onChange={props.handleChange}
+                      />
+                      <label htmlFor="contained-button-file">
+                        <Btn variant="contained" component="span" disableElevation>
+                          {props.fileChooseState}
+                        </Btn>
+                      </label>
+                    </div>
+                  </Grid>
+                  <Grid item>
+                    {props.fileChooseState === 'File Chosen' &&
+                      <Btn
+                        onClick={props.handleUpload}
+                        size="medium"
+                        variant="contained"
+                        color="secondary"
+                        style={{ float: "right", marginRight: "-15px" }}>
+                        <CloudUploadOutlinedIcon
+                          fontSize="small"
+                          className="uploadIcon" />
+                      &nbsp; Upload
+                    </Btn>
+                    }
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid item>
+                {
+                  (props.progress !== -1 && props.progress !== 100) ?
+                    <LinearProgressWithLabel value={props.progress} /> :
+                    (props.progress !== -1 && <p>Uploaded</p>)
                 }
-                {(props.progress !== -1 && props.progress !== 100) ?
-                  <LinearProgressWithLabel value={props.progress} /> :
-                  (props.progress !== -1 && <p>Uploaded</p>)
-                }
-              </div>
-              <Btn style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Btn>
+              </Grid>
             </Grid>
-          </DialogActions>
-        </form>
+          </form>
+        </DialogContent>
+        <DialogActions>
+          <Btn style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Btn>
+        </DialogActions>
       </Dialog>
     </>
   );
