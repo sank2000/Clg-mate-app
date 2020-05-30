@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
-import { Container } from "react-bootstrap";
+import Container from "@material-ui/core/Container";
 import DateFormat from 'dateformat';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -8,7 +8,6 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Container2 from "../containers/FlexContainer";
-import Paper from '@material-ui/core/Paper';
 
 import NavigationBar from "../navigation/AppBar";
 import PostCard from "../cards/PostCard";
@@ -94,20 +93,18 @@ function App() {
 
 
 	function NotAvailable(props) {
-		return (<>
-			<Paper square background='transparent'>
-				<Container2 height='60vh'>
-					<img src='./images/bulb.png' style={{ width: '7em', height: '7em', padding: '1rem' }} alt='' />
-					<h3>{props.type} you add appear here..</h3>
-				</Container2>
-			</Paper>
-		</>)
+		return (
+			<Container2 height='60vh'>
+				<img src='./images/bulb.png' style={{ width: '7em', height: '7em', padding: '1rem' }} alt='' />
+				<h3>{props.type} you add appear here..</h3>
+			</Container2>
+		)
 	}
 
 	return (
 		<Fragment>
 			<NavigationBar />
-			<Container style={{ padding: '1rem' }} fluid>
+			<Container style={{ padding: '1rem' }} >
 				<Typography component="h2" variant='h3' align='center'>Posts</Typography>
 				<Backdrop style={{ zIndex: "20000" }} open={loading}>
 					<CircularProgress style={{ zIndex: "50000" }} color="primary" />
