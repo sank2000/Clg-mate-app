@@ -54,7 +54,7 @@ export default function SimpleCard(props) {
             </Grid>
           </Grid>
         </CardContent>
-        {props.when === "now" && (
+        {(props.when === "now" && props.progress !== undefined) && (
           <LinearProgress
             color="secondary"
             variant="determinate"

@@ -80,7 +80,7 @@ export default function HideAppBar(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem gutterBottom onClick={() => window.open('/profile', '_self')}>
+      <MenuItem onClick={() => window.open('/profile', '_self')}>
         <ListItemIcon>
           {
             user.state !== "verified"

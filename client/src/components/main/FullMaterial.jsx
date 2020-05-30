@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
-import { Container } from "react-bootstrap";
+import Container from "@material-ui/core/Container";
 import DateFormat from 'dateformat';
 import Grid from '@material-ui/core/Grid';
 import LinearProgress from '@material-ui/core/LinearProgress';
@@ -104,7 +104,7 @@ function App() {
   return (
     <Fragment>
       <NavigationBar title="All materials" />
-      <Container fluid className="fullPostHead">
+      <Container className="fullPostHead">
         <Grid container>
           <Grid item lg={9} xs={6}><h1 style={{ display: "inline" }}>Materials</h1></Grid>
           <Grid item>
@@ -135,7 +135,7 @@ function App() {
           </Grid>
         </Grid>
       </Container>
-      <Container style={{ paddingTop: '1rem', paddingBottom: '1rem' }} fluid>
+      <Container style={{ paddingTop: '1rem', paddingBottom: '1rem' }} >
         {loading && <LinearProgress />}
         {
           found ?

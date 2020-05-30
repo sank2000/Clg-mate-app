@@ -1,71 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ListItemText from "@material-ui/core/ListItemText";
 import { time, table } from "../../constants/Table";
-import Avatar from "@material-ui/core/Avatar";
-import NavigationBar from '../navigation/AppBar'
-
+import NavigationBar from '../navigation/AppBar';
 import Grid from '@material-ui/core/Grid';
+
+import ScheduleCard from "../cards/ScheduleCard";
+import Container from "@material-ui/core/Container";
+
+import getPer from "../../functions/timeDifference";
 
 var today = new Date();
 
-const useStyles = makeStyles(theme => ({
-  text: {
-    padding: theme.spacing(2, 2, 0)
-  },
-  list: {
-    marginBottom: theme.spacing(2)
-  },
-  subheader: {
-    backgroundColor: theme.palette.background.paper,
-    textTransform: 'uppercase',
-    padding: theme.spacing(2, 2, 0)
-  },
-  grow: {
-    flexGrow: 1
-  }
-}));
-
-const nowStyle = {
-  background: '#f1d1d1',
-  color: 'black'
+const NoSchedule = {
+  subject: "No schedule",
+  time: "for this time ",
+  per: 0
 }
-
-const nextStyle = {
-  background: '#f3e1e1',
-  color: 'black'
-}
-
-const laterStyle = {
-  background: '#faf2f2',
-  color: 'black'
-}
-
 
 export default function Schedule() {
   const [per, setPer] = useState([
     {
-      id: 1,
-      primary: "No schedule",
-      secondary: "for this time ",
-      per: 0
+      when: "now",
+      ...NoSchedule
     },
     {
-      id: 2,
-      primary: table[0][0],
-      secondary: time[0].start + " -- " + time[0].end,
+      when: "next",
+      subject: table[0][0],
+      time: time[0].start + " to " + time[0].end,
       per: time[0].per
     },
     {
-      id: 3,
-      primary: table[0][1],
-      secondary: time[1].start + " -- " + time[1].end,
+      when: "later",
+      subject: table[0][1],
+      time: time[1].start + " to " + time[1].end,
       per: time[1].per
     }
   ]);
@@ -77,21 +43,19 @@ export default function Schedule() {
     } else if (tym < 9) {
       setPer([
         {
-          id: 1,
-          primary: "No schedule",
-          secondary: "for this time ",
-          per: 0
+          when: "now",
+          ...NoSchedule
         },
         {
-          id: 2,
-          primary: table[today.getDay() - 1][0],
-          secondary: time[0].start + " -- " + time[0].end,
+          when: "next",
+          subject: table[today.getDay() - 1][0],
+          time: time[0].start + " to " + time[0].end,
           per: time[0].per
         },
         {
-          id: 3,
-          primary: table[today.getDay() - 1][1],
-          secondary: time[1].start + " -- " + time[1].end,
+          when: "later",
+          subject: table[today.getDay() - 1][1],
+          time: time[1].start + " to " + time[1].end,
           per: time[1].per
         }
       ]);
@@ -102,114 +66,111 @@ export default function Schedule() {
       }
       setPer([
         {
-          id: 1,
-          primary: "No schedule",
-          secondary: "for this time ",
-          per: 0
+          when: "now",
+          ...NoSchedule
         },
         {
-          id: 2,
-          primary: table[today.getDay()][0],
-          secondary: time[0].start + " -- " + time[0].end,
+          when: "next",
+          subject: table[today.getDay()][0],
+          time: time[0].start + " to " + time[0].end,
           per: time[0].per
         },
         {
-          id: 3,
-          primary: table[today.getDay()][1],
-          secondary: time[1].start + " -- " + time[1].end,
+          when: "later",
+          subject: table[today.getDay()][1],
+          time: time[1].start + " to " + time[1].end,
           per: time[1].per
         }
       ]);
       return;
     }
     if (tym >= value.start && tym <= value.end) {
-      setCrtPeriod(ind);
+      setCrtsubject(ind);
       return;
     }
   }
 
-  function setCrtPeriod(ind) {
+  const setCrtsubject = async (ind) => {
+    let per = await getPer(time[ind]);
+    console.log(per);
     if (ind === 7 && today.getDay() === 5) {
       setPer([
         {
-          id: 1,
-          primary: table[today.getDay() - 1][ind],
-          secondary: time[ind].start + " -- " + time[ind].end,
-          per: time[ind].per
+          when: "now",
+          subject: table[today.getDay() - 1][ind],
+          time: time[ind].start + " to " + time[ind].end,
+          per: time[ind].per,
+          progress: per
         },
         {
-          id: 2,
-          primary: "No schedule",
-          secondary: "for this time ",
-          per: 0
+          when: "next",
+          ...NoSchedule
         },
         {
-          id: 3,
-          primary: table[0][0],
-          secondary: time[0].start + " -- " + time[0].end,
+          when: "later",
+          subject: table[0][0],
+          time: time[0].start + " to " + time[0].end,
           per: time[0].per
         }
       ]);
     } else if (ind === 7) {
       setPer([
         {
-          id: 1,
-          primary: table[today.getDay() - 1][ind],
-          secondary: time[ind].start + " -- " + time[ind].end,
-          per: time[ind].per
+          when: "now",
+          subject: table[today.getDay() - 1][ind],
+          time: time[ind].start + " to " + time[ind].end,
+          per: time[ind].per,
+          progress: per
         },
         {
-          id: 2,
-          primary: "No schedule",
-          secondary: "for this time ",
-          per: 0
+          when: "next",
+          ...NoSchedule
         },
         {
-          id: 3,
-          primary: table[today.getDay()][0],
-          secondary: time[0].start + " -- " + time[0].end,
+          when: "later",
+          subject: table[today.getDay()][0],
+          time: time[0].start + " to " + time[0].end,
           per: time[0].per
         }
       ]);
     } else if (ind === 6) {
       setPer([
         {
-          id: 1,
-          primary: table[today.getDay() - 1][ind],
-          secondary: time[ind].start + " -- " + time[ind].end,
+          when: "now",
+          subject: table[today.getDay() - 1][ind],
+          time: time[ind].start + " to " + time[ind].end,
           per: time[ind].per
         },
         {
-          id: 2,
-          primary: table[today.getDay() - 1][ind + 1],
-          secondary: time[ind + 1].start + " -- " + time[ind + 1].end,
+          when: "next",
+          subject: table[today.getDay() - 1][ind + 1],
+          time: time[ind + 1].start + " to " + time[ind + 1].end,
           per: time[ind].per + 1
         },
         {
-          id: 3,
-          primary: "No schedule",
-          secondary: "for this time",
-          per: 0
+          when: "later",
+          ...NoSchedule
         }
       ]);
     } else {
       setPer([
         {
-          id: 1,
-          primary: table[today.getDay() - 1][ind],
-          secondary: time[ind].start + " -- " + time[ind].end,
-          per: time[ind].per
+          when: "now",
+          subject: table[today.getDay() - 1][ind],
+          time: time[ind].start + " to " + time[ind].end,
+          per: time[ind].per,
+          progress: per
         },
         {
-          id: 2,
-          primary: table[today.getDay() - 1][ind + 1],
-          secondary: time[ind + 1].start + " -- " + time[ind + 1].end,
+          when: "next",
+          subject: table[today.getDay() - 1][ind + 1],
+          time: time[ind + 1].start + " to " + time[ind + 1].end,
           per: time[ind].per + 1
         },
         {
-          id: 3,
-          primary: table[today.getDay() - 1][ind + 2],
-          secondary: time[ind + 2].start + " -- " + time[ind + 2].end,
+          when: "later",
+          subject: table[today.getDay() - 1][ind + 2],
+          time: time[ind + 2].start + " to " + time[ind + 2].end,
           per: time[ind].per + 2
         }
       ]);
@@ -221,52 +182,26 @@ export default function Schedule() {
     // eslint-disable-next-line
   }, []);
 
-  const classes = useStyles();
+  function renderSchedules(SCHEDULE, ind) {
+    return (
+      <ScheduleCard key={ind}
+        when={SCHEDULE.when}
+        subject={SCHEDULE.subject}
+        time={SCHEDULE.time}
+        progress={SCHEDULE.progress}
+        per={SCHEDULE.per}
+      />
+    );
+  }
 
   return (
     <React.Fragment>
       <NavigationBar title="Time Table" />
-      <CssBaseline />
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        spacing={3}
-      >
-        <Grid item xs={12} sm={8}>
-          <Typography variant='h4' component='h1'>Schedule</Typography>
+      <Container style={{ padding: '1rem' }}>
+        <Grid container spacing={2}>
+          {per.map(renderSchedules)}
         </Grid>
-        <Grid item xs={12} sm={8}>
-          <Paper square className={classes.paper}>
-            <List className={classes.list}>
-              {per.map(({ id, primary, secondary, per }) => (
-                <React.Fragment key={id}>
-                  {id === 1 && (
-                    <Typography variant="h6" style={nowStyle} className={classes.subheader}>Now</Typography>
-                  )}
-                  {id === 2 && (
-                    <Typography variant="h6" style={nextStyle} className={classes.subheader}>
-                      Next
-                    </Typography>
-                  )}
-                  {id === 3 && (
-                    <Typography variant="h6" style={laterStyle} className={classes.subheader}>
-                      Later
-                    </Typography>
-                  )}
-                  <ListItem style={(id === 1) ? (nowStyle) : (id === 2) ? (nextStyle) : (laterStyle)}>
-                    <ListItemAvatar>
-                      <Avatar style={Object.assign({}, { backgroundColor: "#e43f5a" })}>{per}</Avatar>
-                    </ListItemAvatar>
-                    <ListItemText style={(id === 1) ? (nowStyle) : (id === 2) ? (nextStyle) : (laterStyle)} primary={primary} secondary={secondary} />
-                  </ListItem>
-                </React.Fragment>
-              ))}
-            </List>
-          </Paper>
-        </Grid>
-      </Grid>
+      </Container>
     </React.Fragment>
   );
 }

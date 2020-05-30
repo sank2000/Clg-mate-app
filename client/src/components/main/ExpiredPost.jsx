@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
-import { Container } from "react-bootstrap";
+import Container from "@material-ui/core/Container";
 import DateFormat from 'dateformat';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import FormControl from "@material-ui/core/FormControl";
@@ -74,7 +74,7 @@ function ExpiredPosts() {
   return (
     <Fragment>
       <NavigationBar title="Expired posts" />
-      <Container fluid className="fullPostHead">
+      <Container className="fullPostHead">
         <Grid container>
           <Grid item lg={9} xs={6}><h1 style={{ display: "inline" }}>Posts</h1></Grid>
           <Grid item>
@@ -106,7 +106,7 @@ function ExpiredPosts() {
           </Grid>
         </Grid>
       </Container>
-      <Container style={{ paddingTop: '1rem', paddingBottom: '1rem' }} fluid>
+      <Container style={{ paddingTop: '1rem', paddingBottom: '1rem' }} >
         {loading && <LinearProgress />}
         <Grid container spacing={3}>
           {post.map(data)}
