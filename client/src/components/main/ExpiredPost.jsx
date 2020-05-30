@@ -14,10 +14,20 @@ import Grid from '@material-ui/core/Grid';
 import NavigationBar from "../navigation/AppBar";
 import PostCard from "../cards/PostCard";
 
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+
 function ExpiredPosts() {
   const [post, setPost] = useState([]);
   const [type, setType] = useState("All");
   const [loading, setLoading] = useState(true);
+  const theme = useTheme();
+  const useStyles = makeStyles({
+    root: {
+      backgroundColor: theme.palette.background.paper
+    },
+  });
+  const classes = useStyles();
+
 
   useEffect(() => {
     let params = new URLSearchParams({ type: type });
@@ -74,7 +84,7 @@ function ExpiredPosts() {
   return (
     <Fragment>
       <NavigationBar title="Expired posts" />
-      <Container maxWidth="xl" className="fullPostHead">
+      <Container maxWidth="xl" className={classes.root}>
         <Grid container>
           <Grid item lg={9} xs={6}><h1 style={{ display: "inline" }}>Posts</h1></Grid>
           <Grid item>
