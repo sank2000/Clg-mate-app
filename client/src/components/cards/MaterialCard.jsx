@@ -3,6 +3,7 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import ShowDetails from "../dialogs/details/MaterialDetails";
+import Typography from '@material-ui/core/Typography';
 
 import QuickDownloadButton from './QuickDownloadButton';
 
@@ -12,17 +13,17 @@ function MaterialCard(props) {
       borderRadius: "10px", padding: "3px"
     }}>
       <CardContent>
-        <div className="top">
-          <span className="due-date">
+        <div style={{ paddingBottom: '3px' }}>
+          <Typography gutterBottom variant="body2" component="span">
             {props.subName}
-          </span>
-          <span className="material-type">
+          </Typography>
+          <Typography gutterBottom variant="body2" component="span" style={{ float: 'right' }}>
             {props.materialType}
-          </span>
+          </Typography>
         </div>
-        <h2 className="material-title">
+        <Typography gutterBottom variant="h4" component="h3">
           {props.title}
-        </h2>
+        </Typography>
       </CardContent>
       <CardActions style={{ justifyContent: 'space-between' }} >
         <ShowDetails data={props} />
