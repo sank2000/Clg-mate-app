@@ -87,14 +87,14 @@ function CustomizedDialogs(props) {
               {props.data.materialType}
             </Typography>
           </div>
-          <Divider variant='fullWidth' style={{ margin: '15px' }} />
+          <Divider variant='fullWidth' style={{ margin: '15px 0px', padding: "0px" }} />
           <div style={{ margin: "5px 0px" }}>
             <Typography variant="h6" component="h6">Description:</Typography>
             <Typography variant="body1" component="div">{props.data.description}</Typography>
           </div>
-          <Divider variant='fullWidth' style={{ margin: '15px' }} />
+          <Divider variant='fullWidth' style={{ margin: '15px 0px' }} />
           <div>
-            <Typography component="span" variant="body2" style={{ paddingRight: '5px' }}> {props.data.postedOn}</Typography>
+            <Typography component="span" variant="body2" style={{ marginRight: '30px' }}> {props.data.postedOn}</Typography>
             <Typography component="span" variant="body2" style={{ float: "right" }}> {props.data.postByType === "Staff" ? <VerifiedUserOutlinedIcon /> : <PermIdentityOutlinedIcon />} &nbsp; {props.data.postBy}</Typography>
           </div>
         </DialogContent>

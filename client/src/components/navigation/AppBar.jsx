@@ -134,7 +134,7 @@ export default function HideAppBar(props) {
       <CssBaseline />
       <HideOnScroll {...props}>
         <AppBar className={classes.root} elevation={3}>
-          <Toolbar style={{ height: '4.2rem' }}>
+          <Toolbar style={{ height: '4rem' }}>
             <HamburgerMenu selected={props.title || 'Collegemate'} />
             <Typography component='h1' variant="h6" noWrap>
               {props.title || 'Collegemate'}
