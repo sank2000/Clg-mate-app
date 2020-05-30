@@ -12,13 +12,23 @@ import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import IconButton from "@material-ui/core/IconButton";
 import NavigationBar from "../navigation/AppBar";
 import MaterialCard from "../cards/MaterialCard";
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+
+
+
 
 function App() {
   const [post, setPost] = useState([]);
   const [loading, SetLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [found, setFound] = useState(true);
-
+  const theme = useTheme();
+  const useStyles = makeStyles({
+    root: {
+      backgroundColor: theme.palette.background.paper
+    },
+  });
+  const classes = useStyles();
   function handleCancel() {
     setSearch("");
   }
@@ -100,12 +110,11 @@ function App() {
       </Fragment>
     );
   }
-
   return (
     <Fragment>
       <NavigationBar title="All materials" />
-      <Container maxWidth="xl" className="fullPostHead">
-        <Grid container>
+      <Container maxWidth="xl" className={classes.root}>
+        <Grid container >
           <Grid item lg={9} xs={6}><h1 style={{ display: "inline" }}>Materials</h1></Grid>
           <Grid item>
             <FormControl>
