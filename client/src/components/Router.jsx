@@ -20,17 +20,22 @@ import FeedBack from "./forms/Feedback";
 import UnderConstruction from './messages/UnderConstruction';
 import UserDetails from "./User/main";
 import Verify from "./auth/verify/main";
+import Paper from '@material-ui/core/Paper';
 
 function Loading() {
   return (
-    <div style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      height: "100vh"
-    }}>
-      <CircularProgress style={{ color: "#2196f3" }} size={45} />
-    </div >
+    <>
+      <Paper square>
+        <div style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh"
+        }}>
+          <CircularProgress style={{ color: "#2196f3" }} size={45} />
+        </div >
+      </Paper>
+    </>
   );
 }
 

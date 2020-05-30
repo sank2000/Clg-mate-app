@@ -8,6 +8,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Container2 from "../containers/FlexContainer";
+import Paper from '@material-ui/core/Paper';
 
 import NavigationBar from "../navigation/AppBar";
 import PostCard from "../cards/PostCard";
@@ -93,10 +94,14 @@ function App() {
 
 
 	function NotAvailable(props) {
-		return <Container2 background='transparent' height='60vh'>
-			<img src='./images/bulb.png' style={{ width: '7em', height: '7em', padding: '1rem' }} alt='' />
-			<h3>{props.type} you add appear here..</h3>
-		</Container2>
+		return (<>
+			<Paper square background='transparent'>
+				<Container2 height='60vh'>
+					<img src='./images/bulb.png' style={{ width: '7em', height: '7em', padding: '1rem' }} alt='' />
+					<h3>{props.type} you add appear here..</h3>
+				</Container2>
+			</Paper>
+		</>)
 	}
 
 	return (

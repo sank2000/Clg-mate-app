@@ -94,7 +94,7 @@ export default function About() {
               Technology Stack
             </Typography>
           </Grid>
-          <Grid item lg={12} md={12} sm={12} style={{ background: "#fff" }}>
+          <Grid item lg={12} md={12} sm={12} >
             <Grid
               container
               direction="row"
