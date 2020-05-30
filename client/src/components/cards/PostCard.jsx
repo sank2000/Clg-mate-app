@@ -4,6 +4,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import ViewMore from "../dialogs/details/PostDetails";
+import Typography from '@material-ui/core/Typography';
 
 function PostCard(props) {
   let dueColor = {};
@@ -32,20 +33,20 @@ function PostCard(props) {
   return (
     <Card elevation={3} style={{ borderRadius: "10px", padding: "3px", ...cardclr }} >
       <CardContent>
-        <div>
-          <span style={dueColor}>
+        <div style={{ paddingBottom: '3px' }}>
+          <Typography gutterBottom variant="body2" component="span" style={dueColor}>
             <ScheduleIcon fontSize="small" className="due-icon" /> {props.dueDate}
-          </span>
-          <span style={{ float: 'right' }}>
+          </Typography>
+          <Typography gutterBottom variant="body2" component="span" style={{ float: 'right' }}>
             {props.postType}
-          </span>
+          </Typography>
         </div>
-        <h2>
+        <Typography gutterBottom variant="h4" component="h3">
           {props.title}
-        </h2>
-        <div>
+        </Typography>
+        <Typography variant="body1" component="div">
           {props.subject}
-        </div>
+        </Typography>
       </CardContent>
       <CardActions>
         <ViewMore data={props} />
