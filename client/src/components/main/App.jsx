@@ -104,7 +104,7 @@ function App() {
 	return (
 		<Fragment>
 			<NavigationBar />
-			<Container style={{ padding: '1rem' }} >
+			<Container maxWidth="xl" style={{ padding: '1rem' }} >
 				<Typography component="h2" variant='h3' align='center'>Posts</Typography>
 				<Backdrop style={{ zIndex: "20000" }} open={loading}>
 					<CircularProgress style={{ zIndex: "50000" }} color="primary" />

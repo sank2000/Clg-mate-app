@@ -77,14 +77,14 @@ function App() {
 	return (
 		<Fragment>
 			<NavigationBar title="All Posts" />
-			<Container className="fullPostHead">
+			<Container maxWidth="xl" className="fullPostHead">
 				<Grid container>
 					<Grid item lg={9} xs={6}><h1 style={{ display: "inline" }}>Posts</h1></Grid>
 					<Grid item >
 						<FormControl variant='outlined' style={{ minWidth: 140 }} size="small" className="filterSelect" >
 							<InputLabel>
 								Post Type
-                                </InputLabel>
+              </InputLabel>
 							<Select
 								name="postType"
 								value={type}
@@ -109,7 +109,7 @@ function App() {
 					</Grid>
 				</Grid>
 			</Container>
-			<Container style={{ paddingTop: '1rem', paddingBottom: '1rem' }} >
+			<Container maxWidth="xl" style={{ paddingTop: '1rem', paddingBottom: '1rem' }} >
 				{loading && <LinearProgress />}
 				<Grid container spacing={3}>
 					{post.map(data)}

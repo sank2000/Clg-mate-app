@@ -26,7 +26,7 @@ export default function Valid(props) {
   };
 
   return (
-    <Container>
+    <Container maxWidth="xl">
       <img src='./images/confused.png' style={{ width: '10em', height: '10em', padding: '1rem' }} alt='' />
       <h4>Oops! You forgot your password?</h4>
       <p>Don't worry, let us help you reset your password.</p>

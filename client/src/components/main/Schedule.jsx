@@ -197,7 +197,7 @@ export default function Schedule() {
   return (
     <React.Fragment>
       <NavigationBar title="Time Table" />
-      <Container style={{ padding: '1rem' }}>
+      <Container maxWidth="xl" style={{ padding: '1rem' }}>
         <Grid container spacing={2}>
           {per.map(renderSchedules)}
         </Grid>

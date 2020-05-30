@@ -49,7 +49,7 @@ function tab(ind, day) {
 
 function Timetable(props) {
   return (
-    <Container style={{ marginTop: "25px", marginBottom: "25px" }} >
+    <Container maxWidth="xl" style={{ marginTop: "25px", marginBottom: "25px" }} >
       <TableContainer component={Paper}>
         <Table size="small" aria-label="a dense table">
           <TableHead>
@@ -139,7 +139,7 @@ export default function () {
   return (
     <>
       <Schedule />
-      <Container style={{ position: "relative" }}>
+      <Container maxWidth="xl" style={{ position: "relative" }}>
         <hr className={window.localStorage.getItem("dark") === 'true' ? style.ava2 : style.ava} />
         <Grid container direction="row"
           justify="space-around"

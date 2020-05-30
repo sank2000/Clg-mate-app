@@ -11,7 +11,7 @@ export default function Main() {
   return (
     <>
       <NavigationBar title="Profile" />
-      <Container>
+      <Container maxWidth="xl">
         <Grid
           container
           direction="column"

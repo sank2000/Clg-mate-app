@@ -89,7 +89,7 @@ function SignIn() {
 
   return (
     <FlexContainer>
-      <Container component="main" spacing={2} maxWidth="xs">
+      <Container maxWidth="xl" component="main" spacing={2} maxWidth="xs">
         <LockOpenOutlinedIcon
           style={{
             padding: "10px",

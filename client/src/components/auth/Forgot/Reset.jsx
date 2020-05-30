@@ -65,7 +65,7 @@ export default function Reset(props) {
     }
   )
 
-  return (<Container>
+  return (<Container maxWidth="xl">
     <img src='./images/lock.png' style={{ width: '10em', height: '10em', padding: '1rem' }} alt='' />
     <h2>Reset Password</h2>
     <form onSubmit={formik.handleSubmit}>

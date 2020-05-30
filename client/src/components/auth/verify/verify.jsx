@@ -37,7 +37,7 @@ export default function Valid(props) {
   };
 
   return (
-    <Container>
+    <Container maxWidth="xl">
       <img src='./images/mail.png' style={{ width: '10em', height: '10em', padding: '1rem' }} alt='' />
       <h4>Check your Email!</h4>
       <p>We've sent you an email. Copy the OTP from there.</p>

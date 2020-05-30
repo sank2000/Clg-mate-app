@@ -47,7 +47,7 @@ export default function () {
 
   return (
     <>
-      {!send ? <Container>
+      {!send ? <Container maxWidth="xl">
         <img src='./images/verified.png' style={{ width: '10em', height: '10em', padding: '1rem' }} alt='' />
         <h4>Account Verification</h4>
         <p>Verify your email address to enable all the functionalities of the app.</p>
