@@ -9,11 +9,30 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 import { time, table } from "../../constants/Table";
 import Schedule from "./Schedule";
+
+
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
 
 const useStyles = makeStyles(theme => ({
   ava: {
@@ -39,11 +58,11 @@ const avatarImageStyle = {
 
 function tab(ind, day) {
   return (
-    <TableRow key={ind}>
-      <TableCell align="center"> {time[ind].start}</TableCell>
-      <TableCell align="center"> {table[day][ind]} </TableCell>
-      <TableCell align="center"> {time[ind].end} </TableCell>
-    </TableRow>
+    <StyledTableRow key={ind}>
+      <StyledTableCell align="center"> {time[ind].start}</StyledTableCell>
+      <StyledTableCell align="center"> {table[day][ind]} </StyledTableCell>
+      <StyledTableCell align="center"> {time[ind].end} </StyledTableCell>
+    </StyledTableRow>
   );
 }
 
@@ -53,11 +72,11 @@ function Timetable(props) {
       <TableContainer component={Paper}>
         <Table size="small" aria-label="a dense table">
           <TableHead>
-            <TableRow>
-              <TableCell align="center">START</TableCell>
-              <TableCell align="center">SUBJECT</TableCell>
-              <TableCell align="center">END</TableCell>
-            </TableRow>
+            <StyledTableRow>
+              <StyledTableCell align="center">START</StyledTableCell>
+              <StyledTableCell align="center">SUBJECT</StyledTableCell>
+              <StyledTableCell align="center">END</StyledTableCell>
+            </StyledTableRow>
           </TableHead>
           <TableBody>
             {
