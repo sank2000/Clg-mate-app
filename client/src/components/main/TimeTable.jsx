@@ -1,12 +1,35 @@
 import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
-import { Table, Container } from "react-bootstrap";
+import Container from '@babel/core/Container';
 import IconButton from "@material-ui/core/IconButton";
-
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import { time, table } from "../../constants/Table";
 import Schedule from "./Schedule";
-import { Typography } from "@material-ui/core";
+
+const useStyles = makeStyles(theme => ({
+  ava: {
+    border: "0.5px solid #303030",
+    position: "absolute",
+    width: "80%",
+    left: "10%",
+    top: "20%"
+  },
+  ava2: {
+    border: "0.5px solid white",
+    position: "absolute",
+    width: "80%",
+    left: "10%",
+    top: "20%"
+  }
+}));
 
 const avatarImageStyle = {
   width: 40,
@@ -15,33 +38,35 @@ const avatarImageStyle = {
 
 function tab(ind, day) {
   return (
-    <tr key={ind}>
-      <td> {time[ind].start}</td>
-      <td> {table[day][ind]} </td>
-      <td> {time[ind].end} </td>
-    </tr>
+    <TableRow key={ind}>
+      <TableCell align="center"> {time[ind].start}</TableCell>
+      <TableCell align="center"> {table[day][ind]} </TableCell>
+      <TableCell align="center"> {time[ind].end} </TableCell>
+    </TableRow>
   );
 }
 
 function Timetable(props) {
   return (
-    <Container style={{ marginTop: "25px" }} >
-      <Table striped bordered hover size="sm" style={{ backgroundColor: '#fff', textAlign: "center" }}   >
-        <thead>
-          <tr>
-            <th><Typography variant="h6" component="span">START</Typography></th>
-            <th><Typography variant="h6" component="span">SUBJECT</Typography></th>
-            <th><Typography variant="h6" component="span">END</Typography></th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            time.map((data, ind) => {
-              return tab(ind, props.day);
-            })
-          }
-        </tbody>
-      </Table>
+    <Container style={{ marginTop: "25px", marginBottom: "25px" }} >
+      <TableContainer component={Paper}>
+        <Table size="small" aria-label="a dense table">
+          <TableHead>
+            <TableRow>
+              <TableCell align="center">START</TableCell>
+              <TableCell align="center">SUBJECT</TableCell>
+              <TableCell align="center">END</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {
+              time.map((data, ind) => {
+                return tab(ind, props.day);
+              })
+            }
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Container>
   );
 }
@@ -85,6 +110,7 @@ const selectedLabel = {
 
 export default function () {
   const [activeStep, setActiveStep] = useState(getDay());
+  const style = useStyles();
 
   function DayLabel(props) {
     return (
@@ -113,13 +139,7 @@ export default function () {
     <>
       <Schedule />
       <Container style={{ position: "relative" }}>
-        <hr style={{
-          border: "0.5px solid #303030",
-          position: "absolute",
-          width: "80%",
-          left: "10%",
-          top: "20%"
-        }} />
+        <hr className={window.localStorage.getItem("dark") === 'true' ? style.ava2 : style.ava} />
         <Grid container direction="row"
           justify="space-around"
           alignItems="center"
