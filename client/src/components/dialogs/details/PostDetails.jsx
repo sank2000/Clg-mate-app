@@ -92,7 +92,7 @@ function CustomizedDialogs(props) {
             <Typography variant="body1" component="div">{props.data.description}</Typography>
           </div>
           <Divider variant='fullWidth' style={{ margin: '15px' }} />
-          <div style={{ minWidth: '40vw' }}>
+          <div style={{ minWidth: '40vw', maxWidth: '100%' }}>
             <Typography component="span" variant="body2" style={{ paddingRight: '5px' }}> {props.data.postedOn}</Typography>
             <Typography component="span" variant="body2" style={{ float: "right" }}>
               {
