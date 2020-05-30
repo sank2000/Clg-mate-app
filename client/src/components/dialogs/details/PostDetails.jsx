@@ -101,7 +101,7 @@ function CustomizedDialogs(props) {
               <Typography component="span" variant="body2" style={{ marginRight: '30px' }}> {props.data.postedOn}</Typography>
             </Grid>
             <Grid item xl={4}>
-              <Typography component="span" variant="body2" style={{ float: "right" }}>
+              <Typography component="span" variant="body2" >
                 {
                   props.data.postByType === "Staff" ?
                     <VerifiedUserOutlinedIcon /> : <PermIdentityOutlinedIcon />
