@@ -15,6 +15,7 @@ import Avatar from "@material-ui/core/Avatar";
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
 
 import { signout } from "../auth/RouteAccess";
 import AuthApi from "../auth/AuthApi";
@@ -79,7 +80,7 @@ export default function HideAppBar(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={() => window.open('/profile', '_self')}>
+      <MenuItem gutterBottom onClick={() => window.open('/profile', '_self')}>
         <ListItemIcon>
           {
             user.state !== "verified"
@@ -112,6 +113,13 @@ export default function HideAppBar(props) {
           }
         </ListItemIcon> {user.name}
       </MenuItem>
+      {
+        user.state !== "verified" &&
+        <MenuItem onClick={() => window.open('/verify', '_self')}>
+          <ListItemIcon> <VerifiedUserOutlinedIcon /> </ListItemIcon>
+          Verify
+        </MenuItem>
+      }
       <MenuItem onClick={logout}> <ListItemIcon> <ExitToAppOutlinedIcon /> </ListItemIcon> Logout</MenuItem>
     </Menu >
   );
