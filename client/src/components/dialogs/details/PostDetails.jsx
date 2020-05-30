@@ -80,26 +80,34 @@ function CustomizedDialogs(props) {
           <Typography component="div" variant="body1">{props.data.subject}</Typography>
         </DialogTitle>
         <DialogContent dividers>
-          <div>
-            <Typography variant="body1" component="span" style={{ marginRight: '30px' }}>{props.data.postType}</Typography>
-            <Typography variant="body1" component="span" style={{ float: "right" }}>
-              <ScheduleIcon fontSize="small" className="due-icon" /> Due on: {props.data.dueDate}
-            </Typography>
-          </div>
+          <Grid container>
+            <Grid item xl={8}>
+              <Typography variant="body1" component="span" style={{ marginRight: '30px' }}>{props.data.postType}</Typography>
+            </Grid>
+            <Grid item xl={4}>
+              <Typography variant="body1" component="span">
+                <ScheduleIcon fontSize="small" className="due-icon" /> Due on: {props.data.dueDate}
+              </Typography>
+            </Grid>
+          </Grid>
           <Divider variant='fullWidth' style={{ margin: '15px 0px' }} />
           <div style={{ margin: "5px 0px" }}>
             <Typography variant="h6" component="h6">Description:</Typography>
             <Typography variant="body1" component="div">{props.data.description}</Typography>
           </div>
           <Divider variant='fullWidth' style={{ margin: '15px 0px' }} />
-          <div>
-            <Typography component="span" variant="body2" style={{ marginRight: '30px' }}> {props.data.postedOn}</Typography>
-            <Typography component="span" variant="body2" style={{ float: "right" }}>
-              {
-                props.data.postByType === "Staff" ?
-                  <VerifiedUserOutlinedIcon /> : <PermIdentityOutlinedIcon />
-              } &nbsp; {props.data.postedBy}</Typography>
-          </div>
+          <Grid container>
+            <Grid item xl={8}>
+              <Typography component="span" variant="body2" style={{ marginRight: '30px' }}> {props.data.postedOn}</Typography>
+            </Grid>
+            <Grid item xl={4}>
+              <Typography component="span" variant="body2" style={{ float: "right" }}>
+                {
+                  props.data.postByType === "Staff" ?
+                    <VerifiedUserOutlinedIcon /> : <PermIdentityOutlinedIcon />
+                } &nbsp; {props.data.postedBy}</Typography>
+            </Grid>
+          </Grid>
         </DialogContent>
         <DialogActions>
           <Grid container>
