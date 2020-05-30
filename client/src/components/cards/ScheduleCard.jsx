@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Grid from "@material-ui/core/Grid";
+import Avatar from '@material-ui/core/Avatar';
 
 export default function SimpleCard(props) {
   useEffect(() => {
@@ -38,6 +39,7 @@ export default function SimpleCard(props) {
             {props.when}
           </Typography>
           <Typography variant="h4" component="h3" gutterBottom>
+            <Avatar>{props.per}</Avatar>
             {props.subject}
           </Typography>
           <Typography variant="body2" component="p">

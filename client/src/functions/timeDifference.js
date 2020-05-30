@@ -2,8 +2,6 @@ function getRatio(timeIntervalObject) {
   let startTime = new Date();
   let endTime = new Date();
   const nowTime = new Date();
-  nowTime.setHours(13, 45);
-
 
   const { start, end } = timeIntervalObject;
   startTime.setHours(start.split('.')[0]);
