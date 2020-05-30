@@ -141,7 +141,7 @@ export default function () {
           </Grid>
         </Grid>
       </Container>
-      <Timetable day={activeStep} />
+      {activeStep === 5 || activeStep === -1 ? <Timetable day={0} /> : <Timetable day={activeStep} />}
     </>
   );
 }
