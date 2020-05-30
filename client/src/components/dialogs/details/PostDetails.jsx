@@ -81,18 +81,18 @@ function CustomizedDialogs(props) {
         </DialogTitle>
         <DialogContent dividers>
           <div>
-            <Typography variant="body1" component="span">{props.data.postType}</Typography>
+            <Typography variant="body1" component="span" style={{ marginRight: '10px' }}>{props.data.postType}</Typography>
             <Typography variant="body1" component="span" style={{ float: "right" }}>
               <ScheduleIcon fontSize="small" className="due-icon" /> Due on: {props.data.dueDate}
             </Typography>
           </div>
           <Divider variant='fullWidth' style={{ margin: '15px' }} />
           <div style={{ margin: "5px 0px" }}>
-            <Typography variant="h5" component="h5">Description:</Typography>
+            <Typography variant="h6" component="h6">Description:</Typography>
             <Typography variant="body1" component="div">{props.data.description}</Typography>
           </div>
           <Divider variant='fullWidth' style={{ margin: '15px' }} />
-          <div style={{ minWidth: '40vw', maxWidth: '100%' }}>
+          <div>
             <Typography component="span" variant="body2" style={{ paddingRight: '5px' }}> {props.data.postedOn}</Typography>
             <Typography component="span" variant="body2" style={{ float: "right" }}>
               {
