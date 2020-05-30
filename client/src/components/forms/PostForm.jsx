@@ -103,12 +103,12 @@ function PostForm(props) {
           <PostAddOutlinedIcon style={{ color: '#2196f3' }} />
         </Fab>
       </Tooltip>
-      <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={show}>
+      <Dialog onClose={handleClose} scroll='body' aria-labelledby="customized-dialog-title" open={show}>
         <DialogTitle disableTypography id="customized-dialog-title" onClose={handleClose}>
           <Typography component="span" variant="h5"> New Post </Typography>
         </DialogTitle>
-        <DialogContent dividers>
-          <form action="/posts/new" method="post" style={{ paddingRight: '15px' }}>
+        <form action="/posts/new" method="post" style={{ paddingRight: '15px' }}>
+          <DialogContent dividers>
             <TextField style={applyMargin}
               variant="outlined"
               required type="text"
@@ -227,11 +227,11 @@ function PostForm(props) {
                 }
               </Grid>
             </Grid>
-          </form>
-        </DialogContent>
-        <DialogActions>
-          <Btn style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Btn>
-        </DialogActions>
+          </DialogContent>
+          <DialogActions>
+            <Btn style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Btn>
+          </DialogActions>
+        </form>
       </Dialog>
     </>
   );

@@ -97,12 +97,12 @@ function PostForm(props) {
           <LibraryAddOutlinedIcon style={{ color: '#2196f3' }} />
         </Fab>
       </Tooltip>
-      <Dialog onClose={handleClose} scroll={'paper'} aria-labelledby="customized-dialog-title" open={show}>
+      <Dialog onClose={handleClose} scroll='body' aria-labelledby="customized-dialog-title" open={show}>
         <DialogTitle disableTypography onClose={handleClose}>
           <Typography component="span" variant="h5"> New Material </Typography>
         </DialogTitle>
-        <DialogContent dividers scroll={'paper'}>
-          <form method="post" action="/materials/new" style={{ paddingRight: '15px' }}>
+        <form method="post" action="/materials/new" style={{ paddingRight: '15px' }}>
+          <DialogContent dividers>
             <TextField style={applyMargin}
               variant="outlined"
               required type="text"
@@ -213,11 +213,11 @@ function PostForm(props) {
                 }
               </Grid>
             </Grid>
-          </form>
-        </DialogContent>
-        <DialogActions>
-          <Btn style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary" disabled={props.progress !== 100}>Submit</Btn>
-        </DialogActions>
+          </DialogContent>
+          <DialogActions>
+            <Btn style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary" disabled={props.progress !== 100}>Submit</Btn>
+          </DialogActions>
+        </form>
       </Dialog>
     </>
   );
