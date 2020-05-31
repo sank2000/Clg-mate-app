@@ -72,7 +72,7 @@ const attribution = [
   {
     name: "Material UI",
     alt: "material ui",
-    url: "https://material-ui.com/static/logo_raw.svg"
+    url: "https://material-ui.com/static/logo.png"
   },
   {
     name: "Flat Icons",
@@ -95,9 +95,9 @@ const attribution = [
     url: "https://banner2.cleanpng.com/20180531/sas/kisspng-bootstrap-react-software-framework-javascript-fron-5b0f9b1ab26fd7.9058729715277494027309.jpg"
   },
   {
-    name: "Material UI",
-    alt: "material ui",
-    url: "https://material-ui.com/static/logo_raw.svg"
+    name: "Hero Patterns",
+    alt: "hero patterns",
+    url: "https://desdev.tools/wp/wp-content/uploads/2019/09/logo-heropatterns.jpg"
   }
 ]
 
