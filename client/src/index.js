@@ -17,11 +17,6 @@ const theme = createMuiTheme({
     type: mode
   },
   overrides: {
-    MuiSpeedDialIcon: {
-      root: {
-        height: 'default'
-      }
-    },
     MuiSpeedDialAction: {
       fab: {
         backgroundColor: blue[500],
@@ -42,7 +37,6 @@ const theme = createMuiTheme({
     }
   }
 });
-
 
 if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
   const regEvt = navigator.serviceWorker.register('./ServiceWorker.js');
