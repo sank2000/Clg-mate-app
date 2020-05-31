@@ -1,19 +1,21 @@
 import React, { useState } from "react";
-import TextField from "@material-ui/core/TextField";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import * as Yup from "yup";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
+import { useFormik } from "formik";
 import { Spinner } from "react-bootstrap";
-import { changePassword } from "../auth/RouteAccess";
+
+import Button from "@material-ui/core/Button";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import Grid from "@material-ui/core/Grid";
 import Snackbar from "@material-ui/core/Snackbar";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
+
+import { changePassword } from "../auth/RouteAccess";
 import Alert from '../messages/alerts/alert';
 
-
-import { useFormik } from "formik";
-import * as Yup from "yup";
 
 export default function ChangePassword() {
   const intialValues = {
@@ -88,7 +90,7 @@ export default function ChangePassword() {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
         >
-          <h5>Change Password</h5>
+          <Typography variant="h5" component="h5">Change Password</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <form onSubmit={formik.handleSubmit}>
