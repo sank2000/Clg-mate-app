@@ -23,12 +23,12 @@ export default function () {
       <Switch
         checked={state}
         icon={
-          <WbSunnyIcon style={{ fontSize: "2rem", color: "#FF8F00" }} />
+          <WbSunnyIcon style={{ fontSize: "1.3rem", color: "#FF8F00" }} />
         }
         edge="start"
         color="default"
         checkedIcon={
-          <NightsStayIcon style={{ fontSize: "2rem", color: "yellow" }} />
+          <NightsStayIcon style={{ fontSize: "1.3rem", color: "yellow" }} />
         }
         onChange={handleChange}
         inputProps={{ 'aria-label': 'secondary checkbox' }}
