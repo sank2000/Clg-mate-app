@@ -1,20 +1,22 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
-import Container from "@material-ui/core/Container";
 import DateFormat from 'dateformat';
-import LinearProgress from '@material-ui/core/LinearProgress';
+
+import Container from "@material-ui/core/Container";
 import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
 import Button from '@material-ui/core/Button';
-import FilterListIcon from '@material-ui/icons/FilterList';
 import Grid from '@material-ui/core/Grid';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+
+import FilterListIcon from '@material-ui/icons/FilterList';
 
 import NavigationBar from "../navigation/AppBar";
 import PostCard from "../cards/PostCard";
 
-import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 function ExpiredPosts() {
   const [post, setPost] = useState([]);
@@ -28,7 +30,6 @@ function ExpiredPosts() {
   });
   const classes = useStyles();
 
-
   useEffect(() => {
     let params = new URLSearchParams({ type: type });
     axios.post("/posts/expired", params)
@@ -38,7 +39,7 @@ function ExpiredPosts() {
       })
       .catch(function (error) {
         console.log(error);
-        // window.open("/oops", "_self");
+        window.open("/oops", "_self");
       });
     // eslint-disable-next-line
   }, []);

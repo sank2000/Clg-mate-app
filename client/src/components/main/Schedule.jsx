@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { time, table } from "../../constants/Table";
-import NavigationBar from '../navigation/AppBar';
 import Grid from '@material-ui/core/Grid';
-
-import ScheduleCard from "../cards/ScheduleCard";
 import Container from "@material-ui/core/Container";
 
+import NavigationBar from '../navigation/AppBar';
 import getPer from "../../functions/timeDifference";
+import { time, table } from "../../constants/Table";
+import ScheduleCard from "../cards/ScheduleCard";
 
 var today = new Date();
 
@@ -35,12 +34,13 @@ export default function Schedule() {
       per: time[1].per
     }
   ]);
-  let tym = Number(today.getHours() + "." + today.getMinutes());
+
+  const timeString = Number(today.getHours() + "." + today.getMinutes());
 
   function find(value, ind) {
     if (today.getDay() === 0 || today.getDay() === 6) {
       return;
-    } else if (tym < 9) {
+    } else if (timeString < 9) {
       setPer([
         {
           when: "now",
@@ -60,7 +60,7 @@ export default function Schedule() {
         }
       ]);
       return;
-    } else if (tym > 16.3) {
+    } else if (timeString > 16.3) {
       if (today.getDay() === 5) {
         return;
       }
@@ -84,7 +84,7 @@ export default function Schedule() {
       ]);
       return;
     }
-    if (tym >= value.start && tym <= value.end) {
+    if (timeString >= value.start && timeString <= value.end) {
       setCrtsubject(ind);
       return;
     }

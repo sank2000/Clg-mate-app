@@ -1,18 +1,23 @@
-import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
-import Container from "@material-ui/core/Container";
 import DateFormat from 'dateformat';
+import React, { useState, useEffect, Fragment } from 'react';
+
+import Container from "@material-ui/core/Container";
+import FormControl from "@material-ui/core/FormControl";
+import IconButton from "@material-ui/core/IconButton";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+
 import Grid from '@material-ui/core/Grid';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import ClearOutlinedIcon from "@material-ui/icons/ClearOutlined";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import FormControl from "@material-ui/core/FormControl";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
-import IconButton from "@material-ui/core/IconButton";
-import NavigationBar from "../navigation/AppBar";
-import MaterialCard from "../cards/MaterialCard";
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+
+import ClearOutlinedIcon from "@material-ui/icons/ClearOutlined";
+import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
+
+import MaterialCard from "../cards/MaterialCard";
+import NavigationBar from "../navigation/AppBar";
+
 
 function App() {
   const [post, setPost] = useState([]);
@@ -89,7 +94,6 @@ function App() {
       setFound(true);
     }
     SetLoading(false);
-
   }
 
   function keyEntered(event) {
@@ -107,6 +111,7 @@ function App() {
       </Fragment>
     );
   }
+
   return (
     <Fragment>
       <NavigationBar title="All materials" />
@@ -151,8 +156,7 @@ function App() {
         }
       </Container>
     </Fragment >
-  )
-
+  );
 }
 
 export default App;

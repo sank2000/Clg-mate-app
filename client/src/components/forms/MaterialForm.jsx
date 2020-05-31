@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
+import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import TextField from "@material-ui/core/TextField";
-import Btn from "@material-ui/core/Button";
-import CloudUploadOutlinedIcon from "@material-ui/icons/CloudUploadOutlined";
+import Button from "@material-ui/core/Button";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import Typography from '@material-ui/core/Typography';
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions';
 import CloseIcon from '@material-ui/icons/Close';
-import Typography from '@material-ui/core/Typography';
+import CloudUploadOutlinedIcon from "@material-ui/icons/CloudUploadOutlined";
 
 import LinearProgressWithLabel from './LinearProgressWithLabel';
 import subjects from '../../constants/subjects'
@@ -180,15 +180,15 @@ function PostForm(props) {
                       onChange={props.handleChange}
                     />
                     <label htmlFor="contained-button-file">
-                      <Btn variant="contained" component="span" disableElevation>
+                      <Button variant="contained" component="span" disableElevation>
                         {props.fileChooseState}
-                      </Btn>
+                      </Button>
                     </label>
                   </Grid>
                   <Grid item>
                     {
                       props.fileChooseState === 'File Chosen' &&
-                      <Btn
+                      <Button
                         onClick={props.handleUpload}
                         size="medium"
                         variant="contained"
@@ -197,7 +197,7 @@ function PostForm(props) {
                           fontSize="small"
                           className="uploadIcon" />
                          &nbsp; Upload
-                      </Btn>
+                      </Button>
                     }
                   </Grid>
                 </Grid>
@@ -212,7 +212,7 @@ function PostForm(props) {
             </Grid>
           </DialogContent>
           <DialogActions>
-            <Btn style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary" disabled={props.progress !== 100}>Submit</Btn>
+            <Button style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary" disabled={props.progress !== 100}>Submit</Button>
           </DialogActions>
         </form>
       </Dialog>

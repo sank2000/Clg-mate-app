@@ -1,19 +1,22 @@
-import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
-import Container from '@material-ui/core/Container'
 import DateFormat from 'dateformat';
+import React, { useState, useEffect, Fragment } from 'react';
+
+import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+
 import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
+import Select from "@material-ui/core/Select";
 import FilterListIcon from '@material-ui/icons/FilterList';
 
-import NavigationBar from "../navigation/AppBar";
 import PostCard from "../cards/PostCard";
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import NavigationBar from "../navigation/AppBar";
+
 
 function App() {
 	const [post, setPost] = useState([]);
@@ -33,11 +36,10 @@ function App() {
 			.then(function (response) {
 				setPost([...response.data]);
 				SetLoading(false);
-
 			})
 			.catch(function (error) {
 				console.log(error);
-				// window.open("/oops", "_self");
+				window.open("/oops", "_self");
 			});
 		// eslint-disable-next-line
 	}, [])
@@ -67,7 +69,6 @@ function App() {
 		);
 	}
 
-
 	const getFilter = async () => {
 		let params = new URLSearchParams({ type: type });
 		const result = await axios.post("/posts/full", params);
@@ -79,7 +80,6 @@ function App() {
 		const response = await getFilter();
 		setPost([...response.data]);
 		SetLoading(false);
-
 	}
 
 	return (
