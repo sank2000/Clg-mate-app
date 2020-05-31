@@ -87,7 +87,7 @@ export default function Feedback() {
   return (
     <Fragment>
       <NavigationBar title="Feedback" />
-      <FlexContainer height='89vh' background='transparent' className="App">
+      <FlexContainer withAppBar background='transparent' className="App">
         <CreateOutlinedIcon style={{
           padding: "1rem",
           background: "#2196f3",

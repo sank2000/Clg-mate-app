@@ -23,7 +23,9 @@ export default function () {
     <>
       <Switch
         checked={state}
-        icon={<WbSunnyIcon style={{ fontSize: "1.3rem", color: "blue" }} />}
+        icon={
+          <WbSunnyIcon style={{ fontSize: "1.3rem", color: "blue" }} />
+        }
         edge="start"
         color="default"
         checkedIcon={

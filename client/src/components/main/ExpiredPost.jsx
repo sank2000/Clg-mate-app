@@ -85,7 +85,7 @@ function ExpiredPosts() {
     <Fragment>
       <NavigationBar title="Expired posts" />
       <Container maxWidth="xl" className={classes.root}>
-        <Grid container style={{ paddingBottom: "10px" }}>
+        <Grid container style={{ paddingBottom: "10px" }} justify="space-between">
           <Grid item lg={9} xs={6}><h1 style={{ display: "inline" }}>Posts</h1></Grid>
           <Grid item>
             <FormControl variant='outlined' style={{ minWidth: 140 }} size="small" className="filterSelect" >

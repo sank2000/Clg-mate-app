@@ -14,9 +14,6 @@ import NavigationBar from "../navigation/AppBar";
 import MaterialCard from "../cards/MaterialCard";
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
-
-
-
 function App() {
   const [post, setPost] = useState([]);
   const [loading, SetLoading] = useState(true);
@@ -114,7 +111,7 @@ function App() {
     <Fragment>
       <NavigationBar title="All materials" />
       <Container maxWidth="xl" className={classes.root}>
-        <Grid container style={{ paddingBottom: "10px" }}>
+        <Grid container style={{ paddingBottom: "10px" }} justify="space-between">
           <Grid item lg={9} xs={6}><h1 style={{ display: "inline" }}>Materials</h1></Grid>
           <Grid item>
             <FormControl>
