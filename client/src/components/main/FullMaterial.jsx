@@ -114,7 +114,7 @@ function App() {
     <Fragment>
       <NavigationBar title="All materials" />
       <Container maxWidth="xl" className={classes.root}>
-        <Grid container >
+        <Grid container style={{ paddingBottom: "10px" }}>
           <Grid item lg={9} xs={6}><h1 style={{ display: "inline" }}>Materials</h1></Grid>
           <Grid item>
             <FormControl>
