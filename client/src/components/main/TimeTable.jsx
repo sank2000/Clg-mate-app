@@ -56,11 +56,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const avatarImageStyle = {
-  width: 40,
-  height: 40
-};
-
 function tab(ind, day) {
   return (
     <StyledTableRow key={ind}>
