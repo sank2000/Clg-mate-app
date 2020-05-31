@@ -82,6 +82,7 @@ function PostForm(props) {
   };
 
   const handleClose = () => {
+    props.setType("");
     setShow(false);
   };
   const handleShow = () => setShow(true);

@@ -86,10 +86,10 @@ export default function () {
             </SpeedDial>
           </div>
           {
-            type === 'post' && <Form post />
+            type === 'post' && <Form post setType={setType} />
           }
           {
-            type === 'material' && <Form />
+            type === 'material' && <Form setType={setType} />
           }
         </Fragment>
       }
