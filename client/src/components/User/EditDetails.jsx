@@ -1,29 +1,29 @@
 import React, { useState } from "react";
-import { Spinner } from "react-bootstrap";
-import IconButton from "@material-ui/core/IconButton";
-import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
-import "bootstrap/dist/css/bootstrap.min.css";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
-import { useFormik } from "formik";
 import * as Yup from "yup";
-import { updateAccount } from "../auth/RouteAccess";
+import { useFormik } from "formik";
+import { Spinner } from "react-bootstrap";
+
+import Grid from "@material-ui/core/Grid";
+import IconButton from "@material-ui/core/IconButton";
 import Snackbar from "@material-ui/core/Snackbar";
-import Alert from '../messages/alerts/alert';
-import AuthApi from "../auth/AuthApi";
-import { signin } from "../auth/RouteAccess";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
+import MuiDialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
+import MuiDialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
-import MuiDialogContent from '@material-ui/core/DialogContent';
-import MuiDialogActions from '@material-ui/core/DialogActions';
 import { withStyles } from '@material-ui/core/styles';
-import Typography from "@material-ui/core/Typography";
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import CloseIcon from '@material-ui/icons/Close';
+import AuthApi from "../auth/AuthApi";
+import { updateAccount } from "../auth/RouteAccess";
+import { signin } from "../auth/RouteAccess";
+import Alert from '../messages/alerts/alert';
 
 const styles = (theme) => ({
   root: {
@@ -77,7 +77,6 @@ export default function Detail() {
     if (reason === "clickaway") {
       return;
     }
-
     setOpen(false);
   };
 
@@ -130,7 +129,6 @@ export default function Detail() {
     }
   });
 
-
   const MDialogTitle = withStyles(styles)((props) => {
     const { children, classes, onClose, ...other } = props;
     return (
@@ -158,7 +156,6 @@ export default function Detail() {
     },
   }))(MuiDialogActions);
 
-
   return (
     <>
       <IconButton
@@ -172,7 +169,7 @@ export default function Detail() {
           <Typography component="span" variant="h5"> Edit </Typography>
         </MDialogTitle>
         <form onSubmit={formik.handleSubmit}>
-          <MDialogContent dividers style={{ padding: '10px', paddingRight: '21px' }}>
+          <MDialogContent dividers style={{ padding: '15px' }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
@@ -214,6 +211,7 @@ export default function Detail() {
                   {...formik.getFieldProps("url")}
                   variant="outlined"
                   fullWidth
+                  size="small"
                   label="Image URL"
                 />
               </Grid>
@@ -222,90 +220,15 @@ export default function Detail() {
           <MDialogActions>
             <Button
               type="submit"
-              style={{ backgroundColor: "#2196f3", color: "#fff" }}
+              color="primary"
+              variant="contained"
             >
-              submit &nbsp;
+              Submit &nbsp;
               {load && <Spinner animation="border" size="sm" />}
             </Button>
           </MDialogActions>
         </form>
       </Dialog>
-      {/* <Modal
-        show={show}
-        onHide={handleClose}
-        centered
-        size="sm"
-        dialogClassName="border-radius-1"
-      >
-        <Modal.Header>
-          <h1 className="modal-title w-100 text-center">Edit</h1>
-          <IconButton
-            variant="outlined"
-            onClick={handleClose}
-            style={{ outline: "none" }}
-          >
-            <CloseOutlinedIcon style={{ color: "#ff1a1a" }} />
-          </IconButton>
-        </Modal.Header>
-        <form onSubmit={formik.handleSubmit}>
-          <Modal.Body>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  name="name"
-                  {...formik.getFieldProps("name")}
-                  helperText={formik.touched.name && formik.errors.name}
-                  error={
-                    formik.touched.name && formik.errors.name !== undefined
-                  }
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="name"
-                  label="Name"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  {...formik.getFieldProps("email")}
-                  helperText={formik.touched.email && formik.errors.email}
-                  error={
-                    formik.touched.email && formik.errors.email !== undefined
-                  }
-                  size="small"
-                  autoComplete="email"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  name="url"
-                  helperText={formik.touched.url && formik.errors.url}
-                  error={formik.touched.url && formik.errors.url !== undefined}
-                  {...formik.getFieldProps("url")}
-                  variant="outlined"
-                  fullWidth
-                  label="Image URL"
-                />
-              </Grid>
-            </Grid>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button
-              type="submit"
-              style={{ backgroundColor: "#2196f3", color: "#fff" }}
-            >
-              submit &nbsp;
-              {load && <Spinner animation="border" size="sm" />}
-            </Button>
-          </Modal.Footer>
-        </form>
-      </Modal> */}
       <Dialog open={dialogOpen} onClose={handleDialogClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Confirm</DialogTitle>
         <DialogContent>

@@ -1,25 +1,29 @@
 import React, { useState } from "react";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Spinner } from "react-bootstrap";
+
 import Button from "@material-ui/core/Button";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import Grid from "@material-ui/core/Grid";
-import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+import Snackbar from "@material-ui/core/Snackbar";
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
 
-import { deleteAccount } from "../auth/RouteAccess";
-import Snackbar from "@material-ui/core/Snackbar";
-import Alert from '../messages/alerts/alert';
-import { Spinner } from "react-bootstrap";
 import AuthApi from "../auth/AuthApi";
+import { deleteAccount } from "../auth/RouteAccess";
+
+import Alert from '../messages/alerts/alert';
+
 
 export default function DeleteAccount() {
   const [agree, setAgree] = useState("");
@@ -28,7 +32,6 @@ export default function DeleteAccount() {
   const [cOpen, setCOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-
 
   const handleConfirmOpen = () => {
     setCOpen(true);
@@ -47,7 +50,6 @@ export default function DeleteAccount() {
     if (reason === "clickaway") {
       return;
     }
-
     setOpen(false);
   };
 
@@ -81,21 +83,19 @@ export default function DeleteAccount() {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
         >
-          <h5>Delete Account</h5>
+          <Typography variant="h5">Delete Account</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Grid container spacing={1}>
             <Grid item>
-              <h6>
+              <Typography variant="body1" component="span">
                 Type{" "}
-                <span>
-                  <h5 style={{ display: "inline" }}>"I agree"</h5>
-                </span>{" "}
+                <Typography variant="h6" component="span" style={{ display: "inline" }}>"I agree"</Typography>{" "}
               to continue
-            </h6>
+            </Typography>
             </Grid>
             <Grid item xs={12}>
-              <OutlinedInput onChange={e => setAgree(e.target.value)} />
+              <OutlinedInput name="confirmation" autoComplete={false} onChange={e => setAgree(e.target.value)} />
             </Grid>
             {agree === "I agree" && (
               <Grid item xs={12}>
