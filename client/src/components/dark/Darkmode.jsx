@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Switch from '@material-ui/core/Switch';
+import WbSunnyIcon from "@material-ui/icons/WbSunny";
+import NightsStayIcon from "@material-ui/icons/NightsStay";
 
 let mode = false;
 if (window.localStorage.getItem("dark")) {
@@ -22,13 +24,17 @@ export default function () {
       {state === true ? <span style={{ color: "yellow" }}>☾</span> : <span style={{ color: "slateblue" }}>☀︎</span>}
       <Switch
         checked={state}
+        icon={<WbSunnyIcon style={{ fontSize: "1.3rem", color: "blue" }} />}
+        edge="start"
+        color="default"
+        checkedIcon={
+          <NightsStayIcon style={{ fontSize: "1.3rem", color: "yellow" }} />
+        }
         onChange={handleChange}
-        color="primary"
-        name="mode"
         inputProps={{ 'aria-label': 'secondary checkbox' }}
       />
-
-    </>)
+    </>
+  );
 }
 
 //slateblue

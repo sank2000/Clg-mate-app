@@ -29,9 +29,14 @@ export default function () {
   const useStyles = makeStyles({
     root: {
       backgroundColor: theme.palette.primary.main,
+      boxShadow: theme.shadows[3],
       color: '#fff',
       "&:hover": {
         backgroundColor: theme.palette.primary.dark,
+        boxShadow: theme.shadows[6],
+      },
+      "&:clicked": {
+        boxShadow: theme.shadows[3],
       }
     },
   });
