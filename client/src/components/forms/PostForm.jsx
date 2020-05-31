@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import IconButton from '@material-ui/core/IconButton';
 import TextField from "@material-ui/core/TextField";
 import Btn from "@material-ui/core/Button";
@@ -11,10 +11,7 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import { KeyboardDatePicker } from "@material-ui/pickers";
 import Grid from '@material-ui/core/Grid';
-import Tooltip from '@material-ui/core/Tooltip';
-import PostAddOutlinedIcon from "@material-ui/icons/PostAddOutlined";
-import Fab from '@material-ui/core/Fab';
-import { withStyles, useTheme, makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
@@ -78,17 +75,6 @@ function PostForm(props) {
   const [subject, setSubject] = useState("");
   const [selectedDate, handleDateChange] = useState(new Date());
 
-  const theme = useTheme();
-  const useStyles = makeStyles({
-    newButton: {
-      backgroundColor: theme.palette.primary.main,
-      color: '#fff',
-      "&:hover": {
-        backgroundColor: theme.palette.primary.dark,
-      }
-    }
-  });
-  const classes = useStyles();
 
   const handlePostTypeChange = event => {
     setType(event.target.value);
@@ -108,13 +94,12 @@ function PostForm(props) {
     margin: "7px"
   };
 
+  useEffect(() => {
+    handleShow();
+  }, []);
+
   return (
     <>
-      <Tooltip title="New Post" placement="left">
-        <Fab elevation={3} className={classes.newButton} style={{ position: "fixed", bottom: "13vh", right: "3vw" }} aria-label="add" onClick={handleShow}>
-          <PostAddOutlinedIcon />
-        </Fab>
-      </Tooltip>
       <Dialog onClose={handleClose} scroll='body' aria-labelledby="customized-dialog-title" open={show}>
         <DialogTitle disableTypography id="customized-dialog-title" onClose={handleClose}>
           <Typography component="span" variant="h5"> New Post </Typography>
