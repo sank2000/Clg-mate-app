@@ -19,7 +19,7 @@ export default function () {
 
   return (
     <>
-      <span style={state === true ? { color: "grey" } : { color: "yellow" }}>☀︎</span>
+      {state === true ? <span style={{ color: "yellow" }}>☾</span> : <span style={{ color: "slateblue" }}>☀︎</span>}
       <Switch
         checked={state}
         onChange={handleChange}
@@ -27,7 +27,7 @@ export default function () {
         name="mode"
         inputProps={{ 'aria-label': 'secondary checkbox' }}
       />
-      <span style={state === true ? { color: "red" } : { color: "grey" }}>☾</span>
+
     </>)
 }
 
