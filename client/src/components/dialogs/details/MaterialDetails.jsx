@@ -46,7 +46,8 @@ const DialogTitle = withStyles(styles)((props) => {
 
 const DialogContent = withStyles((theme) => ({
   root: {
-    padding: theme.spacing(2),
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
   },
 }))(MuiDialogContent);
 
@@ -80,7 +81,7 @@ function CustomizedDialogs(props) {
           <Typography component="span" variant="h5"> {props.data.title} </Typography>
           <Typography component="div" variant="body1">{props.data.author}</Typography>
         </DialogTitle>
-        <DialogContent dividers>
+        <DialogContent dividers style={{ padding: '5px 10px' }}>
           <div>
             <Typography variant="body1" component="span" style={{ marginRight: '10px' }}>{props.data.subName}</Typography>
             <Typography variant="body1" component="span" style={{ float: "right" }}>
@@ -93,10 +94,21 @@ function CustomizedDialogs(props) {
             <Typography variant="body1" component="div">{props.data.description}</Typography>
           </div>
           <Divider variant='fullWidth' style={{ margin: '15px 0px' }} />
-          <div>
-            <Typography component="span" variant="body2" style={{ marginRight: '30px' }}> {props.data.postedOn}</Typography>
-            <Typography component="span" variant="body2" style={{ float: "right" }}> {props.data.postByType === "Staff" ? <VerifiedUserOutlinedIcon /> : <PermIdentityOutlinedIcon />} &nbsp; {props.data.postBy}</Typography>
-          </div>
+          <Grid container justify="space-between">
+            <Grid item>
+              <Typography component="span" variant="body2" style={{ marginRight: '30px' }}> {props.data.postedOn}</Typography>
+            </Grid>
+            <Grid item>
+              <Grid container>
+                <Grid item>
+                  {props.data.postByType === "Staff" ? <VerifiedUserOutlinedIcon /> : <PermIdentityOutlinedIcon />}
+                </Grid>
+                <Grid item>
+                  <Typography component="span" variant="body2"> &nbsp; {props.data.postBy}</Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
         </DialogContent>
         <DialogActions>
           <Grid container>
