@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
 import DateFormat from 'dateformat';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";

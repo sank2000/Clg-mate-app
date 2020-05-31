@@ -4,6 +4,7 @@ import App from "./components/Router";
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import blue from '@material-ui/core/colors/blue';
 import pink from '@material-ui/core/colors/pink';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 let mode = "light";
 if (window.localStorage.getItem("dark") === 'true') {

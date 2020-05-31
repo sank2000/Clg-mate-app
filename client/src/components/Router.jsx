@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import App from "./main/App";
 import PageNotFound from "./messages/errors/404";
 import SomethingWrong from "./messages/errors/5xx";
