@@ -113,8 +113,8 @@ function PostForm(props) {
         <DialogTitle disableTypography onClose={handleClose}>
           <Typography component="span" variant="h5"> New Material </Typography>
         </DialogTitle>
-        <form method="post" action="/materials/new" style={{ paddingRight: '15px' }}>
-          <DialogContent dividers>
+        <form method="post" action="/materials/new">
+          <DialogContent dividers style={{ padding: '10px', paddingRight: '21px' }}>
             <TextField style={applyMargin}
               variant="outlined"
               required type="text"
@@ -180,7 +180,7 @@ function PostForm(props) {
               multiline
               label="Description"
             />
-            <Grid container direction="column" style={{ marginTop: '8px', marginLeft: '10px' }}>
+            <Grid container direction="column" style={{ paddingLeft: '8px', paddingTop: '5px' }}>
               <Grid item>
                 <Grid container direction="row" justify="space-between">
                   <Grid item>

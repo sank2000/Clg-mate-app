@@ -119,8 +119,8 @@ function PostForm(props) {
         <DialogTitle disableTypography id="customized-dialog-title" onClose={handleClose}>
           <Typography component="span" variant="h5"> New Post </Typography>
         </DialogTitle>
-        <form action="/posts/new" method="post" style={{ paddingRight: '15px' }}>
-          <DialogContent dividers>
+        <form action="/posts/new" method="post">
+          <DialogContent dividers style={{ padding: '10px', paddingRight: '21px' }}>
             <TextField style={applyMargin}
               variant="outlined"
               required type="text"
@@ -221,7 +221,7 @@ function PostForm(props) {
                         size="medium"
                         variant="contained"
                         color="secondary"
-                        style={{ float: "right", marginRight: "-15px" }}>
+                        style={{ float: "right" }}>
                         <CloudUploadOutlinedIcon
                           fontSize="small"
                           className="uploadIcon" />
