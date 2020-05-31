@@ -4,12 +4,23 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Avatar from '@material-ui/core/Avatar';
+import { makeStyles } from '@material-ui/core/styles';
 
 import NavigationBar from '../navigation/AppBar';
 import FlexContainer from "../containers/FlexContainer";
 import Dev from '../cards/DeveloperCard';
 import Copyright from './CopyrightNote';
 import { shuffledDevs } from '../../constants/devs';
+
+const useStyles = makeStyles((theme) => ({
+  small: {
+    width: theme.spacing(4),
+    height: theme.spacing(4),
+  },
+  attribution: {
+    padding: theme.spacing(2)
+  }
+}));
 
 function renderDevs(dev) {
   return (
@@ -55,6 +66,7 @@ const techStack = [
 ]
 
 export default function About() {
+  const classes = useStyles();
   return (
     <React.Fragment>
       <NavigationBar title='About' />
@@ -143,21 +155,37 @@ export default function About() {
                 Our Sincere attributions to:
             </Typography>
             </Grid>
-            <Grid item xs={12} sm={6} md={3} lg={3} style={{ textAlign: 'center' }}>
-              <Avatar alt="material ui" variant="square" src="https://material-ui.com/static/logo_raw.svg" />
-              <Typography variant="overline" component="span" align="center">Material UI</Typography>
+            <Grid item xs={12} sm={6} md={3} lg={3} style={{ textAlign: 'center' }} container justify="center">
+              <Grid item>
+                <Avatar className={classes.small} alt="material ui" variant="square" src="https://material-ui.com/static/logo_raw.svg" />
+              </Grid>
+              <Grid item>
+                <Typography className={classes.attribution} variant="overline" component="span" align="center">Material UI</Typography>
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6} md={3} lg={3} style={{ textAlign: 'center' }}>
-              <Avatar alt="material ui" variant="square" src="https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_5a5ce9469cd708a59b4dda07a7f06399/flaticon.jpg" />
-              <Typography variant="overline" component="span" align="center">Flaticons</Typography>
+            <Grid item xs={12} sm={6} md={3} lg={3} style={{ textAlign: 'center' }} container justify="center">
+              <Grid item>
+                <Avatar className={classes.small} alt="material ui" variant="square" src="https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_5a5ce9469cd708a59b4dda07a7f06399/flaticon.jpg" />
+              </Grid>
+              <Grid item>
+                <Typography className={classes.attribution} variant="overline" component="span" align="center">Flaticons</Typography>
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6} md={3} lg={3} style={{ textAlign: 'center' }}>
-              <Avatar alt="material ui" variant="square" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Icons8_logo.svg/1200px-Icons8_logo.svg.png" />
-              <Typography variant="overline" component="span" align="center">Icons 8</Typography>
+            <Grid item xs={12} sm={6} md={3} lg={3} style={{ textAlign: 'center' }} container justify="center">
+              <Grid item>
+                <Avatar className={classes.small} alt="material ui" variant="square" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Icons8_logo.svg/1200px-Icons8_logo.svg.png" />
+              </Grid>
+              <Grid item>
+                <Typography className={classes.attribution} variant="overline" component="span" align="center">Icons 8</Typography>
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6} md={3} lg={3} style={{ textAlign: 'center' }}>
-              <Avatar alt="material ui" variant="square" src="https://cdn3.iconfinder.com/data/icons/inficons/512/stackoverflow.png" />
-              <Typography variant="overline" component="span" align="center">Stack Overflow</Typography>
+            <Grid item xs={12} sm={6} md={3} lg={3} style={{ textAlign: 'center' }} container justify="center">
+              <Grid item>
+                <Avatar className={classes.small} alt="material ui" variant="square" src="https://cdn3.iconfinder.com/data/icons/inficons/512/stackoverflow.png" />
+              </Grid>
+              <Grid item>
+                <Typography className={classes.attribution} variant="overline" component="span" align="center">Stack Overflow</Typography>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
