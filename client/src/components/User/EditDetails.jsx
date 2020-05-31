@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Spinner } from "react-bootstrap";
-import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
+import { Spinner } from "react-bootstrap";
 import IconButton from "@material-ui/core/IconButton";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -19,6 +18,25 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import MuiDialogTitle from '@material-ui/core/DialogTitle';
+import MuiDialogContent from '@material-ui/core/DialogContent';
+import MuiDialogActions from '@material-ui/core/DialogActions';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from "@material-ui/core/Typography";
+import CloseIcon from '@material-ui/icons/Close';
+
+const styles = (theme) => ({
+  root: {
+    margin: 0,
+    padding: theme.spacing(2),
+  },
+  closeButton: {
+    position: 'absolute',
+    right: theme.spacing(1),
+    top: theme.spacing(1),
+    color: '#ff1a1a',
+  },
+});
 
 export default function Detail() {
   const [show, setShow] = useState(false);
@@ -112,6 +130,35 @@ export default function Detail() {
     }
   });
 
+
+  const MDialogTitle = withStyles(styles)((props) => {
+    const { children, classes, onClose, ...other } = props;
+    return (
+      <MuiDialogTitle disableTypography className={classes.root} {...other}>
+        <Typography variant="h6">{children}</Typography>
+        {onClose ? (
+          <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+            <CloseIcon />
+          </IconButton>
+        ) : null}
+      </MuiDialogTitle>
+    );
+  });
+
+  const MDialogContent = withStyles((theme) => ({
+    root: {
+      padding: theme.spacing(2),
+    },
+  }))(MuiDialogContent);
+
+  const MDialogActions = withStyles((theme) => ({
+    root: {
+      margin: 0,
+      padding: theme.spacing(1),
+    },
+  }))(MuiDialogActions);
+
+
   return (
     <>
       <IconButton
@@ -120,7 +167,70 @@ export default function Detail() {
       >
         <EditOutlinedIcon />
       </IconButton>
-      <Modal
+      <Dialog onClose={handleClose} scroll='body' aria-labelledby="customized-dialog-title" open={show}>
+        <MDialogTitle disableTypography id="customized-dialog-title" onClose={handleClose}>
+          <Typography component="span" variant="h5"> Edit </Typography>
+        </MDialogTitle>
+        <form onSubmit={formik.handleSubmit}>
+          <MDialogContent dividers style={{ padding: '10px', paddingRight: '21px' }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  name="name"
+                  {...formik.getFieldProps("name")}
+                  helperText={formik.touched.name && formik.errors.name}
+                  error={
+                    formik.touched.name && formik.errors.name !== undefined
+                  }
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="name"
+                  label="Name"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  {...formik.getFieldProps("email")}
+                  helperText={formik.touched.email && formik.errors.email}
+                  error={
+                    formik.touched.email && formik.errors.email !== undefined
+                  }
+                  size="small"
+                  autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  name="url"
+                  helperText={formik.touched.url && formik.errors.url}
+                  error={formik.touched.url && formik.errors.url !== undefined}
+                  {...formik.getFieldProps("url")}
+                  variant="outlined"
+                  fullWidth
+                  label="Image URL"
+                />
+              </Grid>
+            </Grid>
+          </MDialogContent>
+          <MDialogActions>
+            <Button
+              type="submit"
+              style={{ backgroundColor: "#2196f3", color: "#fff" }}
+            >
+              submit &nbsp;
+              {load && <Spinner animation="border" size="sm" />}
+            </Button>
+          </MDialogActions>
+        </form>
+      </Dialog>
+      {/* <Modal
         show={show}
         onHide={handleClose}
         centered
@@ -195,7 +305,7 @@ export default function Detail() {
             </Button>
           </Modal.Footer>
         </form>
-      </Modal>
+      </Modal> */}
       <Dialog open={dialogOpen} onClose={handleDialogClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Confirm</DialogTitle>
         <DialogContent>
