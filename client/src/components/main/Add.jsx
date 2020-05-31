@@ -5,6 +5,9 @@ import ClearIcon from '@material-ui/icons/Clear';
 import Backdrop from "@material-ui/core/Backdrop";
 import Alert from "@material-ui/lab/Alert";
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import LibraryAddOutlinedIcon from "@material-ui/icons/LibraryAddOutlined";
+import Tooltip from '@material-ui/core/Tooltip';
+import PostAddOutlinedIcon from "@material-ui/icons/PostAddOutlined";
 
 import AuthApi from "../auth/AuthApi";
 import Form from "../dialogs/NewPost";
@@ -13,10 +16,12 @@ import Form from "../dialogs/NewPost";
 export default function () {
   const [click, setClick] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [type, setType] = useState("");
   const authApi = React.useContext(AuthApi);
   const user = authApi.auth;
 
   function handleClick() {
+    setType("");
     if (user.state !== "verified") {
       setLoading(true);
     }
@@ -46,8 +51,22 @@ export default function () {
   return (
     <>
       {click && <Fragment>
-        <Form post />
-        <Form />
+        <Tooltip title="New Post" placement="left">
+          <Fab elevation={3} className={classes.newButton} style={{ position: "fixed", bottom: "13vh", right: "3vw" }} aria-label="add" onClick={() => setType('post')}>
+            <PostAddOutlinedIcon />
+          </Fab>
+        </Tooltip>
+        <Tooltip title="New Material" placement="left">
+          <Fab elevation={3} className={classes.newButton} style={{ position: "fixed", bottom: "23vh", right: "3vw" }} aria-label="add" onClick={() => setType('material')}>
+            <LibraryAddOutlinedIcon />
+          </Fab>
+        </Tooltip>
+        {
+          type === 'post' && <Form post />
+        }
+        {
+          type === 'material' && <Form />
+        }
       </Fragment>}
       <Fab elevation={3} onClick={handleClick} className={classes.root} style={{ position: "fixed", bottom: "3vh", right: "3vw" }} aria-label="add">
         {click ? <ClearIcon /> : <AddIcon />}
