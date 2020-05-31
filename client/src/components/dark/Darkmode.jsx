@@ -21,7 +21,6 @@ export default function () {
 
   return (
     <>
-      {state === true ? <span style={{ color: "yellow" }}>☾</span> : <span style={{ color: "slateblue" }}>☀︎</span>}
       <Switch
         checked={state}
         icon={<WbSunnyIcon style={{ fontSize: "1.3rem", color: "blue" }} />}
