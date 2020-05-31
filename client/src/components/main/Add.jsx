@@ -4,6 +4,7 @@ import AddIcon from '@material-ui/icons/Add';
 import ClearIcon from '@material-ui/icons/Clear';
 import Backdrop from "@material-ui/core/Backdrop";
 import Alert from "@material-ui/lab/Alert";
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 import AuthApi from "../auth/AuthApi";
 import Form from "../dialogs/NewPost";
@@ -22,8 +23,20 @@ export default function () {
     else {
       setClick(!click);
     }
-
   }
+
+  const theme = useTheme();
+  const useStyles = makeStyles({
+    root: {
+      backgroundColor: theme.palette.primary.main,
+      color: '#fff',
+      "&:hover": {
+        backgroundColor: theme.palette.primary.dark,
+      }
+    },
+  });
+
+  const classes = useStyles();
 
   return (
     <>
@@ -31,8 +44,8 @@ export default function () {
         <Form post />
         <Form />
       </Fragment>}
-      <Fab elevation={3} onClick={handleClick} style={{ position: "fixed", bottom: "3vh", right: "3vw" }} aria-label="add">
-        {click ? <ClearIcon style={{ color: '#2196f3' }} /> : <AddIcon style={{ color: '#2196f3' }} />}
+      <Fab elevation={3} onClick={handleClick} className={classes.root} style={{ position: "fixed", bottom: "3vh", right: "3vw" }} aria-label="add">
+        {click ? <ClearIcon /> : <AddIcon />}
       </Fab>
       <Backdrop style={{ zIndex: "20000" }} open={loading}>
         <Alert
@@ -43,7 +56,7 @@ export default function () {
           severity="error"
           style={{ zIndex: "50000" }}
         >
-          In order to access this you need to get verified &nbsp; — &nbsp; <a href="/verify">verify now</a>
+          In order to access this you need to get verified &nbsp; — &nbsp; <a href="/verify">Verify now</a>
         </Alert>
       </Backdrop>
     </>
