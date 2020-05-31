@@ -11,7 +11,7 @@ import FlexContainer from "../../containers/FlexContainer";
 function SignUp() {
   return (
     <FlexContainer>
-      <Container maxWidth="xl" component="main" spacing={2} maxWidth="xs">
+      <Container maxWidth="xs" component="main" spacing={2}>
         <LockOutlinedIcon
           style={{
             padding: "10px",
