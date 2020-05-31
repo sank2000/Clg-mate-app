@@ -8,6 +8,7 @@ if (window.localStorage.getItem("dark")) {
   }
 }
 
+
 export default function () {
   const [state, setState] = useState(mode);
   const handleChange = (e) => {
@@ -17,11 +18,17 @@ export default function () {
   };
 
   return (
-    <Switch
-      checked={state}
-      onChange={handleChange}
-      color="primary"
-      name="mode"
-      inputProps={{ 'aria-label': 'secondary checkbox' }}
-    />)
+    <>
+      <span style={state === true ? { color: "grey" } : { color: "yellow" }}>☀︎</span>
+      <Switch
+        checked={state}
+        onChange={handleChange}
+        color="primary"
+        name="mode"
+        inputProps={{ 'aria-label': 'secondary checkbox' }}
+      />
+      <span style={state === true ? { color: "red" } : { color: "grey" }}>☾</span>
+    </>)
 }
+
+//slateblue
