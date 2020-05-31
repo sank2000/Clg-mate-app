@@ -165,7 +165,7 @@ export default function About() {
             </Grid>
             <Grid item xs={12} sm={6} md={3} lg={3} style={{ textAlign: 'center' }} container justify="center">
               <Grid item>
-                <Avatar className={classes.small} alt="material ui" variant="square" src="https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_5a5ce9469cd708a59b4dda07a7f06399/flaticon.jpg" />
+                <Avatar className={classes.small} alt="flat icons" variant="square" src="https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_5a5ce9469cd708a59b4dda07a7f06399/flaticon.jpg" />
               </Grid>
               <Grid item>
                 <Typography className={classes.attribution} variant="overline" component="span" align="center">Flaticons</Typography>
@@ -173,7 +173,7 @@ export default function About() {
             </Grid>
             <Grid item xs={12} sm={6} md={3} lg={3} style={{ textAlign: 'center' }} container justify="center">
               <Grid item>
-                <Avatar className={classes.small} alt="material ui" variant="square" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Icons8_logo.svg/1200px-Icons8_logo.svg.png" />
+                <Avatar className={classes.small} alt="icons 8" variant="square" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Icons8_logo.svg/1200px-Icons8_logo.svg.png" />
               </Grid>
               <Grid item>
                 <Typography className={classes.attribution} variant="overline" component="span" align="center">Icons 8</Typography>
@@ -181,10 +181,18 @@ export default function About() {
             </Grid>
             <Grid item xs={12} sm={6} md={3} lg={3} style={{ textAlign: 'center' }} container justify="center">
               <Grid item>
-                <Avatar className={classes.small} alt="material ui" variant="square" src="https://cdn3.iconfinder.com/data/icons/inficons/512/stackoverflow.png" />
+                <Avatar className={classes.small} alt="stack overflow" variant="square" src="https://cdn3.iconfinder.com/data/icons/inficons/512/stackoverflow.png" />
               </Grid>
               <Grid item>
                 <Typography className={classes.attribution} variant="overline" component="span" align="center">Stack Overflow</Typography>
+              </Grid>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3} lg={3} style={{ textAlign: 'center' }} container justify="center">
+              <Grid item>
+                <Avatar className={classes.small} alt="react bootstap" src="https://banner2.cleanpng.com/20180531/sas/kisspng-bootstrap-react-software-framework-javascript-fron-5b0f9b1ab26fd7.9058729715277494027309.jpg" />
+              </Grid>
+              <Grid item>
+                <Typography className={classes.attribution} variant="overline" component="span" align="center">React Bootstrap</Typography>
               </Grid>
             </Grid>
           </Grid>
