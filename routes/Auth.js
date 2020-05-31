@@ -1,13 +1,17 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const bcrypt = require('bcrypt');
 const saltRounds = 5;
 
 const User = require('../models/User');
 
 router.get("/", function (req, res) {
+  /*
+   To get details about current user
+   password: 0 => to hide password from result
+  */
   if (req.session.user) {
-    User.findById(req.session.user, {password : 0}, function (err, result) {
+    User.findById(req.session.user, { password: 0 }, function (err, result) {
       if (!err) {
         res.json({
           ...result._doc,
@@ -34,7 +38,7 @@ router.post("/signup", function (req, res) {
     userData.save()
       .then((result) => {
         req.session.user = userData._id;
-        const {password , ...Data} = userData._doc;
+        const { password, ...Data } = userData._doc;
         res.json({
           ...Data,
           message: 'Account created successfully.',
@@ -77,7 +81,7 @@ router.post("/signin", async (req, res) => {
     bcrypt.compare(password, user.password, function (err, result) {
       if (result) {
         req.session.user = user._id;
-        const {password , ...Data} = user._doc;
+        const { password, ...Data } = user._doc;
         res.json({
           ...Data,
           message: `Welcome ${user.name}!`,
@@ -105,122 +109,108 @@ router.get("/signout", (req, res) => {
 });
 
 router.get("/user", (req, res) => {
-  if(req.session.user)
-  {
-    User.findById(req.session.user, {password : 0}, function (err, result) {
+  if (req.session.user) {
+    User.findById(req.session.user, { password: 0 }, function (err, result) {
       if (!err) {
         res.json(result);
       }
     });
   }
-  else
-  { res.send("unauthorised"); }
-  
+  else { res.send("unauthorised"); }
+
 })
 
 
 router.get("/delete", (req, res) => {
-  if(req.session.user)
-  {
-    User.findByIdAndDelete(req.session.user, function (err, docs) { 
-      if (err){ 
-          console.log(err);
-          res.json({
-            done    : false,
-            message : "Unable to Delete "
-          });
-      } 
-      else{ 
-        req.session.destroy(function (err) {
-          res.json({
-            done    : true,
-            message : "Deleted Successfully "
-          });
-        }); 
-      } 
-  });
-  }
-  else
-  { res.send("unauthorised"); }
-})
-
- 
-
-router.post("/update", (req, res) => {
-  if(req.session.user)
-  {
-      User.findByIdAndUpdate(req.session.user, { name:req.body.name , email:req.body.email ,url : req.body.url }, function(err, result) {
+  if (req.session.user) {
+    User.findByIdAndDelete(req.session.user, function (err, docs) {
       if (err) {
-         console.log(err);
-         res.json({
-          done    : false,
-          message : "Unable to update "
-        });
-      } 
-      else
-      {
+        console.log(err);
         res.json({
-          done    : true,
-          message : "Updated Successfully "
+          done: false,
+          message: "Unable to Delete "
         });
       }
-      });
+      else {
+        req.session.destroy(function (err) {
+          res.json({
+            done: true,
+            message: "Deleted Successfully "
+          });
+        });
+      }
+    });
   }
-  else
-  { res.send("unauthorised"); }
+  else { res.send("unauthorised"); }
+})
+
+
+
+router.post("/update", (req, res) => {
+  if (req.session.user) {
+    User.findByIdAndUpdate(req.session.user, { name: req.body.name, email: req.body.email, url: req.body.url }, function (err, result) {
+      if (err) {
+        console.log(err);
+        res.json({
+          done: false,
+          message: "Unable to update "
+        });
+      }
+      else {
+        res.json({
+          done: true,
+          message: "Updated Successfully "
+        });
+      }
+    });
+  }
+  else { res.send("unauthorised"); }
 });
 
 
 router.post("/updatePassword", (req, res) => {
-  if(req.session.user)
-  {
-      User.findById(req.session.user, function (err, result) {
-      if (err) 
-      {  
+  if (req.session.user) {
+    User.findById(req.session.user, function (err, result) {
+      if (err) {
         console.log(err);
         res.json({
           message: 'Unable to Update Password',
-          done : false,
-        }); 
+          done: false,
+        });
       }
-      else
-      {
+      else {
         bcrypt.compare(req.body.currentpassword, result.password, function (err, result) {
-          if (result) 
-          {
-            bcrypt.hash(req.body.password, saltRounds, function (err, hash) 
-            {
+          if (result) {
+            bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
               if (err) {
                 console.log(err);
-              } 
-              else{
-                User.findByIdAndUpdate(req.session.user, { password : hash }, function(err, result) {
+              }
+              else {
+                User.findByIdAndUpdate(req.session.user, { password: hash }, function (err, result) {
                   if (err) {
                     console.log(err);
-                  } 
-                  else
-                  {
+                  }
+                  else {
                     res.json({
-                      done    : true,
-                      message : "Password Updated Successfully "
+                      done: true,
+                      message: "Password Updated Successfully "
                     });
                   }
-                  });
+                });
               }
             });
           }
           else {
             res.json({
               message: 'Incorrect Password',
-              done : false,
+              done: false,
             });
           }
         });
       }
     });
   }
-  else
-  { res.send("unauthorised"); }
+  else { res.send("unauthorised"); }
 });
 
 module.exports = router;

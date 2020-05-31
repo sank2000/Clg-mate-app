@@ -80,12 +80,12 @@ function CustomizedDialogs(props) {
           <Typography component="div" variant="body1">{props.data.subject}</Typography>
         </DialogTitle>
         <DialogContent dividers>
-          <Grid container>
-            <Grid item xl={8}>
+          <Grid container justify="space-between">
+            <Grid item>
               <Typography variant="body1" component="span" style={{ marginRight: '30px' }}>{props.data.postType}</Typography>
             </Grid>
-            <Grid item xl={4}>
-              <Typography variant="body1" component="span">
+            <Grid item>
+              <Typography variant="body1" component="span" style={{ float: 'right' }}>
                 <ScheduleIcon fontSize="small" className="due-icon" /> Due on: {props.data.dueDate}
               </Typography>
             </Grid>
@@ -96,11 +96,11 @@ function CustomizedDialogs(props) {
             <Typography variant="body1" component="div">{props.data.description}</Typography>
           </div>
           <Divider variant='fullWidth' style={{ margin: '15px 0px' }} />
-          <Grid container>
-            <Grid item xl={8}>
+          <Grid container justify='space-between'>
+            <Grid item>
               <Typography component="span" variant="body2" style={{ marginRight: '30px' }}> {props.data.postedOn}</Typography>
             </Grid>
-            <Grid item xl={4}>
+            <Grid item>
               <Typography component="span" variant="body2" >
                 {
                   props.data.postByType === "Staff" ?
