@@ -39,7 +39,7 @@ const theme = createMuiTheme({
           color: '#fff'
         }
       }
-    },
+    }
   }
 });
 

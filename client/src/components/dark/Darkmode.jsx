@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Button from "@material-ui/core/Button";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
+import Switch from '@material-ui/core/Switch';
 import WbSunnyIcon from "@material-ui/icons/WbSunny";
 import NightsStayIcon from "@material-ui/icons/NightsStay";
 
+import { useTheme, makeStyles } from '@material-ui/styles'
 
 let mode = false;
 if (window.localStorage.getItem("dark")) {
@@ -12,52 +12,41 @@ if (window.localStorage.getItem("dark")) {
   }
 }
 
+
 export default function () {
   const [dark, setDark] = useState(mode);
+  const theme = useTheme();
+  const classes = makeStyles({
+    icon: {
+      fontSize: '1.4rem',
+      background: dark ? theme.palette.primary.dark : theme.palette.primary.main,
+      padding: '3px',
+      color: dark ? '#ffeb3b' : '#ffa000',
+      borderRadius: '100%'
+    }
+  })();
 
-  function handleClickL() {
-    setDark(false);
-    window.localStorage.setItem("dark", false);
-    window.location.reload();
-  }
-  function handleClickD() {
-    setDark(true);
-    window.localStorage.setItem("dark", true);
+  const handleChange = (e) => {
+    setDark(!dark);
+    window.localStorage.setItem("dark", !dark);
     window.location.reload();
   }
 
   return (
     <div className="App">
-      <ButtonGroup color="primary" aria-label="outlined primary button group">
-        <Button
-          variant="contained"
-          color={dark ? "default" : "primary"}
-          startIcon={
-            <WbSunnyIcon
-              style={
-                dark
-                  ? { fontSize: "1.3rem" }
-                  : { fontSize: "1.3rem", color: "#FF8F00" }
-              }
-            />
-          }
-          onClick={handleClickL}
-        />
-        <Button
-          variant="contained"
-          color={dark ? "primary" : "default"}
-          onClick={handleClickD}
-          startIcon={
-            <NightsStayIcon
-              style={
-                dark
-                  ? { fontSize: "1.3rem", color: "yellow" }
-                  : { fontSize: "1.3rem" }
-              }
-            />
-          }
-        />
-      </ButtonGroup>
+      <Switch
+        checked={dark}
+        icon={
+          <WbSunnyIcon className={classes.icon} />
+        }
+        edge="start"
+        color="primary"
+        checkedIcon={
+          <NightsStayIcon className={classes.icon} />
+        }
+        onChange={handleChange}
+        inputProps={{ 'aria-label': 'secondary checkbox' }}
+      />
     </div>
   );
 }
