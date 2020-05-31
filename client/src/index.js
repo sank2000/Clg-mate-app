@@ -18,6 +18,13 @@ const theme = createMuiTheme({
     secondary: pink,
     type: mode
   },
+  overrides: {
+    MuiSpeedDialIcon: {
+      root: {
+        height: 'default'
+      }
+    },
+  }
 });
 
 
