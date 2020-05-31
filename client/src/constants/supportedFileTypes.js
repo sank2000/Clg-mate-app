@@ -1,5 +1,5 @@
 const supportedTypes = [
-  'jpg', 'png', 'bmp',
+  'jpg', 'jpeg', 'png', 'bmp',
   'pdf',
   'xls', 'xlsx', 'ods', 'odt',
   'txt', 'rtf',
@@ -7,5 +7,4 @@ const supportedTypes = [
   'doc', 'docx'
 ];
 
-
-module.exports = supportedTypes;
+export default supportedTypes;
