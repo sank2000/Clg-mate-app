@@ -12,9 +12,9 @@ import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
+
 import Delete from "./DeletePost";
 import AuthApi from "../../auth/AuthApi";
-
 import DownloadButton from './AttachmentDownloadButton';
 
 const styles = (theme) => ({

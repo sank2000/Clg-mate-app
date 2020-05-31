@@ -1,15 +1,17 @@
-import React, { useState, Fragment } from 'react';
 import Backdrop from "@material-ui/core/Backdrop";
-import Alert from "@material-ui/lab/Alert";
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import React, { useState, Fragment } from 'react';
+
+import Alert from "@material-ui/lab/Alert";
 import SpeedDial from "@material-ui/lab/SpeedDial";
 import SpeedDialAction from "@material-ui/lab/SpeedDialAction";
+import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
 
 import LibraryAddOutlinedIcon from "@material-ui/icons/LibraryAddOutlined";
-import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
 import PostAddOutlinedIcon from "@material-ui/icons/PostAddOutlined";
 
 import AuthApi from "../auth/AuthApi";
+
 import Form from "../dialogs/NewPost";
 
 

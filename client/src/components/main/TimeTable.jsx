@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import Grid from "@material-ui/core/Grid";
+
 import Avatar from "@material-ui/core/Avatar";
-import Container from '@material-ui/core/Container';
+import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
+import Paper from "@material-ui/core/Paper";
+import Container from '@material-ui/core/Container';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from "@material-ui/core/Paper";
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 import { time, table } from "../../constants/Table";
 import Schedule from "./Schedule";
-
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -47,7 +47,12 @@ const useStyles = makeStyles(theme => ({
     position: "absolute",
     width: "80%",
     left: "10%",
-    top: "20%"
+    top: "20%",
+  },
+  avatarImage: {
+    width: 40,
+    height: 40,
+    backgroundColor: theme.palette.background.paper
   }
 }));
 
@@ -130,17 +135,17 @@ const selectedLabel = {
 
 export default function () {
   const [activeStep, setActiveStep] = useState(getDay());
-  const style = useStyles();
+  const classes = useStyles();
 
   function DayLabel(props) {
     return (
       <div>
         <IconButton style={{ outline: "none" }} onClick={() => setActiveStep(props.day)}>
-          <Avatar style={
+          <Avatar className={classes.avatarImage} style={
             getDay() === props.day ?
-              Object.assign({}, avatarImageStyle, todayStyle) :
-              activeStep === props.day ? Object.assign({}, avatarImageStyle, selectedStyle) :
-                Object.assign({}, avatarImageStyle, defaultStyle)
+              Object.assign({}, todayStyle) :
+              activeStep === props.day ? Object.assign({}, selectedStyle) :
+                Object.assign({}, defaultStyle)
           }>
             {props.ico}
           </Avatar>
@@ -159,7 +164,7 @@ export default function () {
     <>
       <Schedule />
       <Container maxWidth="xl" style={{ position: "relative" }}>
-        <hr className={window.localStorage.getItem("dark") === 'true' ? style.ava2 : style.ava} />
+        <hr className={window.localStorage.getItem("dark") === 'true' ? classes.ava2 : classes.ava} />
         <Grid container direction="row"
           justify="space-around"
           alignItems="center"

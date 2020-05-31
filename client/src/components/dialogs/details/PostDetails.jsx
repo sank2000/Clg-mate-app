@@ -8,6 +8,7 @@ import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
@@ -15,7 +16,6 @@ import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
 import Delete from "./DeletePost";
 import AuthApi from "../../auth/AuthApi";
 import DownloadButton from './AttachmentDownloadButton';
-import Divider from '@material-ui/core/Divider';
 
 const styles = (theme) => ({
   root: {

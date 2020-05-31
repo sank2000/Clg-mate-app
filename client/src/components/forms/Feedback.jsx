@@ -1,12 +1,15 @@
 import React, { useState, Fragment } from "react";
+import axios from "axios";
+
+import { Spinner } from "react-bootstrap";
+
 import FlexContainer from "../containers/FlexContainer";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { Spinner } from "react-bootstrap";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
-import axios from "axios";
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
+
 import NavigationBar from "../navigation/AppBar";
 
 function Alert(props) {

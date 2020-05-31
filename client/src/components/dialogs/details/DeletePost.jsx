@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import Snackbar from "@material-ui/core/Snackbar";
+import { Spinner } from "react-bootstrap";
+import Backdrop from "@material-ui/core/Backdrop";
+import Alert2 from "@material-ui/lab/Alert";
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
@@ -9,12 +12,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+
 import Alert from '../../messages/alerts/alert';
 import Fdelete from '../../../functions/firebaseFileDelete';
-import { Spinner } from "react-bootstrap";
-import Backdrop from "@material-ui/core/Backdrop";
-import Alert2 from "@material-ui/lab/Alert";
-
 import AuthApi from "../../auth/AuthApi";
 
 export default (props) => {
@@ -61,7 +61,6 @@ export default (props) => {
 			else {
 				setAOpen(true);
 			}
-
 		}
 		else if (props.type === "material") {
 			let prms = new URLSearchParams({ id: props.data.doc_id });

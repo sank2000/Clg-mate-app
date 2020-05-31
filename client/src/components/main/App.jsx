@@ -1,17 +1,20 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from "axios";
-import Container from "@material-ui/core/Container";
 import DateFormat from 'dateformat';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
+
 import Backdrop from "@material-ui/core/Backdrop";
-import Typography from '@material-ui/core/Typography';
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Container from "@material-ui/core/Container";
+
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+
+
 
 import NavigationBar from "../navigation/AppBar";
 import PostCard from "../cards/PostCard";
 import MaterialCard from "../cards/MaterialCard";
-
 import Add from "./Add";
 
 function App() {
@@ -32,7 +35,7 @@ function App() {
 			})
 			.catch(function (error) {
 				console.log(error);
-				// window.open("/oops", "_self");
+				window.open("/oops", "_self");
 			});
 		axios.get("/materials")
 			.then(function (response) {
@@ -43,7 +46,7 @@ function App() {
 			})
 			.catch(function (error) {
 				console.log(error);
-				// window.open("/oops", "_self");
+				window.open("/oops", "_self");
 			});
 	}, [])
 
@@ -89,7 +92,6 @@ function App() {
 			</Grid>
 		);
 	}
-
 
 	function NotAvailable(props) {
 		return (

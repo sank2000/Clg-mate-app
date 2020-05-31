@@ -1,16 +1,19 @@
 import React from "react";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
+
 import Avatar from '@material-ui/core/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
 
-import NavigationBar from '../navigation/AppBar';
+import Container from "@material-ui/core/Container";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+
 import FlexContainer from "../containers/FlexContainer";
-import Dev from '../cards/DeveloperCard';
 import Copyright from './CopyrightNote';
 import { shuffledDevs } from '../../constants/devs';
+import Dev from '../cards/DeveloperCard';
+import NavigationBar from '../navigation/AppBar';
+
 
 const useStyles = makeStyles((theme) => ({
   small: {
