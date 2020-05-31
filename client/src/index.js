@@ -9,8 +9,6 @@ let mode = "light";
 if (window.localStorage.getItem("dark") === 'true') {
   mode = "dark";
 }
-console.log("mode :" + mode);
-console.log(window.localStorage.getItem("dark"));
 
 const theme = createMuiTheme({
   palette: {
@@ -22,6 +20,24 @@ const theme = createMuiTheme({
     MuiSpeedDialIcon: {
       root: {
         height: 'default'
+      }
+    },
+    MuiSpeedDialAction: {
+      fab: {
+        backgroundColor: blue[500],
+        color: '#fff',
+        "&:hover": {
+          backgroundColor: blue[700],
+          color: '#fff'
+        }
+      },
+      staticTooltipLabel: {
+        backgroundColor: blue[500],
+        color: '#fff',
+        "&:hover": {
+          backgroundColor: blue[700],
+          color: '#fff'
+        }
       }
     },
   }

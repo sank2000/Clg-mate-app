@@ -10,7 +10,6 @@ if (window.localStorage.getItem("dark")) {
   }
 }
 
-
 export default function () {
   const [state, setState] = useState(mode);
   const handleChange = (e) => {
@@ -37,5 +36,3 @@ export default function () {
     </>
   );
 }
-
-//slateblue

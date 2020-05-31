@@ -58,7 +58,6 @@ export default function () {
     <>
       {
         <Fragment>
-          <Backdrop open={open} />
           <div className={classes.root}>
             <SpeedDial
               ariaLabel="SpeedDial tooltip example"
@@ -72,12 +71,14 @@ export default function () {
                 icon={<LibraryAddOutlinedIcon />}
                 tooltipTitle={"Post"}
                 tooltipOpen
+                style={{ color: 'blue' }}
                 onClick={() => openForm('post')}
               />
               <SpeedDialAction
                 icon={<PostAddOutlinedIcon />}
                 tooltipTitle={"Material"}
                 tooltipOpen
+                style={{ color: 'blue' }}
                 onClick={() => openForm('material')}
               />
             </SpeedDial>
