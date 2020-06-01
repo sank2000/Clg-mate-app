@@ -15,13 +15,13 @@ function DownloadMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   let downloadAll = () => {
     props.fileArray.forEach(file => {
-      window.open(file.url, '_blank');
+      window.open(file.downloadURL, '_blank');
     });
   }
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
-    if (props.fileArray.length === 1) window.open(props.fileArray[0].url, '_blank');
+    if (props.fileArray.length === 1) window.open(props.fileArray[0].downloadURL, '_blank');
   };
 
   const handleClose = () => {

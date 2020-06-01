@@ -82,8 +82,8 @@ function NewPostHandler(props) {
         },
         error => console.log(error.code),
         async () => {
-          const downloadURL = await uploadTask.snapshot.ref.getDownloadURL();
-          obtainedUrls.push({ fileName: file.name, url: downloadURL })
+          const obtainedUrl = await uploadTask.snapshot.ref.getDownloadURL();
+          obtainedUrls.push({ fileName: file.name, downloadURL: obtainedUrl })
           console.log('Uploaded' + file.name)
         }
       );
