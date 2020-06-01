@@ -49,14 +49,9 @@ function NewPostHandler(props) {
     let obtainedUrls = [];
 
     //for progress bar
-    let totalFileSize = 0;
-    let totalBytesTransferred = 0;
+    let totalProgress = 0;
+    let currentProgress = 0;
     setProgress(0);
-    files.map((file) => {
-      totalFileSize += file.size;
-      console.log('Upon calculating:', totalFileSize);
-      return null;
-    });
 
     files.forEach(file => {
       let storageRef;
@@ -68,23 +63,21 @@ function NewPostHandler(props) {
       uploadTask.on(
         firebase.storage.TaskEvent.STATE_CHANGED,
         snapshot => {
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          const progressOfCurrentFile = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           if (snapshot.state === firebase.storage.TaskState.RUNNING) {
-            console.log(`[${file.name}]Progress: ${progress}%`);
+            if (progressOfCurrentFile === 100) {
+              totalProgress += (progressOfCurrentFile / files.length);
+              currentProgress = totalProgress;
+            } else {
+              currentProgress = totalProgress + (progressOfCurrentFile / files.length);
+            }
+            setProgress(currentProgress);
           }
-
-          // for progress bar
-          if ((file.size === snapshot.bytesTransferred + totalBytesTransferred) && !files.length === 1) {
-            totalBytesTransferred = file.size;
-          }
-          let progressText = ((totalBytesTransferred + snapshot.bytesTransferred) / totalFileSize) * 100;
-          setProgress(progressText);
         },
         error => console.log(error.code),
         async () => {
           const obtainedUrl = await uploadTask.snapshot.ref.getDownloadURL();
           obtainedUrls.push({ fileName: file.name, downloadURL: obtainedUrl })
-          console.log('Uploaded' + file.name)
         }
       );
     });
