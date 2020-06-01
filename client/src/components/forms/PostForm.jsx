@@ -74,9 +74,8 @@ const DialogActions = withStyles((theme) => ({
 function PostForm(props) {
   const [type, setType] = useState("");
   const [subject, setSubject] = useState("");
-  const [continuable, setContinuable] = useState(true);
   const [selectedDate, handleDateChange] = useState(new Date());
-  const [url, setUrl] = useState([]);
+  const [noOfFiles, setNoOfFiles] = useState(0);
 
   const handlePostTypeChange = event => {
     setType(event.target.value);
@@ -85,14 +84,6 @@ function PostForm(props) {
   const handleSubjectChange = event => {
     setSubject(event.target.value);
   };
-
-  const handleUploadComplete = (obtainedUrl) => {
-    setContinuable(true);
-    setUrl(obtainedUrl);
-    console.log(obtainedUrl);
-    console.log(url)
-    setTimeout(console.log(url), 5000);
-  }
 
   const [show, setShow] = useState(false);
 
@@ -195,14 +186,14 @@ function PostForm(props) {
                 <Grid container direction="row" justify="space-between">
                   <Grid item>
                     <div className="file-section" style={applyMargin}>
-                      <input type="hidden" name="url" value={JSON.stringify(url)} />
+                      <input type="hidden" name="url" value={JSON.stringify(props.url)} />
                       <input
                         style={{ display: "none" }}
                         type="file"
                         id="contained-button-file"
                         name="file"
                         multiple
-                        onChange={props.handleChange}
+                        onChange={(event) => { props.handleChange(event); setNoOfFiles(event.target.files.length) }}
                       />
                       <label htmlFor="contained-button-file">
                         <Button variant="contained" component="span" disableElevation>
@@ -212,9 +203,9 @@ function PostForm(props) {
                     </div>
                   </Grid>
                   <Grid item>
-                    {props.fileChooseState.includes('chosen') &&
+                    {noOfFiles !== 0 &&
                       <Button
-                        onClick={() => { setContinuable(false); props.handleUpload(handleUploadComplete); }}
+                        onClick={props.handleUpload}
                         size="medium"
                         variant="contained"
                         color="secondary"
@@ -237,7 +228,7 @@ function PostForm(props) {
             </Grid>
           </DialogContent>
           <DialogActions>
-            <Button disabled={(props.fileChooseState.includes('chosen') && url.length !== 0)} style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Button>
+            <Button disabled={(noOfFiles !== 0 && props.url.length === noOfFiles)} style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Button>
           </DialogActions>
         </form>
       </Dialog>

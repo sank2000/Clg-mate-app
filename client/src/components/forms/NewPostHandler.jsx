@@ -44,7 +44,7 @@ function NewPostHandler(props) {
     setFileChooseState(`${chosenFiles.length} files chosen`);
   }
 
-  const handleUpload = (callback) => {
+  const handleUpload = () => {
     const promises = [];
     let obtainedUrls = [];
 
@@ -90,14 +90,11 @@ function NewPostHandler(props) {
     });
     Promise.all(promises)
       .then(() => {
-        console.log(obtainedUrls);
         setUrl(obtainedUrls);
         setMessage('All files uploaded');
         setAlertType('success');
         setAOpen(true);
         setProgress(100);
-        console.log(url);
-        setTimeout(callback(obtainedUrls), 1000);
       }
       )
       .catch(err => console.log(err.code));
