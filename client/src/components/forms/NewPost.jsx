@@ -113,6 +113,7 @@ function NewPost(props) {
             handleUpload={handleUpload}
             progress={progress}
             fileChooseState={fileChooseState}
+            setType={props.setType}
           />
           :
           <MaterialForm
@@ -121,6 +122,7 @@ function NewPost(props) {
             handleUpload={handleUpload}
             progress={progress}
             fileChooseState={fileChooseState}
+            setType={props.setType}
           />
       }
       <Snackbar open={Aopen} autoHideDuration={6000} onClose={AhandleClose}>
