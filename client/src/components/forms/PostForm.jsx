@@ -193,7 +193,7 @@ function PostForm(props) {
                         id="contained-button-file"
                         name="file"
                         multiple
-                        onChange={(event) => { props.handleChange(event); setNoOfFiles(event.target.files.length) }}
+                        onChange={(event) => { props.handleChange(event); setNoOfFiles(event.target.files.length); }}
                       />
                       <label htmlFor="contained-button-file">
                         <Button variant="contained" component="span" disableElevation>

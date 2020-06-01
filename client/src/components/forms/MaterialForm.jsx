@@ -67,15 +67,14 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-function PostForm(props) {
+function MaterialForm(props) {
   const [show, setShow] = useState(false);
   const [type, setType] = useState("");
   const [subject, setSubject] = useState('');
+  const [noOfFiles, setNoOfFiles] = useState(0);
   const handleMaterialTypeChange = event => {
     setType(event.target.value);
   };
-
-
 
   const handleSubjectChange = event => {
     setSubject(event.target.value);
@@ -131,14 +130,14 @@ function PostForm(props) {
               <Grid item xs={12} sm={6}>
                 <FormControl required variant="outlined" style={applyMargin} size="small" fullWidth >
                   <InputLabel>
-                    Post Type
+                    Material Type
                   </InputLabel>
                   <Select
                     name="materialType"
                     required
                     value={type}
                     onChange={handleMaterialTypeChange}
-                    label="Post Type"
+                    label="Material Type"
                   >
                     <MenuItem disabled={true} value="">Select a type</MenuItem>
                     <MenuItem value={"Book"}>Book</MenuItem>
@@ -178,7 +177,7 @@ function PostForm(props) {
                       id="contained-button-file"
                       name="file"
                       multiple
-                      onChange={props.handleChange}
+                      onChange={(event) => { props.handleChange(event); setNoOfFiles(event.target.files.length); }}
                     />
                     <label htmlFor="contained-button-file">
                       <Button variant="contained" component="span" disableElevation>
@@ -188,7 +187,7 @@ function PostForm(props) {
                   </Grid>
                   <Grid item>
                     {
-                      props.fileChooseState === 'File Chosen' &&
+                      noOfFiles !== 0 &&
                       <Button
                         onClick={props.handleUpload}
                         size="medium"
@@ -205,15 +204,14 @@ function PostForm(props) {
               </Grid>
               <Grid item>
                 {
-                  (props.progress !== -1 && props.progress !== 100) ?
-                    <LinearProgressWithLabel value={props.progress} /> :
-                    (props.progress !== -1 && <p>Uploaded</p>)
+                  (props.progress !== -1 && props.progress !== 100) &&
+                  <LinearProgressWithLabel value={props.progress} />
                 }
               </Grid>
             </Grid>
           </DialogContent>
           <DialogActions>
-            <Button style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary" disabled={props.progress !== 100}>Submit</Button>
+            <Button style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary" disabled={(props.url.length !== noOfFiles) || noOfFiles === 0}>Submit</Button>
           </DialogActions>
         </form>
       </Dialog>
@@ -221,4 +219,4 @@ function PostForm(props) {
   );
 }
 
-export default PostForm;
+export default MaterialForm;
