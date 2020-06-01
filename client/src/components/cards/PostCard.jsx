@@ -48,7 +48,7 @@ function PostCard(props) {
               {props.postType}
             </Typography>
           </div>
-          <Typography gutterBottom variant="h4" component="h3">
+          <Typography gutterBottom variant="h5" component="h3">
             {props.title}
           </Typography>
           <Typography variant="body1" component="div">

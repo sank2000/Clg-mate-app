@@ -45,7 +45,7 @@ export default function SimpleCard(props) {
               </Grid>
             }
             <Grid item>
-              <Typography variant="h4" component="h3" gutterBottom>
+              <Typography variant="h5" component="h3" gutterBottom>
                 {props.subject}
               </Typography>
               <Typography variant="body2" component="p">
