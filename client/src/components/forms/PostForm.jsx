@@ -181,26 +181,24 @@ function PostForm(props) {
                 style={{ ...applyMargin, outline: "none" }}
               />
             </MuiPickersUtilsProvider>
-            <Grid container direction="column">
+            <Grid container direction="column" style={{ paddingLeft: '8px', paddingTop: '5px' }}>
               <Grid item>
                 <Grid container direction="row" justify="space-between">
                   <Grid item>
-                    <div className="file-section" style={applyMargin}>
-                      <input type="hidden" name="url" value={JSON.stringify(props.url)} />
-                      <input
-                        style={{ display: "none" }}
-                        type="file"
-                        id="contained-button-file"
-                        name="file"
-                        multiple
-                        onChange={(event) => { props.handleChange(event); setNoOfFiles(event.target.files.length); }}
-                      />
-                      <label htmlFor="contained-button-file">
-                        <Button variant="contained" component="span" disableElevation>
-                          {props.fileChooseState}
-                        </Button>
-                      </label>
-                    </div>
+                    <input type="hidden" name="url" value={JSON.stringify(props.url)} />
+                    <input
+                      style={{ display: "none" }}
+                      type="file"
+                      id="contained-button-file"
+                      name="file"
+                      multiple
+                      onChange={(event) => { props.handleChange(event); setNoOfFiles(event.target.files.length); }}
+                    />
+                    <label htmlFor="contained-button-file">
+                      <Button variant="contained" component="span" disableElevation>
+                        {props.fileChooseState}
+                      </Button>
+                    </label>
                   </Grid>
                   <Grid item>
                     {noOfFiles !== 0 &&
