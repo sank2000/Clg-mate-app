@@ -10,7 +10,7 @@ import LibraryAddOutlinedIcon from "@material-ui/icons/LibraryAddOutlined";
 import PostAddOutlinedIcon from "@material-ui/icons/PostAddOutlined";
 
 import AuthApi from "../auth/AuthApi";
-import Form from "../forms/NewPost";
+import Form from "../forms/NewPostHandler";
 
 export default function () {
   const [loading, setLoading] = useState(false);
