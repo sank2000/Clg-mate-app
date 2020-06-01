@@ -8,6 +8,7 @@ import { time, table } from "../../constants/Table";
 import ScheduleCard from "../cards/ScheduleCard";
 
 var today = new Date();
+today.setHours();
 
 const NoSchedule = {
   subject: "No schedule",
@@ -35,8 +36,13 @@ export default function Schedule() {
     }
   ]);
 
-  const timeString = Number(today.getHours() + "." + today.getMinutes());
-
+  let timeString;
+  if (today.getMinutes() < 10) {
+    timeString = Number(today.getHours() + ".0" + today.getMinutes());
+  }
+  else {
+    timeString = Number(today.getHours() + "." + today.getMinutes());
+  }
   function find(value, ind) {
     if (today.getDay() === 0 || today.getDay() === 6) {
       return;
