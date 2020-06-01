@@ -139,7 +139,8 @@ export default function Schedule() {
           when: "now",
           subject: table[today.getDay() - 1][ind],
           time: time[ind].start + " to " + time[ind].end,
-          per: time[ind].per
+          per: time[ind].per,
+          progress: per
         },
         {
           when: "next",
