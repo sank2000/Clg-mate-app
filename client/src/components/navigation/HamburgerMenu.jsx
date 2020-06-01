@@ -20,6 +20,8 @@ import FeedbackOutlinedIcon from "@material-ui/icons/FeedbackOutlined";
 import ContactSupportOutlinedIcon from "@material-ui/icons/ContactSupportOutlined";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 
+import BannerLogo from '../../ui/images/logo.png'
+
 const useStyles = makeStyles({
   list: {
     width: 250
@@ -66,7 +68,7 @@ export default function HamburgerMenu(props) {
       <List>
         <ListItem className={classes.appBanner}>
           <ListItemIcon>
-            <img src="images/logo.png" width="45" alt="logo" />
+            <img src={BannerLogo} width="45" alt="logo" />
           </ListItemIcon>
           <ListItemText >
             <Typography variant="h5">Collegemate</Typography>
