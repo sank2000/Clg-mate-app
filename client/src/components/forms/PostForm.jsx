@@ -90,7 +90,8 @@ function PostForm(props) {
     setContinuable(true);
     setUrl(obtainedUrl);
     console.log(obtainedUrl);
-    console.log(url);
+    console.log(url)
+    setTimeout(console.log(url), 5000);
   }
 
   const [show, setShow] = useState(false);
@@ -235,7 +236,7 @@ function PostForm(props) {
             </Grid>
           </DialogContent>
           <DialogActions>
-            <Button disabled={!continuable} style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Button>
+            <Button disabled={(props.fileChooseState.includes('chosen') && url.length !== 0)} style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Button>
           </DialogActions>
         </form>
       </Dialog>
