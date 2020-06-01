@@ -23,12 +23,10 @@ import AuthApi from "../auth/AuthApi";
 import HamburgerMenu from './HamburgerMenu';
 import Darkmode from "../dark/Darkmode";
 
-// const theme = useTheme();
-
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.paper,
-    color: theme.palette.primary.light
+    color: theme.palette.primary.main
   },
   grow: {
     flexGrow: 1,

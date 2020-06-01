@@ -108,7 +108,7 @@ function App() {
 					alignItems: "center",
 					textAlign: "center"
 				}} alt='' />
-				<h3>{props.type} you add appear here..</h3>
+				<Typography variant="h5" component="h4">{props.type} you add appear here..</Typography>
 			</Container>
 		)
 	}
@@ -117,7 +117,7 @@ function App() {
 		<Fragment>
 			<NavigationBar />
 			<Container maxWidth="xl" style={{ padding: '1rem' }} >
-				<Typography component="h2" variant='h3' align='center'>Posts</Typography>
+				<Typography component="h2" variant='h4' align='center'>Posts</Typography>
 				<Backdrop style={{ zIndex: "20000" }} open={loading}>
 					<CircularProgress style={{ zIndex: "50000" }} color="primary" />
 				</Backdrop>
@@ -144,7 +144,7 @@ function App() {
 						<NotAvailable type="Posts" />
 				}
 				<hr />
-				<Typography component="h1" variant='h3' align='center'>Materials</Typography>
+				<Typography component="h1" variant='h4' align='center'>Materials</Typography>
 				{
 					materialsAvailable ? <Fragment>
 						<Grid container
@@ -171,6 +171,5 @@ function App() {
 			</Container >
 		</Fragment >
 	)
-
 }
 export default App;

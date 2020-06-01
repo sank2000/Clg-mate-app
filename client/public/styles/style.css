@@ -50,46 +50,10 @@ button:focus {
   margin-right: 20px;
 }
 
-.uploadForm {
-  border-radius: 15px;
-  background-color: white;
-  margin: 3px;
-  padding-right: 15px;
-}
-
 /* for new card  */
-
-.top {
-  font-size: medium;
-  color: #555;
-}
-
-.post-type,
-.material-type {
-  float: right;
-}
 
 .due-icon {
   vertical-align: text-bottom;
-}
-
-.post-title,
-.material-title {
-  margin: .7rem 0px;
-  color: #000;
-  font-size: 2rem;
-  font-weight: 400;
-}
-
-.subject {
-  font-size: 1rem;
-  color: #555;
-  font-weight: 700;
-  margin: .3rem 0px;
-}
-
-.formHead h1 {
-  text-align: center;
 }
 
 .modal-content {
@@ -110,12 +74,6 @@ hr {
   border: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
-
-.fullPostHead {
-  background-color: white;
-  padding: 8px;
-}
-
 
 .filterSelect {
   margin-top: 8px !important;

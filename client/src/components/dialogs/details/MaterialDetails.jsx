@@ -17,7 +17,7 @@ import Delete from "./DeletePost";
 import AuthApi from "../../auth/AuthApi";
 import DownloadButton from './AttachmentDownloadButton';
 
-const styles = (theme) => ({
+const classes = (theme) => ({
   root: {
     margin: 0,
     padding: theme.spacing(2),
@@ -27,10 +27,10 @@ const styles = (theme) => ({
     right: theme.spacing(1),
     top: theme.spacing(1),
     color: '#ff1a1a',
-  },
+  }
 });
 
-const DialogTitle = withStyles(styles)((props) => {
+const DialogTitle = withStyles(classes)((props) => {
   const { children, classes, onClose, ...other } = props;
   return (
     <MuiDialogTitle disableTypography className={classes.root} {...other}>
@@ -46,8 +46,7 @@ const DialogTitle = withStyles(styles)((props) => {
 
 const DialogContent = withStyles((theme) => ({
   root: {
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2),
+    padding: theme.spacing(2),
   },
 }))(MuiDialogContent);
 
@@ -58,6 +57,12 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
+const ContentDivider = withStyles((theme) => ({
+  root: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+  },
+}))(Divider);
 
 function CustomizedDialogs(props) {
   const [open, setOpen] = React.useState(false);
@@ -81,19 +86,19 @@ function CustomizedDialogs(props) {
           <Typography component="span" variant="h5"> {props.data.title} </Typography>
           <Typography component="div" variant="body1">{props.data.author}</Typography>
         </DialogTitle>
-        <DialogContent dividers style={{ padding: '5px 10px' }}>
+        <DialogContent dividers>
           <div>
             <Typography variant="body1" component="span" style={{ marginRight: '10px' }}>{props.data.subName}</Typography>
             <Typography variant="body1" component="span" style={{ float: "right" }}>
               {props.data.materialType}
             </Typography>
           </div>
-          <Divider variant='fullWidth' style={{ margin: '15px 0px', padding: "0px" }} />
+          <ContentDivider variant='fullWidth' />
           <div style={{ margin: "5px 0px" }}>
             <Typography variant="h6" component="h6">Description:</Typography>
             <Typography variant="body1" component="div">{props.data.description}</Typography>
           </div>
-          <Divider variant='fullWidth' style={{ margin: '15px 0px' }} />
+          <ContentDivider variant='fullWidth' />
           <Grid container justify="space-between">
             <Grid item>
               <Typography component="span" variant="body2" style={{ marginRight: '30px' }}> {props.data.postedOn}</Typography>

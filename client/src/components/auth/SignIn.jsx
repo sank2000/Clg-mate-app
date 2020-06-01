@@ -101,7 +101,7 @@ function SignIn() {
         />
         <Typography style={{ margin: "10px" }} component="h1" variant="h4">
           Sign In
-            </Typography>
+        </Typography>
         <form onSubmit={submit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -121,7 +121,7 @@ function SignIn() {
               <FormControl variant="outlined" fullWidth required={true} >
                 <InputLabel htmlFor="outlined-adornment-password">
                   Password
-                     </InputLabel>
+                </InputLabel>
                 <OutlinedInput
                   id="outlined-adornment-password"
                   type={PassValues.showPassword ? "text" : "password"}
@@ -159,12 +159,16 @@ function SignIn() {
               </Button>
             </Grid>
             <Grid item xs={12}>
-              <Link href="/signup" variant="body2" style={{ display: 'block' }}>
-                Don't have an account? Sign Up
-                  </Link>
-              <Link href="/forgot" variant="body2" style={{ display: 'block' }}>
-                Forgot Password?
+              <div>
+                <Link href="/signup" variant="body2" style={{ display: 'block' }}>
+                  Don't have an account? Sign Up
               </Link>
+              </div>
+              <div>
+                <Link href="/forgot" variant="body2" style={{ display: 'block' }}>
+                  Forgot Password?
+              </Link>
+              </div>
             </Grid>
           </Grid>
         </form>

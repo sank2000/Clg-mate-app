@@ -27,7 +27,7 @@ function MaterialCard(props) {
               {props.materialType}
             </Typography>
           </div>
-          <Typography gutterBottom variant="h4" component="h3">
+          <Typography gutterBottom variant="h5" component="h3">
             {props.title}
           </Typography>
         </CardContent>

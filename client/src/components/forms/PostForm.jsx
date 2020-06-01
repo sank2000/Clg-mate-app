@@ -22,8 +22,6 @@ import TextField from "@material-ui/core/TextField";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { KeyboardDatePicker } from "@material-ui/pickers";
 
-
-
 import LinearProgressWithLabel from './LinearProgressWithLabel';
 import subjects from '../../constants/subjects'
 
@@ -76,7 +74,9 @@ const DialogActions = withStyles((theme) => ({
 function PostForm(props) {
   const [type, setType] = useState("");
   const [subject, setSubject] = useState("");
+  const [continuable, setContinuable] = useState(true);
   const [selectedDate, handleDateChange] = useState(new Date());
+  const [url, setUrl] = useState([]);
 
   const handlePostTypeChange = event => {
     setType(event.target.value);
@@ -85,6 +85,14 @@ function PostForm(props) {
   const handleSubjectChange = event => {
     setSubject(event.target.value);
   };
+
+  const handleUploadComplete = (obtainedUrl) => {
+    setContinuable(true);
+    setUrl(obtainedUrl);
+    console.log(obtainedUrl);
+    console.log(url);
+  }
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -186,7 +194,7 @@ function PostForm(props) {
                 <Grid container direction="row" justify="space-between">
                   <Grid item>
                     <div className="file-section" style={applyMargin}>
-                      <input type="hidden" name="url" value={JSON.stringify(props.url)} />
+                      <input type="hidden" name="url" value={JSON.stringify(url)} />
                       <input
                         style={{ display: "none" }}
                         type="file"
@@ -203,9 +211,9 @@ function PostForm(props) {
                     </div>
                   </Grid>
                   <Grid item>
-                    {props.fileChooseState === 'File Chosen' &&
+                    {props.fileChooseState.includes('chosen') &&
                       <Button
-                        onClick={props.handleUpload}
+                        onClick={() => { setContinuable(false); props.handleUpload(handleUploadComplete); }}
                         size="medium"
                         variant="contained"
                         color="secondary"
@@ -221,15 +229,14 @@ function PostForm(props) {
               </Grid>
               <Grid item>
                 {
-                  (props.progress !== -1 && props.progress !== 100) ?
-                    <LinearProgressWithLabel value={props.progress} /> :
-                    (props.progress !== -1 && <p>Uploaded</p>)
+                  (props.progress !== -1 && props.progress !== 100) &&
+                  <LinearProgressWithLabel value={props.progress} />
                 }
               </Grid>
             </Grid>
           </DialogContent>
           <DialogActions>
-            <Button style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Button>
+            <Button disabled={!continuable} style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Button>
           </DialogActions>
         </form>
       </Dialog>
