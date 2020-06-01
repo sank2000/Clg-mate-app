@@ -9,6 +9,6 @@ export default function BannerRenderer() {
   const user = authApi.auth;
 
   return (
-    <Banner id={user.unique_id} name={user.name} email={user.email} avatar={user.url} />
+    <Banner id={user.unique_id} name={user.name} email={user.email} avatar={user.url} type={user.type} />
   );
 }

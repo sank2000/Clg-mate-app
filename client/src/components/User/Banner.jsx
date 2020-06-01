@@ -75,6 +75,9 @@ export default function UserBanner(props) {
                 <Typography variant="body2" color="textSecondary">
                   ID: {props.id}
                 </Typography>
+                <Typography variant="body2" color="textSecondary">
+                  Type: {props.type}
+                </Typography>
               </Grid>
             </Grid>
             <Grid item>
