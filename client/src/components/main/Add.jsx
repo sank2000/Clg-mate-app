@@ -6,14 +6,11 @@ import Alert from "@material-ui/lab/Alert";
 import SpeedDial from "@material-ui/lab/SpeedDial";
 import SpeedDialAction from "@material-ui/lab/SpeedDialAction";
 import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
-
 import LibraryAddOutlinedIcon from "@material-ui/icons/LibraryAddOutlined";
 import PostAddOutlinedIcon from "@material-ui/icons/PostAddOutlined";
 
 import AuthApi from "../auth/AuthApi";
-
-import Form from "../dialogs/NewPost";
-
+import Form from "../forms/NewPost";
 
 export default function () {
   const [loading, setLoading] = useState(false);
