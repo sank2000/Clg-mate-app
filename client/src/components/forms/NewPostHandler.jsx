@@ -91,9 +91,9 @@ function NewPostHandler(props) {
     Promise.all(promises)
       .then(() => {
         setUrl(obtainedUrls);
-        setMessage('All files uploaded');
-        setAlertType('success');
-        setAOpen(true);
+        // setMessage('All files uploaded');
+        // setAlertType('success');
+        // setAOpen(true);
         setProgress(100);
       }
       )

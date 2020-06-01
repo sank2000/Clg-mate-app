@@ -228,7 +228,7 @@ function PostForm(props) {
             </Grid>
           </DialogContent>
           <DialogActions>
-            <Button disabled={(noOfFiles !== 0 && props.url.length === noOfFiles)} style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Button>
+            <Button disabled={props.url.length !== noOfFiles} style={{ margin: "7px", width: "100%", height: "3rem", fontSize: "1.3rem" }} type="submit" size="small" variant="contained" color="primary">Submit</Button>
           </DialogActions>
         </form>
       </Dialog>
