@@ -8,7 +8,6 @@ import { time, table } from "../../constants/Table";
 import ScheduleCard from "../cards/ScheduleCard";
 
 var today = new Date();
-today.setHours();
 
 const NoSchedule = {
   subject: "No schedule",
