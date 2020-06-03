@@ -1,6 +1,6 @@
 
-var CACHE_NAME = 'clg-mate-cache-v1';
-var urlsToCache = [
+const CACHE_NAME = 'clg-mate-cache-v1';
+const urlsToCache = [
   '/styles/style.css',
   '/images/',
   '/assets/'
