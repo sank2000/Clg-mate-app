@@ -30,28 +30,26 @@ function DeveloperCard(props) {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea disabled={true}	>
-        <CardMedia
-          className={classes.media}
-          image={props.dev.avatar}
-        />
-        <CardContent>
-          <Typography variant="h5" component="h2">
-            {props.dev.name}
-          </Typography>
-          <Typography
-            gutterBottom
-            variant="overline"
-            color="textSecondary"
-            component="h5"
-          >
-            {props.dev.role}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {props.dev.note}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+      <CardMedia
+        className={classes.media}
+        image={props.dev.avatar}
+      />
+      <CardContent>
+        <Typography variant="h5" component="h2">
+          {props.dev.name}
+        </Typography>
+        <Typography
+          gutterBottom
+          variant="overline"
+          color="textSecondary"
+          component="h5"
+        >
+          {props.dev.role}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+          {props.dev.note}
+        </Typography>
+      </CardContent>
       <CardActions >
         <Grid container justify='center'>
           <IconButton href={props.dev.social.github} aria-label="github">
