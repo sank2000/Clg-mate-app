@@ -7,6 +7,7 @@
     "client-install": "npm install --prefix client",
     "start": "node app.js",
     "serve": "nodemon app.js",
+    "install": "npm i",
     "server": "nodemon app.js --exec babel-node --presets babel-preset-env",
     "client": "npm start --prefix client",
     "dev-start": "concurrently \"nodemon app.js\" \"npm run client\"",
