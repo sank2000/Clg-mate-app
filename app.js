@@ -4,7 +4,8 @@ const path = require('path');
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const session = require("express-session")
+const session = require("express-session");
+const cors = require('cors');
 
 const posts = require('./routes/Posts');
 const auth = require('./routes/Auth');
@@ -13,6 +14,7 @@ const materials = require('./routes/materials');
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
   secret: 'San and krish',

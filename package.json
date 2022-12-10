@@ -28,7 +28,8 @@
     "formik": "^2.1.4",
     "mongoose": "^5.9.11",
     "nodemailer": "^6.4.6",
-    "yup": "^0.28.5"
+    "yup": "^0.28.5",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
