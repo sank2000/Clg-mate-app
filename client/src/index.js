@@ -11,6 +11,8 @@ if (window.localStorage.getItem("dark") === 'true') {
   mode = "dark";
 }
 
+axios.defaults.baseURL = "https://clg-mate.up.railway.app/";
+
 const theme = createMuiTheme({
   palette: {
     primary: blue,
